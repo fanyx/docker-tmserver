@@ -1,0 +1,121 @@
+~~[ v0.13d ]~~
+
+- Add : "/jfreu banfor X login" to ban a player for X min
+- Fix : banFor X min ban for X min (not for X min - 30 sec)
+- Fix : bug with non-included chat & settings files
+- Upg : unspec command cancel the player's vote to unspec him.
+- Upg : "unspec vote" ban the player for 5 min if vote result is NO.
+- Upg : badwordsban ban the player for 10 min.
+- Upg : in "unspec vote" +50% yes -> yes | +49% no -> no.
+
+~~[ v0.13c ]~~
+
+- Fix : "/jfreu kickHiRank ON/OFF" fixed : kick worst ranked players
+        when the server is "full".
+- Fix : "/jfreu kickWorst X" fixed : kick X wost players.
+
+~~[ v0.13b ]~~
+
+- Add : the word between the server's name and the limit
+        (usually "Top") can be changed.
+- Add : autoChangeName can be turned OFF
+        (server's name when the limit changes)
+- Add : TEAM_VIP all team members are vip.
+- Add : "/uptodate" command to know if the version of the
+        plugin is up to date.
+- Add : NewPlayer message when a new player joins and ranklimit
+        is OFF.
+- Add : "/jfreu removevip" & "/jfreu removeteamvip" to remove
+        a vip & a team_vip ingame (by an admin).
+- Upg : Admins, VIP and TEAM_VIP added ingame are saved in a
+        xml file ("jfreu/jfreu.lists.xlm")
+- Upg : All the plugin's admin commands are "jfreu commands" now,
+        to avoid the bug with "/admin help", now it is "/jfreu help"
+        the plugin's admin commands are "/jfreu [command]"
+- Upg : Cancel custom vote ('unspec') when the player disconects.
+
+~~[ v0.13a ]~~
+
+- Add : Admin command "addadmin {login}" to add an admin.
+- Add : Admin private message to login :
+        /admin messagetologin {login} {message}
+- Add : Hardlimit : players, VIP, specs over the hardlimit
+        are kicked (without message in the chat)
+- Add : Admins can change the hardlimit ingame.
+- Add : SpecOnly command unspec to launch an unspec vote.
+- Add : If a player leaves the game his vote is canceled.
+- Fix : novote can be turned OFF.
+- Fix : fix bug in "clean_nick" function.
+- Fix : No more timeOut crash
+- Fix : PM fixed (no more server's login at the begining)
+- Upg : badWord bot more powerfull.
+        ( "$zS$wHh$00FIII$wiiI$nT" is a badword )
+- Upg : Colors in the plugin are aseco's colors.
+- Upg : Ranklimit & Info commands send a PM to the player.
+- Upg : Unspec and VIP not in server average if autorankVIP ON.
+
+
+~~[ v0.12d ]~~
+
+- Add : Admin command "unspec" to allow a "SpecOnly" to join
+        the race.
+- Add : custom maxBadWords
+- Add : BadWordsBan (ON/OFF) ban when 2x maxBadWords
+- Add : Admin command KickWorst to kick worst ranked players
+        except vip.
+- Add : admin cancelvote to cancel current vote
+        (kick/ban/nextmap/restartmap)
+- Add : novote (ON/OFF) to autocancel votes
+- Upg : kickhirank function use KickWorst function.
+
+~~[ v0.12c ]~~
+
+- Add : SpecOnly are kicked if they join the race
+- Fix : bug with "admin help"
+- Fix : bug with "autorankvip"
+- Fix : bug with "autorankvip" default state
+
+~~[ v0.12b ]~~
+
+- Add : "BadWords" -> 3 "badwords" = kicked (on/off)
+- Add : random information message at the end of the race
+        (editable) (on/off)
+- Add : players over ranklimit can join the game as spec
+- Add : kick hiRank players if server is "full"
+        (custom maxplayers) (on/off)
+- Fix : problem with "chat.admin" overwritten
+
+~~[ v0.11a ]~~
+
+- Add : autoRankMinPlayer : autorank disabled when not enough
+        players then limit = Ranklimit.
+        autoRankMinPlayer value can be changed ingame (by admins)
+        Autorank limit = Ranklimit when not enough players
+- Add : admin can add VIP ingame (deleted when aseco restarts)
+- Add : admin can force Autorank limit (until a new player comes)
+
+~~[ v0.10b ]~~
+
+- Add : admin command : /admin player {login} {message}
+- Fix : bug with AutoRank Offset.
+- Fix : bug timeOut crash.
+
+~~[ v0.09e ]~~
+
+- Add : RankLimit can be turned on/off ingame (by an admin)
+- Add : AutoRank offset value can be changed ingame (by an admin)
+- Add : AutoRankLimit is changed when a player left the game
+
+~~[ v0.08 ]~~
+
+- Rank limit (new player with a rank over the limit is kicked)
+- AutoRankLimit (DynaRank) : server's rank + offset = ranklimit
+- Change the server's name when the limit is changed :
+  [ServerName]Top[Limit]
+- Server's messages in chat : "[ServerName] your message"
+- fake rec : ">> XXX took the 1. rank with a time of... !
+- informations on account : IP/port/login/nick/score/rank
+- AutoRankLimit can be turned on/off ingame (by an admin)
+- Rank limit value can be changed ingame (by an admin)
+- ...
+

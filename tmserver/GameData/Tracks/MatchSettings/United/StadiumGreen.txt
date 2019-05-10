@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<playlist>
+	<gameinfos>
+		<lan_game_mode>0</lan_game_mode>
+		<internet_game_mode>1</internet_game_mode>
+		<hotseat_game_mode>0</hotseat_game_mode>
+		<chat_time>10000</chat_time>
+		<finishtimeout>1</finishtimeout>
+		<rounds_pointslimit>30</rounds_pointslimit>
+		<rounds_usenewrules>0</rounds_usenewrules>
+		<rounds_forcedlaps>0</rounds_forcedlaps>
+		<timeattack_limit>180000</timeattack_limit>
+		<timeattack_synchstartperiod>0</timeattack_synchstartperiod>
+		<team_pointslimit>5</team_pointslimit>
+		<team_maxpoints>6</team_maxpoints>
+		<team_usenewrules>0</team_usenewrules>
+		<laps_nblaps>5</laps_nblaps>
+		<laps_timelimit>0</laps_timelimit>
+		<hotseat_timeattack_limit>180000</hotseat_timeattack_limit>
+		<hotseat_rounds_count>5</hotseat_rounds_count>
+	</gameinfos>
+
+	<filter>
+		<is_solo>0</is_solo>
+		<is_hotseat>1</is_hotseat>
+		<is_lan>1</is_lan>
+		<is_internet>1</is_internet>
+		<sort_index>10</sort_index>
+		<random_map_order>0</random_map_order>
+	</filter>
+
+	<challenge>
+		<file>Campaigns\United\Race\Stadium\Green\StadiumB1.Challenge.Gbx</file>
+		<ident>AJr0WOWFNr16GgPR5gATk0FaR4c</ident>
+	</challenge>
+	<challenge>
+		<file>Campaigns\United\Race\Stadium\Green\StadiumB2.Challenge.Gbx</file>
+		<ident>jwkqslQXaAKq4pvLWVHGnVzPute</ident>
+	</challenge>
+	<challenge>
+		<file>Campaigns\United\Race\Stadium\Green\StadiumB3.Challenge.Gbx</file>
+		<ident>hm4BM_c3sqpI2qzgX2vR9acvTj4</ident>
+	</challenge>
+	<challenge>
+		<file>Campaigns\United\Race\Stadium\Green\StadiumB4.Challenge.Gbx</file>
+		<ident>LiSj9Js5kM4erXyCy8ez6l4cQej</ident>
+	</challenge>
+	<challenge>
+		<file>Campaigns\United\Race\Stadium\Green\StadiumB5.Challenge.Gbx</file>
+		<ident>dVAqPX0DEuox0R7Z3qcX4N0gvD8</ident>
+	</challenge>
+</playlist>

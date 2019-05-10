@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<aseco_plugins>
+	<plugin>plugin.localdatabase.php</plugin>
+	<plugin>plugin.rounds.php</plugin>
+	<plugin>chat.admin.php</plugin>
+	<plugin>chat.help.php</plugin>
+	<plugin>chat.records.php</plugin>
+	<plugin>chat.records2.php</plugin>
+	<plugin>chat.recrels.php</plugin>
+	<plugin>chat.dedimania.php</plugin>
+	<plugin>chat.players.php</plugin>
+	<plugin>chat.players2.php</plugin>
+	<plugin>chat.wins.php</plugin>
+	<plugin>chat.laston.php</plugin>
+	<plugin>chat.lastwin.php</plugin>
+	<plugin>chat.stats.php</plugin>
+	<plugin>chat.server.php</plugin>
+	<plugin>chat.songmod.php</plugin>
+	<plugin>chat.me.php</plugin>
+<!--	<plugin>plugin.muting.php</plugin> -->
+	<plugin>plugin.tmxinfo.php</plugin>
+	<plugin>plugin.track.php</plugin>
+	<plugin>plugin.checkpoints.php</plugin>
+	<plugin>plugin.dedimania.php</plugin>
+	<plugin>plugin.rasp.php</plugin>
+	<plugin>plugin.rasp_jukebox.php</plugin>
+	<plugin>plugin.rasp_chat.php</plugin>
+	<plugin>plugin.rasp_karma.php</plugin>
+	<plugin>plugin.rasp_nextmap.php</plugin>
+	<plugin>plugin.rasp_nextrank.php</plugin>
+	<plugin>plugin.rasp_votes.php</plugin>
+	<plugin>plugin.chatlog.php</plugin>
+<!--	<plugin>plugin.msglog.php</plugin> -->
+	<plugin>plugin.style.php</plugin>
+	<plugin>plugin.panels.php</plugin>
+<!--	<plugin>plugin.donate.php</plugin> -->
+<!--	<plugin>plugin.musicserver.php</plugin> -->
+	<plugin>plugin.uptodate.php</plugin>
+<!--	<plugin>plugin.rpoints.php</plugin> -->
+<!--	<plugin>plugin.autotime.php</plugin> -->
+<!--	<plugin>plugin.access.php</plugin> -->
+	<plugin>jfreu.plugin.php</plugin>
+	<plugin>mistral.idlekick.php</plugin>
+</aseco_plugins>

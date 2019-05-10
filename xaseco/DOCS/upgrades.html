@@ -1,0 +1,1128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>TrackMania Nations - XASECO upgrade history</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<META NAME="author" CONTENT="Frans P. de Vries">
+<META NAME="generator" CONTENT="vi :)">
+<style type="text/css">
+body { width: 960px; margin-left: 30px; font-family: Arial,Helvetica,sans-serif; font-size: 15px; }
+li,div { padding: 3px; }
+code,pre { font-size: 14px; }
+pre { width: 90%; margin: 3px 0px; padding: 3px 0px 3px 12px; background-color: #F0F0F0; }
+</style>
+<META NAME="keywords" CONTENT="TrackMania, Forever, United, Nations, Original, Sunrise, racing, games, XASECO, ASECO, RASP, Jfreu, plugins, records, jukebox, Nadeo">
+<META NAME="description" CONTENT="Information on the XASECO system for TrackMania Forever and Nations (& Original/Sunrise), racing games by Nadeo">
+</HEAD>
+
+<BODY TEXT="#000000" LINK="#ff0000" VLINK="#0000ff" ALINK="#00ff00" BGCOLOR="#ffffff">
+
+<P ALIGN="center">
+<A TARGET="_blank" HREF="http://eswc.trackmanianations.com/"><IMG SRC="banner.jpg" ALT="TrackMania Nations" BORDER="0" WIDTH="590" HEIGHT="149"></A>
+<HR>
+
+<H3>Earlier upgrades:</H3>
+
+<UL>
+<LI><u>Upgrading from v1.15 to v1.15b</u>:<br><br>
+
+The following files were updated in v1.15b: aseco.php,
+includes/gbxdatafetcher.inc.php, rasp.funcs.php,
+tmxinfofetcher.inc.php, tmxinfosearcher.inc.php,
+plugins/chat.songmod.php, plugin.autotime.php, plugin.track.php,
+plugin.tmxinfo.php.
+<br><br>
+
+<b>Important</b>:
+<UL>
+<LI>See the installation notes for upgrading to v1.15.
+</UL>
+<br>
+
+<LI><u>Upgrading from v1.14 to v1.15</u>:<br><br>
+
+The following files were updated in v1.15: aseco.php, config.xml,
+dedimania.xml, rasp.xml, includes/GbxRemote.bem.php, GbxRemote.inc.php,
+basic.inc.php, gbxdatafetcher.inc.php, jfreu.config.php,
+manialinks.inc.php, ogg_comments.inc.php, rasp.funcs.php,
+rasp.settings.php, replayparser.inc.php, tmndatafetcher.inc.php,
+tmxinfofetcher.inc.php, tmxinfosearcher.inc.php, types.inc.php,
+votes.config.php, web_access.inc.php, xmlparser.inc.php,
+xmlrpc_db.inc.php, panels/VoteBottomCenterTransp.xml,
+plugins/chat.admin.php, chat.dedimania.php, chat.players.php,
+chat.players2.php, chat.records.php, chat.records2.php,
+chat.recrels.php, chat.server.php, chat.stats.php,
+plugin.checkpoints.php, plugin.dedimania.php, plugin.donate.php,
+plugin.localdatabase.php, plugin.matchsave.php, plugin.panels.php,
+plugin.rasp.php, plugin.rasp_chat.php, plugin.rasp_jukebox.php,
+plugin.rasp_votes.php, plugin.rounds.php, plugin.rpoints.php,
+plugin.style.php, plugin.tmxinfo.php, plugin.track.php.
+<br><br>
+
+<b>Important</b>:
+<UL>
+<LI>To register your server with the central Dedimania
+database, you must copy the login and password values in the
+<CODE>&lt;masterserver_account&gt;</CODE> section from your
+server's dedicated.cfg (TMN) or dedicated_cfg.txt (TMF) file into
+the corresponding section of the dedimania.xml file, and add
+the 3-character nation abbreviation.  Instead of the password
+you can also use the community code for your server by using
+the server login/password on the <a href="#official">official
+site</a> for your game (TMO/TMS/TMN) or on this <a target="_blank"
+href="http://official.trackmania.com/tmf-communitycode/">page for
+TMF</a>.
+<LI>Open port <b>8002</b> on your firewall/router for communication
+with the central Dedimania server.
+<LI>In the zip file, all *.XML and *.PHP config files are located
+inside the <b>newinstall/</b> directory.  This means that you can (and
+have to) unzip the download and replace all the PHP code files, without
+worrying about overwriting your customized config files.  However, for
+every XML/PHP config file that was updated (see above), you <u>must</u>
+replace your version with the one from the newinstall/ directory, or
+compare them and <u>add</u> any new/changed configuration settings
+to your version to insure the system remains working correctly.
+<LI>For a new installation, go into the newinstall/ directory and move
+all *.XML files into the main directory (next to aseco.php), all *.PHP
+files into the includes/ directory, and Aseco.bat|Aseco.sh|AsecoF.sh
+also into the main directory.
+</UL>
+<br>
+
+<LI><u>Upgrading from v1.13 to v1.14</u>:<br><br>
+
+The following files were updated in v1.14: aseco.php, adminops.xml,
+config.xml, dedimania.xml, includes/GbxRemote.bem.php,
+GbxRemote.inc.php, manialinks.inc.php, rasp.funcs.php,
+tmndatafetcher.inc.php, types.inc.php, xmlparser.inc.php,
+xmlrpc_db.inc.php, plugins/chat.admin.php, chat.dedimania.php,
+chat.records.php, chat.records2.php, chat.recrels.php, chat.server.php,
+plugin.checkpoints.php, plugin.dedimania.php, plugin.localdatabase.php,
+plugin.matchsave.php, plugin.rasp.php, plugin.rasp_chat.php,
+plugin.rasp_irc.php, plugin.rasp_jukebox.php, plugin.rasp_karma.php,
+plugin.rasp_nextmap.php, plugin.rasp_nextrank.php, plugin.rpoints.php,
+plugin.track.php, plugin.uptodate.php, jfreu.chat.php,
+mistral.idlekick.php.
+<br><br>
+
+<b>Important</b>:
+<UL>
+<LI>See the installation notes for upgrading to v1.11.
+</UL>
+<br>
+
+<LI><u>Upgrading from v1.12 to v1.13</u>:<br><br>
+
+The following file was added in v1.13: chat.lastwin.php.
+<br><br>
+
+The following files were updated in v1.13: aseco.php, config.xml,
+dedimania.xml, plugins.xml, rasp.xml, includes/GbxRemote.inc.php,
+GbxRemote.bem.php, basic.inc.php, gbxdatafetcher.inc.php,
+ogg_comments.inc.php, rasp.funcs.php, replayparser.inc.php,
+tmndatafetcher.inc.php, tmxinfofetcher.inc.php, tmxinfosearcher.inc.php,
+types.inc.php, votes.config.php, plugins/chat.admin.php,
+chat.dedimania.php, chat.laston.php, chat.records2.php, chat.server.php,
+chat.stats.php, plugin.checkpoints.php, plugin.localdatabase.php,
+plugin.matchsave.php, plugin.musicserver.php, plugin.panels.php,
+plugin.rasp.php, plugin.rasp_jukebox.php, plugin.rasp_karma.php,
+plugin.rasp_votes.php, plugin.rounds.php, localdb/*.sql.
+<br><br>
+
+<b>Important</b>:
+<UL>
+<LI>See the installation notes for upgrading to v1.11.
+</UL>
+<br>
+
+<LI><u>Upgrading from v1.11 to v1.12</u>:<br><br>
+
+The following files were updated in v1.12: aseco.php,
+config.xml, dedimania.xml, rasp.xml, localdb/*.sql,
+includes/GbxRemote.response.php, basic.inc.php, rasp.funcs.php,
+rasp.settings.php, tmxinfofetcher.inc.php, tmxinfosearcher.inc.php,
+types.inc.php, xmlrpc_db.inc.php, plugins/chat.admin.php,
+chat.dedimania.php, chat.players.php, chat.players2.php,
+chat.records.php, chat.records2.php, chat.recrels.php, chat.server.php,
+chat.stats.php, plugin.access.php, plugin.autotime.php,
+plugin.chatlog.php, plugin.checkpoints.php, plugin.dedimania.php,
+plugin.donate.php, plugin.localdatabase.php, plugin.matchsave.php,
+plugin.musicserver.php, plugin.muting.php, plugin.panels.php,
+plugin.rasp.php, plugin.rasp_chat.php, plugin.rasp_jukebox.php,
+plugin.rasp_karma.php, plugin.rasp_nextmap.php,
+plugin.rasp_nextrank.php, plugin.rasp_votes.php, plugin.rpoints.php,
+plugin.style.php, plugin.track.php, jfreu.chat.php.
+<br><br>
+
+The following files were removed from v1.12 (actually moved to the
+DOCS/OLD/ directory for posterity): plugins/chat.vote.php, and the
+votes.sql section of localdb/aseco.sql.
+<br><br>
+
+<b>Important</b>:
+<UL>
+<LI>See the installation notes for upgrading to v1.11.
+</UL>
+<br>
+
+<LI><u>Upgrading from v1.10 to v1.11</u>:<br><br>
+
+The following file was renamed in v1.11: plugins/chat.song.php to
+plugins/chat.songmod.php.
+<br><br>
+
+The following files were updated in v1.11: aseco.php,
+config.xml, dedimania.xml, plugins.xml, includes/basic.inc.php,
+gbxdatafetcher.inc.php, jfreu.config.php, manialinks.inc.php,
+rasp.funcs.php, rasp.settings.php, tmndatafetcher.inc.php,
+types.inc.php, web_access.inc.php, xmlrpc_db.inc.php,
+plugins/chat.admin.php, chat.records2.php, chat.server.php,
+chat.stats.php, plugin.autotime.php, plugin.chatlog.php,
+plugin.checkpoints.php, plugin.dedimania.php, plugin.donate.php,
+plugin.ml_howto.php, plugin.msglog.php, plugin.musicserver.php,
+plugin.muting.php, plugin.panels.php, plugin.rasp.php,
+plugin.rasp_chat.php, plugin.rasp_jukebox.php, plugin.rasp_karma.php,
+plugin.rasp_votes.php, plugin.rpoints.php, plugin.style.php,
+plugin.track.php, plugin.uptodate.php, jfreu.chat.php, jfreu.lite.php,
+jfreu.plugin.php.
+<br><br>
+
+The following files were removed from v1.11 (actually moved to the
+DOCS/OLD/ directory for posterity): includes/sminfofetcher.inc.php,
+plugins/plugin.sminfo.php.
+<br><br>
+
+<b>Important</b>:
+<UL>
+<LI>To register your server with the central Dedimania
+database, you must copy the login and password values in the
+<CODE>&lt;masterserver_account&gt;</CODE> section from your
+server's dedicated.cfg (TMN) or dedicated_cfg.txt (TMF) file into
+the corresponding section of the dedimania.xml file, and add
+the 3-character nation abbreviation.  Instead of the password
+you can also use the community code for your server by using
+the server login/password on the <A HREF="#official">official
+site</A> for your game (TMO/TMS/TMN) or on this <A TARGET="_blank"
+HREF="http://official.trackmania.com/tmf-communitycode/">page for
+TMF</A>.
+<LI>Open port <b>8002</b> on your firewall/router for communication
+with the central Dedimania server.
+<LI>In the zip file, all *.XML and *.PHP config files are now located
+inside the <b>newinstall/</b> directory.  This means that you can (and
+have to) unzip the download and replace all the PHP code files, without
+worrying about overwriting your customized config files.  However, for
+every XML/PHP config file that was updated (see above), you <u>must</u>
+replace your version with the one from the newinstall/ directory,
+or compare them and <u>add</u> any new/changed configuration settings
+to your version to insure the system remains working correctly.
+<LI>For a new installation, go into the newinstall/ directory and
+move all *.XML files into the main directory, next to aseco.php,
+and *.PHP files into the includes/ directory.
+</UL>
+<br>
+
+<LI><u>Upgrading from v1.09 to v1.10</u>:<br><br>
+
+The following files were added in v1.10: panels/DonateBelowCPListRM.xml,
+RecordsRightBottomRM.xml.
+<br><br>
+
+The following files were updated in v1.10: aseco.php, adminops.xml,
+config.xml, dedimania.xml, rasp.xml, includes/basic.inc.php,
+rasp.funcs.php, rasp.settings.php, tmxinfofetcher.inc.php,
+tmxinfosearcher.inc.php, types.inc.php, votes.config.php,
+plugins/chat.admin.php, chat.dedimania.php, chat.records.php,
+chat.server.php, chat.stats.php, plugin.checkpoints.php,
+plugin.dedimania.php, plugin.donate.php, plugin.localdatabase.php,
+plugin.panels.php, plugin.rasp.php, plugin.rasp_jukebox.php,
+plugin.rasp_votes.php, plugin.rpoints.php, plugin.style.php,
+plugin.tmxinfo.php, plugin.uptodate.php.
+<br><br>
+
+<b>Important</b>:
+<UL>
+<LI>See the installation notes for upgrading to v1.05b.
+</UL>
+<br>
+
+<LI><u>Upgrading from v1.08 to v1.09</u>:<br><br>
+The following files were added in v1.09: access.xml,
+plugins/plugin.access.php.
+<br><br>
+
+The following files were updated in v1.09: aseco.php,
+adminops.xml, config.xml, musicserver.xml, plugins.xml,
+rasp.xml, includes/GbxRemote.bem.php, GbxRemote.inc.php,
+basic.inc.php, gbxdatafetcher.inc.php, rasp.settings.php,
+replayparser.inc.php, sminfofetcher.inc.php, tmxinfofetcher.inc.php,
+types.inc.php, localdb/aseco.sql, rasp.sql, plugins/chat.admin.php,
+plugin.autotime.php, plugin.checkpoints.php, plugin.dedimania.php,
+plugin.localdatabase.php, plugin.musicserver.php, plugin.rasp.php,
+plugin.rasp_chat.php, plugin.rasp_jukebox.php, plugin.rasp_votes.php,
+plugin.rounds.php, plugin.track.php, plugin.uptodate.php,
+jfreu.plugin.php, mistral.idlekick.php.
+<br><br>
+
+<b>Important</b>:
+<UL>
+<LI>See the installation notes for upgrading to v1.05b.
+</UL>
+<br>
+
+<LI><u>Upgrading from v1.06 to v1.08</u>:<br><br>
+The following file was added in v1.08: includes/replayparser.inc.php.
+<br><br>
+
+The following files were updated in v1.08: aseco.php, config.xml,
+includes/GbxRemote.inc.php, GbxRemote.bem.php, basic.inc.php,
+gbxdatafetcher.inc.php, ogg_comments.inc.php, rasp.funcs.php,
+sminfofetcher.inc.php, tmxinfofetcher.inc.php, tmxinfosearcher.inc.php,
+types.inc.php, web_access.inc.php, xmlparser.inc.php,
+localdb/aseco.sql, plugins/chat.admin.php, chat.dedimania.php,
+chat.players.php, chat.players2.php, chat.records.php,
+chat.records2.php, chat.stats.php, plugin.autotime.php,
+plugin.chatlog.php, plugin.checkpoints.php, plugin.dedimania.php,
+plugin.donate.php, plugin.localdabase.php, plugin.matchsave.php,
+plugin.musicserver.php, plugin.muting.php, plugin.panels.php,
+plugin.rasp.php, plugin.rasp_chat.php, plugin.rasp_jukebox.php,
+plugin.rasp_nextmap.php, plugin.rasp_votes.php, plugin.rounds.php,
+plugin.sminfo.php, plugin.style.php, plugin.tmxinfo.php,
+plugin.track.php, jfreu.chat.php, jfreu.lite.php, jfreu.plugin.php,
+mistral.idlekick.php.
+<br><br>
+
+<b>Important</b>:
+<UL>
+<LI>See the installation notes for upgrading to v1.05b.
+</UL>
+<br>
+
+<LI><u>Upgrading from v1.05b to v1.06</u>:<br><br>
+
+The following files were added in v1.06: localdb/extra.sql,
+panels/StatsNations.xml, StatsUnited.xml.
+<br><br>
+
+The following files were updated in v1.06: aseco.php,
+config.xml, includes/manialinks.inc.php, ogg_comments.inc.php,
+types.inc.php, jfreu.config.php, localdb/aseco.sql, rasp.sql,
+plugins/chat.admin.php, chat.dedimania.php, chat.server.php,
+chat.stats.php, plugin.checkpoints.php, plugin.dedimania.php,
+plugin.donate.php, plugin.localdatabase.php, plugin.matchsave.php,
+plugin.musicserver.php, plugin.panels.php, plugin.rasp.php,
+plugin.rasp_chat.php, plugin.rasp_jukebox.php, plugin.style.php,
+jfreu.lite.php, jfreu.plugin.php.
+<br><br>
+
+<b>Important</b>:
+<UL>
+<LI>See the installation notes for upgrading to v1.05b.
+</UL>
+<br>
+
+<LI><u>Upgrading from v1.05 to v1.05b</u>:<br><br>
+
+The following files were updated in v1.05b: aseco.php, dedimania.xml,
+includes/basic.inc.php, plugins/plugin.checkpoints.php,
+plugin.dedimania.php, plugin.msglog.php, plugin.musicserver.php,
+jfreu.lite.php.
+<br><br>
+
+<b>Important</b>:
+<UL>
+<LI>To register your server with the central Dedimania
+database, you must copy the login and password values in the
+<CODE>&lt;masterserver_account&gt;</CODE> section from your
+server's dedicated.cfg (TMN) or dedicated_cfg.txt (TMF) file into
+the corresponding section of the dedimania.xml file, and add
+the 3-character nation abbreviation.  Instead of the password
+you can also use the community code for your server by using
+the server login/password on the <A HREF="#official">official
+site</A> for your game (TMO/TMS/TMN) or on this <A TARGET="_blank"
+HREF="http://official.trackmania.com/tmf-communitycode/">page for
+TMF</A>.
+<LI>Open ports 8003, 8006, 8007, 8011, 8012, 8013 and <b>8016 through
+8021</b> on your firewall/router for communication with the central
+Dedimania server (if that's not possible, the system falls back on
+port 80).
+<LI>In the zip file, all *.XML and *.PHP config files are now located
+inside the <b>newinstall/</b> directory.  This means that you can (and
+have to) unzip the download and replace all the PHP code files, without
+worrying about overwriting your customized config files.  However, for
+every XML/PHP config file that was updated (see above), you <u>must</u>
+replace your version with the one from the newinstall/ directory,
+or compare them and <u>add</u> any new/changed configuration settings
+to your version to insure the system remains working correctly.
+<LI>For a new installation, go into the newinstall/ directory and
+move all *.XML files into the main directory, next to aseco.php,
+and *.PHP files into the includes/ directory.
+</UL>
+<br>
+
+<LI><u>Upgrading from v1.04 to v1.05</u>:<br><br>
+
+The following files were updated in v1.05: aseco.php,
+adminops.xml, config.xml, musicserver.xml, includes/basic.inc.php,
+gbxdatafetcher.inc.php, types.inc.php, votes.config.php,
+xmlrpc_db.inc.php, plugins/chat.admin.php, chat.dedimania.php,
+chat.players.php, plugin.autotime.php, plugin.checkpoints.php,
+plugin.dedimania.php, plugin.donate.php, plugin.localdatabase.php,
+plugin.musicserver.php, plugin.rasp_chat.php, plugin.rasp_jukebox.php,
+plugin.rasp_votes.php, plugin.rpoints.php, plugin.uptodate.php,
+jfreu.chat.php, jfreu.plugin.php.
+<br><br>
+
+<b>Important</b>:
+<UL>
+<LI>See the installation notes for upgrading to v1.03.
+</UL>
+<br>
+
+<LI><u>Upgrading from v1.03 to v1.04</u>:<br><br>
+
+The following files were added in v1.04:  autotime.xml,
+plugins/plugin.autotime.php, plugin.rpoints.php.
+<br><br>
+
+The following files were updated in v1.04: aseco.php,
+adminops.xml, config.xml, musicserver.xml, plugins.xml, rasp.xml,
+includes/gbxdatafetcher.inc.php, manialinks.inc.php, rasp.funcs.php,
+tmndatafetcher.inc.php, tmxinfofetcher.inc.php, types.inc.php,
+votes.config.php, jfreu.config.php, plugins/chat.admin.php,
+chat.dedimania.php, chat.laston.php, chat.players.php,
+chat.records.php, chat.records2.php, chat.server.php,
+chat.stats.php, plugin.chatlog.php, plugin.checkpoints.php,
+plugin.dedimania.php, plugin.donate.php, plugin.localdatabase.php,
+plugin.musicserver.php, plugin.muting.php, plugin.rasp.php,
+plugin.rasp_chat.php, plugin.rasp_jukebox.php, plugin.rasp_karma.php,
+plugin.rasp_nextmap.php, plugin.rasp_nextrank.php,
+plugin.rasp_votes.php, plugin.rounds.php, plugin.sminfo.php,
+plugin.tmxinfo.php, plugin.track.php, jfreu.lite.php, jfreu.chat.php,
+jfreu.plugin.php, plugins/jfreu/jfreu.vips.xml.
+<br><br>
+
+<b>Important</b>:
+<UL>
+<LI>See the installation notes for upgrading to v1.03.
+</UL>
+<br>
+
+<LI><u>Upgrading from v1.02 to v1.03</u>:<br><br>
+
+The following file was added in v1.03: bannedips.xml.
+<br><br>
+
+The following files were updated in v1.03: aseco.php, adminops.xml,
+config.xml, dedimania.xml, rasp.xml, includes/basic.inc.php,
+manialinks.inc.php, rasp.settings.php, votes.config.php,
+types.inc.php, jfreu.config.php, plugins/chat.admin.php,
+chat.players.php, chat.records2.php, chat.server.php, chat.stats.php,
+plugin.dedimania.php, plugin.localdatabase.php, plugin.matchsave.php,
+plugin.msglog.php, plugin.musicserver.php, plugin.muting.php,
+plugin.panels.php, plugin.rasp.php, plugin.rasp_chat.php,
+plugin.rasp_jukebox.php, plugin.rasp_votes.php, plugin.track.php,
+plugin.uptodate.php, jfreu.chat.php, jfreu.lite.php, jfreu.plugin.php,
+mistral.idlekick.php.
+<br><br>
+
+<b>Important</b>:
+<UL>
+<LI>To register your server with the central Dedimania
+database, you must copy the login and password values in the
+<CODE>&lt;masterserver_account&gt;</CODE> section from your
+server's dedicated.cfg (TMN) or dedicated_cfg.txt (TMF) file into
+the corresponding section of the dedimania.xml file, and add
+the 3-character nation abbreviation.  Instead of the password
+you can also use the community code for your server by using
+the server login/password on the <A HREF="/tmn/#official">official
+site</A> for your game (TMO/TMS/TMN) or on this <A TARGET="_blank"
+HREF="http://official.trackmania.com/tmf-communitycode/">page for
+TMF</A>.
+<LI>Open ports 8003, 8006, 8007, 8011, 8012 and 8013 on your
+firewall/router for communication with the central Dedimania server
+(if that's not possible, the system falls back on port 80).
+<LI>In the zip file, all *.XML and *.PHP config files are now located
+inside the <b>newinstall/</b> directory.  This means that you can (and
+have to) unzip the download and replace all the PHP code files, without
+worrying about overwriting your customized config files.  However, for
+every XML/PHP config file that was updated (see above), you <u>must</u>
+replace your version with the one from the newinstall/ directory,
+or compare them and <u>add</u> any new/changed configuration settings
+to your version to insure the system remains working correctly.
+<LI>For a new installation, go into the newinstall/ directory and
+move all *.XML files into the main directory, next to aseco.php,
+and *.PHP files into the includes/ directory.
+</UL>
+<br>
+
+<LI><u>Upgrading from v1.01 to v1.02</u>:<br><br>
+
+The following files were added in v1.02: includes/ogg_comments.inc.php,
+plugins/plugin.msglog.php, panels/AdminAboveSpeed2.xml,
+DonateLeftSmall.xml, DonateRightSmall.xml, VoteBottomCenterTransp.xml,
+styles/ProgressBar.xml.
+<br><br>
+
+The following files were updated in v1.02: aseco.php,
+adminops.xml, config.xml, dedimania.xml, plugins.xml, rasp.xml,
+includes/basic.inc.php, manialinks.inc.php, jfreu.config.php,
+rasp.funcs.php, rasp.settings.php, votes.config.php,
+sminfofetcher.inc.php, tmndatafetcher.inc.php, tmxinfofetcher.inc.php,
+tmxinfosearcher.inc.php, plugins/chat.admin.php, chat.dedimania.php,
+chat.help.php, chat.players.php, chat.players2.php, chat.records.php,
+chat.records2.php, chat.recrels.php, chat.server.php, chat.stats.php,
+plugin.chatlog.php, plugin.donate.php, plugin.matchsave.php,
+plugin.ml_howto.php, plugin.musicserver.php, plugin.muting.php,
+plugin.panels.php, plugin.rasp.php, plugin.rasp_chat.php,
+plugin.rasp_irc.php, plugin.rasp_jukebox.php, plugin.rasp_votes.php,
+plugin.rounds.php, plugin.sminfo.php, plugin.style.php,
+plugin.tmxinfo.php, jfreu.chat.php, jfreu.lite.php, jfreu.plugin.php.
+<br><br>
+
+<b>Important</b>:
+<UL>
+<LI>See the installation notes for upgrading to v1.01.
+</UL>
+<br>
+
+<LI><u>Upgrading from v1.00 to v1.01</u>:<br><br>
+
+The following files were added in v1.01: includes/sminfofetcher.inc.php,
+tmxinfosearcher.inc.php, plugins/plugin.sminfo.php, panels/Donate*.xml.
+<br><br>
+
+The following files were updated in v1.01: aseco.php,
+adminops.xml, config.xml, dedimania.xml, plugins.xml,
+rasp.xml, includes/basic.inc.php, gbxdatafetcher.inc.php,
+manialinks.inc.php, rasp.funcs.php, types.inc.php,
+plugins/chat.admin.php, chat.records2.php, chat.server.php,
+chat.stats.php, plugin.checkpoints.php, plugin.dedimania.php,
+plugin.donate.php, plugin.localdatabase.php, plugin.musicserver.php,
+plugin.muting.php, plugin.panels.php, plugin.rasp.php,
+plugin.rasp_irc.php, plugin.rasp_jukebox.php, plugin.rasp_nextmap.php,
+plugin.rasp_votes.php, plugin.style.php, plugin.tmxinfo.php,
+jfreu.chat.php, jfreu.plugin.php, panels/00README.txt.
+<br><br>
+
+<b>Important</b>:
+<UL>
+<LI>To register your server with the central Dedimania
+database, you must copy the login and password values in the
+<CODE>&lt;masterserver_account&gt;</CODE> section from your
+server's dedicated.cfg (TMN) or dedicated_cfg.txt (TMF) file into
+the corresponding section of the dedimania.xml file, and add
+the 3-character nation abbreviation.  Instead of the password
+you can also use the community code for your server by using
+the server login/password on the <A HREF="/tmn/#official">official
+site</A> for your game (TMO/TMS/TMN) or on this <A TARGET="_blank"
+HREF="http://official.trackmania.com/tmf-communitycode/">page for
+TMF</A>.
+<LI>Open ports 8003, 8006, 8007, <b>8011, 8012 and 8013</b> on your
+firewall/router for communication with the central Dedimania server
+(if that's not possible, the system falls back on port 80).
+<LI>In the zip file, all *.XML and *.PHP config files are now located
+inside the <b>newinstall/</b> directory.  This means that you can (and
+have to) unzip the download and replace all the PHP code files, without
+worrying about overwriting your customized config files.  However, for
+every XML/PHP config file that was updated (see above), you <u>must</u>
+replace your version with the one from the newinstall/ directory,
+or compare them and <u>add</u> any new/changed configuration settings
+to your version to insure the system remains working correctly.
+<LI>For a new installation, go into the newinstall/ directory and
+move all *.XML files into the main directory, next to aseco.php,
+and *.PHP files into the includes/ directory.
+</UL>
+<br>
+
+<LI><u>Upgrading from v0.99b to v1.00</u>:<br><br>
+
+The following directories were added in v1.00: <b>panels/</b> and
+<b>styles/</b>.
+<br><br>
+
+The following files were added in v1.00: panels/00README.txt,
+panels/*.xml, style/00README.txt, styles/*.xml,
+plugins/plugin.panels.php, plugin.style.php (TMN admins can remove
+these from plugins.xml).
+<br><br>
+
+The following files were updated in v1.00: aseco.php,
+adminops.xml, config.xml, plugins.xml, includes/basic.inc.php,
+gbxdatafetcher.inc.php, jfreu.config.php, manialinks.inc.php,
+rasp.funcs.php, types.inc.php, web_access.inc.php,
+plugins/chat.admin.php, chat.dedimania.php, chat.players.php,
+chat.records2.php, chat.recrels.php, chat.server.php, chat.song.php,
+chat.stats.php, plugin.chatlog.php, plugin.checkpoints.php,
+plugin.dedimania.php, plugin.localdatabase.php, plugin.musicserver.php,
+plugin.muting.php, plugin.rasp.php, plugin.rasp_chat.php,
+plugin.rasp_jukebox.php, plugin.rasp_karma.php, plugin.rasp_votes.php,
+plugin.tmxinfo.php, plugin.track.php, plugin.uptodate.php,
+jfreu.chat.php, jfreu.plugin.php, mistral.idlekick.php.
+<br><br>
+
+<b>Important</b>:
+<UL>
+<LI>To register your server with the central Dedimania
+database, you must copy the login and password values in the
+<CODE>&lt;masterserver_account&gt;</CODE> section from your
+server's dedicated.cfg (TMN) or dedicated_cfg.txt (TMF) file into
+the corresponding section of the dedimania.xml file, and add
+the 3-character nation abbreviation.  Instead of the password
+you can also use the community code for your server by using
+the server login/password on the <A HREF="/tmn/#official">official
+site</A> for your game (TMO/TMS/TMN) or on this <A TARGET="_blank"
+HREF="http://official.trackmania.com/tmf-communitycode/">page for
+TMF</A>.
+<LI>Open ports 8003, 8006 and 8007 on your firewall/router for
+communication with the central Dedimania server (if that's not
+possible, the system falls back on port 80).
+<LI>In the zip file, all *.XML and *.PHP config files are now located
+inside the <b>newinstall/</b> directory.  This means that you can (and
+have to) unzip the download and replace all the PHP code files, without
+worrying about overwriting your customized config files.  However, for
+every XML/PHP config file that was updated (see above), you <u>must</u>
+replace your version with the one from the newinstall/ directory,
+or compare them and <u>add</u> any new/changed configuration settings
+to your version to insure the system remains working correctly.
+<LI>For a new installation, go into the newinstall/ directory and
+move all *.XML files into the main directory, next to aseco.php,
+and *.PHP files into the includes/ directory.
+</UL>
+<br>
+
+<LI><u>Upgrading from v0.99 to v0.99b</u>:<br><br>
+
+The following files were updated in v0.99b: aseco.php, adminops.xml,
+config.xml, musicserver.xml, includes/manialinks.inc.php,
+plugins/chat.admin.php, plugin.dedimania.php, plugin.localdatabase.php,
+plugin.musicserver.php, plugin.rasp.php, plugin.uptodate.php.
+<br><br>
+
+<b>Important</b>:
+<UL>
+<LI>See the installation notes for upgrading to v0.98.
+</UL>
+<br>
+
+<LI><u>Upgrading from v0.98 to v0.99</u>:<br><br>
+
+The following files were added in v0.99: musicserver.xml,
+plugins/plugin.donate.php, plugin.musicserver.php.
+<br><br>
+
+The following files were updated in v0.99: aseco.php, adminops.xml,
+config.xml, dedimania.xml, localdatabase.xml, plugins.xml, rasp.xml,
+includes/GbxRemote.inc.php, GbxRemote.bem.php, basic.inc.php,
+manialinks.inc.php, rasp.funcs.php, tmxinfofetcher.inc.php,
+types.inc.php, xmlrpc_db.inc.php, plugins/chat.admin.php,
+chat.dedimania.php, chat.records2.php, chat.server.php, chat.stats.php,
+plugin.dedimania.php, plugin.localdatabase.php, plugin.matchsave.php,
+plugin.muting.php, plugin.rasp.php, plugin.rasp_chat.php,
+plugin.rasp_jukebox.php, plugin.rasp_karma.php, plugin.rasp_votes.php,
+plugin.tmxinfo.php, plugin.track.php, jfreu.plugin.php.
+<br><br>
+
+<b>Important</b>:
+<UL>
+<LI>See the installation notes for upgrading to v0.98.
+</UL>
+<br>
+
+<LI><u>Upgrading from v0.97 to v0.98</u>:<br><br>
+
+The following file was added in v0.98: plugins/plugin.ml_howto.php.
+<br><br>
+
+The following files were updated in v0.98: aseco.php, adminops.xml,
+dedimania.xml, localdatabase.xml, includes/basic.inc.php,
+manialinks.inc.php, rasp.funcs.php, types.inc.php, xmlparser.inc.php,
+xmlrpc_db.inc.php, plugins/chat.admin.php, chat.dedimania.php,
+chat.players.php, chat.players2.php, chat.records.php,
+chat.records2.php, chat.recrels.php, chat.server.php, chat.stats.php,
+plugin.chatlog.php, plugin.checkpoints.php, plugin.dedimania.php,
+plugin.localdatabase.php, plugin.matchsave.php, plugin.muting.php,
+plugin.rasp.php, plugin.rasp_chat.php, plugin.rasp_jukebox.php,
+plugin.rasp_karma.php, plugin.track.php, plugin.uptodate.php,
+jfreu.chat.php, jfreu.plugin.php.
+<br><br>
+
+<b>Important</b>:
+<UL>
+<LI>To register your server with the central Dedimania
+database, you must copy the login and password values in the
+<CODE>&lt;masterserver_account&gt;</CODE> section from your
+server's dedicated.cfg (TMN) or dedicated_cfg.txt (TMF) file into
+the corresponding section of the dedimania.xml file, and add
+the 3-character nation abbreviation.  Instead of the password
+you can also use the community code for your server by using
+the server login/password on the <A HREF="/tmn/#official">official
+site</A> for your game (TMO/TMS/TMN) or on this <A TARGET="_blank"
+HREF="http://official.trackmania.com/tmf-communitycode/">page for
+TMF</A>.
+<LI>Open ports 8003, 8006 and 8007 on your firewall/router for
+communication with the central Dedimania server (if that's not
+possible, the system falls back on port 80).
+<LI>In the zip file, all *.XML and config files are now located inside
+the <b>newinstall/</b> directory.  This means that you should be able
+to unzip the download and replace all the code files (unless you made
+changes to any) without worrying about overwriting your customized
+config files.  However, for every XML/config file that was updated
+(see above), you <u>must</u> replace your version with the one from
+the newinstall/ directory, or compare them and add any new/changed
+configuration settings to your version to insure the system remains
+working correctly.
+<LI>For a new installation, go into the newinstall/ directory and
+move all *.XML files into the main directory, next to aseco.php,
+and *.PHP files into the includes/ directory.
+</UL>
+<br>
+
+<LI><u>Upgrading from v0.96b to v0.97</u>:<br><br>
+
+The following files were updated in v0.97: aseco.php, adminops.xml,
+config.xml, dedimania.xml, rasp.xml, includes/basic.inc.php,
+manialinks.inc.php, rasp.funcs.php, types.inc.php, web_access.inc.php,
+xmlrpc_db.inc.php, jfreu.config.php, plugins/chat.admin.php,
+chat.dedimania.php, chat.players.php,  chat.players2.php,
+chat.records.php, chat.records2.php, chat.server.php, chat.stats.php,
+plugin.checkpoints.php, plugin.dedimania.php, plugin.localdatabase.php,
+plugin.matchsave.php, plugin.muting.php, plugin.rasp.php,
+plugin.rasp_jukebox.php, plugin.rasp_votes.php, plugin.rounds.php,
+plugin.tmxinfo.php, jfreu.chat.php, jfreu.plugin.php.
+<br><br>
+
+<b>Important</b>:
+<UL>
+<LI>To register your server with the central Dedimania
+database, you must copy the login and password values in the
+<CODE>&lt;masterserver_account&gt;</CODE> section from your
+server's dedicated.cfg (TMN) or dedicated_cfg.txt (TMF) file into
+the corresponding section of the dedimania.xml file, and add
+the 3-character nation abbreviation.  Instead of the password
+you can also use the community code for your server by using
+the server login/password on the <A HREF="/tmn/#official">official
+site</A> for your game (TMO/TMS/TMN) or on this <A TARGET="_blank"
+HREF="http://official.trackmania.com/tmf-communitycode/">page for
+TMF</A>.
+<LI>Open port 8003 on your firewall/router for communication with the
+central Dedimania server (if that's not possible, the system falls
+back on port 80).
+<LI>In the zip file, all *.XML and config files are now located inside
+the <b>newinstall/</b> directory.  This means that you should be able
+to unzip the download and replace all the code files (unless you made
+changes to any) without worrying about overwriting your customized
+config files.  However, for every XML/config file that was updated
+(see above), you <u>must</u> replace your version with the one from
+the newinstall/ directory, or compare them and add any new/changed
+configuration settings to your version to insure the system remains
+working correctly.
+<LI>For a new installation, go into the newinstall/ directory and
+move all *.XML files into the main directory, next to aseco.php,
+and *.PHP files into the includes/ directory.
+</UL>
+<br>
+
+<LI><u>Upgrading from v0.96 to v0.96b</u>:<br><br>
+
+The following files were updated in v0.96b: aseco.php, adminops.xml,
+matchsave.xml, rasp.xml, includes/basic.inc.php, manialinks.inc.php,
+rasp.settings.php, votes.config.php, plugins/chat.admin.php,
+plugin.dedimania.php, plugin.localdatabase.php, plugin.matchsave.php,
+plugin.rasp.php, plugin.rasp_jukebox.php, plugin.rasp_nextmap.php,
+plugin.rasp_votes.php.
+<br><br>
+
+<b>Important</b>:
+<UL>
+<LI>See the installation notes for upgrading to v0.96.
+</UL>
+<br>
+
+<LI><u>Upgrading from v0.95 to v0.96</u>:<br><br>
+
+The following file was added in v0.96: includes/manialinks.inc.php.
+<br><br>
+
+The following files were updated in v0.96: aseco.php, config.xml,
+includes/basic.inc.php, rasp.funcs.php, rasp.settings.php,
+tmxinfofetcher.inc.php, types.inc.php, web_access.inc.php,
+jfreu.config.php, plugins/chat.admin.php, chat.dedimania.php,
+chat.help.php, chat.players.php, chat.players2.php, chat.records.php,
+chat.records2.php, chat.server.php, chat.stats.php, plugin.chatlog.php,
+plugin.checkpoints.php, plugin.dedimania.php, plugin.localdatabase.php,
+plugin.matchsave.php, plugin.muting.php, plugin.rasp.php,
+plugin.rasp_chat.php plugin.rasp_jukebox.php, plugin.rasp_nextmap.php,
+plugin.rasp_votes.php, plugin.rounds.php, plugin.tmxinfo.php,
+plugin.track.php, plugin.uptodate.php, jfreu.chat.php.
+<br><br>
+
+The following files were removed from v0.96: publicdatabase.xml,
+includes/dataexchanger.inc.php, plugins/plugin.publicdatabase.php
+(the old public database ceased operations long ago, and has now been
+superceded by Dedimania).
+<br><br>
+
+<b>Important</b>:
+<UL>
+<LI>To register your server with the central Dedimania
+database, you must copy the login and password values in the
+<CODE>&lt;masterserver_account&gt;</CODE> section from your
+server's dedicated.cfg (TMN) or dedicated_cfg.txt (TMF) file into
+the corresponding section of the dedimania.xml file, and add
+the 3-character nation abbreviation.  Instead of the password
+you can also use the community code for your server by using
+the server login/password on the <A HREF="/tmn/#official">official
+site</A> for your game (TMO/TMS/TMN) or on this <A TARGET="_blank"
+HREF="http://official.trackmania.com/tmf-communitycode/">page for
+TMF</A>.
+<LI>Open port 8003 on your firewall/router for communication with the
+central Dedimania server (if that's not possible, the system falls
+back on port 80).
+<LI>In the zip file, all *.XML and config files are now located inside
+the <b>newinstall/</b> directory.  This means that you should be able
+to unzip the download and replace all the code files (unless you made
+changes to any) without worrying about overwriting your customized
+config files.  However, for every XML/config file that was updated
+(see above), you <u>must</u> replace your version with the one from
+the newinstall/ directory, or compare them and add any new/changed
+configuration settings to your version to insure the system remains
+working correctly.
+<LI>For a new installation, go into the newinstall/ directory and
+move all *.XML files into the main directory, next to aseco.php,
+and *.PHP files into the includes/ directory.
+</UL>
+<br>
+
+<LI><u>Upgrading from v0.93 to v0.95</u>:<br><br>
+
+The following files were added in v0.95: dedimania.xml,
+includes/GbxRemote.bem.php, GbxRemote.response.php, urlsafebase64.php,
+web_access.inc.php, xmlrpc_db.inc.php, plugins/chat.dedimania.php,
+plugin.dedimania.php.
+<br><br>
+
+The following files were updated in v0.95: aseco.php,
+adminops.xml, config.xml, localdatabase.xml, plugins.xml, rasp.xml,
+includes/GbxRemote.inc.php, basic.inc.php, gbxdatafetcher.inc.php,
+rasp.funcs.php, tmndatafetcher.inc.php, tmxinfofetcher.inc.php,
+types.inc.php, votes.config.php, xmlparser.inc.php,
+plugins/chat.admin.php, chat.players2.php, chat.records2.php,
+chat.server.php, chat.song.php, plugin.checkpoints.php,
+plugin.localdatabase.php, plugin.rasp.php, plugin.rasp_jukebox.php,
+plugin.rasp_nextrank.php, plugin.rasp_votes.php, plugin.tmxinfo.php,
+plugin.track.php, jfreu.plugin.php.
+<br><br>
+
+<b>Important</b>:
+<UL>
+<LI>To register your server with the central Dedimania database, you
+must copy the three values in the <CODE>&lt;masterserver_account&gt;</CODE>
+section from your server's dedicated.cfg file into the corresponding
+section of the dedimania.xml file.  Instead of the password you
+can also use the community code for your server by using the server
+login/password on the <A HREF="/tmn/#official">official site</A> for your
+game (TMO/TMS/TMN).
+<LI>Open port 8003 on your firewall/router for communication with the
+central Dedimania server (if that's not possible, the system falls
+back on port 80).
+<LI>In the zip file, all *.XML and config files are now located inside
+the <b>newinstall/</b> directory.  This means that you should be able
+to unzip the download and replace all the code files (unless you made
+changes to any) without worrying about overwriting your customized
+config files.  However, for every XML/config file that was updated
+(see above), you <u>must</u> replace your version with the one from
+the newinstall/ directory, or compare them and add any new/changed
+configuration settings to your version to insure the system remains
+working correctly.
+<LI>For a new installation, go into the newinstall/ directory and
+move all *.XML files into the main directory, next to aseco.php,
+and *.PHP files into the includes/ directory.
+</UL>
+<br>
+
+<LI><u>Upgrading from v0.92b to v0.93</u>:<br><br>
+
+The following files were added in v0.93:
+includes/gbxdatafetcher.inc.php, tmxinfofetcher.inc.php,
+plugins/chat.song.php, plugin.checkpoints.php, plugin.tmxinfo.php.
+<br><br>
+
+The following file was renamed in v0.93: includes/datafetcher.inc.php
+to includes/tmndatafetcher.inc.php.
+<br><br>
+
+The following files were updated in v0.93: aseco.php,
+adminops.xml, config.xml, plugins.xml, includes/GbxRemote.inc.php,
+rasp.funcs.php, jfreu.config.php, plugins/chat.admin.php,
+chat.stats.php, plugin.localdatabase.php, plugin.matchsave.php,
+plugin.publicdatabase.php, plugin.rasp.php, plugin.rasp_jukebox.php,
+plugin.rasp_votes.php, plugin.rounds.php, jfreu.plugin.php. The
+remaining code files were updated too, but only for the dependency
+comments and occasional layout tweaks.
+<br><br>
+
+<b>Important</b>:
+<UL>
+<LI>In the zip file, all *.XML and config files are now located inside
+the <b>newinstall/</b> directory.  This means that you should be able
+to unzip the download and replace all the code files (unless you made
+changes to any) without worrying about overwriting your customized
+config files.  However, for every XML/config file that was updated
+(see above), you <u>must</u> replace your version with the one from
+the newinstall/ directory, or compare them and add any new/changed
+configuration settings to your version to insure the system remains
+working correctly.
+<LI>For a new installation, go into the newinstall/ directory and
+move all *.XML files into the main directory, next to aseco.php,
+and *.PHP files into the includes/ directory.
+</UL>
+<br>
+
+<LI><u>Upgrading from v0.92 to v0.92b</u>:<br><br>
+
+The following files were updated in v0.92b: aseco.php,
+includes/jfreu.config.php, plugins/chat.stats.php, jfreu.chat.php,
+jfreu.plugin.php.
+<br><br>
+
+<LI><u>Upgrading from v0.91 to v0.92</u>:<br><br>
+
+The following file was added in v0.92: includes/datafetcher.inc.php.
+<br><br>
+
+The following files were updated in v0.92: aseco.php, rasp.xml,
+includes/GbxRemote.inc.php, types.inc.php, rasp.funcs.php,
+rasp.settings.php, jfreu.config.php, plugins/chat.admin.php,
+chat.laston.php, chat.players2.php, chat.stats.php,
+plugin.localdatabase.php, plugin.rasp.php, plugin.rasp_jukebox.php,
+plugin.rasp_nextrank.php, plugin.uptodate.php, jfreu.chat.php,
+jfreu.plugin.php.
+<br><br>
+
+<LI><u>Upgrading from v0.90 to v0.91</u>:<br><br>
+
+The following file was moved in v0.91: plugins/jfreu.config.php
+to includes/jfreu.config.php.
+<br><br>
+
+The following files were added in v0.91: includes/votes.config.php
+(containing the configuration options previously embedded in
+plugins/plugin.rasp_votes.php), plugins/chat.laston.php, and
+plugins/jfreu/jfreu.config.xml (by default containing the same settings
+as includes/jfreu.config.php).
+<br><br>
+
+The following file was removed in v0.91: plugins/jfreu.unspec.php
+(it was integrated into plugins/jfreu.plugin.php).
+<br><br>
+
+The following files were updated in v0.91: aseco.php, adminops.xml,
+config.xml, plugins.xml, rasp.xml, includes/jfreu.config.php,
+rasp.funcs.php, rasp.settings.php, plugins/chat.admin.php,
+chat.server.php, plugin.rasp.php, plugin.rasp_jukebox.php,
+plugin.rasp_nextmap.php, plugin.rasp_votes.php, jfreu.chat.php,
+jfreu.lite.php, jfreu.plugin.php.
+<br><br>
+
+<b>Important</b>:
+<UL>
+<LI>Because jfreu.unspec.php was integrated into the main plugin, you
+must remove the file from an existing installation and not include it
+in plugins.xml anymore if you used it together with jfreu.plugin.php.
+
+<LI>If you allow TMX <i>/add</i> votes (<CODE>$feature_tmxadd</CODE>
+is <CODE>true</CODE>), you must created a new
+'GameData/Tracks/Challenges/TMXtmp/' directory along the required
+'GameData/Tracks/Challenges/TMX/' directory.  Tracks downloaded via
+<i>/add</i> are saved to the former directory, but if permanently
+added to the server's track list via <i>/admin addthis</i>, they are
+moved into the latter.
+</UL>
+<br>
+
+<LI><u>Upgrading from v0.89 to v0.90</u>:<br><br>
+
+The following file was added in v0.90 (although by default not enabled
+in plugins.xml): plugins/plugin.muting.php.
+<br><br>
+
+All *.php files were updated in v0.90 for various reasons (if only to
+add more comments), so it's strongly recommended to replace them all.
+Further, adminops.xml, config.xml, localdatabase.xml, rasp.xml were
+also updated.
+<br><br>
+
+<b>Important</b>:
+<UL>
+<LI>If you use a blacklist or guestlist file (in the "GameData/"
+directory), or a tracklist file (in "GameData/Tracks/MatchSettings/"),
+rename their extensions from .xml back to .txt.
+</UL>
+<br>
+
+<LI><u>Upgrading from v0.88 to v0.89</u>:<br><br>
+
+The following file was renamed in v0.89: plugins/jfreu.player.php
+to plugins/jfreu.lite.php.
+<br><br>
+
+Almost all *.php files were updated in v0.89 for various reasons, so
+it's strongly recommended to replace them all.  Further, config.xml,
+rasp.xml and adminops.xml were also updated.
+<br><br>
+
+<b>Important</b>:
+<UL>
+<LI>If you use a blacklist or guestlist file (in the "GameData/"
+directory), rename its extension from .txt to .xml.
+
+<LI>If you use a tracklist / match settings file, the default file
+is now at "GameData/Tracks/MatchSettings/tracklist.xml" (previously
+"GameData/Tracks/rasp-tracklist.txt"), and alternate files should
+also be in the "GameData/Tracks/MatchSettings/" directory with the
+.xml extension.
+</UL>
+<br>
+
+<LI><u>Upgrading from v0.86 to v0.88</u>:<br><br>
+
+The following file was added in v0.88: adminops.xml.
+<br><br>
+
+The following file was renamed in v0.88: plugins/jfreu/jfreu.lists.xml
+into plugins/jfreu/jfreu.vips.xml.
+<br><br>
+
+The following files were updated in v0.88: aseco.php, config.xml,
+rasp.xml, includes/types.inc.php, rasp.settings.php, rasp.funcs.php,
+plugins/chat.admin.php, chat.players.php, chat.records2.php,
+chat.server.php, chat.stats.php, plugin.localdatabase.php,
+plugin.matchsave.php, plugin.rasp.php, plugin.rasp_chat.php,
+plugin.rasp_irc.php, plugin.rasp_jukebox.php, plugin.rasp_karma.php,
+plugin.rasp_nextmap.php, plugin.rasp_nextrank.php,
+plugin.rasp_votes.php, jfreu.chat.php, jfreu.config.php,
+jfreu.player.php, jfreu.plugin.php.
+<br><br>
+
+<b>Important</b>:
+<UL>
+<LI>In config.xml the <CODE>&lt;admins&gt;</CODE> section has been
+renamed to <CODE>&lt;masteradmins&gt;</CODE>, along with adding a
+new <CODE>&lt;adminops_file&gt;</CODE> definition.  If you use your
+previous config.xml file, you <u>must</u> make these changes yourself.
+
+<LI>The <CODE>&lt;masteradmins&gt;</CODE> section of config.xml should
+contain only those logins you want to have <u>all</u> admin rights,
+and it should also contain the server owner's LAN login (with IP and
+port), if applicable.
+
+<LI>Any other admin logins should be moved from config.xml into the
+<CODE>&lt;admins&gt;</CODE> (or <CODE>&lt;operators&gt;</CODE>)
+section of adminsops.xml, or they can be re-added later via the
+<i>/admin addadmin</i> (or <i>addop</i>) command.
+
+<LI>If you use Jfreu's vip/team_vip abilities, rename your existing
+plugins/jfreu/jfreu.lists.xml file to plugins/jfreu/jfreu.vips.xml.
+
+<LI>The <CODE>&lt;admin_list&gt;</CODE> section in jfreu.vips.xml
+is obsolete, and its contents should also be moved into the
+<CODE>&lt;admins&gt;</CODE> section of adminops.xml <i>before</i>
+starting v0.88+, because it will no longer be written back into the
+file after the next vip/team_vip change.
+</UL>
+<br>
+
+<LI><u>Upgrading from v0.85 to v0.86</u>:<br><br>
+
+The following file was renamed in v0.86: chat.jfreu.php into
+jfreu.chat.php.
+<br><br>
+
+The following files were updated in v0.86: aseco.php,
+config.xml, rasp.xml, includes/rasp.funcs.php, rasp.settings.php,
+xmlparser.inc.php, plugins/chat.admin.php, chat.players.php,
+chat.players2.php, chat.records.php, plugin.rasp.php,
+plugin.rasp_jukebox.php, plugin.rasp_karma.php, plugin.rasp_votes.php,
+plugin.uptodate.php, jfreu.config.php, jfreu.plugin.php,
+mistral.idlekick.php.
+<br><br>
+
+<LI><u>Upgrading from v0.84 to v0.85</u>:<br><br>
+
+The following file was added in v0.85: plugins/plugin.uptodate.php.
+<br><br>
+
+The following files were updated in v0.85: plugins.xml,
+rasp.xml, localdatabase.xml, aseco.php, includes/rasp.settings.php,
+rasp.funcs.php, plugins/chat.admin.php, chat.me.php, chat.records2.php,
+chat.server.php, chat.stats.php, plugin.localdatabase.php,
+plugin.matchsave.php, plugin.rasp.php, plugin.rasp_chat.php,
+plugin.rasp_votes.php, jfreu.config.php, jfreu.plugin.php,
+mistral.idlekick.php, plus layout tweaks in others.
+<br><br>
+
+<LI><u>Upgrading from v0.82 to v0.84</u>:<br><br>
+
+The following file was added in v0.84: plugins/plugin.rasp_votes.php.
+<br><br>
+
+Once again, many other *.php files were updated for various reasons, so
+it's strongly recommended to replace them all.  Further, plugins.xml,
+config.xml, localdatabase.xml and rasp.xml were also updated.
+<br><br>
+
+<LI><u>Upgrading from v0.8 to v0.82</u>:<br><br>
+
+The following files were added in v0.81/0.82:
+plugins/plugin.chatlog.php, plugin.rasp_nextrank.php, jfreu.player.php
+and jfreu.unspec.php (previously known as jfreu.hack.php).
+<br><br>
+
+Almost all other *.php files were updated for the '&amp;'
+pass-by-reference fixes, so it's strongly recommended to replace them
+all.  Further, plugins.xml, config.xml and rasp.xml were also updated.
+<br><br>
+
+<LI><u>Upgrading from v0.7 to v0.8+</u>:<br><br>
+Because of the extent of the changes in v1.14, upgrading from v0.7 and
+older versions is best done by renaming your ASECO directory to another
+name, following the instructions for a new installation (above),
+and then copying over your configuration settings into the pertaining
+config files, as well as updating the new options to your liking.
+
+<br><br>
+Subsequently, you can port over any code changes and plugins specific
+to your server, or <A HREF="index.html#feedback">let me know</A> if you think
+they might be of general interest, then I'll see whether they can be
+incorporated in the next release.
+
+</UL>
+
+<CENTER>
+<TABLE WIDTH="93%" CELLSPACING="10" BORDER="0" BGCOLOR="#E0E0E0"><TR><TD>
+<u>Note on upgrading from versions prior to v0.8, and v2.0 and beyond</u>:<br>
+<br>
+This release, when first run, will automatically rename the
+'trackID' column in the <b>rs_times</b> table in your ASECO database
+to 'challengeID' for consistency with all the other tables.
+This means that if you ever want to downgrade to v0.7, you'll
+need to manually rename that column back by entering the following
+command in your database (via PhpMyAdmin, the MySQL command prompt,
+or similar):<br><br>
+
+<CODE>ALTER TABLE rs_times CHANGE challengeID trackID mediumint(9) NOT NULL default 0</CODE>
+<br><br>
+Aseco/Rasp versions 2.0 and beyond include additional columns in some
+tables, but they are ignored.
+</TD></TR></TABLE>
+</CENTER>
+
+<BR>
+<HR>
+<ADDRESS>
+Copyright &copy; 2007-2013 &ndash; Frans P. de Vries <A HREF="mailto:tm&#64;&#103;&#97;&#109;&#101;&#114;&#115;&#46;&#111;&#114;&#103;">&lt;tm&#64;&#103;&#97;&#109;&#101;&#114;&#115;&#46;&#111;&#114;&#103;&gt;</A>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+Last updated 09-Mar-2013
+</ADDRESS>
+</BODY>
+</HTML>

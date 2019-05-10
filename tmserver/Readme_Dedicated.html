@@ -1,0 +1,891 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE>TrackMania Server - readme</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.1  (Win32)">
+	<META NAME="CREATED" CONTENT="20070109;17241875">
+	<META NAME="CHANGEDBY" CONTENT="Xavier Bouchoux">
+	<META NAME="CHANGED" CONTENT="20070109;18545537">
+	<STYLE>
+	<!--
+		@page { size: 21cm 29.7cm; margin: 2cm }
+		TD P { margin-bottom: 0.21cm }
+		H1 { margin-bottom: 0.21cm }
+		H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+		H1.cjk { font-family: "MS Mincho"; font-size: 16pt }
+		H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+		P { margin-bottom: 0.21cm }
+		H2 { margin-bottom: 0.21cm }
+		H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+		H2.cjk { font-family: "MS Mincho"; font-size: 14pt; font-style: italic }
+		H2.ctl { font-size: 14pt; font-style: italic }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<H1 CLASS="western" ALIGN=CENTER>TrackMania Dedicated Server</H1>
+<PRE>(PATH)\TrackManiaServer.exe 
+                        [/dedicated_cfg=config_file] 
+                        [/game_settings=settings_file] 
+                        [/internet] 
+</PRE>
+<TABLE WIDTH=100% BORDER=0 CELLPADDING=4 CELLSPACING=0 STYLE="page-break-inside: avoid">
+	<COL WIDTH=256*>
+	<TR>
+		<TD WIDTH=100% VALIGN=TOP BGCOLOR="#e6e6e6">
+			<H2 CLASS="western">Notice</H2>
+			<P>You'll find many useful tools and tutorials on <A HREF="http://www.tm-forum.com/viewforum.php?f=28">TM-FORUM</A>.
+						</P>
+		</TD>
+	</TR>
+</TABLE>
+<P><BR><BR>
+</P>
+<H2 CLASS="western">1.INSTALLATION:</H2>
+<P STYLE="margin-bottom: 0cm">Decompress the zip file in a directory
+to install <I>TrackMania Dedicated Server</I>.<BR>It can be installed
+either in the same directory of <I>TMUnited</I> game, or in another
+directory.</P>
+<P><BR><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Note: In order to run, you need, <BR>-
+the server exe <BR>- the GameData/DedicatedTrackMania.TrackMania.gbx
+file <BR>- any challenges / matchsettings you want to play in the
+GameData/Tracks directory<BR>- a dedicated_cfg.txt file to set some
+parameters.</P>
+<P><BR><BR>
+</P>
+<H2 CLASS="western">2.LAUNCH:</H2>
+<P STYLE="margin-bottom: 0cm">The dedicated server can be run from a
+windows shortcut or from a command line prompt.</P>
+<P STYLE="margin-bottom: 0cm">The format of the command line is:</P>
+<PRE STYLE="margin-bottom: 0.5cm">&quot;{PATH}\TrackManiaServer.exe&quot; [/dedicated_cfg=config_file] [/game_settings=settings_file] [/internet]</PRE><P STYLE="margin-bottom: 0cm">
+If you use a windows shortcut, you can modify its properties to
+configure the launch of the server on the same way.<BR>The target of
+the shortcut properties (first field) shares the same format of the
+command line.<BR>So it will eventually have to look like this:</P>
+<PRE STYLE="margin-bottom: 0.5cm">TrackManiaServer.exe /internet /dedicated_cfg=dedicated_cfg.txt /game_settings=MatchSettings/settings.txt </PRE><P STYLE="margin-bottom: 0cm">
+The working directory of the shortcut must also be set to the right
+directory.<BR>It must correspond to the directory where
+<I>TrackManiaServer.exe</I> has been installed.</P>
+<P><BR><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">The dedicated server can be launched
+with or without a configuration file.<BR>To pass the name of the
+configuration file to the dedicated server, the parameter
+<B>'/dedicated_cfg='</B> must be specified followed by the name of
+the file.<BR>This filename can be defined either by an absolute path
+or by a relative path to the '<I>(PATH)\GameData\Config</I>'
+directory.<BR>The configuration file is an xml file which defines
+some basic parameters for the dedicated server.<BR>See below for
+further details on configuration file.</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">A file containing game settings can
+also be specified to the dedicated server.<BR>To do that the
+parameter <B>'/game_settings=' </B>must be defined followed by the
+name of the file.<BR>This filename can be defined either by an
+absolute path or by a relative path to the <I>'(PATH)\GameData\Tracks'</I>
+directory.<BR>The game settings file is an xml file which defines the
+match settings and a playlist of challenge that will be loaded.<BR>See
+below for further details on game settings file.</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">If the server has been launched with a
+valid configuration file and a valid game settings file, it will
+directly start a new server on lan,<BR>or on Internet if the option
+<B>'/internet'</B> is specified. 
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><I>TrackManiaServer</I> can be launched
+at the same time that the retail version of TMUnited, but they cannot
+share TCP and UDP ports.<BR>That's why it is recommended to launch
+the dedicated server before the game, so the dedicated server can use
+the default ports.</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Other options that can be specified to
+the dedicated server, are:</P>
+<TABLE WIDTH=100% BORDER=0 CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=64*>
+	<COL WIDTH=192*>
+	<THEAD>
+		<TR VALIGN=TOP>
+			<TD WIDTH=25%>
+				<P>/dedicated_cfg=config_file</P>
+			</TD>
+			<TD WIDTH=75%>
+				<P>Specify a configuration file to use.</P>
+			</TD>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=25%>
+				<P>/game_settings=settings_file</P>
+			</TD>
+			<TD WIDTH=75%>
+				<P>Specify a game settings file to use.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=25%>
+				<P>/internet 
+				</P>
+			</TD>
+			<TD WIDTH=75%>
+				<P>Specify to the server that it must connect to the master
+				server, in order to be an Internet server.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=25%>
+				<P>/verbose_rpc 
+				</P>
+			</TD>
+			<TD WIDTH=75%>
+				<P STYLE="margin-bottom: 0cm">Display the XmlRpc requests the
+				dedicated server receives.</P>
+				<P>The server will only display the name of the XmlRpc command
+				and some parameters.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=25%>
+				<P>/verbose_rpc_full 
+				</P>
+			</TD>
+			<TD WIDTH=75%>
+				<P>Display the whole contents of the XmlRpc requests the
+				dedicated server receives.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=25%>
+				<P>/nodaemon</P>
+			</TD>
+			<TD WIDTH=75%>
+				<P>(linux) Doesn't detach the process.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=25%>
+				<P>/nologs</P>
+			</TD>
+			<TD WIDTH=75%>
+				<P>disable the creation of &quot;GameLog.txt&quot; and
+				&quot;ConsoleLog.txt&quot;</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=25%>
+				<P>/login=xxx</P>
+			</TD>
+			<TD WIDTH=75%>
+				<P>Masterserver account (overrides the value from the
+				config_file)</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=25%>
+				<P>/password=xxx</P>
+			</TD>
+			<TD WIDTH=75%>
+				<P>Masterserver account (overrides the value from the
+				config_file)</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=25%>
+				<P>/servername=xxx</P>
+			</TD>
+			<TD WIDTH=75%>
+				<P>name of the server to create. (overrides the value from the
+				config_file)</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=25%>
+				<P>/serverpassword=xxx 
+				</P>
+			</TD>
+			<TD WIDTH=75%>
+				<P>password to join the server. (overrides the value from the
+				config_file)</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=25%>
+				<P>/loadcache</P>
+			</TD>
+			<TD WIDTH=75%>
+				<P>loads the &quot;checksum.txt&quot; instead of recomputing it.
+				*DO NOT USE* if you run several servers in the same directory!</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=25%>
+				<P>/forceip=xxx(:xx)</P>
+			</TD>
+			<TD WIDTH=75%>
+				<P>Forces the public ip address to this value (overrides the
+				value force_ip_address from the config_file)</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=25%>
+				<P>/bindip=xxx(:xx)</P>
+			</TD>
+			<TD WIDTH=75%>
+				<P>Choses the ip to bind to, and sets the public ip to this
+				value. (you still can use /forceip to chose a different public
+				ip)</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=25%>
+				<P>/autoquit</P>
+			</TD>
+			<TD WIDTH=75%>
+				<P>If the server is not &quot;live&quot; (with a map loaded and
+				ready to receive player), exit. Most notably, if there is a
+				configuration error that prevent the server to be successfully
+				launched, quit instead of staying in the &quot;waiting for rpc
+				commands&quot; state.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<H2 CLASS="western">3.CONTROL:</H2>
+<P STYLE="margin-bottom: 0cm">After being launched (with or without
+configuration files), the server can be also configured and
+controlled by rpc calls. (rpc= remote procedure call)<BR>An external
+application can use any xmlrpc library to communicate with the
+dedicated server.</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Some calls are only permitted to
+certain authorization level. There are three authorization levels
+(<I>User</I>, <I>Admin</I> and <I>SuperAdmin</I>),<BR>each one having
+an associated password (by default the same as the level name).<BR>The
+'<I>Authenticate</I>' method can be used to switch to a specified
+level.</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">The list of methods that can be called
+by xmlrpc can be found in the <I>ListMethods.html</I> file.</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><B>Some samples are available in the
+<I>RemoteControlExamples/</I> directory:</B></P>
+<P STYLE="margin-bottom: 0cm"><SPAN STYLE="font-weight: medium">Please
+note that the examples provided are rather outdated.</SPAN><BR>More
+up to date and actually useful applications to control the TrackMania
+Server, can be found on http://<A HREF="http://www.tm-forum.com/">www.tm-forum.com/</A>
+.</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">- In
+<I>RemoteControlExamples/PhpRemote/</I><BR>there is a basic.php
+script file that allows basic control of the dedicated server.<BR>To
+use it, a web server must be installed on the same computer as the
+Trackmania server.<BR>Any web server supporting PHP can be used, as
+the free web server Apache (<A HREF="http://www.apache.org/">www.apache.org</A>)
+or EasyPHP a software package including Apache, PHP and MySQL
+(<A HREF="http://www.easyphp.org/">www.easyphp.org</A>).</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">- In
+<I>RemoteControlExamples/GameController.Net/</I><BR>This is aimed at
+developers. It contains a slightly modified version (that supports
+connecting to TrackMania) of the Xml-RPC.Net library, from
+<A HREF="http://www.xml-rpc.net/">http://www.xml-rpc.net</A> 
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">- In
+<I>RemoteControlExamples/c/xmlrpc-c</I><BR>This is aimed at
+developers, it is the XmlRPC-c v1.03.11 library modified to support
+connecting to TrackMania. (from <A HREF="http://xmlrpc-c.sourceforge.net/">http://xmlrpc-c.sourceforge.net/</A>
+)<BR>It also includes <I>examples/xmlrpc_sample_trackmania.c</I> : a
+small example of how to use the library, including a simple version
+and a more complete example with callbacks from the game.</P>
+<H2 CLASS="western">4.CONFIGURATION FILE:</H2>
+<P STYLE="margin-bottom: 0cm">The configuration file is an xml file
+which defines some parameters like the system configuration of server
+(IP address, ports...), passwords for the three authorization
+levels,<BR>The master server account parameters that can be used for
+the launch of the dedicated server on Internet, and other server
+parameters (name, comment, password, max players/spectators...).</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">You can find an example of
+configuration file (<I>dedicated_cfg.txt</I>) in the TrackManiaServer
+root directory.<BR>Here is what it contains by default:</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<PRE>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;<BR>&lt;dedicated&gt;<BR>    &lt;authorization_levels&gt;<BR>        &lt;level&gt;<BR>            &lt;name&gt;SuperAdmin&lt;/name&gt;<BR>            &lt;password&gt;SuperAdmin&lt;/password&gt;<BR>        &lt;/level&gt;<BR>        &lt;level&gt;<BR>            &lt;name&gt;Admin&lt;/name&gt;<BR>            &lt;password&gt;Admin&lt;/password&gt;<BR>        &lt;/level&gt;<BR>        &lt;level&gt;<BR>            &lt;name&gt;User&lt;/name&gt;<BR>            &lt;password&gt;User&lt;/password&gt;<BR>        &lt;/level&gt;<BR>    &lt;/authorization_levels&gt;<BR> <BR>    &lt;masterserver_account&gt;<BR>        &lt;login&gt;&lt;/login&gt;<BR>        &lt;password&gt;&lt;/password&gt;<BR>    &lt;/masterserver_account&gt;<BR> <BR>    &lt;server_options&gt;<BR>        &lt;name&gt;&lt;/name&gt;<BR>        &lt;comment&gt;&lt;/comment&gt;<BR> <BR>        &lt;max_players&gt;32&lt;/max_players&gt;<BR>        &lt;password&gt;&lt;/password&gt;<BR> <BR>        &lt;max_spectators&gt;32&lt;/max_spectators&gt;<BR>        &lt;password_spectator&gt;&lt;/password_spectator&gt;<BR> <BR>        &lt;ladder_mode&gt;forced&lt;/ladder_mode&gt;     <FONT COLOR="#00ae00">&lt;!-- value between 'inactive', 'forced' (or '0', '1') --&gt;</FONT><BR> <BR>        &lt;enable_p2p_upload&gt;True&lt;/enable_p2p_upload&gt;<BR>        &lt;enable_p2p_download&gt;True&lt;/enable_p2p_download&gt;<BR> <BR>        &lt;callvote_timeout&gt;60000&lt;/callvote_timeout&gt;<BR>        &lt;callvote_ratio&gt;0.5&lt;/callvote_ratio&gt;<BR> <BR>        &lt;allow_challenge_download&gt;True&lt;/allow_challenge_download&gt;<BR>        &lt;autosave_replays&gt;False&lt;/autosave_replays&gt;<BR>    &lt;/server_options&gt;<BR> <BR>    &lt;system_config&gt;<BR>        &lt;connection_uploadrate&gt;512&lt;/connection_uploadrate&gt;	<FONT COLOR="#00ae00">&lt;!-- KBps --&gt;</FONT><BR>        &lt;connection_donwloadrate&gt;8192&lt;/connection_donwloadrate&gt;	<FONT COLOR="#00ae00">&lt;!-- KBps --&gt;</FONT><BR>
+        &lt;force_ip_address&gt;&lt;/force_ip_address&gt;<BR>        &lt;server_port&gt;2350&lt;/server_port&gt;<BR>        &lt;server_p2p_port&gt;3450&lt;/server_p2p_port&gt;<BR>        &lt;client_port&gt;0&lt;/client_port&gt;<BR>        &lt;bind_ip_address&gt;&lt;/bind_ip_address&gt;<BR>        &lt;use_nat_upnp&gt;&lt;/use_nat_upnp&gt;<BR> <BR>        &lt;xmlrpc_port&gt;5000&lt;/xmlrpc_port&gt;<BR>        &lt;xmlrpc_allowremote&gt;False&lt;/xmlrpc_allowremote&gt;	<FONT COLOR="#00ae00">&lt;!-- If you specify an ip adress here, it'll be the only accepted adress. this will improve security. --&gt;</FONT><BR> <BR>        &lt;blacklist_url&gt;&lt;/blacklist_url&gt;<BR>        &lt;guestlist_filename&gt;&lt;/guestlist_filename&gt;<BR>        &lt;blacklist_filename&gt;&lt;/blacklist_filename&gt;<BR> <BR>        &lt;use_proxy&gt;False&lt;/use_proxy&gt;<BR>        &lt;proxy_login&gt;&lt;/proxy_login&gt;<BR>        &lt;proxy_password&gt;&lt;/proxy_password&gt;<BR>    &lt;/system_config&gt;<BR>&lt;/dedicated&gt;
+
+</PRE><P STYLE="margin-bottom: 0cm">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0cm">The first block of parameters
+(<I>&lt;authorization_levels&gt;...&lt;/authorization_levels&gt;</I>)
+allows to define passwords for the three authorization levels. 
+</P>
+<UL>
+	<LI><P STYLE="margin-bottom: 0cm"><I>SuperAdmin</I> has all rights
+	on the dedicated server. It can call any request, start and stop
+	server, quit the application. <BR>It is recommended to change this
+	password, and to not give it to any other person.</P>
+	<LI><P STYLE="margin-bottom: 0cm"><I>Admin</I> can be used to manage
+	a launched server, but cannot neither stop or start server, nor quit
+	the application. Admin password can be given to a group of users to
+	facilitate the remote management of a dedicated server.</P>
+	<LI><P STYLE="margin-bottom: 0cm"><I>User</I> can only access to
+	'get' requests, so it is not necessary to change this password.</P>
+	<P STYLE="margin-bottom: 0cm"></P>
+</UL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">The second block of parameters
+(<I>&lt;masterserver_account&gt;...&lt;/masterserver_account&gt;</I>)
+is used for the connection to master server of the dedicated
+server.<BR>To allow the server to connect to master server, a login
+and password, that identify the dedicated server, must be specified.</P>
+<P STYLE="margin-bottom: 0cm">This account has to be created
+beforehand.<BR>To do that, visit: 
+<A HREF="https://www.trackmania.com/tmu-dedicated/">https://www.trackmania.com/tmu-dedicated/</A></P>
+<P STYLE="margin-bottom: 0cm">There you must enter your multiplayer
+key to connect to the account creation site.</P>
+<P STYLE="margin-bottom: 0cm">After that, you can create/modify
+accounts for dedicated server.</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Game player accounts and dedicated
+server accounts are distinct.</P>
+<P STYLE="margin-bottom: 0cm">The login and password of a game player
+account can also be used in the '<I>masterserver_account</I>' block,
+instead of parameters from a dedicated server account.<BR>But in this
+case the player cannot connect to Internet with his game, because his
+account is already used by the dedicated server.</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">The third block of parameters
+(<I>&lt;server_options&gt;...&lt;/server_options&gt;</I>) defines the
+main parameters that will be used by the dedicated server.<BR>The
+settings are : 
+</P>
+<TABLE WIDTH=100% BORDER=0 CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=62*>
+	<COL WIDTH=194*>
+	<THEAD>
+		<TR VALIGN=TOP>
+			<TD WIDTH=24%>
+				<P>name</P>
+			</TD>
+			<TD WIDTH=76%>
+				<P>name of the dedicated server (must be specified for the game
+				to launch)</P>
+			</TD>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=24%>
+				<P>comment</P>
+			</TD>
+			<TD WIDTH=76%>
+				<P>comment of the dedicated server</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=24%>
+				<P>password</P>
+			</TD>
+			<TD WIDTH=76%>
+				<P>password needed at the connection to the dedicated server as
+				player</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=24%>
+				<P>password_spectator</P>
+			</TD>
+			<TD WIDTH=76%>
+				<P>password needed at the connection to the dedicated server as
+				spectator</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=24%>
+				<P>max_players</P>
+			</TD>
+			<TD WIDTH=76%>
+				<P>maximum number of clients that can join the server as player</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=24%>
+				<P>max_spectators</P>
+			</TD>
+			<TD WIDTH=76%>
+				<P>maximum number of clients that can join the server as
+				spectator</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=24%>
+				<P>ladder_mode</P>
+			</TD>
+			<TD WIDTH=76%>
+				<P>ladder mode. The mode can be defined between these values :
+				'inactive' (0), and 'forced' (1)</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=24%>
+				<P>enable_p2p_upload</P>
+			</TD>
+			<TD WIDTH=76%>
+				<P>value indicating if the server can upload custom data for P2P
+				(0=False, 1=True)</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=24%>
+				<P>enable_p2p_download</P>
+			</TD>
+			<TD WIDTH=76%>
+				<P>value indicating if the server can download custom data for
+				P2P (0=False, 1=True)</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=24%>
+				<P>callvote_timeout</P>
+			</TD>
+			<TD WIDTH=76%>
+				<P>timeout for waiting for votes (value in milliseconds)</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=24%>
+				<P>callvote_ratio</P>
+			</TD>
+			<TD WIDTH=76%>
+				<P>ratio for accepting callvote. The value must lie between 0 and
+				1 (0=0%, 1=100%)</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=24%>
+				<P>allow_challenge_download</P>
+			</TD>
+			<TD WIDTH=76%>
+				<P>value indicating if the server allows clients to download
+				challenge (0=False, 1=True)</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=24%>
+				<P>autosave_replays</P>
+			</TD>
+			<TD WIDTH=76%>
+				<P>value indicating if the server should save all the races
+				replays with all players. (the replays are quite low quality,
+				though)</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">The fourth block of parameters
+(<I>&lt;system_config&gt;...&lt;/system_config&gt;</I>) defines the
+system configuration of the server.<BR>For example it allows to
+define the type of network connection used, the different ports used
+by the dedicated server, or an IP that will be published on the
+master server.<BR>The settings are :</P>
+<TABLE WIDTH=100% BORDER=0 CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=51*>
+	<COL WIDTH=205*>
+	<THEAD>
+		<TR VALIGN=TOP>
+			<TD WIDTH=20%>
+				<P>connection_uploadrate / connection_downloadrate</P>
+			</TD>
+			<TD WIDTH=80%>
+				<P>type of network connection used. It defines the network
+				limitations of bandwidth in KBps that can be used by the
+				dedicated server,</P>
+			</TD>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=20%>
+				<P>server_port</P>
+			</TD>
+			<TD WIDTH=80%>
+				<P>port number used by the server to listen the game connections</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=20%>
+				<P>server_p2p_port</P>
+			</TD>
+			<TD WIDTH=80%>
+				<P>port number used by the server to listen the peer-to-peer
+				connections</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=20%>
+				<P>xmlrpc_port</P>
+			</TD>
+			<TD WIDTH=80%>
+				<P>port number used by the server to listen xmlrpc calls</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=20%>
+				<P>xmlrpc_allowremote</P>
+			</TD>
+			<TD WIDTH=80%>
+				<P STYLE="margin-bottom: 0cm">should remote connections be
+				accepted? 
+				</P>
+				<P STYLE="margin-bottom: 0cm">You can either set it to True or
+				False, or specify an ip (or a symbolic name): in that case, only
+				connections from that ip and localhost will be accepted. 
+				</P>
+				<P>(note: security on this channel isn't very strong and hasn't
+				been thoroughly tested)</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=20%>
+				<P>force_ip_address</P>
+			</TD>
+			<TD WIDTH=80%>
+				<P>if an IP address is defined in this parameter, the dedicated
+				server will publish it as its public address instead of
+				autodetecting it.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=20%>
+				<P>bind_ip_address</P>
+			</TD>
+			<TD WIDTH=80%>
+				<P>if an IP address is defined in this parameter, the dedicated
+				server will bind to this ip and publish it as public ip, expect
+				if force_ip_address is also specified.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=20%>
+				<P>blacklist_url</P>
+			</TD>
+			<TD WIDTH=80%>
+				<P>if an url is specified here, the dedicated server will check
+				if there is an xml file that can be downloaded, and in this case
+				if it's a blacklist file. If it is the case this blacklist will
+				automatically loaded for this server</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<H2 CLASS="western">5.GAME SETTINGS FILE:</H2>
+<P STYLE="margin-bottom: 0cm">A game settings file is an xml file
+which defines the match settings like chat time, game mode, mode
+parameters, and a playlist of challenges that will be loaded. 
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>You can find examples of game
+settings files in the <I>(PATH)\GameData\Tracks\MatchSettings\</I>
+directory, and you can save one from within the game, &ldquo;save
+settings&rdquo; button.</P>
+<P STYLE="margin-bottom: 0cm"><BR>Here is what it contains:</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<PRE>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+&lt;playlist&gt;
+    &lt;gameinfos&gt;
+        &lt;game_mode&gt;1&lt;/game_mode&gt;<BR>        &lt;chat_time&gt;10000&lt;/chat_time&gt;<BR>        &lt;finishtimeout&gt;1&lt;/finishtimeout&gt;<BR>        &lt;rounds_pointslimit&gt;50&lt;/rounds_pointslimit&gt;<BR>        &lt;rounds_usenewrules&gt;0&lt;/rounds_usenewrules&gt;<BR>        &lt;rounds_forcedlaps&gt;0&lt;/rounds_forcedlaps&gt;<BR>        &lt;timeattack_limit&gt;300000&lt;/timeattack_limit&gt;<BR>        &lt;timeattack_synchstartperiod&gt;0&lt;/timeattack_synchstartperiod&gt;<BR>        &lt;team_pointslimit&gt;5&lt;/team_pointslimit&gt;<BR>        &lt;team_maxpoints&gt;6&lt;/team_maxpoints&gt;<BR>        &lt;team_usenewrules&gt;0&lt;/team_usenewrules&gt;<BR>        &lt;laps_nblaps&gt;5&lt;/laps_nblaps&gt;<BR>        &lt;laps_timelimit&gt;0&lt;/laps_timelimit&gt;
+    &lt;/gameinfos&gt;
+    &lt;filter&gt; 
+        &lt;random_map_order&gt;0&lt;/random_map_order&gt; 
+    &lt;/filter&gt;
+
+    &lt;challenge&gt;
+        &lt;file&gt;Campaigns\Nadeo\Sunrise\Race\Holidays\CarPark.Challenge.Gbx&lt;/file&gt;
+    &lt;/challenge&gt;
+    &lt;challenge&gt;
+        &lt;file&gt;Campaigns\Nadeo\Sunrise\Race\Holidays\GoodMorning.Challenge.Gbx&lt;/file&gt;
+    &lt;/challenge&gt;
+      .
+      .
+      .
+    &lt;challenge&gt;
+        &lt;file&gt;Campaigns\Nadeo\Sunrise\Race\Pointbreak\HappyBay.Challenge.Gbx&lt;/file&gt;
+    &lt;/challenge&gt;
+&lt;/playlist&gt;</PRE><P STYLE="margin-bottom: 0cm">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0cm">The first block of parameters
+(<I>&lt;gameinfos&gt;...&lt;/gameinfos&gt;</I>) defines the match
+settings that will be used by the dedicated server.<BR>The settings
+are : 
+</P>
+<TABLE WIDTH=100% BORDER=0 CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=60*>
+	<COL WIDTH=196*>
+	<THEAD>
+		<TR VALIGN=TOP>
+			<TD WIDTH=23%>
+				<P>game_mode</P>
+			</TD>
+			<TD WIDTH=77%>
+				<P>game mode used between Rounds (0), TimeAttack (1), Team (2),
+				Laps (3) and Stunts (4)</P>
+			</TD>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=23%>
+				<P>chat_time</P>
+			</TD>
+			<TD WIDTH=77%>
+				<P>chat time value in milliseconds</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=23%>
+				<P>rounds_pointslimit</P>
+			</TD>
+			<TD WIDTH=77%>
+				<P>points limit for rounds mode</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=23%>
+				<P>rounds_usenewrules</P>
+			</TD>
+			<TD WIDTH=77%>
+				<P>value indicating if new rules are used for rounds mode
+				(0=False, 1=True)</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=23%>
+				<P>timeattack_limit</P>
+			</TD>
+			<TD WIDTH=77%>
+				<P>time limit in milliseconds for time attack mode</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=23%>
+				<P>team_pointslimit 
+				</P>
+			</TD>
+			<TD WIDTH=77%>
+				<P>points limit for team mode</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=23%>
+				<P>team_maxpoints 
+				</P>
+			</TD>
+			<TD WIDTH=77%>
+				<P>number of maximum points per round for team mode</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=23%>
+				<P>team_usenewrules</P>
+			</TD>
+			<TD WIDTH=77%>
+				<P>value indicating if new rules are used for team mode (0=False,
+				1=True)</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=23%>
+				<P>laps_nblaps</P>
+			</TD>
+			<TD WIDTH=77%>
+				<P>number of laps for laps mode</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=23%>
+				<P>laps_timelimit</P>
+			</TD>
+			<TD WIDTH=77%>
+				<P>time limit in milliseconds for laps mode</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=23%>
+				<P>finish_timeout</P>
+			</TD>
+			<TD WIDTH=77%>
+				<P>new finish timeout (for rounds/laps mode) value in
+				milliseconds. 0 means default. 1 means adaptative to the duration
+				of the challenge</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=23%>
+				<P>rounds_forcedlaps</P>
+			</TD>
+			<TD WIDTH=77%>
+				<P>number of laps for rounds mode (0 = default, use the number of
+				laps from the challenges, otherwise forces the number of rounds
+				for multilaps challenges)</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=23%>
+				<P>timeattack_synchstartperiod</P>
+			</TD>
+			<TD WIDTH=77%>
+				<P>synchronised start period for time attack mode</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><I>&lt;random_map_order&gt;..&lt;/random_map_order&gt;</I>
+: shuffle the list of challenges when the playlist is loaded. if not
+set, keep the playlist in the specified order.</P>
+<P STYLE="margin-bottom: 0cm">Other blocks
+(<I>&lt;challenge&gt;...&lt;/challenge&gt;</I>) describe all the
+challenges that will be loaded by the dedicated server.<BR>Each block
+specifies the filename of a challenge.<BR>Filenames can be defined
+either by an absolute path or by a relative path to the
+'<I>(PATH)\GameData\Tracks</I>' directory.</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Any other elements in the file are
+ignored by the dedicated server.</P>
+<P STYLE="margin-bottom: 0cm">Game settings file can be saved by the
+game with the 'save match settings' button in the server creation
+menu, after having selected the maps.<BR>The files saved by the game
+are in the <I>'(PATH)\GameData\Tracks\MatchSettings</I>'
+directory.<BR>So the relative designation for a such file is
+'<I>MatchSettings/settings_file.txt</I>', where '<I>settings_file.txt</I>'
+is the name of the saved file.</P>
+<P STYLE="margin-bottom: 0cm">As a general rule, the challenges and
+matchsettings must always be in the directory &quot;<I>GameData/Tracks</I>&quot;,
+and any relative name is interpreted using the &quot;<I>GameData/Tracks</I>&quot;
+as root.</P>
+<P><BR><BR>
+</P>
+<H2 CLASS="western">6.GUESTLIST FILE:</H2>
+<P STYLE="margin-bottom: 0cm">A guestlist file <I>&quot;guestlist.txt&quot;</I>
+can be created in the GameData repertory, and will be automatically
+loaded by the game or server.<BR>A player on the guest list is
+allowed to enter into the server in any case, even if there is no
+player slot left, and without needing to specify the password.</P>
+<P STYLE="margin-bottom: 0cm">The guestlist file is an xml file as
+follows :</P>
+<PRE>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+&lt;guestlist&gt;
+    &lt;player&gt;
+        &lt;login&gt;Login1&lt;/login&gt; 
+    &lt;/player&gt;
+    .
+    .
+    .
+    &lt;player&gt;
+        &lt;login&gt;LoginN&lt;/login&gt;
+    &lt;/player&gt;
+&lt;/guestlist&gt;</PRE><H2 CLASS="western">
+7.BLACKLIST FILE:</H2>
+<P STYLE="margin-bottom: 0cm">A blacklist file <I>&quot;blacklist.txt&quot;</I>
+can be created in the GameData repertory, and will be automatically
+loaded by the game or server.<BR>A player on the black list will
+never be able to enter onto the server.</P>
+<P STYLE="margin-bottom: 0cm">The blacklist file is an xml file as
+follows :</P>
+<PRE>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+&lt;blacklist&gt;
+    &lt;player&gt;
+        &lt;login&gt;Login1&lt;/login&gt;
+    &lt;/player&gt;
+    .
+    .
+    .
+    &lt;player&gt;
+        &lt;login&gt;LoginN&lt;/login&gt;
+    &lt;/player&gt;
+&lt;/blacklist&gt;</PRE><H2 CLASS="western">
+8. KNOWN ISSUES</H2>
+<P STYLE="margin-bottom: 0cm">- On the command you can't use names
+with ' ' in them, since the options are separated on whitespace, and
+no escaping (neither '\ ' nor '&quot;') is supported...<BR>- (linux
+only) the server expects the file names to be utf-8 encoded. So pay
+attention if you're using non-ascii characters.</P>
+<H2 CLASS="western">9.CHANGELOG</H2>
+<P STYLE="margin-bottom: 0cm"><B>2007-02-23:</B><BR>
+- bugfix: no longer autoban players in timeattack with multilaps...<BR>
+- bugfix: repaired the stunts mode scores.<br>
+- bugfix: the replays produced by the server are no longer broken.<br>
+<P STYLE="margin-bottom: 0cm"><BR></P>
+<P STYLE="margin-bottom: 0cm"><B>2007-02-20:</B><BR>
+- The server now reattemps to connect to the master server when the connection is broken. (should fix the problem where the server was runnning and wasn't in the list for the players.)<BR>
+- Detection of incoherence in the players time and race -> automatic ban of the player.<BR>
+- New callback TrackMania.PlayerIncoherence(PlayerUid, PlayerLogin) for this event<BR>
+- Modification of ForceScores():  new parameter SilentMode (only available for SuperAdmin), allowing an external controller to do it's custom score counting.
+<P STYLE="margin-bottom: 0cm"><BR>
+</P><P STYLE="margin-bottom: 0cm"><B>2007-01-09:</B><BR>- GetVersion()
+now returns &quot;TmUnited&quot; instead of &quot;TmUnited.&quot;<BR>-
+GetSystemInfo() call, returns IP, ports, and server login<BR>- fixed
+a crash<BR>- AllowChallengeDownload() is now applied during the game.
+<BR>- faster launchtime (the &quot;loading...&quot; step was doing
+useless work)<BR>- When removing a challenge and inserting it back
+again, it is now read afresh from disk.<BR>
+- When saving a matchsetting, the filter::random_map_order is remembered.</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><B>2006-12-21:</B><BR>- setting, in
+order to save all replays occuring on the server. (albeit in low
+quality.)<BR>- GetCoppers() call<BR>- bugfixes (crash, Pay() return
+code, ...)</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><B>2006-12-07:</B><BR>- Billing system,
+to make copper transactions with players. (=&gt; SendBill(), Pay(),
+GetBillState() ) <BR>- ChatSendToLanguage(),
+ChatSendServerMessageToLanguage()<BR>- ForceSpectator(),
+ForceSpectatorId()<BR>- ForcePlayerTeam(), ForcePlayerTeamId()<BR>-
+BlackListId(), AddGuestId(), RemoveGuestId()<BR>-
+DisplayManialinkPage: you can now add a parent &lt;ManiaLinks&gt;
+element in order to have several &lt;ManiaLink&gt; with their
+positions.<BR>- Sending Chat to a player also displayed the chat to
+the spectators looking at him.<BR>- GetManialinkPageAnswers() no
+longer crashes.<BR>- You can now display ManialinkPages to each
+players, and get all the answers..<BR>- Sometimes the name of the
+challenge was incorrect.<BR>- the server can now act as a P2P relay,
+if the peers don't accept incomming connections.</P>
+</BODY>
+</HTML>

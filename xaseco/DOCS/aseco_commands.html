@@ -1,0 +1,498 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>TrackMania Nations - XASECO commands</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<META NAME="author" CONTENT="Frans P. de Vries">
+<META NAME="generator" CONTENT="vi :)">
+<style type="text/css">
+body { width: 960px; margin-left: 30px; font-family: Arial,Helvetica,sans-serif; font-size: 15px; }
+li,div { padding: 3px; }
+code,pre { font-size: 14px; }
+pre { width: 90%; margin: 3px 0px; padding: 3px 0px 3px 12px; background-color: #F0F0F0; }
+</style>
+<META NAME="keywords" CONTENT="TrackMania, Forever, United, Nations, Original, Sunrise, racing, games, XASECO, ASECO, RASP, Jfreu, plugins, records, jukebox, Nadeo">
+<META NAME="description" CONTENT="Information on the XASECO system for TrackMania Nations and Forever (& Original/Sunrise), racing games by Nadeo">
+</HEAD>
+
+<BODY TEXT="#000000" LINK="#ff0000" VLINK="#0000ff" ALINK="#00ff00" BGCOLOR="#ffffff">
+
+<P ALIGN="center">
+<A TARGET="_blank" HREF="http://eswc.trackmanianations.com/"><IMG SRC="banner.jpg" ALT="TrackMania Nations" BORDER="0" WIDTH="590" HEIGHT="149"></A>
+<HR>
+
+<A NAME="main"></A>
+<H3>Important XASECO admin commands:</H3>
+
+<CENTER>
+<TABLE WIDTH="90%">
+<TR><TD>/admin help | helpall</TD></TR>
+<TR><TD>/jfreu help | helpall</TD></TR>
+<TR><TD>&nbsp;</TD></TR>
+<TR><TD>/players</TD></TR>
+<TR><TD>/players &lt;string&gt;</TD><TD>finds online player(s)</TD></TR>
+<TR><TD>/admin players</TD></TR>
+<TR><TD>/admin players &lt;string&gt;</TD><TD>finds offline player(s)</TD></TR>
+<TR><TD>/admin players live</TD><TD>lists online player(s)</TD></TR>
+<TR><TD>&nbsp;</TD></TR>
+<TR><TD>/pm &lt;login/id&gt; &lt;message&gt;</TD></TR>
+<TR><TD>/pma &lt;login/id&gt; &lt;message&gt;</TD></TR>
+<TR><TD>/pmlog</TD></TR>
+<TR><TD>/chatlog</TD></TR>
+<TR><TD>/msglog</TD></TR>
+<TR><TD>&nbsp;</TD></TR>
+<TR><TD>/admin pm &lt;message&gt;</TD></TR>
+<TR><TD>/admin pmlog</TD></TR>
+<TR><TD>/admin wall &lt;message&gt;</TD></TR>
+<TR><TD>&nbsp;</TD></TR>
+<TR><TD WIDTH="25%">/admin endround</TD><TD>/admin er</TD></TR>
+<TR><TD WIDTH="25%">/admin resmap</TD><TD>/admin res</TD></TR>
+<TR><TD WIDTH="25%">/admin nextmap</TD><TD>/admin next</TD></TR>
+<TR><TD WIDTH="25%">/admin replaymap</TD><TD>/admin replay</TD></TR>
+<TR><TD>&nbsp;</TD></TR>
+<TR><TD WIDTH="25%">/admin pass</TD></TR>
+<TR><TD WIDTH="25%">/admin cancel</TD><TD>/admin can</TD></TR>
+<TR><TD WIDTH="25%">/admin dropjukebox &lt;#&gt;</TD><TD>/admin djb &lt;#&gt;</TD></TR>
+<TR><TD WIDTH="25%">/admin clearjukebox</TD><TD>/admin cjb</TD></TR>
+<TR><TD>&nbsp;</TD></TR>
+<TR><TD>/admin warn &lt;login/id&gt;</TD></TR>
+<TR><TD>/admin kick &lt;login/id&gt;</TD></TR>
+<TR><TD>/admin kickghost &lt;login&gt;</TD></TR>
+<TR><TD>/admin black &lt;login/id&gt;</TD></TR>
+<TR><TD>/admin ban &lt;login/id&gt;</TD></TR>
+<TR><TD>/admin banip &lt;IP&gt;</TD></TR>
+<TR><TD>&nbsp;</TD></TR>
+<TR><TD>/jfreu badword &lt;login/id&gt;</TD></TR>
+<TR><TD WIDTH="25%">/jfreu banfor &lt;time&gt; &lt;login/id&gt;</TD><TD>&lt;time&gt; = &lt;xx&gt; mins or &lt;x&gt;H hours</TD></TR>
+<TR><TD>/jfreu players</TD></TR>
+<TR><TD>/jfreu players &lt;string&gt;</TD><TD>finds offline player(s)</TD></TR>
+<TR><TD>/jfreu players live</TD><TD>lists online player(s)</TD></TR>
+</TABLE>
+</CENTER>
+
+<A NAME="user"></A>
+<H3>List of available user commands:</H3>
+
+<CENTER>
+<TABLE WIDTH="90%">
+<TR><TD>/admin</TD><TD colspan="2">Provides admin commands (see: /admin help)</TD></TR>
+<TR><TD>/help</TD><TD colspan="2">Shows all available commands</TD></TR>
+<TR><TD>/helpall</TD><TD colspan="2">Displays help for available commands</TD></TR>
+<TR><TD>/recs</TD><TD colspan="2">Displays all records on current track</TD></TR>
+<TR><TD>/recs help</TD><TD WIDTH="5%">&nbsp;</TD><TD>Displays this help information</TD></TR>
+<TR><TD>/recs pb</TD><TD WIDTH="5%">&nbsp;</TD><TD colspan="2">Shows your personal best on current track</TD></TR>
+<TR><TD>/recs new</TD><TD WIDTH="5%">&nbsp;</TD><TD colspan="2">Shows newly driven records</TD></TR>
+<TR><TD>/recs live</TD><TD WIDTH="5%">&nbsp;</TD><TD colspan="2">Shows records of online players</TD></TR>
+<TR><TD>/recs first</TD><TD WIDTH="5%">&nbsp;</TD><TD colspan="2">Shows first ranked record on current track</TD></TR>
+<TR><TD>/recs last</TD><TD WIDTH="5%">&nbsp;</TD><TD colspan="2">Shows last ranked record on current track</TD></TR>
+<TR><TD>/recs next</TD><TD WIDTH="5%">&nbsp;</TD><TD colspan="2">Shows next better ranked record to beat</TD></TR>
+<TR><TD>/recs diff</TD><TD WIDTH="5%">&nbsp;</TD><TD colspan="2">Shows your difference to first ranked record</TD></TR>
+<TR><TD>/recs range</TD><TD WIDTH="5%">&nbsp;</TD><TD colspan="2">Shows difference first to last ranked record</TD></TR>
+<TR><TD>/newrecs</TD><TD colspan="2">Shows newly driven records</TD></TR>
+<TR><TD>/liverecs</TD><TD colspan="2">Shows records of online players</TD></TR>
+<TR><TD>/best</TD><TD colspan="2">Displays your best records</TD></TR>
+<TR><TD>/worst</TD><TD colspan="2">Displays your worst records</TD></TR>
+<TR><TD>/summary</TD><TD colspan="2">Shows summary of all your records</TD></TR>
+<TR><TD>/topsums</TD><TD colspan="2">Displays top 100 of top-3 record holders</TD></TR>
+<TR><TD>/toprecs</TD><TD colspan="2">Displays top 100 ranked records holders</TD></TR>
+<TR><TD>/firstrec</TD><TD colspan="2">Shows first ranked record on current track</TD></TR>
+<TR><TD>/lastrec</TD><TD colspan="2">Shows last ranked record on current track</TD></TR>
+<TR><TD>/nextrec</TD><TD colspan="2">Shows next better ranked record to beat</TD></TR>
+<TR><TD>/diffrec</TD><TD colspan="2">Shows your difference to first ranked record</TD></TR>
+<TR><TD>/recrange</TD><TD colspan="2">Shows difference first to last ranked record</TD></TR>
+<TR><TD>/helpdedi | /dedihelp</TD><TD colspan="2">Displays info about the Dedimania records system</TD></TR>
+<TR><TD>/dedirecs</TD><TD colspan="2">Displays all Dedimania records on current track</TD></TR>
+<TR><TD>/dedirecs help</TD><TD WIDTH="5%">&nbsp;</TD><TD>Displays this help information</TD></TR>
+<TR><TD>/dedirecs pb</TD><TD WIDTH="5%">&nbsp;</TD><TD colspan="2">Shows your personal best on current track</TD></TR>
+<TR><TD>/dedirecs new</TD><TD WIDTH="5%">&nbsp;</TD><TD colspan="2">Shows newly driven records</TD></TR>
+<TR><TD>/dedirecs live</TD><TD WIDTH="5%">&nbsp;</TD><TD colspan="2">Shows records of online players</TD></TR>
+<TR><TD>/dedirecs first</TD><TD WIDTH="5%">&nbsp;</TD><TD colspan="2">Shows first ranked record on current track</TD></TR>
+<TR><TD>/dedirecs last</TD><TD WIDTH="5%">&nbsp;</TD><TD colspan="2">Shows last ranked record on current track</TD></TR>
+<TR><TD>/dedirecs next</TD><TD WIDTH="5%">&nbsp;</TD><TD colspan="2">Shows next better ranked record to beat</TD></TR>
+<TR><TD>/dedirecs diff</TD><TD WIDTH="5%">&nbsp;</TD><TD colspan="2">Shows your difference to first ranked record</TD></TR>
+<TR><TD>/dedirecs range</TD><TD WIDTH="5%">&nbsp;</TD><TD colspan="2">Shows difference first to last ranked record</TD></TR>
+<TR><TD>/dedinew</TD><TD colspan="2">Shows newly driven Dedimania records</TD></TR>
+<TR><TD>/dedilive</TD><TD colspan="2">Shows Dedimania records of online players</TD></TR>
+<TR><TD>/dedipb</TD><TD colspan="2">Shows your Dedimania personal best on current track</TD></TR>
+<TR><TD>/dedifirst</TD><TD colspan="2">Shows first Dedimania record on current track</TD></TR>
+<TR><TD>/dedilast</TD><TD colspan="2">Shows last Dedimania record on current track</TD></TR>
+<TR><TD>/dedinext</TD><TD colspan="2">Shows next better Dedimania record to beat</TD></TR>
+<TR><TD>/dedidiff</TD><TD colspan="2">Shows your difference to first Dedimania record</TD></TR>
+<TR><TD>/dedirange</TD><TD colspan="2">Shows difference first to last Dedimania record</TD></TR>
+<TR><TD>/dedicps</TD><TD colspan="2">Sets Dedimania record checkpoints tracking</TD></TR>
+<TR><TD>/dedistats</TD><TD colspan="2">Displays Dedimania track statistics</TD></TR>
+<TR><TD>/dedicptms</TD><TD colspan="2">Displays all Dedimania records' checkpoints times</TD></TR>
+<TR><TD>/dedisectms</TD><TD colspan="2">Displays all Dedimania records' sector times</TD></TR>
+<TR><TD>/players</TD><TD colspan="2">Displays current list of nicks/logins</TD></TR>
+<TR><TD>/ranks</TD><TD colspan="2">Displays list of online ranks/nicks</TD></TR>
+<TR><TD>/clans</TD><TD colspan="2">Displays list of online clans/nicks</TD></TR>
+<TR><TD>/topclans</TD><TD colspan="2">Displays top 10 best ranked clans</TD></TR>
+<TR><TD>/wins</TD><TD colspan="2">Shows wins for current player</TD></TR>
+<TR><TD>/laston</TD><TD colspan="2">Shows when a player was last online</TD></TR>
+<TR><TD>/lastwin</TD><TD colspan="2">Re-opens the last closed multi-page window</TD></TR>
+<TR><TD>/stats</TD><TD colspan="2">Displays statistics of current player</TD></TR>
+<TR><TD>/statsall (TMN)</TD><TD colspan="2">Displays world statistics of a player</TD></TR>
+<TR><TD>/settings</TD><TD colspan="2">Displays your personal settings</TD></TR>
+<TR><TD>/server</TD><TD colspan="2">Displays info about this server</TD></TR>
+<TR><TD>/xaseco</TD><TD colspan="2">Displays info about this XASECO</TD></TR>
+<TR><TD>/plugins</TD><TD colspan="2">Displays list of active plugins</TD></TR>
+<TR><TD>/nations</TD><TD colspan="2">Displays top 10 most visiting nations</TD></TR>
+<TR><TD>/song</TD><TD colspan="2">Shows filename of current track's song</TD></TR>
+<TR><TD>/mod</TD><TD colspan="2">Shows (file)name of current track's mod</TD></TR>
+<TR><TD>/me</TD><TD colspan="2">Can be used to express emotions</TD></TR>
+<TR><TD>/mute</TD><TD colspan="2">Mute another player's chat messages</TD></TR>
+<TR><TD>/unmute</TD><TD colspan="2">UnMute another player's chat messages</TD></TR>
+<TR><TD>/mutelist</TD><TD colspan="2">Display list of muted players</TD></TR>
+<TR><TD>/refresh</TD><TD colspan="2">Refresh chat window</TD></TR>
+<TR><TD>/tmxinfo</TD><TD colspan="2">Displays TMX info {Track_ID/TMX_ID} {sec}</TD></TR>
+<TR><TD>/tmxrecs</TD><TD colspan="2">Displays TMX records {Track_ID/TMX_ID} {sec}</TD></TR>
+<TR><TD>/track</TD><TD colspan="2">Shows info about the current track</TD></TR>
+<TR><TD>/playtime</TD><TD colspan="2">Shows time current track has been playing</TD></TR>
+<TR><TD>/time</TD><TD colspan="2">Shows current server time &amp; date</TD></TR>
+<TR><TD>/cps</TD><TD colspan="2">Sets local record checkpoints tracking</TD></TR>
+<TR><TD>/cpsspec</TD><TD colspan="2">Shows checkpoints of spectated player</TD></TR>
+<TR><TD>/cptms</TD><TD colspan="2">Displays all local records' checkpoint times</TD></TR>
+<TR><TD>/sectms</TD><TD colspan="2">Displays all local records' sector times</TD></TR>
+<TR><TD>/pb</TD><TD colspan="2">Shows your personal best on current track</TD></TR>
+<TR><TD>/rank</TD><TD colspan="2">Shows your current server rank</TD></TR>
+<TR><TD>/top10</TD><TD colspan="2">Displays top 10 best ranked players</TD></TR>
+<TR><TD>/top100</TD><TD colspan="2">Displays top 100 best ranked players</TD></TR>
+<TR><TD>/topwins</TD><TD colspan="2">Displays top 100 victorious players</TD></TR>
+<TR><TD>/active</TD><TD colspan="2">Displays top 100 most active players</TD></TR>
+<TR><TD>/list</TD><TD colspan="2">Lists tracks currently on the server (see: /list help)</TD></TR>
+<TR><TD>/list help</TD><TD WIDTH="5%">&nbsp;</TD><TD>Displays this help information</TD></TR>
+<TR><TD>/list nofinish</TD><TD WIDTH="5%">&nbsp;</TD><TD>Tracks you don't have a rank on</TD></TR>
+<TR><TD>/list norank</TD><TD WIDTH="5%">&nbsp;</TD><TD>Tracks you haven't completed</TD></TR>
+<TR><TD>/list nogold</TD><TD WIDTH="5%">&nbsp;</TD><TD>Tracks you didn't beat gold time on</TD></TR>
+<TR><TD>/list noauthor</TD><TD WIDTH="5%">&nbsp;</TD><TD>Tracks you didn't beat author time on</TD></TR>
+<TR><TD>/list norecent</TD><TD WIDTH="5%">&nbsp;</TD><TD>Tracks you didn't play recently</TD></TR>
+<TR><TD>/list best | worst</TD><TD WIDTH="5%">&nbsp;</TD><TD>Tracks with your best / worst records</TD></TR>
+<TR><TD>/list longest | shortest</TD><TD WIDTH="5%">&nbsp;</TD><TD>The longest / shortest tracks</TD></TR>
+<TR><TD>/list newest | oldest &lt;#&gt;</TD><TD WIDTH="5%">&nbsp;</TD><TD>The newest / oldest # tracks (default: 50)</TD></TR>
+<TR><TD>/list &lt;xxx&gt;</TD><TD WIDTH="5%">&nbsp;</TD><TD>Where &lt;xxx&gt; is part of a track or author name</TD></TR>
+<TR valign="top"><TD>/list env:&lt;zzz&gt; (TMUF)</TD><TD WIDTH="5%">&nbsp;</TD><TD>Where &lt;zzz&gt; is an environment from: stadium,<br>bay,coast,island,snow/alpine,desert/speed,rally</TD></TR>
+<TR><TD>/list &lt;xxx&gt; env:&lt;zzz&gt;</TD><TD WIDTH="5%">&nbsp;</TD><TD>Combines the name and environment searches</TD></TR>
+<TR><TD>/list novote</TD><TD WIDTH="5%">&nbsp;</TD><TD>Tracks you didn't karma vote for</TD></TR>
+<TR><TD>/list karma &lt;#&gt;</TD><TD WIDTH="5%">&nbsp;</TD><TD>Display all tracks with karma &gt;= or &lt;= given value</TD></TR>
+<TR><TD>/jukebox</TD><TD colspan="2">Sets a track to be played next (see: /jukebox help)</TD></TR>
+<TR><TD>/jukebox help</TD><TD WIDTH="5%">&nbsp;</TD><TD>Displays this help information</TD></TR>
+<TR><TD>/jukebox list</TD><TD WIDTH="5%">&nbsp;</TD><TD>Shows upcoming tracks</TD></TR>
+<TR><TD>/jukebox display</TD><TD WIDTH="5%">&nbsp;</TD><TD>Displays upcoming tracks and requesters</TD></TR>
+<TR><TD>/jukebox drop</TD><TD WIDTH="5%">&nbsp;</TD><TD>Drops your currently added track</TD></TR>
+<TR><TD>/jukebox &lt;#&gt;</TD><TD WIDTH="5%">&nbsp;</TD><TD>Adds a track where &lt;#&gt; is track number from /list</TD></TR>
+<TR><TD>/autojuke</TD><TD colspan="2">Jukeboxes track from /list (see: /autojuke help)</TD></TR>
+<TR><TD>/autojuke help</TD><TD WIDTH="5%">&nbsp;</TD><TD>Displays this help information</TD></TR>
+<TR><TD>/autojuke nofinish</TD><TD WIDTH="5%">&nbsp;</TD><TD>Tracks you don't have a rank on</TD></TR>
+<TR><TD>/autojuke norank</TD><TD WIDTH="5%">&nbsp;</TD><TD>Tracks you haven't completed</TD></TR>
+<TR><TD>/autojuke nogold</TD><TD WIDTH="5%">&nbsp;</TD><TD>Tracks you didn't beat gold time on</TD></TR>
+<TR><TD>/autojuke noauthor</TD><TD WIDTH="5%">&nbsp;</TD><TD>Tracks you didn't beat author time on</TD></TR>
+<TR><TD>/autojuke norecent</TD><TD WIDTH="5%">&nbsp;</TD><TD>Tracks you didn't play recently</TD></TR>
+<TR><TD>/autojuke longest | shortest</TD><TD WIDTH="5%">&nbsp;</TD><TD>The longest / shortest tracks</TD></TR>
+<TR><TD>/autojuke newest | oldest</TD><TD WIDTH="5%">&nbsp;</TD><TD>The newest / oldest # tracks</TD></TR>
+<TR><TD>/autojuke novote</TD><TD WIDTH="5%">&nbsp;</TD><TD>Tracks you didn't karma vote for</TD></TR>
+<TR><TD>/add</TD><TD colspan="2">Adds a track directly from TMX (&lt;ID&gt; {sec})</TD></TR>
+<TR><TD>/add &lt;ID&gt; &lt;sec&gt; (TMF)</TD><TD colspan="2">Adds a track from a specific TMX section</TD></TR>
+<TR><TD>/y</TD><TD colspan="2">Votes Yes for a TMX track or chat-based vote</TD></TR>
+<TR><TD>/history</TD><TD colspan="2">Shows the 10 most recently played tracks</TD></TR>
+<TR><TD>/xlist</TD><TD colspan="2">Lists tracks on TMX (see: /xlist help)</TD></TR>
+<TR><TD>/xlist help</TD><TD WIDTH="5%">&nbsp;</TD><TD>Displays this help information</TD></TR>
+<TR><TD>/xlist recent</TD><TD WIDTH="5%">&nbsp;</TD><TD>Lists the 10 most recent tracks</TD></TR>
+<TR><TD>/xlist &lt;xxx&gt;</TD><TD WIDTH="5%">&nbsp;</TD><TD>Lists tracks matching (partial) name</TD></TR>
+<TR><TD>/xlist auth:&lt;yyy&gt;</TD><TD WIDTH="5%">&nbsp;</TD><TD>Lists tracks matching (partial) author</TD></TR>
+<TR valign="top"><TD>/xlist env:&lt;zzz&gt;</TD><TD WIDTH="5%">&nbsp;</TD><TD>Where &lt;zzz&gt; is an environment from: stadium,<br>bay,coast,island,snow/alpine,desert/speed,rally</TD></TR>
+<TR><TD>/xlist &lt;xxx&gt; auth:&lt;yyy&gt; env:&lt;zzz&gt;</TD><TD WIDTH="5%">&nbsp;</TD><TD>Combines the name, author and/or env searches</TD></TR>
+<TR valign="top"><TD>/xlist &lt;tmx&gt;</TD><TD WIDTH="5%">&nbsp;</TD><TD>Where &lt;tmx&gt; is a TMX section from:<br>TMO,TMS,TMN,TMNF,TMU<br>Can be appended to any of the above searches</TD></TR>
+<TR><TD>/pm</TD><TD colspan="2">Sends a private message to login or Player_ID</TD></TR>
+<TR><TD>/pma</TD><TD colspan="2">Sends a private message to player &amp; admins (admin-only)</TD></TR>
+<TR><TD>/pmlog</TD><TD colspan="2">Displays log of your recent private messages</TD></TR>
+<TR><TD>/hi</TD><TD colspan="2">Sends a Hi message to everyone</TD></TR>
+<TR><TD>/bye</TD><TD colspan="2">Sends a Bye message to everyone</TD></TR>
+<TR><TD>/thx</TD><TD colspan="2">Sends a Thanks message to everyone</TD></TR>
+<TR><TD>/lol</TD><TD colspan="2">Sends a Lol message to everyone</TD></TR>
+<TR><TD>/lool</TD><TD colspan="2">Sends a Lool message to everyone</TD></TR>
+<TR><TD>/brb</TD><TD colspan="2">Sends a Be Right Back message to everyone</TD></TR>
+<TR><TD>/afk</TD><TD colspan="2">Sends an Away From Keyboard message to everyone</TD></TR>
+<TR><TD>/gg</TD><TD colspan="2">Sends a Good Game message to everyone</TD></TR>
+<TR><TD>/gr</TD><TD colspan="2">Sends a Good Race message to everyone</TD></TR>
+<TR><TD>/n1</TD><TD colspan="2">Sends a Nice One message to everyone</TD></TR>
+<TR><TD>/bgm</TD><TD colspan="2">Sends a Bad Game message to everyone</TD></TR>
+<TR><TD>/official</TD><TD colspan="2">Shows a helpful message ;-)</TD></TR>
+<TR><TD>/bootme</TD><TD colspan="2">Boot yourself from the server</TD></TR>
+<TR><TD>/karma</TD><TD colspan="2">Shows karma for the current track</TD></TR>
+<TR><TD>/++</TD><TD colspan="2">Increases karma for the current track</TD></TR>
+<TR><TD>/--</TD><TD colspan="2">Decreases karma for the current track</TD></TR>
+<TR><TD>/nextmap</TD><TD colspan="2">Shows name of the next challenge</TD></TR>
+<TR><TD>/nextrank</TD><TD colspan="2">Shows the next better ranked player</TD></TR>
+<TR><TD>/helpvote | /votehelp</TD><TD colspan="2">Displays info about the chat-based votes</TD></TR>
+<TR><TD>/endround</TD><TD colspan="2">Starts a vote to end current round</TD></TR>
+<TR><TD>/ladder</TD><TD colspan="2">Starts a vote to restart track for ladder</TD></TR>
+<TR><TD>/replay</TD><TD colspan="2">Starts a vote to replay this track</TD></TR>
+<TR><TD>/skip</TD><TD colspan="2">Starts a vote to skip this track</TD></TR>
+<TR><TD>/ignore</TD><TD colspan="2">Starts a vote to ignore a player</TD></TR>
+<TR><TD>/kick</TD><TD colspan="2">Starts a vote to kick a player</TD></TR>
+<TR><TD>/cancel</TD><TD colspan="2">Cancels your current vote</TD></TR>
+<TR><TD>/chatlog</TD><TD colspan="2">Displays log of recent chat messages</TD></TR>
+<TR><TD>/msglog (TMF)</TD><TD colspan="2">Displays log of recent system messages</TD></TR>
+<TR><TD>/style (TMF)</TD><TD colspan="2">Selects window style (see: /style help)</TD></TR>
+<TR><TD>/style help</TD><TD WIDTH="5%">&nbsp;</TD><TD>Displays this help information</TD></TR>
+<TR><TD>/style list</TD><TD WIDTH="5%">&nbsp;</TD><TD>Displays available styles</TD></TR>
+<TR><TD>/style default</TD><TD WIDTH="5%">&nbsp;</TD><TD>Resets style to server default</TD></TR>
+<TR><TD>/style off</TD><TD WIDTH="5%">&nbsp;</TD><TD>Disables TMF window style</TD></TR>
+<TR><TD>/style &lt;xxx&gt;</TD><TD WIDTH="5%">&nbsp;</TD><TD>Selects window style &lt;xxx&gt;</TD></TR>
+<TR><TD>/donpanel (TMUF)</TD><TD colspan="2">Selects donate panel (see: /donpanel help)</TD></TR>
+<TR><TD>/donpanel help</TD><TD WIDTH="5%">&nbsp;</TD><TD>Displays this help information</TD></TR>
+<TR><TD>/donpanel list</TD><TD WIDTH="5%">&nbsp;</TD><TD>Displays available panels</TD></TR>
+<TR><TD>/donpanel default</TD><TD WIDTH="5%">&nbsp;</TD><TD>Resets panel to server default</TD></TR>
+<TR><TD>/donpanel off</TD><TD WIDTH="5%">&nbsp;</TD><TD>Disables donate panel</TD></TR>
+<TR><TD>/donpanel &lt;xxx&gt;</TD><TD WIDTH="5%">&nbsp;</TD><TD>Selects donate panel &lt;xxx&gt;</TD></TR>
+<TR><TD>/recpanel (TMF)</TD><TD colspan="2">Selects records panel (see: /recpanel help)</TD></TR>
+<TR><TD>/recpanel help</TD><TD WIDTH="5%">&nbsp;</TD><TD>Displays this help information</TD></TR>
+<TR><TD>/recpanel list</TD><TD WIDTH="5%">&nbsp;</TD><TD>Displays available panels</TD></TR>
+<TR><TD>/recpanel default</TD><TD WIDTH="5%">&nbsp;</TD><TD>Resets panel to server default</TD></TR>
+<TR><TD>/recpanel off</TD><TD WIDTH="5%">&nbsp;</TD><TD>Disables records panel</TD></TR>
+<TR><TD>/recpanel &lt;xxx&gt;</TD><TD WIDTH="5%">&nbsp;</TD><TD>Selects records panel &lt;xxx&gt;</TD></TR>
+<TR><TD>/votepanel (TMF)</TD><TD colspan="2">Selects records panel (see: /votepanel help)</TD></TR>
+<TR><TD>/votepanel help</TD><TD WIDTH="5%">&nbsp;</TD><TD>Displays this help information</TD></TR>
+<TR><TD>/votepanel list</TD><TD WIDTH="5%">&nbsp;</TD><TD>Displays available panels</TD></TR>
+<TR><TD>/votepanel default</TD><TD WIDTH="5%">&nbsp;</TD><TD>Resets panel to server default</TD></TR>
+<TR><TD>/votepanel off</TD><TD WIDTH="5%">&nbsp;</TD><TD>Disables vote panel</TD></TR>
+<TR><TD>/votepanel &lt;xxx&gt;</TD><TD WIDTH="5%">&nbsp;</TD><TD>Selects vote panel &lt;xxx&gt;</TD></TR>
+<TR><TD>/donate (TMUF)</TD><TD colspan="2">Donates coppers to server</TD></TR>
+<TR><TD>/topdons (TMUF)</TD><TD colspan="2">Displays top 100 highest donators</TD></TR>
+<TR><TD>/music (TMF)</TD><TD colspan="2">Handles server music (see: /music help)</TD></TR>
+<TR><TD>/music help</TD><TD WIDTH="5%">&nbsp;</TD><TD>Displays this help information</TD></TR>
+<TR><TD>/music settings</TD><TD WIDTH="5%">&nbsp;</TD><TD>Displays current music settings</TD></TR>
+<TR><TD>/music list</TD><TD WIDTH="5%">&nbsp;</TD><TD>Displays all available songs</TD></TR>
+<TR><TD>/music list &lt;xxx&gt;</TD><TD WIDTH="5%">&nbsp;</TD><TD>Searches song names/tags for &lt;xxx&gt;</TD></TR>
+<TR><TD>/music current</TD><TD WIDTH="5%">&nbsp;</TD><TD>Shows the current song</TD></TR>
+<TR><TD>/music reload (admin)</TD><TD WIDTH="5%">&nbsp;</TD><TD>Reloads musicserver.xml config file</TD></TR>
+<TR><TD>/music next (admin)</TD><TD WIDTH="5%">&nbsp;</TD><TD>Skips to next song (upon next track)</TD></TR>
+<TR><TD>/music sort (admin)</TD><TD WIDTH="5%">&nbsp;</TD><TD>Sorts the song list</TD></TR>
+<TR><TD>/music shuffle (admin)</TD><TD WIDTH="5%">&nbsp;</TD><TD>Randomizes the song list</TD></TR>
+<TR><TD>/music override (admin)</TD><TD WIDTH="5%">&nbsp;</TD><TD>Changes track override setting</TD></TR>
+<TR><TD>/music autonext (admin)</TD><TD WIDTH="5%">&nbsp;</TD><TD>Changes automatic next song setting</TD></TR>
+<TR><TD>/music allowjb (admin)</TD><TD WIDTH="5%">&nbsp;</TD><TD>Changes allow jukebox setting</TD></TR>
+<TR><TD>/music stripdirs (admin)</TD><TD WIDTH="5%">&nbsp;</TD><TD>Changes strip subdirs setting</TD></TR>
+<TR><TD>/music stripexts (admin)</TD><TD WIDTH="5%">&nbsp;</TD><TD>Changes strip extensions setting</TD></TR>
+<TR><TD>/music off (admin)</TD><TD WIDTH="5%">&nbsp;</TD><TD>Disables music, auto next &amp; jukebox</TD></TR>
+<TR><TD>/music jukebox</TD><TD WIDTH="5%">&nbsp;</TD><TD>Displays upcoming songs in jukebox</TD></TR>
+<TR><TD>/music drop</TD><TD WIDTH="5%">&nbsp;</TD><TD>Drops your currently added song</TD></TR>
+<TR><TD>/music &lt;#&gt;</TD><TD WIDTH="5%">&nbsp;</TD><TD>Adds a song to jukebox where &lt;#&gt; is song number</TD></TR>
+<TR><TD>/rpoints (TMF)</TD><TD colspan="2">Shows current Rounds points system</TD></TR>
+<TR><TD>/ranklimit</TD><TD colspan="2">Shows the current rank limit</TD></TR>
+<TR><TD>/password</TD><TD colspan="2">Shows server's player/spectator password</TD></TR>
+<TR><TD>/yes</TD><TD colspan="2">Votes Yes for unSpec</TD></TR>
+<TR><TD>/no</TD><TD colspan="2">Votes No for unSpec</TD></TR>
+<TR><TD>/unspec</TD><TD colspan="2">Launches an unSpec vote</TD></TR>
+<TR><TD>/message</TD><TD colspan="2">Shows random informational message</TD></TR>
+<TR><TD>/jfreu</TD><TD colspan="2">Jfreu admin commands (see: /jfreu help)</TD></TR>
+<TR><TD>/version</TD><TD colspan="2">Shows server version (dedicated built-in command)</TD></TR>
+<TR><TD>/serverlogin (TMF)</TD><TD colspan="2">Shows server login (dedicated built-in command)</TD></TR>
+</TABLE>
+</CENTER>
+
+<A NAME="admin"></A>
+<H3>List of available /admin commands:</H3>
+
+<CENTER>
+<TABLE WIDTH="90%">
+<TR><TD>help</TD><TD colspan="2">Shows all available /admin commands</TD></TR>
+<TR><TD>helpall</TD><TD colspan="2">Displays help for available /admin commands</TD></TR>
+<TR><TD>setservername</TD><TD colspan="2">Changes the name of the server</TD></TR>
+<TR><TD>setcomment</TD><TD colspan="2">Changes the server comment</TD></TR>
+<TR><TD>setpwd</TD><TD colspan="2">Changes the player password</TD></TR>
+<TR><TD>setspecpwd</TD><TD colspan="2">Changes the spectator password</TD></TR>
+<TR><TD>setrefpwd (TMF)</TD><TD colspan="2">Changes the referee password</TD></TR>
+<TR><TD>setmaxplayers</TD><TD colspan="2">Sets a new maximum of players</TD></TR>
+<TR><TD>setmaxspecs</TD><TD colspan="2">Sets a new maximum of spectators</TD></TR>
+<TR><TD>setgamemode</TD><TD colspan="2">Sets next mode {ta,rounds,team,laps,stunts,cup}</TD></TR>
+<TR><TD>setrefmode (TMF)</TD><TD colspan="2">Sets referee mode {0=top3,1=all}</TD></TR>
+<TR><TD>nextmap | next</TD><TD colspan="2">Forces server to load next track</TD></TR>
+<TR><TD>skipmap | skip</TD><TD colspan="2">Forces server to load next track</TD></TR>
+<TR><TD>previous | prev</TD><TD colspan="2">Forces server to load previous track</TD></TR>
+<TR><TD>nextenv (TMUF)</TD><TD colspan="2">Loads next track in same environment</TD></TR>
+<TR><TD>restartmap | res</TD><TD colspan="2">Restarts currently running track</TD></TR>
+<TR><TD>replaymap | replay</TD><TD colspan="2">Replays current track (via jukebox)</TD></TR>
+<TR><TD>dropjukebox | djb</TD><TD colspan="2">Drops a track from the jukebox</TD></TR>
+<TR><TD>clearjukebox | cjb</TD><TD colspan="2">Clears the entire jukebox</TD></TR>
+<TR><TD>clearhist</TD><TD colspan="2">Clears (part of) track history</TD></TR>
+<TR><TD>add</TD><TD colspan="2">Adds tracks directly from TMX (&lt;ID&gt;... {sec})</TD></TR>
+<TR><TD>add &lt;ID&gt; &lt;sec&gt; (TMF)</TD><TD colspan="2">Adds a track from a specific TMX section</TD></TR>
+<TR><TD>addthis</TD><TD colspan="2">Adds current /add-ed track permanently</TD></TR>
+<TR><TD>addlocal</TD><TD colspan="2">Adds a local track (&lt;filename&gt;)</TD></TR>
+<TR><TD>warn</TD><TD colspan="2">Sends a kick/ban warning to a player</TD></TR>
+<TR><TD>kick</TD><TD colspan="2">Kicks a player from server</TD></TR>
+<TR><TD>kickghost</TD><TD colspan="2">Kicks a ghost player from server</TD></TR>
+<TR><TD>ban</TD><TD colspan="2">Bans a player from server</TD></TR>
+<TR><TD>unban</TD><TD colspan="2">UnBans a player from server</TD></TR>
+<TR><TD>banip</TD><TD colspan="2">Bans an IP address from server</TD></TR>
+<TR><TD>unbanip</TD><TD colspan="2">UnBans an IP address from server</TD></TR>
+<TR><TD>black</TD><TD colspan="2">Blacklists a player from server</TD></TR>
+<TR><TD>unblack</TD><TD colspan="2">UnBlacklists a player from server</TD></TR>
+<TR><TD>addguest</TD><TD colspan="2">Adds a guest player to server</TD></TR>
+<TR><TD>removeguest</TD><TD colspan="2">Removes a guest player from server</TD></TR>
+<TR><TD>pass</TD><TD colspan="2">Passes a chat-based or TMX /add vote</TD></TR>
+<TR><TD>cancel | can</TD><TD colspan="2">Cancels any running vote</TD></TR>
+<TR><TD>endround | er</TD><TD colspan="2">Forces end of current round</TD></TR>
+<TR><TD>players</TD><TD colspan="2">Displays list of known players {string}</TD></TR>
+<TR><TD>players live</TD><TD colspan="2">Displays list of online players</TD></TR>
+<TR><TD>showbanlist | listbans</TD><TD colspan="2">Displays current ban list</TD></TR>
+<TR><TD>showiplist | listips</TD><TD colspan="2">Displays current banned IPs list</TD></TR>
+<TR><TD>showblacklist | listblacks</TD><TD colspan="2">Displays current black list</TD></TR>
+<TR><TD>showguestlist | listguests</TD><TD colspan="2">Displays current guest list</TD></TR>
+<TR><TD>writeiplist</TD><TD colspan="2">Saves current banned IPs list (def: bannedips.xml)</TD></TR>
+<TR><TD>readiplist</TD><TD colspan="2">Loads current banned IPs list (def: bannedips.xml)</TD></TR>
+<TR><TD>writeblacklist</TD><TD colspan="2">Saves current black list (def: blacklist.txt)</TD></TR>
+<TR><TD>readblacklist</TD><TD colspan="2">Loads current black list (def: blacklist.txt)</TD></TR>
+<TR><TD>writeguestlist</TD><TD colspan="2">Saves current guest list (def: guestlist.txt)</TD></TR>
+<TR><TD>readguestlist</TD><TD colspan="2">Loads current guest list (def: guestlist.txt)</TD></TR>
+<TR><TD>cleanbanlist</TD><TD colspan="2">Cleans current ban list</TD></TR>
+<TR><TD>cleaniplist</TD><TD colspan="2">Cleans current banned IPs list</TD></TR>
+<TR><TD>cleanblacklist</TD><TD colspan="2">Cleans current black list</TD></TR>
+<TR><TD>cleanguestlist</TD><TD colspan="2">Cleans current guest list</TD></TR>
+<TR><TD>mergegbl</TD><TD colspan="2">Merges a global black list {URL}</TD></TR>
+<TR><TD>access</TD><TD colspan="2">Handles player access control (see: /admin acess help)</TD></TR>
+<TR><TD>access help</TD><TD WIDTH="5%">&nbsp;</TD><TD>Displays this help information</TD></TR>
+<TR><TD>access list</TD><TD WIDTH="5%">&nbsp;</TD><TD>Displays current access control settings</TD></TR>
+<TR><TD>access reload</TD><TD WIDTH="5%">&nbsp;</TD><TD>Reloads updated access control settings</TD></TR>
+<TR><TD>writetracklist</TD><TD colspan="2">Saves current track list (def: tracklist.txt)</TD></TR>
+<TR><TD>readtracklist</TD><TD colspan="2">Loads current track list (def: tracklist.txt)</TD></TR>
+<TR><TD>shuffle | shufflemaps</TD><TD colspan="2">Randomizes current track list</TD></TR>
+<TR><TD>listdupes</TD><TD colspan="2">Displays list of duplicate tracks</TD></TR>
+<TR><TD>remove</TD><TD colspan="2">Removes a track from rotation</TD></TR>
+<TR><TD>erase</TD><TD colspan="2">Removes a track from rotation &amp; delete track file</TD></TR>
+<TR><TD>removethis</TD><TD colspan="2">Removes this track from rotation</TD></TR>
+<TR><TD>erasethis</TD><TD colspan="2">Removes this track from rotation &amp; delete track file</TD></TR>
+<TR><TD>mute | ignore</TD><TD colspan="2">Adds a player to global mute/ignore list</TD></TR>
+<TR><TD>unmute | unignore</TD><TD colspan="2">Removes a player from global mute/ignore list</TD></TR>
+<TR><TD>mutelist | listmutes</TD><TD colspan="2">Displays global mute/ignore list</TD></TR>
+<TR><TD>ignorelist | listignores</TD><TD colspan="2">Displays global mute/ignore list</TD></TR>
+<TR><TD>cleanmutes | cleanignores</TD><TD colspan="2">Cleans global mute/ignore list</TD></TR>
+<TR><TD>addadmin</TD><TD colspan="2">Adds a new admin</TD></TR>
+<TR><TD>removeadmin</TD><TD colspan="2">Removes an admin</TD></TR>
+<TR><TD>addop</TD><TD colspan="2">Adds a new operator</TD></TR>
+<TR><TD>removeop</TD><TD colspan="2">Removes an operator</TD></TR>
+<TR><TD>listmasters</TD><TD colspan="2">Displays current masteradmin list</TD></TR>
+<TR><TD>listadmins</TD><TD colspan="2">Displays current admin list</TD></TR>
+<TR><TD>listops</TD><TD colspan="2">Displays current operator list</TD></TR>
+<TR><TD>adminability</TD><TD colspan="2">Shows/changes admin ability {ON/OFF}</TD></TR>
+<TR><TD>opability</TD><TD colspan="2">Shows/changes operator ability {ON/OFF}</TD></TR>
+<TR><TD>listabilities</TD><TD colspan="2">Displays current abilities list</TD></TR>
+<TR><TD>writeabilities</TD><TD colspan="2">Saves current abilities list (def: adminops.xml)</TD></TR>
+<TR><TD>readabilities</TD><TD colspan="2">Loads current abilities list (def: adminops.xml)</TD></TR>
+<TR><TD>wall | mta</TD><TD colspan="2">Displays popup message to all players</TD></TR>
+<TR><TD>delrec</TD><TD colspan="2">Deletes specific record on current track</TD></TR>
+<TR><TD>prunerecs</TD><TD colspan="2">Deletes records for specified track</TD></TR>
+<TR><TD>rpoints (TMF)</TD><TD colspan="2">Sets custom Rounds points (see: /admin rpoints help)</TD></TR>
+<TR><TD>rpoints help</TD><TD WIDTH="5%">&nbsp;</TD><TD>Displays this help information</TD></TR>
+<TR><TD>rpoints list</TD><TD WIDTH="5%">&nbsp;</TD><TD>Displays available points systems</TD></TR>
+<TR><TD>rpoints show</TD><TD WIDTH="5%">&nbsp;</TD><TD>Shows current points system</TD></TR>
+<TR><TD>rpoints &lt;xxx&gt;</TD><TD WIDTH="5%">&nbsp;</TD><TD>Sets custom points system labelled &lt;xxx&gt;</TD></TR>
+<TR><TD>rpoints X,Y,...,Z</TD><TD WIDTH="5%">&nbsp;</TD><TD>Sets custom points system with specified values</TD></TR>
+<TR><TD>rpoints off</TD><TD WIDTH="5%">&nbsp;</TD><TD>Disables custom points system</TD></TR>
+<TR><TD>rpoints f1old</TD><TD WIDTH="5%">&nbsp;</TD><TD>Sets Formula 1 GP old points</TD></TR>
+<TR><TD>rpoints f1new</TD><TD WIDTH="5%">&nbsp;</TD><TD>Sets Formula 1 GP new points</TD></TR>
+<TR><TD>rpoints motogp</TD><TD WIDTH="5%">&nbsp;</TD><TD>Sets MotoGP points</TD></TR>
+<TR><TD>rpoints motogp5</TD><TD WIDTH="5%">&nbsp;</TD><TD>Sets MotoGP + 5 points</TD></TR>
+<TR><TD>rpoints fet1</TD><TD WIDTH="5%">&nbsp;</TD><TD>Sets Formula ET Season 1 points</TD></TR>
+<TR><TD>rpoints fet2</TD><TD WIDTH="5%">&nbsp;</TD><TD>Sets Formula ET Season 2 points</TD></TR>
+<TR><TD>rpoints fet3</TD><TD WIDTH="5%">&nbsp;</TD><TD>Sets Formula ET Season 3 points</TD></TR>
+<TR><TD>rpoints champcar</TD><TD WIDTH="5%">&nbsp;</TD><TD>Sets Champ Car World Series points</TD></TR>
+<TR><TD>rpoints superstars</TD><TD WIDTH="5%">&nbsp;</TD><TD>Sets Superstars points</TD></TR>
+<TR><TD>rpoints simple5</TD><TD WIDTH="5%">&nbsp;</TD><TD>Sets Simple 5 points</TD></TR>
+<TR><TD>rpoints simple10</TD><TD WIDTH="5%">&nbsp;</TD><TD>Sets Simple 10 points</TD></TR>
+<TR><TD>match</TD><TD colspan="2">{begin/end} to start/stop match tracking</TD></TR>
+<TR><TD>acdl</TD><TD colspan="2">Sets AllowChallengeDownload {ON/OFF}</TD></TR>
+<TR><TD>autotime</TD><TD colspan="2">Sets Auto TimeLimit {ON/OFF}</TD></TR>
+<TR><TD>disablerespawn (TMF)</TD><TD colspan="2">Disable respawns at CPs {ON/OFF}</TD></TR>
+<TR><TD>forceshowopp (TMF)</TD><TD colspan="2">Forces to show opponents {##/ALL/OFF}</TD></TR>
+<TR><TD>scorepanel (TMF)</TD><TD colspan="2">Shows automatic scorepanel {ON/OFF}</TD></TR>
+<TR><TD>roundsfinish (TMF)</TD><TD colspan="2">Shows rounds panel upon first finish {ON/OFF}</TD></TR>
+<TR><TD>forceteam (TMF)</TD><TD colspan="2">Forces player into Blue or Red team</TD></TR>
+<TR><TD>forcespec (TMF)</TD><TD colspan="2">Forces player into free spectator</TD></TR>
+<TR><TD>specfree (TMF)</TD><TD colspan="2">Forces spectator into free mode</TD></TR>
+<TR><TD>panel (TMF)</TD><TD colspan="2">Selects admin panel (see: /admin panel help)</TD></TR>
+<TR><TD>panel help</TD><TD WIDTH="5%">&nbsp;</TD><TD>Displays this help information</TD></TR>
+<TR><TD>panel list</TD><TD WIDTH="5%">&nbsp;</TD><TD>Displays available panels</TD></TR>
+<TR><TD>panel default</TD><TD WIDTH="5%">&nbsp;</TD><TD>Resets panel to server default</TD></TR>
+<TR><TD>panel off</TD><TD WIDTH="5%">&nbsp;</TD><TD>Disables admin panel</TD></TR>
+<TR><TD>panel &lt;xxx&gt;</TD><TD WIDTH="5%">&nbsp;</TD><TD>Selects admin panel &lt;xxx&gt;</TD></TR>
+<TR><TD>style (TMF)</TD><TD colspan="2">Selects default window style</TD></TR>
+<TR><TD>admpanel (TMF)</TD><TD colspan="2">Selects default admin panel</TD></TR>
+<TR><TD>donpanel (TMUF)</TD><TD colspan="2">Selects default donate panel</TD></TR>
+<TR><TD>recpanel (TMF)</TD><TD colspan="2">Selects default records panel</TD></TR>
+<TR><TD>votepanel (TMF)</TD><TD colspan="2">Selects default vote panel</TD></TR>
+<TR><TD>coppers (TMUF)</TD><TD colspan="2">Shows server's coppers amount</TD></TR>
+<TR><TD>pay (TMUF)</TD><TD colspan="2">Pays server coppers to login</TD></TR>
+<TR><TD>relays (TMF)</TD><TD colspan="2">Displays relays list or shows relay master</TD></TR>
+<TR><TD>server</TD><TD colspan="2">Displays server's detailed settings</TD></TR>
+<TR><TD>pm</TD><TD colspan="2">Sends private message to all available admins</TD></TR>
+<TR><TD>pmlog</TD><TD colspan="2">Displays log of recent private admin messages</TD></TR>
+<TR><TD>call</TD><TD colspan="2">Executes direct server call (see: /admin call help)</TD></TR>
+<TR><TD>unlock &lt;pwd&gt;</TD><TD colspan="2">Unlocks admin commands &amp; features</TD></TR>
+<TR><TD>debug</TD><TD colspan="2">Toggles debugging output</TD></TR>
+<TR><TD>shutdown</TD><TD colspan="2">Shuts down XASECO</TD></TR>
+<TR><TD>shutdownall</TD><TD colspan="2">Shuts down Server &amp; XASECO</TD></TR>
+<TR><TD>uptodate</TD><TD colspan="2">Checks current version of XASECO</TD></TR>
+</TABLE>
+</CENTER>
+
+<A NAME="jfreu"></A>
+<H3>List of available /jfreu commands:</H3>
+
+<CENTER>
+<TABLE WIDTH="90%">
+<TR><TD>help</TD><TD colspan="2">Shows Jfreu commands</TD></TR>
+<TR><TD>helpall</TD><TD colspan="2">Displays help for Jfreu commands</TD></TR>
+<TR><TD>autochangename</TD><TD colspan="2">Auto change servername {ON/OFF}</TD></TR>
+<TR><TD>setrank</TD><TD colspan="2">Sets ranklimiting {ON/OFF}</TD></TR>
+<TR><TD>setlimit</TD><TD colspan="2">Sets ranklimit value</TD></TR>
+<TR><TD>autorank</TD><TD colspan="2">Sets autoranking {ON/OFF}</TD></TR>
+<TR><TD>offset</TD><TD colspan="2">Sets autorank offset (-999 - 999)</TD></TR>
+<TR><TD>hardlimit</TD><TD colspan="2">Sets hardlimit value</TD></TR>
+<TR><TD>autorankminplayers</TD><TD colspan="2">Sets min players for autorank {0-50}</TD></TR>
+<TR><TD>autorankvip</TD><TD colspan="2">Include VIPs in autorank {ON/OFF}</TD></TR>
+<TR><TD>maxplayers</TD><TD colspan="2">Sets maxplayers for Kick HiRank</TD></TR>
+<TR><TD>kickhirank</TD><TD colspan="2">Kick HiRank when server full {ON/OFF}</TD></TR>
+<TR><TD>listlimits</TD><TD colspan="2">Displays rank limit settings</TD></TR>
+<TR><TD>kickworst</TD><TD colspan="2">Kicks worst players {count}</TD></TR>
+<TR><TD>players</TD><TD colspan="2">Displays list of known players {string}</TD></TR>
+<TR><TD>players live</TD><TD colspan="2">Displays list of online players</TD></TR>
+<TR><TD>unspec</TD><TD colspan="2">UnSpecs player {login/ID} (clear SpecOnly)</TD></TR>
+<TR><TD>addvip</TD><TD colspan="2">Adds a VIP {login/ID}</TD></TR>
+<TR><TD>removevip</TD><TD colspan="2">Removes a VIP {login/ID}</TD></TR>
+<TR><TD>addvipteam</TD><TD colspan="2">Adds a VIP_Team {team}</TD></TR>
+<TR><TD>removevipteam</TD><TD colspan="2">Removes VIP_Team {team}</TD></TR>
+<TR><TD>listvips</TD><TD colspan="2">Displays VIPs list</TD></TR>
+<TR><TD>listvipteams</TD><TD colspan="2">Displays VIP_Teams list</TD></TR>
+<TR><TD>writelists</TD><TD colspan="2">Saves VIP/VIP_Team lists (def: jfreu.vips.xml)</TD></TR>
+<TR><TD>readlists</TD><TD colspan="2">Loads VIP/VIP_Team lists (def: jfreu.vips.xml)</TD></TR>
+<TR><TD>badwords</TD><TD colspan="2">Sets badwords bot {ON/OFF}</TD></TR>
+<TR><TD>badwordsban</TD><TD colspan="2">Sets badwords ban {ON/OFF}</TD></TR>
+<TR><TD>badwordsnum</TD><TD colspan="2">Sets badwords limit {count}</TD></TR>
+<TR><TD>badwordstime</TD><TD colspan="2">Sets banning period {mins}</TD></TR>
+<TR><TD>badword</TD><TD colspan="2">Gives extra badword warning {login/ID}</TD></TR>
+<TR><TD>banfor</TD><TD colspan="2">Bans player {mins/hoursH} {login/ID}</TD></TR>
+<TR><TD>unban</TD><TD colspan="2">UnBans temporarily banned player</TD></TR>
+<TR><TD>listbans</TD><TD colspan="2">Displays temporarily banned players</TD></TR>
+<TR><TD>message</TD><TD colspan="2">Fakes message from server {msg}</TD></TR>
+<TR><TD>player</TD><TD colspan="2">Fakes message from player {login/ID} {msg}</TD></TR>
+<TR><TD>nopfkick</TD><TD colspan="2">Sets NoPfKick {map/time/OFF}</TD></TR>
+<TR><TD>cancel</TD><TD colspan="2">Cancels current vote (kick/ban/nextmap/restart)</TD></TR>
+<TR><TD>novote</TD><TD colspan="2">Auto-cancel CallVotes {ON/OFF}</TD></TR>
+<TR><TD>unspecvote</TD><TD colspan="2">Allow /unspec votes {ON/OFF}</TD></TR>
+<TR><TD>infomessages</TD><TD colspan="2">Sets info messages {ON/OFF}</TD></TR>
+<TR><TD>writeconfig</TD><TD colspan="2">Saves Jfreu config (def: jfreu.config.xml)</TD></TR>
+<TR><TD>readconfig</TD><TD colspan="2">Loads Jfreu config (def: jfreu.config.xml)</TD></TR>
+</TABLE>
+</CENTER>
+<br>
+
+<HR>
+<ADDRESS>
+Copyright &copy; 2007-2013 &ndash; Frans P. de Vries <A HREF="mailto:tm&#64;&#103;&#97;&#109;&#101;&#114;&#115;&#46;&#111;&#114;&#103;">&lt;tm&#64;&#103;&#97;&#109;&#101;&#114;&#115;&#46;&#111;&#114;&#103;&gt;</A>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+Last updated 02-Apr-2013
+</ADDRESS>
+</BODY>
+</HTML>

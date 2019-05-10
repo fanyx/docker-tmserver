@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<autotime>
+	<!-- Set the multiplicator for author time (e.g. 6x author -->
+	<!-- time = new timelimit); set to 0 to disable function   -->
+	<multiplicator>6</multiplicator>
+	<!-- Set minimum timelimit in minutes -->
+	<mintime>3.5</mintime>
+	<!-- Set maximum timelimit in minutes -->
+	<maxtime>7</maxtime>
+	<!-- Set default timelimit in minutes if any error occurs -->
+	<defaulttime>5</defaulttime>
+	<!-- 2 = in TMF message window, 1 = in chat, 0 = none -->
+	<display>1</display>
+	<message>{#server}>> Set {1} timelimit for {#highlite}{2}{#server} : {#highlite}{3}{#server} (Author time: {#highlite}{4}{#server})</message>
+</autotime>

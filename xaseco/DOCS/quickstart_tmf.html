@@ -1,0 +1,254 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>TrackMania Forever - TMF &amp; XASECO quick start guide</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<META NAME="author" CONTENT="Frans P. de Vries">
+<META NAME="generator" CONTENT="vi :)">
+<style type="text/css">
+body { width: 960px; margin-left: 30px; font-family: Arial,Helvetica,sans-serif; font-size: 15px; }
+li,div { padding: 3px; }
+code,pre { font-size: 14px; }
+pre { width: 90%; margin: 3px 0px; padding: 3px 0px 3px 12px; background-color: #F0F0F0; }
+</style>
+<META NAME="keywords" CONTENT="TrackMania, Forever, United, Nations, Sunrise, Original, racing, games, XASECO, ASECO, RASP, plugins, records, jukebox, Nadeo">
+<META NAME="description" CONTENT="Information on setting up a dedicated server and the XASECO system for TrackMania Nations/United Forever, racing games by Nadeo">
+</HEAD>
+
+<BODY TEXT="#000000" LINK="#ff0000" VLINK="#0000ff" ALINK="#00ff00" BGCOLOR="#ffffff">
+
+<P ALIGN="center">
+<A TARGET="_blank" HREF="http://www.trackmania.com/"><IMG SRC="banner.jpg" ALT="TrackMania Forever" BORDER="0" WIDTH="755" HEIGHT="245"></A>
+<HR>
+
+<H3>Quick Start Guide:</H3>
+
+This is step-by-step guide to setting up a TrackMania Forever (TMF) dedicated server with XASECO for those lost in or confused by the <A HREF="/tmf/#resources">available readme's and tutorials</A>, and those just too lazy to read them. ;-)
+
+<P>
+It's written for Linux but should largely apply to Windows too, and your system needs to have a working MySQL 4.x or 5.x and PHP 5.x setup.  To manage the database, enter the MySQL commands in the mysql command prompt, PhpMyAdmin or another tool of your choice.  You need to run the TMF server and XASECO on the same machine, running them on separate machines is beyond the scope of this guide.
+
+<P>
+First, the dedicated server:
+
+<OL>
+
+<LI>Ideally, the TMF server and XASECO run under a user account rather than root, so create a user e.g. "<b>tmf</b>" with home directory "<b>/home/tmf</b>".
+
+<LI>Login as (or switch to) user "tmf" so that all files created down the road receive the correct ownership and permissions.
+
+<LI>The TMF server zip doesn't have a top-level directory, so create one first to keep all the server files together, e.g.:<br>
+    <div>
+    &nbsp;&nbsp;&nbsp;<b><CODE>mkdir TMF</CODE></b><br>
+    &nbsp;&nbsp;&nbsp;<b><CODE>cd TMF</CODE></b><br>
+    </div>
+
+<LI>Download and unzip the latest TMF server (<A TARGET="_blank" HREF="http://www.tm-forum.com/viewtopic.php?t=14203">TrackmaniaServer_2011-02-21.zip</A>) into this TMF/ directory.
+
+<LI>Create a dedicated login:
+    <OL type="a">
+    <LI>for TM Nations Forever, use your game client to create a new dedicated server login (note that this server won't be able to use coppers).
+    <LI>for TM United Forever, <A TARGET="_blank" HREF="https://player.trackmania.com/">log into the TMF Player Page</A> using your player login and password, and create a dedicated server login and password (different from your player password) after entering your full game key.
+    </OL>
+
+<LI>Edit <b>TMF/GameData/Config/dedicated_cfg.txt</b>:
+    <OL type="a">
+    <LI>In the &lt;authorization_levels&gt; section, change all three <b>passwords</b>, but do <u>not</u> change the names (SuperAdmin, Admin, User).
+    <LI>In the &lt;masterserver_account&gt; section, enter the server <b>&lt;login&gt;</b> obtained above with its own <b>&lt;password&gt;</b>, and optionally the last three characters of your player key in <b>&lt;validation_key&gt;</b> if you want your TMUF server to be able to use coppers.
+    <LI>In the &lt;server_options&gt; section, give your server a <b>&lt;name&gt;</b> and configure the other options to your liking.
+    <LI>In the &lt;system_config&gt; section, set <b>&lt;connection_uploadrate&gt;</b> and <b>&lt;connection_downloadrate&gt;</b> to values closest to your connection's speed (in Kbps), and remember the three port numbers (default: 2350 for the server, 3450 for P2P and 5000 for XMLRPC; these can be changed to other free port numbers, but it's recommended to keep the defaults at least until your server comes online successfully).
+    <LI>For a TMNF server, <b>&lt;packmask&gt;</b> must be set to 'nations' or 'stadium'. For TMUF it can be empty or set to 'united', or to one environment like 'desert', 'island', etc, or to the three environments of the older games with 'original' or 'sunrise'.
+    </OL>
+
+<LI>Choose and edit a match settings file, e.g. TMF/GameData/Tracks/MatchSettings/Nations/NationsBlue.txt, to your liking (see the <A TARGET="_blank" HREF="/tmf/docs/readme_dedicated.html">server readme</A> for details).
+
+<LI>On your firewall/router, open the server port 2350 and the P2P port 3450 for both UDP and TCP traffic, but <u>not</u> the XMLRPC port 5000.  For the Dedimania system in XASECO port <b>8002</b> needs to be open as well. For more information on this, <A target="_blank" HREF="http://www.portforward.com/">PortForward.com</A> may be useful.
+
+<LI>A standard startup script is no longer included in the zip, so create one looking like this in RunTrackmaniaNations.sh (and make it executable with <CODE>chmod +x RunTrackmaniaNations.sh</CODE>):<br>
+    <div>
+    &nbsp;&nbsp;&nbsp;<b><CODE>./TrackmaniaServer /game_settings=MatchSettings/Nations/NationsBlue.txt /dedicated_cfg=dedicated_cfg.txt</CODE></b><br>
+    </div>
+    or in RunTrackmaniaNations.bat:<br>
+    <div>
+    &nbsp;&nbsp;&nbsp;<b><CODE>TrackmaniaServer.exe /game_settings=MatchSettings/Nations/NationsBlue.txt /dedicated_cfg=dedicated_cfg.txt</CODE></b><br>
+    </div>
+    Options <CODE>/internet</CODE> and <CODE>/autoquit</CODE> are now default, and the <CODE>/game=...</CODE> option (from TMN) is no longer needed due to the &lt;packmask&gt; setting.
+
+<LI>Start the server:<br>
+    <div>
+    &nbsp;&nbsp;&nbsp;<b><CODE>cd ~/TMF/</CODE></b><br>
+    &nbsp;&nbsp;&nbsp;<b><CODE>./RunTrackmaniaNations.sh</CODE></b> (or <CODE>RunTrackmaniaNations.bat</CODE>)<br>
+    </div>
+    You should see output like the following:<br>
+<PRE>
+Starting TmForever v2011-02-21...
+Initializing...
+Configuration file : dedicated_cfg.txt
+Loading system configuration...
+...system configuration loaded
+Loading cache...
+...OK
+Listening for xml-rpc commands on port 5000.
+Trackmania server daemon started with pid=13512 (parent=13483).
+</PRE>
+    If you get a Segmentation Fault here, the server cannot create files/directories due to ownership/permission problems (perhaps you forgot step 2?).
+
+<LI>The first time the server starts, it creates a Default.SystemConfig.Gbx file as well as the blacklist.txt and guestlist.txt files in the GameData/Config/ directory, and a number of directories like Logs/, GameData/Cache/, GameData/Profiles/, GameData/Scores/, GameData/Tracks/Campaigns/, GameData/Tracks/Replays/, GameData/Tracks/Challenges/Downloaded/ and GameData/Tracks/Challenges/My Challenges/.  The files in the Logs/ directory are useful to monitor your server's activity.
+
+<LI>Start your TMF client and check in the Internet server browser that the server is running in your zone with your chosen server name and the Nadeo Advanced tracks.
+
+<LI>Join your server, and have a friend join from elsewhere on the Internet, to verify that the server is accessible.
+
+<LI>Ignore the private network warning that is always logged in ConsoleLog.*.txt.
+
+<LI>To start &amp; stop your TMF server on Linux more easily, you can use this <A TARGET="_blank" HREF="http://server.xaseco.org/initd.php">start-up script</A>.
+
+<LI>Collect your own tracks in GameData/Tracks/Challenges/My Challenges/, copy and edit a new match settings file in GameData/Tracks/MatchSettings/ that lists those tracks, use that file in RunTrackmaniaNations.sh (or RunTrackmaniaNations.bat), and restart your server.  It should now be running your track selection.  Congratulations. :-)
+
+</OL>
+
+<A NAME="xaseco"></A>
+Secondly, the XASECO system:
+
+<OL>
+
+<LI>Create the XASECO database in MySQL (default "aseco" but any other name is okay too):<br>
+    <div>
+    &nbsp;&nbsp;&nbsp;<b><CODE>CREATE DATABASE aseco;</CODE></b><br>
+    </div>
+    Also create a separate user (e.g. "<b>tmf</b>") in MySQL with a <b>password</b>, and grant this user all rights to the "<b>aseco</b>" database.  The basic MySQL commands are:<br>
+    <div>
+    &nbsp;&nbsp;&nbsp;<b><CODE>CREATE USER 'tmf'@'localhost';</CODE></b><br>
+    &nbsp;&nbsp;&nbsp;<b><CODE>SET PASSWORD FOR 'tmf'@'localhost' = password('password');</CODE></b><br>
+    &nbsp;&nbsp;&nbsp;<b><CODE>GRANT all ON aseco.* TO 'tmf'@'localhost';</CODE></b>
+    </div>
+
+<LI>Login as (or switch to) user "tmf" so that all files created down the road receive the correct ownership and permissions.
+
+<LI>Download and unzip XASECO (<A HREF="/tmn/#download">latest version</A>) into the "/home/tmf/" directory too, the default path will be <b>xaseco/</b> so that future releases can be unpacked into the same directory tree.<br>
+    In the zip file, all *.XML and config files are located inside the <b>newinstall/</b> directory.  Go into the newinstall/ directory and move all *.XML files into the main directory (next to aseco.php), and move all *.PHP files into the includes/ directory.<br>
+    Also, move AsecoF.sh (on Linux) or Aseco.bat (on Windows) into the main directory and adjust it to your situation if necessary.
+
+<LI>Setting up the database tables in MySQL is done automatically the first time XASECO runs, but if you prefer you can do it manually in advance:<br>
+    <div>
+    &nbsp;&nbsp;&nbsp;<b><CODE>USE aseco;</CODE></b><br>
+    &nbsp;&nbsp;&nbsp;<b><CODE>SOURCE /home/tmf/xaseco/localdb/aseco.sql;</CODE></b><br>
+    &nbsp;&nbsp;&nbsp;<b><CODE>SOURCE /home/tmf/xaseco/localdb/rasp.sql;</CODE></b><br>
+    &nbsp;&nbsp;&nbsp;<b><CODE>SOURCE /home/tmf/xaseco/localdb/extra.sql;</CODE></b>
+    </div>
+
+<LI>Edit <b>xaseco/localdatabase.xml</b>:
+    <OL type="a">
+    <LI>Replace YOUR_MYSQL_LOGIN with the MySQL user you created above, e.g. <b>tmf</b>.
+    <LI>Replace YOUR_MYSQL_PASSWORD with the MySQL password you set above.
+    <LI>Use the same database name as you created above, e.g. <b>aseco</b>.
+    <LI>localhost is your own machine, so the server option is okay.
+    </OL>
+
+<LI>Edit <b>xaseco/config.xml</b>:
+    <OL type="a">
+    <LI>In the &lt;masteradmins&gt; section, uncomment and replace YOUR_MASTERADMIN_LOGIN with your player login, and add further logins for other players you want to grant all XASECO admin rights.
+    <LI>In the &lt;tmserver&gt; section, replace YOUR_SUPERADMIN_PASSWORD with the password you chose for SuperAdmin in dedicated_cfg.txt (TMF step 6a above) but do <u>not</u> change the SuperAdmin login itself.
+    <LI>The &lt;port&gt; field should contain the same XMLRPC port number you chose in dedicated_cfg.txt (TMF step 6d above), default 5000.
+    <LI>IP 127.0.0.1 is your own machine again, so that option is okay too.
+    </OL>
+
+<LI>Edit <b>xaseco/adminops.xml</b>:
+    <OL type="a">
+    <LI>In the &lt;admins&gt; section, uncomment and replace YOUR_ADMIN_LOGIN with an admin's login, and add further logins for other players you want to grant partial XASECO admin rights.  Or leave the &lt;tmlogin&gt; entry commented out if there are none.
+    <LI>In the &lt;operators&gt; section, uncomment and replace YOUR_OPERATOR_LOGIN with an operator's login, and add further logins for other players you want to grant XASECO operator rights.  Or leave the &lt;tmlogin&gt; entry commented out if there are none.
+    </OL>
+
+<LI>Edit <b>xaseco/dedimania.xml</b> if you want to use the Dedimania world records system:
+    <OL type="a">
+    <LI>In the &lt;masterserver_account&gt; section, replace YOUR_SERVER_LOGIN and YOUR_SERVER_PASSWORD with the &lt;login&gt; and &lt;password&gt; values from your dedicated_cfg.txt file.
+    <LI>Also, replace YOUR_SERVER_NATION with your 3-character nation abbreviation.
+    <LI>Instead of the password you can also enter the community code for your server which can be obtained by using the server login/password on this <a target="_blank" href="http://official.trackmania.com/tmf-communitycode/">page for TMF</a>.
+    <LI>To disable Dedimania support, remove or comment out the chat.dedimania.php and plugin.dedimania.php entries in plugins.xml.
+    </OL>
+
+<LI>Start the XASECO system:<br>
+    <div>
+    &nbsp;&nbsp;&nbsp;<b><CODE>cd ~/xaseco/</CODE></b><br>
+    &nbsp;&nbsp;&nbsp;<b><CODE>./Aseco.sh</CODE></b> (or <CODE>Aseco.bat</CODE>)<br>
+    </div>
+    You won't see output, but logfile.txt should contain something like the following:<br>
+<PRE>
+[XAseco] PHP Version is 5.3.x on Linux
+[XAseco] Load settings [config.xml]
+[XAseco] Load admin/ops lists [adminops.xml]
+[XAseco] Load banned IPs list [bannedips.xml]
+[XAseco] Load plugins list [plugins.xml]
+[XAseco] Load plugin [plugin.localdatabase.php]
+[XAseco] Load plugin [plugin.rounds.php]
+[...snip plugins...]
+[XAseco] Load plugin [jfreu.plugin.php]
+[XAseco] Load plugin [mistral.idlekick.php]
+[XAseco] Try to connect to TM dedicated server on 127.0.0.1:5000 timeout 180s
+[XAseco] Try to authenticate with username 'SuperAdmin' and password 'PASSWORD'
+[XAseco] Connection established successfully!
+[Local DB] Load settings file
+[Local DB] Try to connect to MySQL server on 'localhost' with database 'aseco'
+[Local DB] MySQL Server Version is 5.1.56-log
+[RASP] Cleaning up unused data
+*-*-*-*-*-* RASP is running! *-*-*-*-*-*
+|...Loading Settings
+|...Loaded!
+|...Checking database structure
+|...Structure OK!
+|...Calculating ranks
+|...Done!
+[04/xx,xx:11:17] Load default style [styles/DarkBlur.xml]
+[04/xx,xx:11:17] Load default admin panel [panels/AdminBelowChat.xml]
+[04/xx,xx:11:17] Load default donate panel [panels/DonateBelowCPList.xml]
+[04/xx,xx:11:17] Load default records panel [panels/RecordsRightBottom.xml]
+[04/xx,xx:11:17] Load default vote panel [panels/VoteBelowChat.xml]
+[04/xx,xx:11:17] ************* (Dedimania) *************
+[04/xx,xx:11:17] * Dataserver connection on Dedimania ...
+[04/xx,xx:11:17] * Try connection on http://dedimania.net:8002/Dedimania ...
+[04/xx,xx:11:18] Webaccess (dedimania.net:80): send: deflate, receive: gzip
+[04/xx,xx:11:18] * Connection and status ok! :)
+[04/xx,xx:11:18] * NEWS (Dedimania, 08/05): news
+[04/xx,xx:11:18] ------------- (Dedimania) -------------
+[04/xx,xx:11:18] Load stats panel [panels/StatsNations.xml]
+[04/xx,xx:11:18] Load auto timelimit config [autotime.xml]
+###############################################################################
+  XASECO v1.1x running on 127.0.0.1:5000
+  Name   : YOUR SERVER NAME - YOUR_SERVER_LOGIN
+  Game   : TmForever United - Stadium - TimeAttack
+  Version: 2.11.26 / 2011-02-21
+  Authors: Florian Schnell & Assembler Maniac
+  Re-Authored: Xymph
+###############################################################################
+Begin Race
+[04/xx,xx:11:18] track changed [none] >> [Pro - 38~74~75~89~93]
+[04/xx,xx:11:18] currently no record on Pro - 38~74~75~89~93
+</PRE>
+    If you get an RPC Permission Error here, there is an XMLRPC port mismatch or the dedicated server isn't running (anymore).
+
+<LI>To start &amp; stop your XASECO on Linux more easily, you can use this <A TARGET="_blank" HREF="http://www.xaseco.org/initd.php">start-up script</A>.
+
+<LI>Edit the <A HREF="/tmn/#config">configuration options</A> to your liking, and restart XASECO.  It should now be ready to manage tracks, receive players, and record... er... records. Congratulations. :-)
+</OL>
+
+Finally, to run another server on the same machine:
+
+<OL>
+
+<LI>Basically follow the same steps above, but use a second user account (e.g. "tmf2"), another new server login/password in dedicated_cfg.txt, a separate server name, a second set of ports (e.g. 2351, 3451 and 5001), a new database (e.g. "aseco2"), optionally a second MySQL account (e.g. "tmf2"), and the corresponding updates in localdatabase.xml and config.xml.
+
+<LI>Don't use symbolic links in the GameData/ directory tree (e.g. to symlink the tracks from the first server to the second one), as the TMF server will crash without an error message.
+
+</OL>
+
+And for the last time, read the <A HREF="/tmf/#resources">readme's and tutorials</A> completely for a more thorough understanding of the entire setup.
+<br><br>
+
+<HR>
+<ADDRESS>
+Copyright &copy; 2007-2013 &ndash; Frans P. de Vries <A HREF="mailto:tm&#64;&#103;&#97;&#109;&#101;&#114;&#115;&#46;&#111;&#114;&#103;">&lt;tm&#64;&#103;&#97;&#109;&#101;&#114;&#115;&#46;&#111;&#114;&#103;&gt;</A>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+Last updated 08-May-2013
+</ADDRESS>
+</BODY>
+</HTML>

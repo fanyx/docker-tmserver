@@ -1,0 +1,717 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>TrackMania Forever methods</title>
+</head>
+<body>
+<h1>Available methods:</h1>
+<ul>
+<li><b>system.listMethods</b><br/>
+array system.listMethods()<br/>
+<font color="0x113355">Return an array of all available XML-RPC methods on this server.</font></li>
+<li><b>system.methodSignature</b><br/>
+array system.methodSignature(string)<br/>
+<font color="0x113355">Given the name of a method, return an array of legal signatures. Each signature is an array of strings.  The first item of each signature is the return type, and any others items are parameter types.</font></li>
+<li><b>system.methodHelp</b><br/>
+string system.methodHelp(string)<br/>
+<font color="0x113355">Given the name of a method, return a help string.</font></li>
+<li><b>system.multicall</b><br/>
+array system.multicall(array)<br/>
+<font color="0x113355">Process an array of calls, and return an array of results.  Calls should be structs of the form {'methodName': string, 'params': array}. Each result will either be a single-item array containing the result value, or a struct of the form {'faultCode': int, 'faultString': string}.  This is useful when you need to make lots of small calls without lots of round trips.</font></li>
+<li><b>Authenticate</b><br/>
+boolean Authenticate(string, string)<br/>
+<font color="0x113355">Allow user authentication by specifying a login and a password, to gain access to the set of functionalities corresponding to this authorization level.</font></li>
+<li><b>ChangeAuthPassword</b><br/>
+boolean ChangeAuthPassword(string, string)<br/>
+<font color="0x113355">Change the password for the specified login/user. Only available to SuperAdmin.</font></li>
+<li><b>EnableCallbacks</b><br/>
+boolean EnableCallbacks(boolean)<br/>
+<font color="0x113355">Allow the GameServer to call you back.</font></li>
+<li><b>GetVersion</b><br/>
+struct GetVersion()<br/>
+<font color="0x113355">Returns a struct with the <i>Name</i>, <i>Version</i> and <i>Build</i> of the application remotely controled.</font></li>
+<li><b>CallVote</b><br/>
+boolean CallVote(string)<br/>
+<font color="0x113355">Call a vote for a cmd. The command is a XML string corresponding to an XmlRpc request. Only available to Admin.</font></li>
+<li><b>CallVoteEx</b><br/>
+boolean CallVoteEx(string, double, int, int)<br/>
+<font color="0x113355">Extended call vote. Same as CallVote, but you can additionally supply specific parameters for this vote: a ratio, a time out and who is voting. Special timeout values: a timeout of '0' means default, '1' means indefinite; a ratio of '-1' means default; Voters values: '0' means only active players, '1' means any player, '2' is for everybody, pure spectators included. Only available to Admin.</font></li>
+<li><b>InternalCallVote</b><br/>
+boolean InternalCallVote()<br/>
+<font color="0x113355">Used internally by game.</font></li>
+<li><b>CancelVote</b><br/>
+boolean CancelVote()<br/>
+<font color="0x113355">Cancel the current vote. Only available to Admin.</font></li>
+<li><b>GetCurrentCallVote</b><br/>
+struct GetCurrentCallVote()<br/>
+<font color="0x113355">Returns the vote currently in progress. The returned structure is { CallerLogin, CmdName, CmdParam }.</font></li>
+<li><b>SetCallVoteTimeOut</b><br/>
+boolean SetCallVoteTimeOut(int)<br/>
+<font color="0x113355">Set a new timeout for waiting for votes. A zero value disables callvote. Only available to Admin. Requires a challenge restart to be taken into account.</font></li>
+<li><b>GetCallVoteTimeOut</b><br/>
+struct GetCallVoteTimeOut()<br/>
+<font color="0x113355">Get the current and next timeout for waiting for votes. The struct returned contains two fields 'CurrentValue' and 'NextValue'.</font></li>
+<li><b>SetCallVoteRatio</b><br/>
+boolean SetCallVoteRatio(double)<br/>
+<font color="0x113355">Set a new default ratio for passing a vote. Must lie between 0 and 1. Only available to Admin.</font></li>
+<li><b>GetCallVoteRatio</b><br/>
+double GetCallVoteRatio()<br/>
+<font color="0x113355">Get the current default ratio for passing a vote. This value lies between 0 and 1.</font></li>
+<li><b>SetCallVoteRatios</b><br/>
+boolean SetCallVoteRatios(array)<br/>
+<font color="0x113355">Set new ratios for passing specific votes. The parameter is an array of structs {string <i>Command</i>, double <i>Ratio</i>}, ratio is in [0,1] or -1 for vote disabled. Only available to Admin.</font></li>
+<li><b>GetCallVoteRatios</b><br/>
+array GetCallVoteRatios()<br/>
+<font color="0x113355">Get the current ratios for passing votes.</font></li>
+<li><b>ChatSendServerMessage</b><br/>
+boolean ChatSendServerMessage(string)<br/>
+<font color="0x113355">Send a text message to all clients without the server login. Only available to Admin.</font></li>
+<li><b>ChatSendServerMessageToLanguage</b><br/>
+boolean ChatSendServerMessageToLanguage(array, string)<br/>
+<font color="0x113355">Send a localised text message to all clients without the server login, or optionally to a Login (which can be a single login or a list of comma-separated logins). The parameter is an array of structures {<i>Lang</i>='??', <i>Text</i>='...'}. If no matching language is found, the last text in the array is used. Only available to Admin.</font></li>
+<li><b>ChatSendServerMessageToId</b><br/>
+boolean ChatSendServerMessageToId(string, int)<br/>
+<font color="0x113355">Send a text message without the server login to the client with the specified PlayerId. Only available to Admin.</font></li>
+<li><b>ChatSendServerMessageToLogin</b><br/>
+boolean ChatSendServerMessageToLogin(string, string)<br/>
+<font color="0x113355">Send a text message without the server login to the client with the specified login. Login can be a single login or a list of comma-separated logins. Only available to Admin.</font></li>
+<li><b>ChatSend</b><br/>
+boolean ChatSend(string)<br/>
+<font color="0x113355">Send a text message to all clients. Only available to Admin.</font></li>
+<li><b>ChatSendToLanguage</b><br/>
+boolean ChatSendToLanguage(array, string)<br/>
+<font color="0x113355">Send a localised text message to all clients, or optionally to a Login (which can be a single login or a list of comma-separated logins). The parameter is an array of structures {<i>Lang</i>='??', <i>Text</i>='...'}. If no matching language is found, the last text in the array is used. Only available to Admin.</font></li>
+<li><b>ChatSendToLogin</b><br/>
+boolean ChatSendToLogin(string, string)<br/>
+<font color="0x113355">Send a text message to the client with the specified login. Login can be a single login or a list of comma-separated logins. Only available to Admin.</font></li>
+<li><b>ChatSendToId</b><br/>
+boolean ChatSendToId(string, int)<br/>
+<font color="0x113355">Send a text message to the client with the specified PlayerId. Only available to Admin.</font></li>
+<li><b>GetChatLines</b><br/>
+array GetChatLines()<br/>
+<font color="0x113355">Returns the last chat lines. Maximum of 40 lines. Only available to Admin.</font></li>
+<li><b>ChatEnableManualRouting</b><br/>
+boolean ChatEnableManualRouting(boolean, boolean)<br/>
+<font color="0x113355">The chat messages are no longer dispatched to the players, they only go to the rpc callback and the controller has to manually forward them. The second (optional) parameter allows all messages from the server to be automatically forwarded. Only available to Admin.</font></li>
+<li><b>ChatForwardToLogin</b><br/>
+boolean ChatForwardToLogin(string, string, string)<br/>
+<font color="0x113355">(Text, SenderLogin, DestLogin) Send a text message to the specified DestLogin (or everybody if empty) on behalf of SenderLogin. DestLogin can be a single login or a list of comma-separated logins. Only available if manual routing is enabled. Only available to Admin.</font></li>
+<li><b>SendNotice</b><br/>
+boolean SendNotice(string, string, int)<br/>
+<font color="0x113355">Display a notice on all clients. The parameters are the text message to display, and the login of the avatar to display next to it (or '' for no avatar), and an optional 'max duration' in seconds (default: 3). Only available to Admin.</font></li>
+<li><b>SendNoticeToId</b><br/>
+boolean SendNoticeToId(int, string, int, int)<br/>
+<font color="0x113355">Display a notice on the client with the specified UId. The parameters are the Uid of the client to whom the notice is sent, the text message to display, and the UId of the avatar to display next to it (or '255' for no avatar), and an optional 'max duration' in seconds (default: 3). Only available to Admin.</font></li>
+<li><b>SendNoticeToLogin</b><br/>
+boolean SendNoticeToLogin(string, string, string, int)<br/>
+<font color="0x113355">Display a notice on the client with the specified login. The parameters are the login of the client to whom the notice is sent, the text message to display, and the login of the avatar to display next to it (or '' for no avatar), and an optional 'max duration' in seconds (default: 3). Login can be a single login or a list of comma-separated logins.  Only available to Admin.</font></li>
+<li><b>SendDisplayManialinkPage</b><br/>
+boolean SendDisplayManialinkPage(string, int, boolean)<br/>
+<font color="0x113355">Display a manialink page on all clients. The parameters are the xml description of the page to display, a timeout to autohide it (0 = permanent), and a boolean to indicate whether the page must be hidden as soon as the user clicks on a page option. Only available to Admin.</font></li>
+<li><b>SendDisplayManialinkPageToId</b><br/>
+boolean SendDisplayManialinkPageToId(int, string, int, boolean)<br/>
+<font color="0x113355">Display a manialink page on the client with the specified UId. The first parameter is the UId of the player, the other are identical to 'SendDisplayManialinkPage'. Only available to Admin.</font></li>
+<li><b>SendDisplayManialinkPageToLogin</b><br/>
+boolean SendDisplayManialinkPageToLogin(string, string, int, boolean)<br/>
+<font color="0x113355">Display a manialink page on the client with the specified login. The first parameter is the login of the player, the other are identical to 'SendDisplayManialinkPage'. Login can be a single login or a list of comma-separated logins. Only available to Admin.</font></li>
+<li><b>SendHideManialinkPage</b><br/>
+boolean SendHideManialinkPage()<br/>
+<font color="0x113355">Hide the displayed manialink page on all clients. Only available to Admin.</font></li>
+<li><b>SendHideManialinkPageToId</b><br/>
+boolean SendHideManialinkPageToId(int)<br/>
+<font color="0x113355">Hide the displayed manialink page on the client with the specified UId. Only available to Admin.</font></li>
+<li><b>SendHideManialinkPageToLogin</b><br/>
+boolean SendHideManialinkPageToLogin(string)<br/>
+<font color="0x113355">Hide the displayed manialink page on the client with the specified login. Login can be a single login or a list of comma-separated logins. Only available to Admin.</font></li>
+<li><b>GetManialinkPageAnswers</b><br/>
+array GetManialinkPageAnswers()<br/>
+<font color="0x113355">Returns the latest results from the current manialink page, as an array of structs {string <i>Login</i>, int <i>PlayerId</i>, int <i>Result</i>} Result==0 -> no answer, Result>0.... -> answer from the player.</font></li>
+<li><b>Kick</b><br/>
+boolean Kick(string, string)<br/>
+<font color="0x113355">Kick the player with the specified login, with an optional message. Only available to Admin.</font></li>
+<li><b>KickId</b><br/>
+boolean KickId(int, string)<br/>
+<font color="0x113355">Kick the player with the specified PlayerId, with an optional message. Only available to Admin.</font></li>
+<li><b>Ban</b><br/>
+boolean Ban(string, string)<br/>
+<font color="0x113355">Ban the player with the specified login, with an optional message. Only available to Admin.</font></li>
+<li><b>BanAndBlackList</b><br/>
+boolean BanAndBlackList(string, string, boolean)<br/>
+<font color="0x113355">Ban the player with the specified login, with a message. Add it to the black list, and optionally save the new list. Only available to Admin.</font></li>
+<li><b>BanId</b><br/>
+boolean BanId(int, string)<br/>
+<font color="0x113355">Ban the player with the specified PlayerId, with an optional message. Only available to Admin.</font></li>
+<li><b>UnBan</b><br/>
+boolean UnBan(string)<br/>
+<font color="0x113355">Unban the player with the specified login. Only available to Admin.</font></li>
+<li><b>CleanBanList</b><br/>
+boolean CleanBanList()<br/>
+<font color="0x113355">Clean the ban list of the server. Only available to Admin.</font></li>
+<li><b>GetBanList</b><br/>
+array GetBanList(int, int)<br/>
+<font color="0x113355">Returns the list of banned players. This method takes two parameters. The first parameter specifies the maximum number of infos to be returned, and the second one the starting index in the list. The list is an array of structures. Each structure contains the following fields : <i>Login</i>, <i>ClientName</i> and <i>IPAddress</i>.</font></li>
+<li><b>BlackList</b><br/>
+boolean BlackList(string)<br/>
+<font color="0x113355">Blacklist the player with the specified login. Only available to SuperAdmin.</font></li>
+<li><b>BlackListId</b><br/>
+boolean BlackListId(int)<br/>
+<font color="0x113355">Blacklist the player with the specified PlayerId. Only available to SuperAdmin.</font></li>
+<li><b>UnBlackList</b><br/>
+boolean UnBlackList(string)<br/>
+<font color="0x113355">UnBlackList the player with the specified login. Only available to SuperAdmin.</font></li>
+<li><b>CleanBlackList</b><br/>
+boolean CleanBlackList()<br/>
+<font color="0x113355">Clean the blacklist of the server. Only available to SuperAdmin.</font></li>
+<li><b>GetBlackList</b><br/>
+array GetBlackList(int, int)<br/>
+<font color="0x113355">Returns the list of blacklisted players. This method takes two parameters. The first parameter specifies the maximum number of infos to be returned, and the second one the starting index in the list. The list is an array of structures. Each structure contains the following fields : <i>Login</i>.</font></li>
+<li><b>LoadBlackList</b><br/>
+boolean LoadBlackList(string)<br/>
+<font color="0x113355">Load the black list file with the specified file name. Only available to Admin.</font></li>
+<li><b>SaveBlackList</b><br/>
+boolean SaveBlackList(string)<br/>
+<font color="0x113355">Save the black list in the file with specified file name. Only available to Admin.</font></li>
+<li><b>AddGuest</b><br/>
+boolean AddGuest(string)<br/>
+<font color="0x113355">Add the player with the specified login on the guest list. Only available to Admin.</font></li>
+<li><b>AddGuestId</b><br/>
+boolean AddGuestId(int)<br/>
+<font color="0x113355">Add the player with the specified PlayerId on the guest list. Only available to Admin.</font></li>
+<li><b>RemoveGuest</b><br/>
+boolean RemoveGuest(string)<br/>
+<font color="0x113355">Remove the player with the specified login from the guest list. Only available to Admin.</font></li>
+<li><b>RemoveGuestId</b><br/>
+boolean RemoveGuestId(int)<br/>
+<font color="0x113355">Remove the player with the specified PlayerId from the guest list. Only available to Admin.</font></li>
+<li><b>CleanGuestList</b><br/>
+boolean CleanGuestList()<br/>
+<font color="0x113355">Clean the guest list of the server. Only available to Admin.</font></li>
+<li><b>GetGuestList</b><br/>
+array GetGuestList(int, int)<br/>
+<font color="0x113355">Returns the list of players on the guest list. This method takes two parameters. The first parameter specifies the maximum number of infos to be returned, and the second one the starting index in the list. The list is an array of structures. Each structure contains the following fields : <i>Login</i>.</font></li>
+<li><b>LoadGuestList</b><br/>
+boolean LoadGuestList(string)<br/>
+<font color="0x113355">Load the guest list file with the specified file name. Only available to Admin.</font></li>
+<li><b>SaveGuestList</b><br/>
+boolean SaveGuestList(string)<br/>
+<font color="0x113355">Save the guest list in the file with specified file name. Only available to Admin.</font></li>
+<li><b>SetBuddyNotification</b><br/>
+boolean SetBuddyNotification(string, boolean)<br/>
+<font color="0x113355">Sets whether buddy notifications should be sent in the chat. <i>login</i> is the login of the player, or '' for global setting, and <i>enabled</i> is the value. Only available to Admin.</font></li>
+<li><b>GetBuddyNotification</b><br/>
+boolean GetBuddyNotification(string)<br/>
+<font color="0x113355">Gets whether buddy notifications are enabled for <i>login</i>, or '' to get the global setting.</font></li>
+<li><b>WriteFile</b><br/>
+boolean WriteFile(string, base64)<br/>
+<font color="0x113355">Write the data to the specified file. The filename is relative to the Tracks path. Only available to Admin.</font></li>
+<li><b>TunnelSendDataToId</b><br/>
+boolean TunnelSendDataToId(int, base64)<br/>
+<font color="0x113355">Send the data to the specified player. Only available to Admin.</font></li>
+<li><b>TunnelSendDataToLogin</b><br/>
+boolean TunnelSendDataToLogin(string, base64)<br/>
+<font color="0x113355">Send the data to the specified player. Login can be a single login or a list of comma-separated logins. Only available to Admin.</font></li>
+<li><b>Echo</b><br/>
+boolean Echo(string, string)<br/>
+<font color="0x113355">Just log the parameters and invoke a callback. Can be used to talk to other xmlrpc clients connected, or to make custom votes. If used in a callvote, the first parameter will be used as the vote message on the clients. Only available to Admin.</font></li>
+<li><b>Ignore</b><br/>
+boolean Ignore(string)<br/>
+<font color="0x113355">Ignore the player with the specified login. Only available to Admin.</font></li>
+<li><b>IgnoreId</b><br/>
+boolean IgnoreId(int)<br/>
+<font color="0x113355">Ignore the player with the specified PlayerId. Only available to Admin.</font></li>
+<li><b>UnIgnore</b><br/>
+boolean UnIgnore(string)<br/>
+<font color="0x113355">Unignore the player with the specified login. Only available to Admin.</font></li>
+<li><b>UnIgnoreId</b><br/>
+boolean UnIgnoreId(int)<br/>
+<font color="0x113355">Unignore the player with the specified PlayerId. Only available to Admin.</font></li>
+<li><b>CleanIgnoreList</b><br/>
+boolean CleanIgnoreList()<br/>
+<font color="0x113355">Clean the ignore list of the server. Only available to Admin.</font></li>
+<li><b>GetIgnoreList</b><br/>
+array GetIgnoreList(int, int)<br/>
+<font color="0x113355">Returns the list of ignored players. This method takes two parameters. The first parameter specifies the maximum number of infos to be returned, and the second one the starting index in the list. The list is an array of structures. Each structure contains the following fields : <i>Login</i>.</font></li>
+<li><b>Pay</b><br/>
+int Pay(string, int, string)<br/>
+<font color="0x113355">Pay coppers from the server account to a player, returns the BillId. This method takes three parameters: <i>Login</i> of the payee, <i>Coppers</i> to pay and a <i>Label</i> to send with the payment. The creation of the transaction itself may cost coppers, so you need to have coppers on the server account. Only available to Admin.</font></li>
+<li><b>SendBill</b><br/>
+int SendBill(string, int, string, string)<br/>
+<font color="0x113355">Create a bill, send it to a player, and return the BillId. This method takes four parameters: <i>LoginFrom</i> of the payer, <i>Coppers</i> the player has to pay, <i>Label</i> of the transaction and an optional <i>LoginTo</i> of the payee (if empty string, then the server account is used). The creation of the transaction itself may cost coppers, so you need to have coppers on the server account. Only available to Admin.</font></li>
+<li><b>GetBillState</b><br/>
+struct GetBillState(int)<br/>
+<font color="0x113355">Returns the current state of a bill. This method takes one parameter, the <i>BillId</i>. Returns a struct containing <i>State</i>, <i>StateName</i> and <i>TransactionId</i>. Possible enum values are: <i>CreatingTransaction</i>, <i>Issued</i>, <i>ValidatingPayement</i>, <i>Payed</i>, <i>Refused</i>, <i>Error</i>.</font></li>
+<li><b>GetServerCoppers</b><br/>
+int GetServerCoppers()<br/>
+<font color="0x113355">Returns the current number of coppers on the server account.</font></li>
+<li><b>GetSystemInfo</b><br/>
+struct GetSystemInfo()<br/>
+<font color="0x113355">Get some system infos, including connection rates (in kbps).</font></li>
+<li><b>SetConnectionRates</b><br/>
+boolean SetConnectionRates(int, int)<br/>
+<font color="0x113355">Set the download and upload rates (in kbps).</font></li>
+<li><b>SetServerName</b><br/>
+boolean SetServerName(string)<br/>
+<font color="0x113355">Set a new server name in utf8 format. Only available to Admin.</font></li>
+<li><b>GetServerName</b><br/>
+string GetServerName()<br/>
+<font color="0x113355">Get the server name in utf8 format.</font></li>
+<li><b>SetServerComment</b><br/>
+boolean SetServerComment(string)<br/>
+<font color="0x113355">Set a new server comment in utf8 format. Only available to Admin.</font></li>
+<li><b>GetServerComment</b><br/>
+string GetServerComment()<br/>
+<font color="0x113355">Get the server comment in utf8 format.</font></li>
+<li><b>SetHideServer</b><br/>
+boolean SetHideServer(int)<br/>
+<font color="0x113355">Set whether the server should be hidden from the public server list (0 = visible, 1 = always hidden, 2 = hidden from nations). Only available to Admin.</font></li>
+<li><b>GetHideServer</b><br/>
+int GetHideServer()<br/>
+<font color="0x113355">Get whether the server wants to be hidden from the public server list.</font></li>
+<li><b>IsRelayServer</b><br/>
+boolean IsRelayServer()<br/>
+<font color="0x113355">Returns true if this is a relay server.</font></li>
+<li><b>SetServerPassword</b><br/>
+boolean SetServerPassword(string)<br/>
+<font color="0x113355">Set a new password for the server. Only available to Admin.</font></li>
+<li><b>GetServerPassword</b><br/>
+string GetServerPassword()<br/>
+<font color="0x113355">Get the server password if called as Admin or Super Admin, else returns if a password is needed or not.</font></li>
+<li><b>SetServerPasswordForSpectator</b><br/>
+boolean SetServerPasswordForSpectator(string)<br/>
+<font color="0x113355">Set a new password for the spectator mode. Only available to Admin.</font></li>
+<li><b>GetServerPasswordForSpectator</b><br/>
+string GetServerPasswordForSpectator()<br/>
+<font color="0x113355">Get the password for spectator mode if called as Admin or Super Admin, else returns if a password is needed or not.</font></li>
+<li><b>SetMaxPlayers</b><br/>
+boolean SetMaxPlayers(int)<br/>
+<font color="0x113355">Set a new maximum number of players. Only available to Admin. Requires a challenge restart to be taken into account.</font></li>
+<li><b>GetMaxPlayers</b><br/>
+struct GetMaxPlayers()<br/>
+<font color="0x113355">Get the current and next maximum number of players allowed on server. The struct returned contains two fields <i>CurrentValue</i> and <i>NextValue</i>.</font></li>
+<li><b>SetMaxSpectators</b><br/>
+boolean SetMaxSpectators(int)<br/>
+<font color="0x113355">Set a new maximum number of Spectators. Only available to Admin. Requires a challenge restart to be taken into account.</font></li>
+<li><b>GetMaxSpectators</b><br/>
+struct GetMaxSpectators()<br/>
+<font color="0x113355">Get the current and next maximum number of Spectators allowed on server. The struct returned contains two fields <i>CurrentValue</i> and <i>NextValue</i>.</font></li>
+<li><b>EnableP2PUpload</b><br/>
+boolean EnableP2PUpload(boolean)<br/>
+<font color="0x113355">Enable or disable peer-to-peer upload from server. Only available to Admin.</font></li>
+<li><b>IsP2PUpload</b><br/>
+boolean IsP2PUpload()<br/>
+<font color="0x113355">Returns if the peer-to-peer upload from server is enabled.</font></li>
+<li><b>EnableP2PDownload</b><br/>
+boolean EnableP2PDownload(boolean)<br/>
+<font color="0x113355">Enable or disable peer-to-peer download for server. Only available to Admin.</font></li>
+<li><b>IsP2PDownload</b><br/>
+boolean IsP2PDownload()<br/>
+<font color="0x113355">Returns if the peer-to-peer download for server is enabled.</font></li>
+<li><b>AllowChallengeDownload</b><br/>
+boolean AllowChallengeDownload(boolean)<br/>
+<font color="0x113355">Allow clients to download challenges from the server. Only available to Admin.</font></li>
+<li><b>IsChallengeDownloadAllowed</b><br/>
+boolean IsChallengeDownloadAllowed()<br/>
+<font color="0x113355">Returns if clients can download challenges from the server.</font></li>
+<li><b>AutoSaveReplays</b><br/>
+boolean AutoSaveReplays(boolean)<br/>
+<font color="0x113355">Enable the autosaving of all replays (vizualisable replays with all players, but not validable) on the server. Only available to SuperAdmin.</font></li>
+<li><b>AutoSaveValidationReplays</b><br/>
+boolean AutoSaveValidationReplays(boolean)<br/>
+<font color="0x113355">Enable the autosaving on the server of validation replays, every time a player makes a new time. Only available to SuperAdmin.</font></li>
+<li><b>IsAutoSaveReplaysEnabled</b><br/>
+boolean IsAutoSaveReplaysEnabled()<br/>
+<font color="0x113355">Returns if autosaving of all replays is enabled on the server.</font></li>
+<li><b>IsAutoSaveValidationReplaysEnabled</b><br/>
+boolean IsAutoSaveValidationReplaysEnabled()<br/>
+<font color="0x113355">Returns if autosaving of validation replays is enabled on the server.</font></li>
+<li><b>SaveCurrentReplay</b><br/>
+boolean SaveCurrentReplay(string)<br/>
+<font color="0x113355">Saves the current replay (vizualisable replays with all players, but not validable). Pass a filename, or '' for an automatic filename. Only available to Admin.</font></li>
+<li><b>SaveBestGhostsReplay</b><br/>
+boolean SaveBestGhostsReplay(string, string)<br/>
+<font color="0x113355">Saves a replay with the ghost of all the players' best race. First parameter is the login of the player (or '' for all players), Second parameter is the filename, or '' for an automatic filename. Only available to Admin.</font></li>
+<li><b>GetValidationReplay</b><br/>
+base64 GetValidationReplay(string)<br/>
+<font color="0x113355">Returns a replay containing the data needed to validate the current best time of the player. The parameter is the login of the player.</font></li>
+<li><b>SetLadderMode</b><br/>
+boolean SetLadderMode(int)<br/>
+<font color="0x113355">Set a new ladder mode between ladder disabled (0) and forced (1). Only available to Admin. Requires a challenge restart to be taken into account.</font></li>
+<li><b>GetLadderMode</b><br/>
+struct GetLadderMode()<br/>
+<font color="0x113355">Get the current and next ladder mode on server. The struct returned contains two fields <i>CurrentValue</i> and <i>NextValue</i>.</font></li>
+<li><b>GetLadderServerLimits</b><br/>
+struct GetLadderServerLimits()<br/>
+<font color="0x113355">Get the ladder points limit for the players allowed on this server. The struct returned contains two fields <i>LadderServerLimitMin</i> and <i>LadderServerLimitMax</i>.</font></li>
+<li><b>SetVehicleNetQuality</b><br/>
+boolean SetVehicleNetQuality(int)<br/>
+<font color="0x113355">Set the network vehicle quality to Fast (0) or High (1). Only available to Admin. Requires a challenge restart to be taken into account.</font></li>
+<li><b>GetVehicleNetQuality</b><br/>
+struct GetVehicleNetQuality()<br/>
+<font color="0x113355">Get the current and next network vehicle quality on server. The struct returned contains two fields <i>CurrentValue</i> and <i>NextValue</i>.</font></li>
+<li><b>SetServerOptions</b><br/>
+boolean SetServerOptions(struct)<br/>
+<font color="0x113355">Set new server options using the struct passed as parameters. This struct must contain the following fields : <i>Name</i>, <i>Comment</i>, <i>Password</i>, <i>PasswordForSpectator</i>, <i>NextMaxPlayers</i>, <i>NextMaxSpectators</i>, <i>IsP2PUpload</i>, <i>IsP2PDownload</i>, <i>NextLadderMode</i>, <i>NextVehicleNetQuality</i>, <i>NextCallVoteTimeOut</i>, <i>CallVoteRatio</i>, <i>AllowChallengeDownload</i>, <i>AutoSaveReplays</i>, and optionally for forever: <i>RefereePassword</i>, <i>RefereeMode</i>, <i>AutoSaveValidationReplays</i>, <i>HideServer</i>, <i>UseChangingValidationSeed</i>. Only available to Admin. A change of NextMaxPlayers, NextMaxSpectators, NextLadderMode, NextVehicleNetQuality, NextCallVoteTimeOut or UseChangingValidationSeed requires a challenge restart to be taken into account.</font></li>
+<li><b>GetServerOptions</b><br/>
+struct GetServerOptions(int)<br/>
+<font color="0x113355">Optional parameter for compatibility: struct version (0 = united, 1 = forever). Returns a struct containing the server options: <i>Name</i>, <i>Comment</i>, <i>Password</i>, <i>PasswordForSpectator</i>, <i>CurrentMaxPlayers</i>, <i>NextMaxPlayers</i>, <i>CurrentMaxSpectators</i>, <i>NextMaxSpectators</i>, <i>IsP2PUpload</i>, <i>IsP2PDownload</i>, <i>CurrentLadderMode</i>, <i>NextLadderMode</i>, <i>CurrentVehicleNetQuality</i>, <i>NextVehicleNetQuality</i>, <i>CurrentCallVoteTimeOut</i>, <i>NextCallVoteTimeOut</i>, <i>CallVoteRatio</i>, <i>AllowChallengeDownload</i> and <i>AutoSaveReplays</i>, and additionally for forever: <i>RefereePassword</i>, <i>RefereeMode</i>, <i>AutoSaveValidationReplays</i>, <i>HideServer</i>, <i>CurrentUseChangingValidationSeed</i>, <i>NextUseChangingValidationSeed</i>.</font></li>
+<li><b>SetServerPackMask</b><br/>
+boolean SetServerPackMask(string)<br/>
+<font color="0x113355">Defines the packmask of the server. Can be 'United', 'Nations', 'Sunrise', 'Original', or any of the environment names. (Only challenges matching the packmask will be allowed on the server, so that player connecting to it know what to expect.) Only available when the server is stopped. Only available to Admin.</font></li>
+<li><b>GetServerPackMask</b><br/>
+string GetServerPackMask()<br/>
+<font color="0x113355">Get the packmask of the server.</font></li>
+<li><b>SetForcedMods</b><br/>
+boolean SetForcedMods(boolean, array)<br/>
+<font color="0x113355">Set the mods to apply on the clients. Parameters: <i>Override</i>, if true even the challenges with a mod will be overridden by the server setting; and <i>Mods</i>, an array of structures [{<i>EnvName</i>, <i>Url</i>}, ...]. Requires a challenge restart to be taken into account. Only available to Admin.</font></li>
+<li><b>GetForcedMods</b><br/>
+struct GetForcedMods()<br/>
+<font color="0x113355">Get the mods settings.</font></li>
+<li><b>SetForcedMusic</b><br/>
+boolean SetForcedMusic(boolean, string)<br/>
+<font color="0x113355">Set the music to play on the clients. Parameters: <i>Override</i>, if true even the challenges with a custom music will be overridden by the server setting, and a <i>UrlOrFileName</i> for the music. Requires a challenge restart to be taken into account. Only available to Admin.</font></li>
+<li><b>GetForcedMusic</b><br/>
+struct GetForcedMusic()<br/>
+<font color="0x113355">Get the music setting.</font></li>
+<li><b>SetForcedSkins</b><br/>
+boolean SetForcedSkins(array)<br/>
+<font color="0x113355">Defines a list of remappings for player skins. It expects a list of structs <i>Orig</i>, <i>Name</i>, <i>Checksum</i>, <i>Url</i>.  Orig is the name of the skin to remap, or '*' for any other. Name, Checksum, Url define the skin to use. (They are optional, you may set value '' for any of those. All 3 null means same as Orig). Will only affect players connecting after the value is set. Only available to Admin.</font></li>
+<li><b>GetForcedSkins</b><br/>
+array GetForcedSkins()<br/>
+<font color="0x113355">Get the current forced skins.</font></li>
+<li><b>GetLastConnectionErrorMessage</b><br/>
+string GetLastConnectionErrorMessage()<br/>
+<font color="0x113355">Returns the last error message for an internet connection. Only available to Admin.</font></li>
+<li><b>SetRefereePassword</b><br/>
+boolean SetRefereePassword(string)<br/>
+<font color="0x113355">Set a new password for the referee mode. Only available to Admin.</font></li>
+<li><b>GetRefereePassword</b><br/>
+string GetRefereePassword()<br/>
+<font color="0x113355">Get the password for referee mode if called as Admin or Super Admin, else returns if a password is needed or not.</font></li>
+<li><b>SetRefereeMode</b><br/>
+boolean SetRefereeMode(int)<br/>
+<font color="0x113355">Set the referee validation mode. 0 = validate the top3 players, 1 = validate all players. Only available to Admin.</font></li>
+<li><b>GetRefereeMode</b><br/>
+int GetRefereeMode()<br/>
+<font color="0x113355">Get the referee validation mode.</font></li>
+<li><b>SetUseChangingValidationSeed</b><br/>
+boolean SetUseChangingValidationSeed(boolean)<br/>
+<font color="0x113355">Set whether the game should use a variable validation seed or not. Only available to Admin. Requires a challenge restart to be taken into account.</font></li>
+<li><b>GetUseChangingValidationSeed</b><br/>
+struct GetUseChangingValidationSeed()<br/>
+<font color="0x113355">Get the current and next value of UseChangingValidationSeed. The struct returned contains two fields <i>CurrentValue</i> and <i>NextValue</i>.</font></li>
+<li><b>SetWarmUp</b><br/>
+boolean SetWarmUp(boolean)<br/>
+<font color="0x113355">Sets whether the server is in warm-up phase or not. Only available to Admin.</font></li>
+<li><b>GetWarmUp</b><br/>
+boolean GetWarmUp()<br/>
+<font color="0x113355">Returns whether the server is in warm-up phase.</font></li>
+<li><b>ChallengeRestart</b><br/>
+boolean ChallengeRestart()<br/>
+<font color="0x113355">Restarts the challenge, with an optional boolean parameter <i>DontClearCupScores</i> (only available in cup mode). Only available to Admin.</font></li>
+<li><b>RestartChallenge</b><br/>
+boolean RestartChallenge()<br/>
+<font color="0x113355">Restarts the challenge, with an optional boolean parameter <i>DontClearCupScores</i> (only available in cup mode). Only available to Admin.</font></li>
+<li><b>NextChallenge</b><br/>
+boolean NextChallenge()<br/>
+<font color="0x113355">Switch to next challenge, with an optional boolean parameter <i>DontClearCupScores</i> (only available in cup mode). Only available to Admin.</font></li>
+<li><b>StopServer</b><br/>
+boolean StopServer()<br/>
+<font color="0x113355">Stop the server. Only available to SuperAdmin.</font></li>
+<li><b>ForceEndRound</b><br/>
+boolean ForceEndRound()<br/>
+<font color="0x113355">In Rounds or Laps mode, force the end of round without waiting for all players to giveup/finish. Only available to Admin.</font></li>
+<li><b>SetGameInfos</b><br/>
+boolean SetGameInfos(struct)<br/>
+<font color="0x113355">Set new game settings using the struct passed as parameters. This struct must contain the following fields : <i>GameMode</i>, <i>ChatTime</i>, <i>RoundsPointsLimit</i>, <i>RoundsUseNewRules</i>, <i>RoundsForcedLaps</i>, <i>TimeAttackLimit</i>, <i>TimeAttackSynchStartPeriod</i>, <i>TeamPointsLimit</i>, <i>TeamMaxPoints</i>, <i>TeamUseNewRules</i>, <i>LapsNbLaps</i>, <i>LapsTimeLimit</i>, <i>FinishTimeout</i>, and optionally: <i>AllWarmUpDuration</i>, <i>DisableRespawn</i>, <i>ForceShowAllOpponents</i>, <i>RoundsPointsLimitNewRules</i>, <i>TeamPointsLimitNewRules</i>, <i>CupPointsLimit</i>, <i>CupRoundsPerChallenge</i>, <i>CupNbWinners</i>, <i>CupWarmUpDuration</i>. Only available to Admin. Requires a challenge restart to be taken into account.</font></li>
+<li><b>GetCurrentGameInfo</b><br/>
+struct GetCurrentGameInfo(int)<br/>
+<font color="0x113355">Optional parameter for compatibility: struct version (0 = united, 1 = forever). Returns a struct containing the current game settings, ie: <i>GameMode</i>, <i>ChatTime</i>, <i>NbChallenge</i>, <i>RoundsPointsLimit</i>, <i>RoundsUseNewRules</i>, <i>RoundsForcedLaps</i>, <i>TimeAttackLimit</i>, <i>TimeAttackSynchStartPeriod</i>, <i>TeamPointsLimit</i>, <i>TeamMaxPoints</i>, <i>TeamUseNewRules</i>, <i>LapsNbLaps</i>, <i>LapsTimeLimit</i>, <i>FinishTimeout</i>, and additionally for version 1: <i>AllWarmUpDuration</i>, <i>DisableRespawn</i>, <i>ForceShowAllOpponents</i>, <i>RoundsPointsLimitNewRules</i>, <i>TeamPointsLimitNewRules</i>, <i>CupPointsLimit</i>, <i>CupRoundsPerChallenge</i>, <i>CupNbWinners</i>, <i>CupWarmUpDuration</i>.</font></li>
+<li><b>GetNextGameInfo</b><br/>
+struct GetNextGameInfo(int)<br/>
+<font color="0x113355">Optional parameter for compatibility: struct version (0 = united, 1 = forever). Returns a struct containing the game settings for the next challenge, ie: <i>GameMode</i>, <i>ChatTime</i>, <i>NbChallenge</i>, <i>RoundsPointsLimit</i>, <i>RoundsUseNewRules</i>, <i>RoundsForcedLaps</i>, <i>TimeAttackLimit</i>, <i>TimeAttackSynchStartPeriod</i>, <i>TeamPointsLimit</i>, <i>TeamMaxPoints</i>, <i>TeamUseNewRules</i>, <i>LapsNbLaps</i>, <i>LapsTimeLimit</i>, <i>FinishTimeout</i>, and additionally for version 1: <i>AllWarmUpDuration</i>, <i>DisableRespawn</i>, <i>ForceShowAllOpponents</i>, <i>RoundsPointsLimitNewRules</i>, <i>TeamPointsLimitNewRules</i>, <i>CupPointsLimit</i>, <i>CupRoundsPerChallenge</i>, <i>CupNbWinners</i>, <i>CupWarmUpDuration</i>.</font></li>
+<li><b>GetGameInfos</b><br/>
+struct GetGameInfos(int)<br/>
+<font color="0x113355">Optional parameter for compatibility: struct version (0 = united, 1 = forever). Returns a struct containing two other structures, the first containing the current game settings and the second the game settings for next challenge. The first structure is named <i>CurrentGameInfos</i> and the second <i>NextGameInfos</i>.</font></li>
+<li><b>SetGameMode</b><br/>
+boolean SetGameMode(int)<br/>
+<font color="0x113355">Set a new game mode between Rounds (0), TimeAttack (1), Team (2), Laps (3), Stunts (4) and Cup (5). Only available to Admin. Requires a challenge restart to be taken into account.</font></li>
+<li><b>GetGameMode</b><br/>
+int GetGameMode()<br/>
+<font color="0x113355">Get the current game mode.</font></li>
+<li><b>SetChatTime</b><br/>
+boolean SetChatTime(int)<br/>
+<font color="0x113355">Set a new chat time value in milliseconds (actually 'chat time' is the duration of the end race podium, 0 means no podium displayed.). Only available to Admin.</font></li>
+<li><b>GetChatTime</b><br/>
+struct GetChatTime()<br/>
+<font color="0x113355">Get the current and next chat time. The struct returned contains two fields <i>CurrentValue</i> and <i>NextValue</i>.</font></li>
+<li><b>SetFinishTimeout</b><br/>
+boolean SetFinishTimeout(int)<br/>
+<font color="0x113355">Set a new finish timeout (for rounds/laps mode) value in milliseconds. 0 means default. 1 means adaptative to the duration of the challenge. Only available to Admin. Requires a challenge restart to be taken into account.</font></li>
+<li><b>GetFinishTimeout</b><br/>
+struct GetFinishTimeout()<br/>
+<font color="0x113355">Get the current and next FinishTimeout. The struct returned contains two fields <i>CurrentValue</i> and <i>NextValue</i>.</font></li>
+<li><b>SetAllWarmUpDuration</b><br/>
+boolean SetAllWarmUpDuration(int)<br/>
+<font color="0x113355">Set whether to enable the automatic warm-up phase in all modes. 0 = no, otherwise it's the duration of the phase, expressed in number of rounds (in rounds/team mode), or in number of times the gold medal time (other modes). Only available to Admin. Requires a challenge restart to be taken into account.</font></li>
+<li><b>GetAllWarmUpDuration</b><br/>
+struct GetAllWarmUpDuration()<br/>
+<font color="0x113355">Get whether the automatic warm-up phase is enabled in all modes. The struct returned contains two fields <i>CurrentValue</i> and <i>NextValue</i>.</font></li>
+<li><b>SetDisableRespawn</b><br/>
+boolean SetDisableRespawn(boolean)<br/>
+<font color="0x113355">Set whether to disallow players to respawn. Only available to Admin. Requires a challenge restart to be taken into account.</font></li>
+<li><b>GetDisableRespawn</b><br/>
+struct GetDisableRespawn()<br/>
+<font color="0x113355">Get whether players are disallowed to respawn. The struct returned contains two fields <i>CurrentValue</i> and <i>NextValue</i>.</font></li>
+<li><b>SetForceShowAllOpponents</b><br/>
+boolean SetForceShowAllOpponents(int)<br/>
+<font color="0x113355">Set whether to override the players preferences and always display all opponents (0=no override, 1=show all, other value=minimum number of opponents). Only available to Admin. Requires a challenge restart to be taken into account.</font></li>
+<li><b>GetForceShowAllOpponents</b><br/>
+struct GetForceShowAllOpponents()<br/>
+<font color="0x113355">Get whether players are forced to show all opponents. The struct returned contains two fields <i>CurrentValue</i> and <i>NextValue</i>.</font></li>
+<li><b>SetTimeAttackLimit</b><br/>
+boolean SetTimeAttackLimit(int)<br/>
+<font color="0x113355">Set a new time limit for time attack mode. Only available to Admin. Requires a challenge restart to be taken into account.</font></li>
+<li><b>GetTimeAttackLimit</b><br/>
+struct GetTimeAttackLimit()<br/>
+<font color="0x113355">Get the current and next time limit for time attack mode. The struct returned contains two fields <i>CurrentValue</i> and <i>NextValue</i>.</font></li>
+<li><b>SetTimeAttackSynchStartPeriod</b><br/>
+boolean SetTimeAttackSynchStartPeriod(int)<br/>
+<font color="0x113355">Set a new synchronized start period for time attack mode. Only available to Admin. Requires a challenge restart to be taken into account.</font></li>
+<li><b>GetTimeAttackSynchStartPeriod</b><br/>
+struct GetTimeAttackSynchStartPeriod()<br/>
+<font color="0x113355">Get the current and synchronized start period for time attack mode. The struct returned contains two fields <i>CurrentValue</i> and <i>NextValue</i>.</font></li>
+<li><b>SetLapsTimeLimit</b><br/>
+boolean SetLapsTimeLimit(int)<br/>
+<font color="0x113355">Set a new time limit for laps mode. Only available to Admin. Requires a challenge restart to be taken into account.</font></li>
+<li><b>GetLapsTimeLimit</b><br/>
+struct GetLapsTimeLimit()<br/>
+<font color="0x113355">Get the current and next time limit for laps mode. The struct returned contains two fields <i>CurrentValue</i> and <i>NextValue</i>.</font></li>
+<li><b>SetNbLaps</b><br/>
+boolean SetNbLaps(int)<br/>
+<font color="0x113355">Set a new number of laps for laps mode. Only available to Admin. Requires a challenge restart to be taken into account.</font></li>
+<li><b>GetNbLaps</b><br/>
+struct GetNbLaps()<br/>
+<font color="0x113355">Get the current and next number of laps for laps mode. The struct returned contains two fields <i>CurrentValue</i> and <i>NextValue</i>.</font></li>
+<li><b>SetRoundForcedLaps</b><br/>
+boolean SetRoundForcedLaps(int)<br/>
+<font color="0x113355">Set a new number of laps for rounds mode (0 = default, use the number of laps from the challenges, otherwise forces the number of rounds for multilaps challenges). Only available to Admin. Requires a challenge restart to be taken into account.</font></li>
+<li><b>GetRoundForcedLaps</b><br/>
+struct GetRoundForcedLaps()<br/>
+<font color="0x113355">Get the current and next number of laps for rounds mode. The struct returned contains two fields <i>CurrentValue</i> and <i>NextValue</i>.</font></li>
+<li><b>SetRoundPointsLimit</b><br/>
+boolean SetRoundPointsLimit(int)<br/>
+<font color="0x113355">Set a new points limit for rounds mode (value set depends on UseNewRulesRound). Only available to Admin. Requires a challenge restart to be taken into account.</font></li>
+<li><b>GetRoundPointsLimit</b><br/>
+struct GetRoundPointsLimit()<br/>
+<font color="0x113355">Get the current and next points limit for rounds mode (values returned depend on UseNewRulesRound). The struct returned contains two fields <i>CurrentValue</i> and <i>NextValue</i>.</font></li>
+<li><b>SetRoundCustomPoints</b><br/>
+boolean SetRoundCustomPoints(array, boolean)<br/>
+<font color="0x113355">Set the points used for the scores in rounds mode. <i>Points</i> is an array of decreasing integers for the players from the first to last. And you can add an optional boolean to relax the constraint checking on the scores. Only available to Admin.</font></li>
+<li><b>GetRoundCustomPoints</b><br/>
+array GetRoundCustomPoints()<br/>
+<font color="0x113355">Gets the points used for the scores in rounds mode.</font></li>
+<li><b>SetUseNewRulesRound</b><br/>
+boolean SetUseNewRulesRound(boolean)<br/>
+<font color="0x113355">Set if new rules are used for rounds mode. Only available to Admin. Requires a challenge restart to be taken into account.</font></li>
+<li><b>GetUseNewRulesRound</b><br/>
+struct GetUseNewRulesRound()<br/>
+<font color="0x113355">Get if the new rules are used for rounds mode (Current and next values). The struct returned contains two fields <i>CurrentValue</i> and <i>NextValue</i>.</font></li>
+<li><b>SetTeamPointsLimit</b><br/>
+boolean SetTeamPointsLimit(int)<br/>
+<font color="0x113355">Set a new points limit for team mode (value set depends on UseNewRulesTeam). Only available to Admin. Requires a challenge restart to be taken into account.</font></li>
+<li><b>GetTeamPointsLimit</b><br/>
+struct GetTeamPointsLimit()<br/>
+<font color="0x113355">Get the current and next points limit for team mode (values returned depend on UseNewRulesTeam). The struct returned contains two fields <i>CurrentValue</i> and <i>NextValue</i>.</font></li>
+<li><b>SetMaxPointsTeam</b><br/>
+boolean SetMaxPointsTeam(int)<br/>
+<font color="0x113355">Set a new number of maximum points per round for team mode. Only available to Admin. Requires a challenge restart to be taken into account.</font></li>
+<li><b>GetMaxPointsTeam</b><br/>
+struct GetMaxPointsTeam()<br/>
+<font color="0x113355">Get the current and next number of maximum points per round for team mode. The struct returned contains two fields <i>CurrentValue</i> and <i>NextValue</i>.</font></li>
+<li><b>SetUseNewRulesTeam</b><br/>
+boolean SetUseNewRulesTeam(boolean)<br/>
+<font color="0x113355">Set if new rules are used for team mode. Only available to Admin. Requires a challenge restart to be taken into account.</font></li>
+<li><b>GetUseNewRulesTeam</b><br/>
+struct GetUseNewRulesTeam()<br/>
+<font color="0x113355">Get if the new rules are used for team mode (Current and next values). The struct returned contains two fields <i>CurrentValue</i> and <i>NextValue</i>.</font></li>
+<li><b>SetCupPointsLimit</b><br/>
+boolean SetCupPointsLimit(int)<br/>
+<font color="0x113355">Set the points needed for victory in Cup mode. Only available to Admin. Requires a challenge restart to be taken into account.</font></li>
+<li><b>GetCupPointsLimit</b><br/>
+struct GetCupPointsLimit()<br/>
+<font color="0x113355">Get the points needed for victory in Cup mode. The struct returned contains two fields <i>CurrentValue</i> and <i>NextValue</i>.</font></li>
+<li><b>SetCupRoundsPerChallenge</b><br/>
+boolean SetCupRoundsPerChallenge(int)<br/>
+<font color="0x113355">Sets the number of rounds before going to next challenge in Cup mode. Only available to Admin. Requires a challenge restart to be taken into account.</font></li>
+<li><b>GetCupRoundsPerChallenge</b><br/>
+struct GetCupRoundsPerChallenge()<br/>
+<font color="0x113355">Get the number of rounds before going to next challenge in Cup mode. The struct returned contains two fields <i>CurrentValue</i> and <i>NextValue</i>.</font></li>
+<li><b>SetCupWarmUpDuration</b><br/>
+boolean SetCupWarmUpDuration(int)<br/>
+<font color="0x113355">Set whether to enable the automatic warm-up phase in Cup mode. 0 = no, otherwise it's the duration of the phase, expressed in number of rounds. Only available to Admin. Requires a challenge restart to be taken into account.</font></li>
+<li><b>GetCupWarmUpDuration</b><br/>
+struct GetCupWarmUpDuration()<br/>
+<font color="0x113355">Get whether the automatic warm-up phase is enabled in Cup mode. The struct returned contains two fields <i>CurrentValue</i> and <i>NextValue</i>.</font></li>
+<li><b>SetCupNbWinners</b><br/>
+boolean SetCupNbWinners(int)<br/>
+<font color="0x113355">Set the number of winners to determine before the match is considered over. Only available to Admin. Requires a challenge restart to be taken into account.</font></li>
+<li><b>GetCupNbWinners</b><br/>
+struct GetCupNbWinners()<br/>
+<font color="0x113355">Get the number of winners to determine before the match is considered over. The struct returned contains two fields <i>CurrentValue</i> and <i>NextValue</i>.</font></li>
+<li><b>GetCurrentChallengeIndex</b><br/>
+int GetCurrentChallengeIndex()<br/>
+<font color="0x113355">Returns the current challenge index in the selection, or -1 if the challenge is no longer in the selection.</font></li>
+<li><b>GetNextChallengeIndex</b><br/>
+int GetNextChallengeIndex()<br/>
+<font color="0x113355">Returns the challenge index in the selection that will be played next (unless the current one is restarted...)</font></li>
+<li><b>SetNextChallengeIndex</b><br/>
+boolean SetNextChallengeIndex(int)<br/>
+<font color="0x113355">Sets the challenge index in the selection that will be played next (unless the current one is restarted...)</font></li>
+<li><b>GetCurrentChallengeInfo</b><br/>
+struct GetCurrentChallengeInfo()<br/>
+<font color="0x113355">Returns a struct containing the infos for the current challenge. The struct contains the following fields : <i>Name</i>, <i>UId</i>, <i>FileName</i>, <i>Author</i>, <i>Environnement</i>, <i>Mood</i>, <i>BronzeTime</i>, <i>SilverTime</i>, <i>GoldTime</i>, <i>AuthorTime</i>, <i>CopperPrice</i>, <i>LapRace</i>, <i>NbLaps</i> and <i>NbCheckpoints</i>.</font></li>
+<li><b>GetNextChallengeInfo</b><br/>
+struct GetNextChallengeInfo()<br/>
+<font color="0x113355">Returns a struct containing the infos for the next challenge. The struct contains the following fields : <i>Name</i>, <i>UId</i>, <i>FileName</i>, <i>Author</i>, <i>Environnement</i>, <i>Mood</i>, <i>BronzeTime</i>, <i>SilverTime</i>, <i>GoldTime</i>, <i>AuthorTime</i>, <i>CopperPrice</i> and <i>LapRace</i>. (<i>NbLaps</i> and <i>NbCheckpoints</i> are also present but always set to -1)</font></li>
+<li><b>GetChallengeInfo</b><br/>
+struct GetChallengeInfo(string)<br/>
+<font color="0x113355">Returns a struct containing the infos for the challenge with the specified filename. The struct contains the following fields : <i>Name</i>, <i>UId</i>, <i>FileName</i>, <i>Author</i>, <i>Environnement</i>, <i>Mood</i>, <i>BronzeTime</i>, <i>SilverTime</i>, <i>GoldTime</i>, <i>AuthorTime</i>, <i>CopperPrice</i> and <i>LapRace</i>. (<i>NbLaps</i> and <i>NbCheckpoints</i> are also present but always set to -1)</font></li>
+<li><b>CheckChallengeForCurrentServerParams</b><br/>
+boolean CheckChallengeForCurrentServerParams(string)<br/>
+<font color="0x113355">Returns a boolean if the challenge with the specified filename matches the current server settings.</font></li>
+<li><b>GetChallengeList</b><br/>
+array GetChallengeList(int, int)<br/>
+<font color="0x113355">Returns a list of challenges among the current selection of the server. This method take two parameters. The first parameter specifies the maximum number of infos to be returned, and the second one the starting index in the selection. The list is an array of structures. Each structure contains the following fields : <i>Name</i>, <i>UId</i>, <i>FileName</i>, <i>Environnement</i>, <i>Author</i>, <i>GoldTime</i> and <i>CopperPrice</i>.</font></li>
+<li><b>AddChallenge</b><br/>
+boolean AddChallenge(string)<br/>
+<font color="0x113355">Add the challenge with the specified filename at the end of the current selection. Only available to Admin.</font></li>
+<li><b>AddChallengeList</b><br/>
+int AddChallengeList(array)<br/>
+<font color="0x113355">Add the list of challenges with the specified filenames at the end of the current selection. The list of challenges to add is an array of strings. Only available to Admin.</font></li>
+<li><b>RemoveChallenge</b><br/>
+boolean RemoveChallenge(string)<br/>
+<font color="0x113355">Remove the challenge with the specified filename from the current selection. Only available to Admin.</font></li>
+<li><b>RemoveChallengeList</b><br/>
+int RemoveChallengeList(array)<br/>
+<font color="0x113355">Remove the list of challenges with the specified filenames from the current selection. The list of challenges to remove is an array of strings. Only available to Admin.</font></li>
+<li><b>InsertChallenge</b><br/>
+boolean InsertChallenge(string)<br/>
+<font color="0x113355">Insert the challenge with the specified filename after the current challenge. Only available to Admin.</font></li>
+<li><b>InsertChallengeList</b><br/>
+int InsertChallengeList(array)<br/>
+<font color="0x113355">Insert the list of challenges with the specified filenames after the current challenge. The list of challenges to insert is an array of strings. Only available to Admin.</font></li>
+<li><b>ChooseNextChallenge</b><br/>
+boolean ChooseNextChallenge(string)<br/>
+<font color="0x113355">Set as next challenge the one with the specified filename, if it is present in the selection. Only available to Admin.</font></li>
+<li><b>ChooseNextChallengeList</b><br/>
+int ChooseNextChallengeList(array)<br/>
+<font color="0x113355">Set as next challenges the list of challenges with the specified filenames, if they are present in the selection. The list of challenges to choose is an array of strings. Only available to Admin.</font></li>
+<li><b>LoadMatchSettings</b><br/>
+int LoadMatchSettings(string)<br/>
+<font color="0x113355">Set a list of challenges defined in the playlist with the specified filename as the current selection of the server, and load the gameinfos from the same file. Only available to Admin.</font></li>
+<li><b>AppendPlaylistFromMatchSettings</b><br/>
+int AppendPlaylistFromMatchSettings(string)<br/>
+<font color="0x113355">Add a list of challenges defined in the playlist with the specified filename at the end of the current selection. Only available to Admin.</font></li>
+<li><b>SaveMatchSettings</b><br/>
+int SaveMatchSettings(string)<br/>
+<font color="0x113355">Save the current selection of challenge in the playlist with the specified filename, as well as the current gameinfos. Only available to Admin.</font></li>
+<li><b>InsertPlaylistFromMatchSettings</b><br/>
+int InsertPlaylistFromMatchSettings(string)<br/>
+<font color="0x113355">Insert a list of challenges defined in the playlist with the specified filename after the current challenge. Only available to Admin.</font></li>
+<li><b>GetPlayerList</b><br/>
+array GetPlayerList(int, int, int)<br/>
+<font color="0x113355">Returns the list of players on the server. This method take two parameters. The first parameter specifies the maximum number of infos to be returned, and the second one the starting index in the list, an optional 3rd parameter is used for compatibility: struct version (0 = united, 1 = forever, 2 = forever, including the servers). The list is an array of PlayerInfo structures. Forever PlayerInfo struct is: <i>Login</i>, <i>NickName</i>, <i>PlayerId</i>, <i>TeamId</i>, <i>SpectatorStatus</i>, <i>LadderRanking</i>, and <i>Flags</i>. <br/>
+<i>LadderRanking</i> is 0 when not in official mode, <br/>
+<i>Flags</i> = <i>ForceSpectator</i>(0,1,2) + <i>IsReferee</i> * 10 + <i>IsPodiumReady</i> * 100 + <i>IsUsingStereoscopy</i> * 1000 + <i>IsManagedByAnOtherServer</i> * 10000 + <i>IsServer</i> * 100000 + <i>HasPlayerSlot</i> * 1000000<br/>
+<i>SpectatorStatus</i> = <i>Spectator</i> + <i>TemporarySpectator</i> * 10 + <i>PureSpectator</i> * 100 + <i>AutoTarget</i> * 1000 + <i>CurrentTargetId</i> * 10000</font></li>
+<li><b>GetPlayerInfo</b><br/>
+struct GetPlayerInfo(string, int)<br/>
+<font color="0x113355">Returns a struct containing the infos on the player with the specified login, with an optional parameter for compatibility: struct version (0 = united, 1 = forever). The structure is identical to the ones from GetPlayerList. Forever PlayerInfo struct is: <i>Login</i>, <i>NickName</i>, <i>PlayerId</i>, <i>TeamId</i>, <i>SpectatorStatus</i>, <i>LadderRanking</i>, and <i>Flags</i>. <br/>
+<i>LadderRanking</i> is 0 when not in official mode, <br/>
+<i>Flags</i> = <i>ForceSpectator</i>(0,1,2) + <i>IsReferee</i> * 10 + <i>IsPodiumReady</i> * 100 + <i>IsUsingStereoscopy</i> * 1000 + <i>IsManagedByAnOtherServer</i> * 10000 + <i>IsServer</i> * 100000 + <i>HasPlayerSlot</i> * 1000000<br/>
+<i>SpectatorStatus</i> = <i>Spectator</i> + <i>TemporarySpectator</i> * 10 + <i>PureSpectator</i> * 100 + <i>AutoTarget</i> * 1000 + <i>CurrentTargetId</i> * 10000</font></li>
+<li><b>GetDetailedPlayerInfo</b><br/>
+struct GetDetailedPlayerInfo(string)<br/>
+<font color="0x113355">Returns a struct containing the infos on the player with the specified login. The structure contains the following fields : <i>Login</i>, <i>NickName</i>, <i>PlayerId</i>, <i>TeamId</i>, <i>IPAddress</i>, <i>DownloadRate</i>, <i>UploadRate</i>, <i>Language</i>, <i>IsSpectator</i>, <i>IsInOfficialMode</i>, a structure named <i>Avatar</i>, an array of structures named <i>Skins</i>, a structure named <i>LadderStats</i>, <i>HoursSinceZoneInscription</i> and <i>OnlineRights</i> (0: nations account, 3: united account). Each structure of the array <i>Skins</i> contains two fields <i>Environnement</i> and a struct <i>PackDesc</i>. Each structure <i>PackDesc</i>, as well as the struct <i>Avatar</i>, contains two fields <i>FileName</i> and <i>Checksum</i>.</font></li>
+<li><b>GetMainServerPlayerInfo</b><br/>
+struct GetMainServerPlayerInfo(int)<br/>
+<font color="0x113355">Returns a struct containing the player infos of the game server (ie: in case of a basic server, itself; in case of a relay server, the main server), with an optional parameter for compatibility: struct version (0 = united, 1 = forever). The structure is identical to the ones from GetPlayerList. Forever PlayerInfo struct is: <i>Login</i>, <i>NickName</i>, <i>PlayerId</i>, <i>TeamId</i>, <i>SpectatorStatus</i>, <i>LadderRanking</i>, and <i>Flags</i>. <br/>
+<i>LadderRanking</i> is 0 when not in official mode, <br/>
+<i>Flags</i> = <i>ForceSpectator</i>(0,1,2) + <i>IsReferee</i> * 10 + <i>IsPodiumReady</i> * 100 + <i>IsUsingStereoscopy</i> * 1000 + <i>IsManagedByAnOtherServer</i> * 10000 + <i>IsServer</i> * 100000 + <i>HasPlayerSlot</i> * 1000000<br/>
+<i>SpectatorStatus</i> = <i>Spectator</i> + <i>TemporarySpectator</i> * 10 + <i>PureSpectator</i> * 100 + <i>AutoTarget</i> * 1000 + <i>CurrentTargetId</i> * 10000</font></li>
+<li><b>GetCurrentRanking</b><br/>
+array GetCurrentRanking(int, int)<br/>
+<font color="0x113355">Returns the current rankings for the race in progress. (in team mode, the scores for the two teams are returned. In other modes, it's the individual players' scores) This method take two parameters. The first parameter specifies the maximum number of infos to be returned, and the second one the starting index in the ranking. The ranking returned is a list of structures. Each structure contains the following fields : <i>Login</i>, <i>NickName</i>, <i>PlayerId</i>, <i>Rank</i>, <i>BestTime</i>, <i>Score</i>, <i>NbrLapsFinished</i> and <i>LadderScore</i>. It also contains an array <i>BestCheckpoints</i> that contains the checkpoint times for the best race.</font></li>
+<li><b>GetCurrentRankingForLogin</b><br/>
+array GetCurrentRankingForLogin(string)<br/>
+<font color="0x113355">Returns the current ranking for the race in progressof the player with the specified login (or list of comma-separated logins). The ranking returned is a list of structures, that contains the following fields : <i>Login</i>, <i>NickName</i>, <i>PlayerId</i>, <i>Rank</i>, <i>BestTime</i>, <i>Score</i>, <i>NbrLapsFinished</i> and <i>LadderScore</i>. It also contains an array <i>BestCheckpoints</i> that contains the checkpoint times for the best race.</font></li>
+<li><b>ForceScores</b><br/>
+boolean ForceScores(array, boolean)<br/>
+<font color="0x113355">Force the scores of the current game. Only available in rounds and team mode. You have to pass an array of structs {int <i>PlayerId</i>, int <i>Score</i>}. And a boolean <i>SilentMode</i> - if true, the scores are silently updated (only available for SuperAdmin), allowing an external controller to do its custom counting... Only available to Admin/SuperAdmin.</font></li>
+<li><b>ForcePlayerTeam</b><br/>
+boolean ForcePlayerTeam(string, int)<br/>
+<font color="0x113355">Force the team of the player. Only available in team mode. You have to pass the login and the team number (0 or 1). Only available to Admin.</font></li>
+<li><b>ForcePlayerTeamId</b><br/>
+boolean ForcePlayerTeamId(int, int)<br/>
+<font color="0x113355">Force the team of the player. Only available in team mode. You have to pass the playerid and the team number (0 or 1). Only available to Admin.</font></li>
+<li><b>ForceSpectator</b><br/>
+boolean ForceSpectator(string, int)<br/>
+<font color="0x113355">Force the spectating status of the player. You have to pass the login and the spectator mode (0: user selectable, 1: spectator, 2: player). Only available to Admin.</font></li>
+<li><b>ForceSpectatorId</b><br/>
+boolean ForceSpectatorId(int, int)<br/>
+<font color="0x113355">Force the spectating status of the player. You have to pass the playerid and the spectator mode (0: user selectable, 1: spectator, 2: player). Only available to Admin.</font></li>
+<li><b>ForceSpectatorTarget</b><br/>
+boolean ForceSpectatorTarget(string, string, int)<br/>
+<font color="0x113355">Force spectators to look at a specific player. You have to pass the login of the spectator (or '' for all) and the login of the target (or '' for automatic), and an integer for the camera type to use (-1 = leave unchanged, 0 = replay, 1 = follow, 2 = free). Only available to Admin.</font></li>
+<li><b>ForceSpectatorTargetId</b><br/>
+boolean ForceSpectatorTargetId(int, int, int)<br/>
+<font color="0x113355">Force spectators to look at a specific player. You have to pass the id of the spectator (or -1 for all) and the id of the target (or -1 for automatic), and an integer for the camera type to use (-1 = leave unchanged, 0 = replay, 1 = follow, 2 = free). Only available to Admin.</font></li>
+<li><b>SpectatorReleasePlayerSlot</b><br/>
+boolean SpectatorReleasePlayerSlot(string)<br/>
+<font color="0x113355">Pass the login of the spectator. A spectator that once was a player keeps his player slot, so that he can go back to race mode. Calling this function frees this slot for another player to connect. Only available to Admin.</font></li>
+<li><b>SpectatorReleasePlayerSlotId</b><br/>
+boolean SpectatorReleasePlayerSlotId(int)<br/>
+<font color="0x113355">Pass the playerid of the spectator. A spectator that once was a player keeps his player slot, so that he can go back to race mode. Calling this function frees this slot for another player to connect. Only available to Admin.</font></li>
+<li><b>ManualFlowControlEnable</b><br/>
+boolean ManualFlowControlEnable(boolean)<br/>
+<font color="0x113355">Enable control of the game flow: the game will wait for the caller to validate state transitions. Only available to Admin.</font></li>
+<li><b>ManualFlowControlProceed</b><br/>
+boolean ManualFlowControlProceed()<br/>
+<font color="0x113355">Allows the game to proceed. Only available to Admin.</font></li>
+<li><b>ManualFlowControlIsEnabled</b><br/>
+int ManualFlowControlIsEnabled()<br/>
+<font color="0x113355">Returns whether the manual control of the game flow is enabled. 0 = no, 1 = yes by the xml-rpc client making the call, 2 = yes, by some other xml-rpc client. Only available to Admin.</font></li>
+<li><b>ManualFlowControlGetCurTransition</b><br/>
+string ManualFlowControlGetCurTransition()<br/>
+<font color="0x113355">Returns the transition that is currently blocked, or '' if none. (That's exactly the value last received by the callback.) Only available to Admin.</font></li>
+<li><b>CheckEndMatchCondition</b><br/>
+string CheckEndMatchCondition()<br/>
+<font color="0x113355">Returns the current match ending condition. Return values are: 'Playing', 'ChangeMap' or 'Finished'.</font></li>
+<li><b>GetNetworkStats</b><br/>
+struct GetNetworkStats()<br/>
+<font color="0x113355">Returns a struct containing the networks stats of the server. The structure contains the following fields : <i>Uptime</i>, <i>NbrConnection</i>, <i>MeanConnectionTime</i>, <i>MeanNbrPlayer</i>, <i>RecvNetRate</i>, <i>SendNetRate</i>, <i>TotalReceivingSize</i>, <i>TotalSendingSize</i> and an array of structures named <i>PlayerNetInfos</i>. Each structure of the array PlayerNetInfos contains the following fields : <i>Login</i>, <i>IPAddress</i>, <i>LastTransferTime</i>, <i>DeltaBetweenTwoLastNetState</i>, <i>PacketLossRate</i>. Only available to SuperAdmin.</font></li>
+<li><b>StartServerLan</b><br/>
+boolean StartServerLan()<br/>
+<font color="0x113355">Start a server on lan, using the current configuration. Only available to SuperAdmin.</font></li>
+<li><b>StartServerInternet</b><br/>
+boolean StartServerInternet(struct)<br/>
+<font color="0x113355">Start a server on internet using the 'Login' and 'Password' specified in the struct passed as parameters. Only available to SuperAdmin.</font></li>
+<li><b>GetStatus</b><br/>
+struct GetStatus()<br/>
+<font color="0x113355">Returns the current status of the server.</font></li>
+<li><b>QuitGame</b><br/>
+boolean QuitGame()<br/>
+<font color="0x113355">Quit the application. Only available to SuperAdmin.</font></li>
+<li><b>GameDataDirectory</b><br/>
+string GameDataDirectory()<br/>
+<font color="0x113355">Returns the path of the game datas directory. Only available to Admin.</font></li>
+<li><b>GetTracksDirectory</b><br/>
+string GetTracksDirectory()<br/>
+<font color="0x113355">Returns the path of the tracks directory. Only available to Admin.</font></li>
+<li><b>GetSkinsDirectory</b><br/>
+string GetSkinsDirectory()<br/>
+<font color="0x113355">Returns the path of the skins directory. Only available to Admin.</font></li>
+</ul>
+</body>
+</html>

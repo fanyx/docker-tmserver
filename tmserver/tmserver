@@ -1,0 +1,232 @@
+#!/bin/bash
+#
+# entrypoint script for trackmania server
+#
+# Maintainer : Hendrik Boll
+# Github : ryluth
+# 
+##############################################
+
+TMDIR="${TMDIR:-/opt/tmserver}"
+ASECODIR="${ASECODIR:-/opt/xaseco}"
+GAME_SETTINGS="${GAME_SETTINGS:-MatchSettings/default.txt}"
+DEDICATED_CFG="${DEDICATED_CFG:-default.txt}"
+
+set -e
+
+if [[ "$1" = 'start' ]] && [[ "$(id -u)" = '0']]; then
+	chown -R trackmania:trackmania /opt/tmserver
+	chown -R trackmania:trackmania /opt/xaseco
+	su trackmania "$0" "$@"
+fi
+
+case "$1" in
+	start)
+		case "$2" in
+			tmserver)
+				cd $TMDIR
+				if [[ -e tmserver.pid ]]; then
+					if ( kill -0 $(cat tmserver.pid) 2> /dev/null ); then
+						echo "The server is already running, try restart or stop."
+						exit 1
+					else
+						echo "tmserver.pid found, but no server running. The server possibly crashed."
+						echo "Please review the log files."
+						rm tmserver.pid
+					fi
+				fi
+				if [[ "$(id -u)" = "0" ]]; then
+					echo "WARNING! For security reasons i don't advise to run the server as ROOT!"
+				fi
+				echo "Starting the Trackmania server"
+				if [[ -e "./TrackmaniaServer" ]]; then
+					if [[ ! -x "./TrackmaniaServer" ]]; then
+						echo "TrackmaniaServer is not executable, trying to set +x"
+						chmod u+x "./TrackmaniaServer"
+					fi
+					if [[ -x "./TrackmaniaServer" ]]; then
+						cd $ASECODIR
+						if [[ -e aseco.pid ]]; then
+							echo "Stopping Xaseco in case it was running."
+							echo "Xaseco cannot be running when starting the Trackmania server."
+							"$0" "stop" "xaseco"
+						fi
+						
+						
+						"./TrackmaniaServer /internet /game_settings=${GAME_SETTINGS} /dedicated_cfg=${DEDICATED_CFG}" &
+						PID=$!
+						ps -p ${PID} > /dev/null 2>&1
+						if [[ "$?" -ne "0" ]]; then
+							echo "Trackmania server could not start"
+						else
+							echo "Trackmania server started"
+							echo ${PID} > tmserver.pid
+							sleep 3
+							echo "Starting Xaseco now."
+							"$0" "start" "xaseco"
+						fi
+					else
+						echo "Trackmania server binary is not executable, cannot start the server."
+					fi
+				else 
+					echo "Cannot find the Trackmania executable"
+					exit 5
+				fi
+			;;
+			xaseco)
+				cd $ASECODIR
+				if [[ -e aseco.pid ]]; then
+					if ( kill -0 $(cat aseco.pid) 2> /dev/null ); then
+						echo "Xaseco is already running."
+						exit 1
+					else
+						echo "aseco.pid found but no server running. Aseco possibly crashed."
+						echo "Please review the log files."
+						rm aseco.pid
+					fi
+				fi
+				if [[ "$(id -u)" = "0" ]]; then
+					echo "WARNING! For security reasons i don't advise to run the server as ROOT!"
+				fi
+				echo "Starting the Xaseco service"
+				if [[ -e "./aseco.php" ]]; then
+					"php aseco.php TMF </dev/null >aseco.log 2>&1" &
+					PID=$!
+					ps -p ${PID} > /dev/null 2>&1
+					if [[ "$?" -ne "0" ]]; then
+						echo "Xaseco could not start"
+					else
+						echo "Xaseco started. Please test the functionality ingame."
+						echo "In certain cases Xaseco is unable to integrate into the game."
+						echo "If the features are not loaded consider restarting both services"
+						echo ${PID} > aseco.pid
+					fi
+				else
+					echo "Canot find the Xaseco executable"
+					exit 5
+				fi
+			;;
+			*)
+				echo "Usage : ./tmserver.sh start {tmserver|xaseco}"
+				exit 2
+		esac
+	;;	
+	stop)
+		case "$2" in
+			tmserver)
+				cd $TMDIR
+				if [[ -e tmserver.pid ]]; then
+					echo -n "Stopping the Trackmania server"
+					if ( kill -TERM $(cat tmserver.pid) 2> /dev/null ); then
+						c=1
+						while [[ "$c" -le 120 ]]; do
+							if (kill -0 $(cat tmserver.pid) 2> /dev/null); then
+								echo -n "."
+								sleep 1
+							else
+								break
+							fi
+							c=$(($c+1))
+						done
+					fi
+					if ( kill -0 $(cat tmserver.pid) 2> /dev/null ); then
+						echo "Server is not shutting down cleanly - killing the process"
+						kill -KILL $(cat tmserver.pid)
+					else
+						echo "done"
+					fi
+					rm tmserver.pid
+					echo "Shutting down Xaseco aswell. If it crashed by this point, at least i am cleaning up now..."
+					"$0" "stop" "xaseco"
+				else
+					echo "No server is running"
+					exit 7
+				fi
+			;;
+			xaseco)
+				cd $ASECODIR
+				if [[ -e aseco.pid ]]; then
+					echo -n "Stopping the Xaseco service"
+					if ( kill -TERM $(cat aseco.pid) 2> /dev/null ); then
+						c=1
+						while [[ "$c" -le 120 ]]; do
+							if (kill -0 $(cat aseco.pid) 2> /dev/null ); then
+								echo -n "."
+								sleep 1
+							else
+								break
+							fi
+							c=$(($c+1))
+						done
+					fi
+					if (kill -0 $(cat aseco.pid) 2> /dev/null ); then
+						echo "Xaseco is not shutting down cleanly - killing the process"
+						kill -KILL $(cat aseco.pid)
+					else
+						echo "done"
+					fi
+					rm aseco.pid
+				else
+					echo "Xaseco isn't running"
+					exit 7
+				fi
+			;;
+			*)
+				echo "Usage: ./tmserver stop {tmserver|xaseco}"
+				exit 2
+		esac
+	;;
+	restart)
+		case "$2" in
+			tmserver)
+				cd $TMDIR
+				$0 stop tmserver && $0 start tmserver || exit 1
+			;;
+			xaseco)
+				cd $ASECODIR
+				$0 stop xaseco && $0 start xaseco || exit 1
+			;;
+			*)
+				echo "Usage : ./tmserver restart {tmserver|xaseco}"
+				exit 2
+		esac
+	;;
+	status)
+		case "$2" in
+			tmserver)
+				cd $TMDIR
+				if [[ -e tmserver.pid ]]; then
+					if (kill -0 $(cat tmserver.pid) 2> /dev/null ); then
+						echo "Trackmania server is up and running."
+						echo "In case of connectivity problems, try restarting your client"
+						echo "If nothing helps use ./tmservser restart tmserver"
+					else
+						echo "The server might have crashed (tmserver.pid exists but the process is not reachable)"
+					fi
+				else
+					echo "No server is currently running"
+				fi
+			;;
+			xaseco)
+				cd $ASECODIR
+				if [[ -e aseco.pid]]; then
+					if (kill -0 $(cat aseco.pid) 2> /dev/null ); then
+						echo "Xaseco is up and running."
+						echo "In case of missing features ingame, try restarting the whole server."
+						echo "Use ./tmserver restart tmserver"
+					else
+						echo "Xaseco might have crashed (aseco.pid exists but the process is not reachable)"
+					fi
+				else
+					echo "Xaseco is currently not running"
+				fi
+			;;
+			*)
+				echo "Usage : ./tmserver status {tmserver|xaseco}"
+				exit 2
+		esac
+	;;
+	*)
+		echo "Usage: ./tmserver {start|stop|restart|status} {tmserver|xaseco}"
+esac
+exit 0

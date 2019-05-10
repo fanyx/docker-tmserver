@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- window style made by nouseforname -->
+<styles>
+	<!-- background container of window -->
+	<window>
+		<style>Bgs1</style>
+		<substyle>BgWindow2</substyle>
+		<blackcolor>$fff</blackcolor>
+	</window>
+
+	<!-- background container and text font of header -->
+	<header>
+		<style>Bgs1InRace</style>
+		<substyle>ProgressBar</substyle>
+		<textsize>0.065</textsize>
+		<textstyle>TextSubTitle2</textstyle>
+	</header>
+
+	<!-- background container and text font of body -->
+	<body>
+		<style>Bgs1InRace</style>
+		<substyle>NavButtonBlink</substyle>
+		<textsize>0.04</textsize>
+		<textstyle>TextTitle3</textstyle>
+	</body>
+
+	<!-- button container in body -->
+	<button>
+		<style>BgsPlayerCard</style>
+		<substyle>BgCardSystem</substyle>
+	</button>
+</styles>

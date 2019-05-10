@@ -1,0 +1,890 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>TrackMania Nations - ASECO/RASP release notes v0.95</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<META NAME="author" CONTENT="Frans P. de Vries">
+<META NAME="generator" CONTENT="vi :)">
+<style type="text/css">
+body { width: 960px; margin-left: 30px; font-family: Arial,Helvetica,sans-serif; font-size: 15px; }
+li,div { padding: 3px; }
+code,pre { font-size: 14px; }
+pre { width: 90%; margin: 3px 0px; padding: 3px 0px 3px 12px; background-color: #F0F0F0; }
+</style>
+<META NAME="keywords" CONTENT="TrackMania, Nations, Original, Sunrise, racing, games, ASECO, RASP, Jfreu, plugins, records, jukebox">
+<META NAME="description" CONTENT="Information on the ASECO/RASP system for TrackMania Nations (and Original/Sunrise), a racing game by Nadeo">
+</HEAD>
+
+<BODY TEXT="#000000" LINK="#ff0000" VLINK="#0000ff" ALINK="#00ff00" BGCOLOR="#ffffff">
+
+<P ALIGN="center">
+<A TARGET="_blank" HREF="http://eswc.trackmanianations.com/"><IMG SRC="banner.jpg" ALT="TrackMania Nations" BORDER="0" WIDTH="590" HEIGHT="149"></A>
+<HR>
+
+<H3>New features and other changes in the v0.95 release of ASECO/RASP:</H3>
+
+<UL>
+<LI>new <b>Dedimania world records</b> support (derived from FAST) with the following features:
+<UL>
+<LI>Dedimania is an online World Records database for all TrackMania games with the official site at <A TARGET="_blank" HREF="http://www.dedimania.com/">http://www.dedimania.com/</A> and its records database at <A TARGET="_blank" HREF="http://www.dedimania.com/tmstats/?do=stat">http://www.dedimania.com/tmstats/?do=stat</A> ; it maintains 30 records for each track in any game (TMO/TMS/TMN/TMU) and any mode (TimeAttack, Rounds, Team, Laps)
+
+<LI>the Dedimania system consists of two new plugins: <b>plugin.dedimania.php</b> which handles all communication with the central Dedimania server (together with new includes <b>GbxRemote.response.php</b>, <b>xmlrpc_db.inc.php</b>, <b>web_access.inc.php</b> and <b>urlsafebase64.php</b>) and keeps track of new records, and <b>chat.dedimania.php</b> which provides a variety of commands to show records and their relations on the current track
+
+<LI>the following new commands are available for Dedimania world records, analogous to the existing local records commands:
+<UL>
+<LI><b>/helpdedi</b>: Displays info about the Dedimania records system (alias: <b>/dedihelp</b>)
+<LI><b>/dedirecs</b>: Displays all Dedimania records on current track
+<LI><b>/dedinew</b>: Shows new Dedimania records on current track
+<LI><b>/dedilive</b>: Shows Dedimania records of online players
+<LI><b>/dedipb</b>: Shows your Dedimania personal best on current track
+<LI><b>/dedifirst</b>: Shows first Dedimania record on current track
+<LI><b>/dedilast</b>: Shows last Dedimania record on current track
+<LI><b>/dedinext</b>: Shows next better Dedimania record to beat
+<LI><b>/dedidiff</b>: Shows your difference to first Dedimania record
+<LI><b>/dedirange</b>: Shows difference first to last Dedimania record
+</UL>
+
+<LI>new, improved, secured and equalled Dedimania records are shown via chat messages just like local records, as are the record reports before and after each track, with configuration options identical to those for local records
+
+<LI>the new <b>dedimania.xml</b> configuration file defines various Dedimania parameters and record display settings (akin to config.xml), the server's account (from dedicated.cfg), and all Dedimania messages
+
+<LI>the Dedimania system communicates with the central Dedimania server over port 8003 by default, so you must open that port on your firewall/router; if that's not possible the system falls back on port 80 (http)
+
+<LI>the Dedimania system requires plugin.checkpoints.php (the checkpoints tracking plugin) to be included in plugins.xml, <u>before</u> plugin.dedimania.php
+
+<LI>new <b><CODE>&lt;dedimsg&gt;</CODE></b> and <b><CODE>&lt;dedimsg&gt;</CODE></b> colors are defined in config.xml and used in all relevant Dedimania messages so that they can easily be customized
+
+<LI>a new <b>onEverySecond event</b> (which, as the name implies, is triggered once every second) is defined in aseco.php to act as a "heart beat" in communicating with the central Dedimania server
+
+<LI>Laps mode is <u>not</u> supported due to the way checkpoints and laps information is supplied by the TM server
+
+<LI>LAN logins (with IP and port) are ignored by the Dedimania system
+
+<LI>mega thanks to Slig for his generous help in building this system <FONT FACE="Wingdings">&#74;</FONT>
+</UL>
+<br>
+
+<LI>the <i>/tmxinfo</i> output now includes the Awards count for a TMX track
+
+<LI>the <i>/tmxinfo</i> and <i>/tmxrecs</i> commands use cached TMX data for the current track to avoid sending multiple requests to the TMX site
+
+<LI>updated the <i>TMXInfoFetcher class</i> to time out when the TMX site is down, and to return several more info fields including the awards count
+
+<LI>updated the <i>TMNDataFetcher class</i> to time out when the master/ladder servers are down
+
+<LI>the minimum number of ranked players that's included in the computation of the <i>/topclans</i> ranking is now configurable via new config.xml setting <b><CODE>&lt;topclans_minplayers&gt;</CODE></b> (default: 2)
+
+<LI>new <b>/admin setgamemode</b> command (parameter: ta, rounds, team, laps, stunts) to change the game mode for the next track into the specified mode
+
+<LI>rewrote <i>/admin prev</i> to consult the server's track list instead of maintaining a track filename variable
+
+<LI><i>/admin replay</i> will now check whether the currect track is already in the jukebox to get replayed, and if so, not queue it again
+
+<LI>the pop-up window displayed by the <i>/admin mta/wall</i> command now starts with the title and nickname of the admin sending the message
+
+<LI>new <b>/admin shutdown</b> command to shut down the TM server and ASECO/RASP
+
+<LI>it is now possible to have chat-based voting commands temporarily disabled while an admin (of any tier) is online (configured via <b><CODE>$disable_upon_admin</CODE></b> in votes.config.php)
+
+<LI>added <b>/votehelp</b> alias for <i>/helpvote</i>
+
+<LI>the <CODE>&lt;limit&gt;</CODE> configuration setting in localdatabase.xml restricts the highest records that are shown to all players since v0.85, but now higher records are still shown to the pertaining player only
+
+<LI>updated the <i>GBXDataFetcher class</i> to handle all known Challenge variants, including Forever
+
+<LI>updated RASP's getChallengeData() function to use the <i>GBXDataFetcher class</i>
+
+<LI>added extra check for 'SuperAdmin' login before connecting to the TM server
+
+<LI>added extra check for TM server build '2006-05-30' during start-up
+
+<LI>added a server Name entry to the start-up header in the log
+
+<LI>improved speed of <i>/server</i> and <i>/nextrank</i> commands
+
+<LI>adjusted some timeouts in the GbxRemote module (thanks Slig and Assembler Maniac)
+
+<LI>an alternate (but untested) GbxRemote.bem.php module is included for big-endian machines (thanks again AM)
+</UL>
+
+<H3>Bug fixes in the v0.95 release of ASECO/RASP:</H3>
+
+<UL>
+<LI>occasionally an ASECO warning could come up during the jukeboxing & track switching process &ndash; fixed by the <i>/admin prev</i> rewrite above
+
+<LI>the <i>/list norecent</i> output includes tracks that are no longer present on the server &ndash; fixed
+
+<LI>a harmless "Start index out of bound" warning would be logged when the server has exactly 300 tracks (or a multiple thereof) &ndash; fixed
+
+<LI>case-sensitivity in a part of the <i>/add</i> and <i>/admin add</i> code could cause a problem loading a track with a case-insensitive duplicate filename &ndash; fixed
+
+<LI>renaming tracks downloaded from TMX into a sanitized filename with a unique sequence number (as introduced in v0.91) could still lead to a problem loading a different track with a duplicate filename into the TM server &ndash; fixed, the filename now also includes the TMX ID
+
+<LI><i>/tmxrecs</i> displays an almost empty pop-up when a track has no TMX records &ndash; fixed, an error message is shown instead
+
+<LI>the <i>TMXInfoFetcher class</i> doesn't handle tracks with 26-character UIDs &ndash; fixed
+</UL>
+
+<HR>
+
+<H3>New features and other changes in the v0.93 release of ASECO/RASP:</H3>
+
+<UL>
+<LI>new <b>checkpoints tracking</b> support (via plugin.checkpoints.php) with the following features:
+
+<UL>
+<LI>all checkpoints and finishes are now tracked internally
+<LI>new <b>/cps</b> command to enable/disable displaying the checkpoint passages (since the TM client has it built in for TimeAttack mode, this is only useful in Rounds/Team modes)
+<LI>the first run on a track only stores all checkpoint passages (as long as the finish is reached)
+<LI>if <i>/cps</i> is enabled, subsequent runs will display a small pop-up window at each checkpoint for two seconds (just as long as the TM client displays the checkpoint time), containing the time and the difference to the best run so far
+<LI>if a run has a better finish time, it's stored together with those checkpoints as the new best run
+<LI>the finish is also a checkpoint, but no pop-up is displayed there
+<LI>the checkpoints are only remembered for the duration of each track, not stored in the database
+<LI>a player's display setting is remembered until the next ASECO/RASP restart
+</UL>
+<br>
+
+<LI>new <b>TMX information</b> support (based on the new <b>TMXInfoFetcher class</b>) with the following features:
+
+<UL>
+<LI>new <b>/tmxinfo</b> command to display the TMX information on the current track or, when given a track ID (from <i>/list</i>) or a TMX ID, any other track; note that with a TMX ID, the UID field in the output remains empty
+<LI>new <b>/tmxrecs</b> command to display the TMX top-10 world records on the current track or, when given a track ID (from <i>/list</i>) or a TMX ID, any other track
+<LI>optionally show the TMX World Record at the start of a new track (configurable via new config.xml setting <b><CODE>&lt;show_tmxrec&gt;</CODE></b>)
+</UL>
+<br>
+
+<LI>new <b>/song</b> command (based on the new <b>GBXDataFetcher class</b>) to show the (file)name for the current track's song; no method is currently known to decode the title/artist from the song file
+
+<LI>new <b>/admin prev</b> (alias <b>/admin previous</b>) command to quickly revisit the previous track
+
+<LI>new <i>/list</i> option: <b>/list oldest #</b> displays the # oldest tracks added to the server (default: 10) to complement <i>/list newest</i>
+
+<LI>the <i>/statsall</i> output now includes the Wins/Losses (W/L) ratio
+
+<LI>the rounds reports now also work in Team mode
+
+<LI>finalized the optimization (in v0.92) of the jukeboxing & track switching process
+
+<LI>when a TMX <i>/add</i> or chat-based vote is cancelled by the server during the Tab scoreboard, that reset is also logged
+
+<LI>documented the dependencies of all plugins in their respective headers
+</UL>
+
+<H3>Bug fixes in the v0.93 release of ASECO/RASP:</H3>
+
+<UL>
+<LI>when using jfreu.plugin.php (not jfreu.lite.php), if rank limiting is off then newly connected players are not properly entered into the internal players list &ndash; fixed
+
+<LI>at ASECO/RASP start-up, authentication errors are ignored (oops) &ndash; fixed
+
+<LI>if the same track is <i>/add</i>-ed or <i>/admin add</i>-ed multiple times, multiple files are created in the 'GameData/Tracks/Challenges/TMX/' or 'GameData/Tracks/Challenges/TMXtmp/' directories &ndash; fixed, duplicate files for identical tracks are prevented
+
+<LI>if a file already exists in the 'GameData/Tracks/Challenges/TMXtmp/' directory for a <i>/add</i>-ed track and that track is then <i>/add</i>-ed again, the file (with an incremented name) is stored in the 'GameData/Tracks/Challenges/TMX/' directory instead &ndash; fixed
+
+<LI>in the TMNDataFetcher, if the serverlogin for an online player starts with a non-alphanumeric character (e.g. '-') then the servernation isn't found &ndash; fixed
+
+<LI>if plugin.matchsave.php is not included in plugins.xml (which is the default), <i>/admin match begin</i> crashes the system &ndash; fixed, a warning is shown if the plugin is not included
+
+<LI>the administrator check for the <i>chat_tc_listen</i> ability doesn't work &ndash; fixed
+</UL>
+
+<HR>
+
+<H3>New features and other changes in the v0.92b release of ASECO/RASP:</H3>
+
+<UL>
+<LI>all temporary bans are now stored in a dynamic bans file, configurable via <b><CODE>$bans_file</CODE></b> in jfreu.config.php (default: <b>plugins/jfreu/jfreu.bans.xml</b>), and automatically restored after an ASECO/RASP restart
+</UL>
+
+<H3>Bug fixes in the v0.92b release of ASECO/RASP:</H3>
+
+<UL>
+<LI>sometimes when a player connects, the TeamName is not available to store in the 'players' table, and thus it doesn't show up in the <i>/clans</i> command &ndash; fixed this long-standing issue (which had become worse due to the faster GbxRemote module) with a TMNDataFetcher call
+
+<LI>the <i>/jfreu unban</i> command doesn't properly clear the ban &ndash; fixed
+
+<LI>there are some minor formatting glitches in the output of <i>/stats</i>, <i>/statsall</i> and <i>/jfreu listbans</i> &ndash; fixed
+</UL>
+
+<HR>
+
+<H3>New features and other changes in the v0.92 release of ASECO/RASP:</H3>
+
+<UL>
+<LI>new <b>/statsall</b> command to display any player's world stats (based on an updated <b>TMNDataFetcher class</b> by F*ckfish); you can use a player ID when the player is online on the current server, and otherwise any login (even of players that never visited the current server)
+
+<LI>a new version of GbxRemote.inc.php not only addresses some low-level communication problems on AMD64 systems, but more importantly speeds up communication with the TM server &ndash; and therefore the responsiveness of all commands &ndash; very significantly (thanks Xerrez & Slig); the effect that the small chat window goes blank for a little while is also reduced
+
+<LI>optimized calculation of all players' server ranks after each track
+
+<LI>more optimization of the jukeboxing &amp; track switching process to (hopefully definitively) prevent stuck tracks
+
+<LI>the <i>/nextrank</i> command now optionally shows the difference in record positions (RP), i.e. the combined number of positions that your records need to be improved in order to catch up with the next better ranked player (configured via <b><CODE>$nextrank_show_rp</CODE></b> in rasp.settings.php)
+
+<LI>by appending an 'h' (case-insensitive) to the time parameter of <i>/jfreu banfor</i>, the specified value is converted from minutes into hours (e.g. <i>/jfreu banfor 4H &lt;login&gt;</i> for a four-hour ban)
+
+<LI>correspondingly, all temporary ban messages now show the remaining time as "X hours XX mins" if it's more than an hour
+
+<LI>new <b>/jfreu unban</b> command to cancel the temporary ban, from the badword filter and <i>/jfreu banfor</i>, of a player (login or ID)
+
+<LI>new <b>/jfreu listbans</b> command to display the list of temporarily banned players; if the remaining time of a ban is more than an hour, it's shown as XhXX
+
+<LI>the <i>/stats</i> output now includes the last online information (like <i>/laston</i>)
+
+<LI>the <i>/laston</i> command can now be used without a parameter (however little use that has)
+
+<LI>added a server Version entry to the start-up header in the log
+
+<LI>the commands list (in <A HREF="aseco_commands.html">HTML</A> and <A HREF="aseco_commands.doc">Word</A>) now includes all <i>/admin</i> and <i>/jfreu</i> commands as well
+</UL>
+
+<H3>Bug fixes in the v0.92 release of ASECO/RASP:</H3>
+
+<UL>
+<LI>when a player equals his/her record, it's still stored in the 'records' table with the new date/time, in effect changing (increasing) its position if there are other players with the exact same time driven after that record's original date/time (ugly oops) &ndash; fixed, equalled records are not stored again; to repair the records that were affected by this bug, you can use <a href="scripts/repairrecs.zip">this PHP script</a>
+
+<LI>when using jfreu.plugin.php (not jfreu.lite.php), if a player is banned by the badword filter or <i>/jfreu banfor</i> command, then the "left the game" message is still shown &ndash; fixed
+
+<LI>also when using jfreu.plugin.php, if a player is kicked once by the ranklimit system, badword filter or <i>/jfreu banfor</i> command, which skip the "left the game" message, then that message would no longer be shown when that player leaves normally again after a subsequent visit &ndash; fixed
+
+<LI>Player_IDs are not accepted when the pertaining player is offline, even when that would make sense (e.g. <i>/admin unban &lt;x&gt;</i> after <i>/admin listbans</i>) &ndash; fixed
+
+<LI>when two (or more) players have the exact same Avg value, they receive the same server rank &ndash; fixed
+
+<LI>when the Avg value shown by <i>/rank</i>, <i>/top10</i>, <i>/top100</i>, etc. rounds to a whole number, the ".0" decimal isn't shown &ndash; fixed
+
+<LI>the v0.91 overhaul of the full Jfreu plugin warranted a version update to 0.14 &ndash; fixed
+</UL>
+
+<HR>
+
+<H3>New features and other changes in the v0.91 release of ASECO/RASP:</H3>
+
+<UL>
+<LI>enhancements and fixes for the <b>full Jfreu plugin</b> (jfreu.plugin.php &amp; jfreu.chat.php):<br><br>
+
+<UL>
+<LI>the <b>jfreu.config.php</b> file was moved from the plugins/ directory to the more appropriate <b>includes/</b> directory
+
+<LI>the player join message shows the administrator title (if appropriate) and the server rank when rank limiting is enabled
+
+<LI>new command <b>/jfreu listlimits</b> to display all rank-limiting related settings in one convenient overview
+
+<LI>new commands <b>/jfreu writeconfig</b> and <b>/jfreu readconfig</b> to write and read the actual Jfreu config settings to/from a new dynamic config file, configurable via <b><CODE>$conf_file</CODE></b> in jfreu.config.php (default: <b>plugins/jfreu/jfreu.config.xml</b>)
+<UL>
+<LI>the settings managed this way include all the variables in jfreu.config.php, except <CODE>$message_start</CODE>, all the actual info messages, and <CODE>$badwordslist</CODE>
+<LI>changing any setting will cause the jfreu.config.xml file to be rewritten with the current values, so that after an ASECO/RASP restart it can be read back to restore those settings (it is however not read automatically)
+<LI><i>/jfreu readconfig</i> shows the current servername after reading the settings, in case that was changed via the autoranking mechanism
+</UL>
+
+<LI>new commands <b>/jfreu listvips</b> and <b>/jfreu listvipteams</b> to display the lists of VIPs and VIP_Teams, respectively
+
+<LI>new command <b>/jfreu readlists</b> to read in the lists of VIPs and VIP_Teams, complementing <i>/jfreu writelists</i>
+
+<LI>new command <b>/jfreu badwordsnum</b> to set the badwords limit, complementing <i>/jfreu badwords</i> and <i>/jfreu badwordsban</i>
+
+<LI>new command <b>/jfreu badword</b> to increment the badword count for a player (login or ID) who 'creatively' and intentionally circumvents the badword filter
+
+<LI>new command <b>/jfreu autochangename</b> to enable or disable automatically changing the servername when the rank limit is updated
+
+<LI>new command <b>/jfreu infomessages</b> to enable or disable the info messages
+
+<LI>new <b><CODE>$unspecvote</CODE></b> setting in jfreu.config.php, and new command <b>/jfreu unspecvote</b> to allow or disallow SpecOnly players to use the <i>/unspec</i> command
+
+<LI>exchanged the functionality of <i>/jfreu setrank</i> and <i>/jfreu setlimit</i>: now <i>setrank</i> enables/disables the rank limit system (just like <i>autorank</i> for the autoranking feature) while <i>setlimit</i> sets the rank limit value itself (similar to <i>hardlimit</i> for the overall hard limit value)
+
+<LI>corrected <i>/jfreu addteamvip</i> into <i>/jfreu addvipteam</i>, and <i>/jfreu removeteamvip</i> into <i>/jfreu removevipteam</i> (along with all corresponding variables)
+
+<LI>corrected <i>/jfreu autorankminplayer</i> into <i>/jfreu autorankminplayers</i>, and <CODE>$autorankminplayer</CODE> into <CODE>$autorankminplayers</CODE> in jfreu.config.php (proper plural)
+
+<LI>the <i>/jfreu addvip</i>, <i>/jfreu removevip</i>, <i>/jfreu unspec</i>, <i>/jfreu banfor</i> and <i>/jfreu player</i> commands are now able to use player IDs (in addition to logins)
+
+<LI>added clearer descriptions to the <i>/jfreu helpall</i> output
+
+<LI>all relevant <i>/jfreu</i> commands now show the title and nickname of the admin performing those actions
+
+<LI>added more logging of <i>/jfreu</i> commands usage, and of all the various kick reasons
+
+<LI>an invalid value specified to <i>/jfreu setlimit</i>, <i>/jfreu hardlimit</i>, <i>/jfreu offset</i>, <i>/jfreu autorankminplayers</i>, <i>/jfreu maxplayers</i> and <i>/jfreu kickworst</i> produces an appropriate error message
+
+<LI>a login specified to <i>/jfreu unspec</i> that isn't SpecOnly produces an appropriate error message
+
+<LI>the <i>/jfreu setlimit</i> command without a value now shows the current rank limit
+
+<LI>the jfreu.unspec.php plugin is integrated into jfreu.plugin.php: spectators that manage to start racing without getting unSpec-ed are kicked after passing a checkpoint; the original kick_player_spec() function is therefore redundant and was disabled
+
+<LI>the NoVote feature (automatic cancellation of CallVotes) and the <i>/jfreu cancel</i> command are inactive when chat-based votes are enabled
+
+<LI>fixed and re-enabled the <b>/password</b> command to show the server's player/spectator password to a player or spectator/SpecOnly, respectively
+
+<LI>fixed <i>/jfreu setlimit on</i> to not change the servername if <CODE>$autochangename</CODE> is off
+
+<LI>fixed <i>/jfreu message</i> to use the actual servername instead of the initial one, in case that was changed via the autoranking mechanism
+
+<LI>fixed SpecOnly player's rank to get checked against the rank limit instead of 0 if <CODE>$autorank</CODE> is off
+
+<LI>fixed players with rank 0 (vanilla account) to not get kicked if <CODE>$hardlimit</CODE> is disabled
+
+<LI>fixed players with rank 0 (vanilla account) to get considered by the kick_hirank and kick_worst features before other high ranks
+
+<LI>fixed player with rank higher than <CODE>$hardlimit</CODE> to still get shown an explanation message before being kicked
+
+<LI>fixed spectator whose team is in the VIP_Teams list to get marked as VIP instead of SpecOnly
+
+<LI>fixed inclusion (also in jfreu.lite.php) of wrong jfreu.config.php in case of multiple Aseco installs (for multiple TM servers on the same machine)
+
+<LI>general code clean-up, including proper use of booleans for all variables that used only 1/0 values, message corrections, redundant code removal, and lots more
+</UL>
+<br>
+
+<LI>new <b>/laston</b> command to show when a player (login or ID) was last online on the server
+
+<LI>new <b>/admin players</b> command to display the list of all known players, and search for offline players via a (part of a) login or nickname with <i>/admin players &lt;string&gt;</i> (just like <i>/players &lt;string&gt;</i> to search for online players)
+
+<LI>tracks downloaded via <i>/add</i> are now saved to the new 'GameData/Tracks/Challenges/TMXtmp/' directory as they are added only temporarily to the server's track list, while tracks downloaded via <i>/admin add</i> are saved to the 'GameData/Tracks/Challenges/TMX/' directory and added permanently to the server's track list, as before
+
+<LI>the <i>/admin add</i> command now optionally also adds the downloaded track to the jukebox (configured via <b><CODE>$jukebox_adminadd</CODE></b> in rasp.settings.php)
+
+<LI>new <b>/admin addthis</b> command to permanently add the current track to the server's track list if it is playing through a TMX <i>/add</i> vote; this will also move the track file from the 'GameData/Tracks/Challenges/TMXtmp/' directory into the 'GameData/Tracks/Challenges/TMX/' one
+
+<LI>the <i>/add trackref</i> command now creates trackref.txt files in both TMX and TMXtmp directories
+
+<LI>tracklists created by <i>/admin writetracklist</i> now include a &lt;random_map_order&gt; filter section so that <i>/admin readtracklist</i> of such files randomizes the track list again (configurable via new config.xml setting <b><CODE>&lt;writetracklist_random&gt;</CODE></b>)
+
+<LI><i>/admin black</i> and <i>/admin unblack</i> now automatically perform a <i>writeblacklist</i>, and <i>/admin addguest</i> and <i>/admin removeguest</i> a <i>writeguestlist</i>, so that the blacklist.txt and guestlist.txt files are always in sync in case of a server restart
+
+<LI>on TMO/TMS, <i>/nextmap</i> will also show the environment of the next track
+
+<LI>the chat-based voting configuration options were lifted out of plugin.rasp_votes.php into the new <b>includes/votes.config.php</b> file
+
+<LI>a new <A HREF="quickstart.html">TMN &amp; ASECO/RASP quick start guide</A> is included in the DOCS/ directory
+</UL>
+
+<H3>Bug fixes in the v0.91 release of ASECO/RASP:</H3>
+
+<UL>
+<LI>a track added to the jukebox via TMX <i>/add</i> vote is temporarily added to the server's track list while playing it, but if multiple tracks are <i>/add</i>-ed right behind eachother, only the last one would be removed from the track list again &ndash; fixed, each track is immediately removed from the server's track list after having been loaded successfully for its (single) turn
+
+<LI><i>/admin setservername</i> uses only the first specified word to set the servername &ndash; fixed, all words are now used
+
+<LI><i>/admin setservername</i>, <i>/admin setmaxplayers</i> and <i>/admin match</i> don't show the nickname of the admin performing those actions &ndash; fixed
+
+<LI><i>/server</i> always shows the initial servername &ndash; fixed, it now displays the actual servername, in case that was changed via the autoranking mechanism
+
+<LI>because tracks downloaded from TMX are renamed to filenames derived from the tracks' (sanitized) names, it is possible for tracks with identical names to get mixed up &ndash; fixed, the (sanitized) filename is now made unique with a sequence number, if necessary
+</UL>
+
+<HR>
+
+<H3>New features and other changes in the v0.90 release of ASECO/RASP:</H3>
+
+<UL>
+<LI>new and comprehensive <b>player muting</b> support with the following features:<br><br>
+
+<UL>
+<LI>player muting (preventing players to chat) automatically becomes available when plugin.muting.php is enabled (uncommented) in plugins.xml
+<LI>muting can be done <b>globally</b> (by admins with sufficient permissions):
+<UL>
+<LI>a player can be added to the global mute list with <b>/admin mute</b> and removed again with <b>/admin unmute</b>
+<LI>admins can view the global mute list with <b>/admin mutelist</b> (alias <b>/admin listmutes</b>)
+<LI>the global mute list is not stored so an ASECO/RASP restart will result in an empty list &ndash; consider it an opportunity for redemption of muted players
+<LI>all normal chat by a player on the global mute list is muted for all other players
+<LI>a player on the global mute list is also not allowed to use the <i>/me</i>, <i>/hi</i>, <i>/bye</i>, etc. chat commands (which result in global messages), in order to prevent circumventing the normal chat mute (or possible spamming in retaliation)
+<LI>admins will probably find it more effective and efficient to warn and kick a troublesome player than to mute him/her
+<LI>the admin muting commands are always listed in the help, but disabled if the muting plugin is not included
+<LI>the adminops.xml file has corresponding new entries <b><CODE>&lt;mute&gt;</CODE></b>, <b><CODE>&lt;unmute&gt;</CODE></b>, <b><CODE>&lt;mutelist&gt;</CODE></b> and <b><CODE>&lt;listmutes&gt;</CODE></b>
+</UL>
+<LI>...or <b>individually</b> by any player:
+<UL>
+<LI>a player can add another player to his/her individual mute list with <b>/mute</b> and remove a player again with <b>/unmute</b>
+<LI>players can view their individual mute list with <b>/mutelist</b>
+<LI>the individual mute list is not stored so leaving the server will result in an empty list upon joining &ndash; consider it another opportunity for redemption of muted players
+<LI>all normal chat by a player on another player's mute list is muted only for that other player
+<LI>a muted player's use of the <i>/me</i>, <i>/hi</i>, <i>/bye</i>, etc. chat commands will still be seen by the player who muted him/her
+<LI>players cannot mute admins of any tier (MasterAdmin, Admin &amp; Operator)
+</UL>
+
+<LI>all muted players' normal chat can still be read in <i>/chatlog</i>, and is logged as usual (if <CODE>&lt;log_all_chat&gt;</CODE> in config.xml is enabled)
+<LI>directly and completely muting a player is not possible because the TM server first sends out a normal chat line to all other players before ASECO/RASP receives it
+<LI>therefore a mute buffer of the size of the large chat window (18 lines) is maintained for each individual player, containing the global server messages (e.g. records, track changes, votes, etc.) as well as the chat lines from all unmuted players; this buffer also stores any private messages a player sent and received (via <i>/pm</i>, <i>/pma</i> &amp; <i>/admin pm</i>), but not the local messages from most chat commands (e.g. <i>/help</i>, <i>/pb</i>, <i>/wins</i>, <i>/recrange</i>, etc.) nor any error messages
+<LI>whenever a muted player enters a chat line, that line is not appended but instead the individual buffers are sent back as fast as possible to any players that muted him/her, in effect pushing the muted player's line out of the chat window
+<LI>while this is the best possible approach to muting, given the TM server's limitations, it does have a few problems:
+<UL>
+<LI>since local and error messages are not buffered, a muted player entering a chat line will cause those messages to be lost for any players that muted him/her as their buffers are sent back to the chat window; for this reason a global mute may be too confusing and an admin warn/kick more practical
+<LI>because of the delay between the TM server sending chat lines directly to all players and the mute buffers of some (or all) players being sent back to them, a chat line by a muted player is usually visible for a short time; that timing issue is inherent to this approach
+<LI>because of the above timing problem, it's also possible that an unmuted player enters a chat line in between a muted player's line and sending out any mute buffers, which causes that unmuted line to get pushed out of the chat window as well; it is still stored in the mute buffers though, and will be restored to the chat window the next time a muting action occurs
+<LI>to speed up that restore, players who notice they're missing a chat line from an unmuted player can use the new <b>/refresh</b> command to restore their chat window
+</UL>
+
+</UL>
+<br>
+
+<LI>new <i>idlekick</i> features in mistral.idlekick.php:<br>
+if spectator kicking is enabled (<CODE>$kickSpecToo = true</CODE>), a separate idle challenge count is in effect, called <b><CODE>$kickSpecAfter</CODE></b> (default: 4);<br>
+the idle kicking system now takes tiered admins and their player/spectator status into account:
+<UL>
+<LI>MasterAdmins are never idle kicked
+<LI>Admins and Operators are not kicked if they're in player mode and the new <b><CODE>&lt;noidlekick_play&gt;</CODE></b> ability in their respective ability lists (in adminops.xml) is enabled
+<LI>Admins and Operators are not kicked if they're in spectator mode and the new <b><CODE>&lt;noidlekick_spec&gt;</CODE></b> ability in their respective ability lists is enabled
+</UL>
+<br>
+
+<LI>new <i>/list</i> options:<br>
+<b>/list longest/shortest</b> display the longest and shortest tracks as determined by Author time<br>
+<b>/list newest #</b> displays the # newest tracks added to the server (default: 10)
+
+<LI>in all <i>/list</i> output, recently played tracks (as defined by <CODE>$buffersize</CODE> in rasp.settings.php) are now shown in light grey to indicate they cannot be jukeboxed yet again
+
+<LI>long lines in the output of <i>/chatlog</i>, <i>/pmlog</i> and <i>/admin pmlog</i> are now cleanly wrapped on words, instead of breaking off in the middle of words
+
+<LI>new <b>/admin wall</b> (alias <b>/admin mta</b>) command to display a message as a pop-up window to all players (familiar from the *nix <i>wall</i> command); the default message color is red but all color and attribute tags can be used, and the adminops.xml file has corresponding new entries <b><CODE>&lt;wall&gt;</CODE></b> and <b><CODE>&lt;mta&gt;</CODE></b>
+
+<LI>the warning message sent via <i>/admin warn</i> can now be customized via a new <b><CODE>&lt;warning&gt;</CODE></b> message in config.xml
+
+<LI>the output of <i>/admin</i> commands that generate a list of players (<i>listbans</i>, <i>listblacks</i>, <i>listguests</i>, <i>listmasters</i>, <i>listadmins</i>, <i>listops</i>) now uses the same blue color for the logins as the <i>/players</i> output
+
+<LI>a new <b><CODE>&lt;karma&gt;</CODE></b> color is defined in config.xml and used in all relevant karma messages so that they can easily be customized
+
+<LI>the aforementioned light grey and blue colors are defined in config.xml too, as <b><CODE>&lt;grey&gt;</CODE></b> and <b><CODE>&lt;login&gt;</CODE></b> respectively; the red color used for nickname headers in all pop-up windows is also configurable, via the new <b><CODE>&lt;nick&gt;</CODE></b> color
+
+<LI>showing the records range before, during (with <i>/liverecs</i>) and after a track if there are no new records, is now optional via new config.xml setting <b><CODE>&lt;show_recs_range&gt;</CODE></b>; if <CODE>False</CODE>, no range is shown
+
+<LI>the messages for new, improved, secured and equaled records (in localdatabase.xml) have been shortened to reduce wrapping in the small chat window
+
+<LI>if showing the total playtime at the end of each track is enabled, that <i>playtime</i> is also logged
+
+<LI>the MySQL connection can become lost on servers that remain empty for a long time (the default <CODE>wait_timeout</CODE> is 8 hours), therefore when that happens an <b>automatic MySQL reconnect</b> is now performed (thanks Dagobert)
+
+<LI>renaming the blacklist, guestlist and tracklist extensions into ".xml" in v0.89 was not such a good idea (because the TMN server will create an empty blacklist and guestlist upon starting if it doesn't find the ".txt" versions), so they have been reverted to ".txt"
+
+<LI>added logging of more <i>/admin</i> commands
+</UL>
+
+<H3>Bug fixes in the v0.90 release of ASECO/RASP:</H3>
+
+<UL>
+<LI>when using a track ID with <i>/karma</i>, it still reports "Current Track Karma" &ndash; fixed, now the pertaining track name is shown
+
+<LI>spectators are never idle-kicked even if <CODE>$kickSpecToo</CODE> in mistral.idlekick.php is <CODE>true</CODE> (ugly oops) &ndash; fixed
+
+<LI>if a <i>/replay</i> vote passes, another could be started and if it passes too, the same track is queued twice in the jukebox &ndash; fixed, <i>/replay</i> is no longer allowed after the track is queued once
+
+<LI>if a track fails to load twice from the jukebox and is dropped, the corresponding chat message is empty &ndash; fixed
+
+<LI><i>/list karma 0</i> shows the entire track list &ndash; fixed, it now shows only tracks with karma less than or equal to 0
+
+<LI>messages sent via <i>/pma</i> show up twice in the sending admin's <i>/pmlog</i> output &ndash fixed
+
+<LI>the <CODE>&lt;skipmap&gt;</CODE> and <CODE>&lt;skip&gt;</CODE> abilities are missing from the adminops.xml file &ndash; fixed
+
+<LI>in a new installation, the very first line written to logfile.txt is actually lost &ndash; fixed
+</UL>
+
+<HR>
+
+<H3>New features and other changes in the v0.89 release of ASECO/RASP:</H3>
+
+<UL>
+<LI>info on <b>actual karma votes</b>: the karma messages can optionally show each player's actual votes, or lack thereof (configured via <b><CODE>$karma_show_votes</CODE></b> in rasp.settings.php)
+
+<LI><b>requiring finishes before karma voting</b>: a player can optionally be required to finish a track a minimum number of times before being allowed to karma vote for it (configured via <b><CODE>$karma_require_finish</CODE></b> in rasp.settings.php); this is the total number of finishes since the first day a player tried a track, not the number in the current session
+
+<LI>the <i>/karma</i> command now accepts an optional track ID (from your last <i>/list</i> output) to display the karma of that track instead of the current one
+
+<LI>when changing your already existing karma vote, instead of "Vote Successful" the message now is "Vote Changed"
+
+<LI>new <b>/pmlog</b> command to display the most recent 30 (default) lines of your own private messages (both sent and received) in a pop-up window
+
+<LI><i>/list &lt;xxx&gt;</i> now allows searching for track names/authors with multiple words (previously one word was required, otherwise the entire list was displayed)
+
+<LI>the <i>/admin help</i> command now shows the command list in the chat window, while the new <b>/admin helpall</b> command displays the list with descriptions in a pop-up as before; similarly for <i>/jfreu help</i> and the new <b>/jfreu helpall</b> command &ndash; this makes them consistent with the user <i>/help</i> and <i>/helpall</i> commands
+
+<LI>the jfreu.player.php plugin has been renamed to <b>jfreu.lite.php</b>, containing the <b>info messages</b> system and (as before) the <i>player join/leave messages</i>, but nothing else of the full Jfreu plugin functionality
+
+<LI>in the <i>/players</i> output, strip wide font ($w) from nicknames so that the window width isn't stretched out too far by players with long wide nicks and long logins
+
+<LI>wide fonts are also stripped from the sender and receiver nicknames in <i>/pm</i>, <i>/pma</i> and <i>/admin pm</i>
+
+<LI>when showing records before (<CODE>&lt;show_recs_before&gt;</CODE> is <CODE>True</CODE>), after (<CODE>&lt;show_recs_after&gt;</CODE> is <CODE>True</CODE>) or during (<i>/liverecs</i>) a track and there are no new records, the record range is included instead
+
+<LI>the last page in a multi-page pop-up now uses an 'OK' button (instead of 'Close'), for consistency with all single-page pop-ups
+
+<LI>if an admin (with the <i>chat_jb_recent</i> ability) jukeboxes a recently played track, a warning about the repeat track is shown but it's still jukeboxed again
+
+<LI>the <i>/replay</i> message was changed from "Replay Track upon Completion" into "Replay Track after Finish", which is hopefully easier to understand for non-English speaking players
+
+<LI>all chat-based and TMX <i>/add</i> votes are now cancelled by the server during the Tab scoreboard before the next track is fetched from the jukebox, to prevent interference from a <i>/replay</i> vote passing at the last possible moment
+
+<LI>the default percentage of a track after which a <i>/skip</i> vote is no longer allowed, was reduced from 70% to 50%
+
+<LI>the <i>/admin writetracklist</i> command now accepts an optional filename parameter to write the current match settings to another file than the default
+
+<LI>new <b>/admin readtracklist</b> command for reading the default match settings file, or an alternate one specified with an optional filename parameter, to complement <i>/admin writetracklist</i>; it shows the number of tracks loaded from the file
+
+<LI>the default filename used for the above match settings file is shortened from "rasp-tracklist.txt" to "tracklist.xml", and it's written to and read from the more appropriate "GameData/Tracks/MatchSettings/" directory (previously in "GameData/Tracks/")
+
+<LI>the extension of the blacklist, guestlist and tracklist files (as read and written by the pertaining <i>/admin</i> commands) is updated from ".txt" to the more relevant ".xml"
+
+<LI>the <i>/match load</i> command in plugin.matchsave.php was disabled as it's now redundant with <i>/admin readtracklist</i>
+
+<LI>the <i>/admin acdl</i> command now takes "ON" or "OFF" (case-insensitive) as parameter instead of "Yes"/"No", for consistency with all other boolean (<i>/jfreu</i>) admin commands
+
+<LI>a new <b><CODE>&lt;admin&gt;</CODE></b> color is defined in config.xml and used in all relevant <i>/admin</i> messages so that they can easily be customized
+
+<LI>if you still use the old <i>chat.vote.php</i> plugin, that will now show the current score when a track is loaded
+
+<LI>the <CODE>&lt;account&gt;</CODE> field in the <CODE>&lt;tmserver&gt;</CODE> section of config.xml became redundant, and was removed
+
+<LI>an <b>/ad</b> shortcut for <i>/admin</i> and a <b>/jb</b> shortcut for <i>/jukebox</i> become available by uncommenting the appropriate two lines at the start of chat.admin.php and plugin.rasp_jukebox.php, respectively
+
+<LI>aseco.php now determines whether it's running on Win* or *nix operating systems, so it's no longer necessary to define the <i>CRLF</i> constant manually
+
+<LI>lots of code optimization and clean-up, like more efficient handling of TM server calls (thanks Assembler Maniac), better error handling throughout the entire system, and other tid bits
+</UL>
+
+<H3>Bug fixes in the v0.89 release of ASECO/RASP:</H3>
+
+<UL>
+<LI><i>/kick</i> votes are denied when there's no vote in progress, and allowed to start when another vote already is (oops) &ndash; fixed
+
+<LI><i>/admin ban</i> produces an RPC error in the log from the Kick call because the Ban call already kicks the player &ndash; fixed by removing the Kick call
+
+<LI>if a track is deleted before pruning its records (<i>/admin prunerecs</i>), those are still counted in players' <i>/summary</i> results (though not <i>/topsums</i>) &ndash; fixed
+
+<LI><i>/pm</i> and <i>/pma</i> send a message even if it's empty &ndash; fixed, empty messages are ignored
+
+<LI>in <i>/add</i> and <i>/admin add</i>, after renaming the numeric filename to a (sanitized) track filename, multiple spaces and underscores are not properly reduced to single ones &ndash; fixed
+
+<LI>in the original v0.88 zip file (which was fixed one day after release), <i>/jfreu</i> didn't work for any admin tier &ndash; fixed
+</UL>
+
+<HR>
+
+<H3>New features and other changes in the v0.88 release of ASECO/RASP:</H3>
+
+<UL>
+<LI>new, flexible and fully integrated <b>tiered administration</b> support with the following features:<br><br>
+
+<UL>
+<LI>there are three tiers of administrators: MasterAdmins, Admins and Operators
+<LI>all three tiers of administrators can see who is in each tier with the new <b>/admin listmasters</b>, <b>/admin listadmins</b> and <b>/admin listops</b> commands
+<LI>if a player is in more than one tier, the highest one takes precedence
+<LI>MasterAdmins have no restrictions to their abilities, while the abilities of Admins and Operators can be defined per individual command
+<LI>the list of MasterAdmins is fixed in the <b><CODE>&lt;masteradmins&gt;</CODE></b> section in config.xml; the lists of Admins and Operators, and their respective abilities, are stored in the new <b>adminops.xml</b> file (configurable via new config.xml setting <b><CODE>&lt;adminsops_file&gt;</CODE></b>) and automatically restored after an ASECO/RASP restart
+<LI>MasterAdmins can add and remove Admins dynamically, using the new <b>/admin addadmin</b> and <b>/admin removeadmin</b> commands
+<LI>both MasterAdmins and Admins can add and remove Operators dynamically, using the new <b>/admin addop</b> and <b>/admin removeop</b> commands
+<LI>MasterAdmins can dynamically enable and disable all abilities for Admins and Operators &ndash; even their ability to change their own abilities, if you so desire &ndash; using the new <b>/admin adminability</b> and <b>/admin opability</b> commands
+<LI>the ability lists also define (non-/admin) chat commands where Admins and Operators have additional capabilities that users don't
+<LI>the <i>/admin help</i> command dynamically lists only the available commands for each tier depending on their allowed abilities
+<LI>the new <b>/admin listabilities</b> command displays which non-/admin abilities (if any) are available to Admins and Operators, with a description; for MasterAdmins, <i>/admin listabilities {admin/op}</i> displays the abilities of the pertaining administrator tier
+<LI>there are no separate commands (e.g. /op), all tiers use the same <i>/admin</i> commands (so there's no code duplication)
+<LI>all <i>/admin</i> chat and log messages show whether a MasterAdmin, Admin or Operator performed the pertaining action
+<LI>the player join message from jfreu.plugin.php (or jfreu.player.php) shows the appropriate administrator title
+<LI>the titles with which MasterAdmins, Admins and Operators are shown in chat and join messages, are configurable via the <b><CODE>&lt;titles&gt;</CODE></b> section in adminops.xml
+<LI>if e.g. Operators do not have the ability to use <i>/pma</i> and <i>/admin pm</i>, they will also not receive such private messages when sent by (Master)Admins
+<LI>any server owner's LAN logins (with IP and port) should be in the <CODE>&lt;masteradmins&gt;</CODE> section of config.xml and will be skipped by the <i>/admin listmasters</i> command
+<LI>all Jfreu admin commands can be used by MasterAdmins and Admins, but not Operators; also, the <i>/jfreu addadmin</i> command was disabled, and the corresponding <CODE>&lt;admin_list&gt;</CODE> section from plugins/jfreu/jfreu.vips.xml (previously jfreu.lists.xml) was removed
+<LI>servers that don't need Admins and Operators can simply leave those login lists in adminops.xml empty, and not have the tiered system interfere (phew <FONT FACE="Wingdings">&#74;</FONT>)
+<LI>see this table for the <A HREF="admin_abilities.html">default list of abilities</A>
+</UL>
+<br>
+
+<LI>new <b>karma details</b>: details about the vote counts and percentages can optionally be shown with karma messages (configured via <b><CODE>$karma_show_details</CODE></b> in rasp.settings.php)
+
+<LI>new <b>/admin listdupes</b> command to display a list of duplicate tracks on the server (ready for <i>/admin remove/erase</i>)
+
+<LI>new <b>/admin prunerecs</b> command to delete the records/rs_times database entries for a specific track (by track ID from <i>/list</i>, so you must prune recs for a track before removing/erasing it, otherwise you can't <i>/list</i> it anymore)
+
+<LI>the number of rounds (in Rounds/Team modes) or seconds (in TimeAttack/Laps/Stunts modes) by which a vote expires can now be configured per individual type of TMX <i>/add</i> and chat-based vote (<CODE>$r_expire_limit</CODE> and <CODE>$ta_expire_limit</CODE> in plugin.rasp_votes.php)
+
+<LI>the output from <i>/list</i> and <i>/list &lt;xxx&gt;</i> now includes the corresponding ranked records, just like <i>/list norecent</i>
+
+<LI>the <i>/best</i> and <i>/worst</i> commands are now also available via <b>/list best</b> and <b>/list worst</b>
+
+<LI>the <i>/server</i> output now shows the total playing time of all players combined
+
+<LI>the <i>/best</i>, <i>/worst</i>, <i>/summary</i>, <i>/stats</i>, <i>/admin ban</i> and <i>/admin black</i> commands can now also be used on offline logins (only by admins as defined by their abilities)
+
+<LI>moved all jukebox and <i>/add</i> related message strings into rasp.xml for easy customization and localization
+
+<LI>the all-caps UNRANKED text for unranked records in the <i>/pb</i> message is now in narrow font to make it less intrusive
+
+<LI>in Jfreu's player join messages and the <i>/stats</i> output, the ladder ranks are now formatted with spaces between the thousands (like in the Tab scoreboard)
+
+<LI>if Jfreu's info messages are disabled, the "Messages: OFF" reminder isn't shown anymore
+
+<LI>the Jfreu plugin "Loaded" message is no longer shown to a connecting player (only on ASECO/RASP start-up)
+
+<LI>the name of Jfreu's vip/team_vip file is now configurable via <b><CODE>$vips_file</CODE></b> in jfreu.config.php (default: plugins/jfreu/jfreu.vips.xml)
+
+<LI>some code clean-up, like more efficient formatColors and resetRanks functions, a non-looping <i>/nextmap</i> (thanks Assembler Maniac), and other tid bits
+
+<LI>all documentation files included in the .zip are now grouped together in their own DOCS subdirectory
+</UL>
+
+<H3>Bug fixes in the v0.88 release of ASECO/RASP:</H3>
+
+<UL>
+<LI>if the jukebox is empty and the current track is deleted (<i>/admin removethis/erasethis</i>), <i>/nextmap</i> hangs up the ASECO/RASP system &ndash; fixed by the non-looping rewrite above
+
+<LI>the karma reminders at every finish (<CODE>$remind_karma = 2</CODE>) could occasionally produce an RPC error in the log &ndash; fixed
+
+<LI>there is a typo in plugin.rasp_irc.php causing the IRC connection to fail &ndash; fixed
+
+<LI>a couple of <i>/jfreu</i> commands are not shown in the <i>/jfreu help</i> overview &ndash; fixed
+
+<LI><i>/admin removethis/erasethis</i> does not properly log the name of the deleted track &ndash; fixed
+
+<LI>the second line of the default Welcome message text was shown without the shadow attribute &ndash; fixed
+</UL>
+
+<HR>
+
+<H3>New features and other changes in the v0.86 release of ASECO/RASP:</H3>
+
+<UL>
+<LI>new <i>/list</i> options to complement <i>/list nogold</i>:<br>
+<b>/list noauthor</b> displays all tracks the player finished but didn't beat the Author time on<br>
+<b>/list norecent</b> displays all tracks the player finished but didn't race recently (includes ranked records)
+
+<LI>the output from <i>/list nogold</i> and <i>/list noauthor</i> now shows how much your time is over the track's Gold and Author time, respectively
+
+<LI>new <b>karma vote reminders</b>: if a player (but not a spectator) hasn't karma voted for a track, an optional reminder can be sent upon every finish or at the end of the track (configured via <b><CODE>$remind_karma</CODE></b> in rasp.settings.php)
+
+<LI>new <b>/admin pass</b> command to force any TMX <i>/add</i> and chat-based vote to pass
+
+<LI>the <i>/topclans</i> output now shows how many clan members were counted to compute the clan's average server rank
+
+<LI>the chat-based voting plugin has two new options (<b><CODE>$allow_spec_startvote</CODE></b> and <b><CODE>$allow_spec_voting</CODE></b>) to allow or disallow spectators to start votes and/or to vote <i>/y</i> themselves; this also applies to TMX <i>/add</i> votes, but admins are always allowed to vote <i>/y</i>
+
+<LI>the track history is now written to a file that is automatically restored upon ASECO/RASP start-up; this prevents players from jukeboxing a recently played track after a restart (a frequent event on my server when developing <FONT FACE="Wingdings">&#74;</FONT>)
+
+<LI>moved more message strings into config.xml and rasp.xml for easy customization and localization
+
+<LI>some code clean-up, like removing duplicate getPlayerId functions, adding an <i>isSpectator</i> function, and other tid bits
+</UL>
+
+<H3>Bug fixes in the v0.86 release of ASECO/RASP:</H3>
+
+<UL>
+<LI>when adding from TMX via <i>/add</i> or <i>/admin add</i>, a track with special characters (besides '?' and '*') in its filename could cause it to not load and get stuck in the jukebox &ndash; fixed by changing most special characters into '_' (underscore)
+
+<LI>the special 'trackref' parameter to <i>/add</i> doesn't work &ndash; fixed parameter processing and made it an admin-only option; also fixed non-existent 'tracktype' field in the trackref.txt file into 'environment'
+
+<LI>a replayed track is entered multiple times into the track history &ndash; fixed
+
+<LI>if a track failed to load from the jukebox, the next track from the server's track list that would get loaded in its place isn't entered into the track history &ndash; fixed
+
+<LI>if an admin forces a replay (<i>/admin replay</i>) during a <i>/replay</i> vote, that vote isn't cancelled, potentially allowing a double replay &ndash; fixed
+
+<LI>the XML parser changes '+' characters in message strings into spaces &ndash; fixed
+</UL>
+
+<HR>
+
+<H3>New features and other changes in the v0.85 release of ASECO/RASP:</H3>
+
+<UL>
+<LI>new <b>/topsums</b> command (short for: top summaries) to display the top-100 of players with the most top-3 ranked records (i.e. of <i>/summary</i> results)
+
+<LI>updated <b>/best</b> and <b>/worst</b> commands to include an track ID column so that tracks can be jukeboxed directly (without going through <i>/list</i>)
+
+<LI>new <b>/admin removethis</b> and <b>/admin erasethis</b> commands to quickly remove the current track from rotation and, if erasethis, also delete the track file
+
+<LI>new <b>up-to-date check</b> at start-up (optional) and <b>/admin uptodate</b> command to check for the current version of ASECO/RASP; consequently, Jfreu's <i>/uptodate</i> command was disabled
+
+<LI>new <b><CODE>&lt;limit&gt;</CODE></b> configuration setting in localdatabase.xml to restrict the highest records that are still displayed
+
+<LI>computation of the required number of votes for TMX <i>/add</i> and chat-based votes adjusted for low player counts
+
+<LI>the informational <i>/helpvote</i> messages sent to all players or just a new player can now be turned off completely
+
+<LI>an extra check for a "stuck" track in the jukebox is done when loading the next one, and if it fails to load twice it's dropped
+
+<LI>if <CODE>&lt;show_recs_before&gt;</CODE> in config.xml is <CODE>true</CODE>, the original Current Record message is redundant with the top-8 records list, and no longer shown
+
+<LI>if <CODE>&lt;show_recs_before&gt;</CODE> in config.xml is <CODE>true</CODE> and the player has a ranked record, then the Personal Best message can optionally be skipped via <b><CODE>$always_show_pb = false</CODE></b> in rasp.settings.php
+</UL>
+
+<H3>Bug fixes in the v0.85 release of ASECO/RASP:</H3>
+
+<UL>
+<LI>in determining the required number of votes, spectators are still included for TMX <i>/add</i> votes &ndash; fixed
+
+<LI>when adding from TMX via <i>/add</i> or <i>/admin add</i>, a track with a '?' or '*' in its filename causes it to not load and get stuck in the jukebox &ndash; fixed by changing all occurrences of '?' and '*' into '_'
+
+<LI>in very rare conditions (running on WinXP with a buggy PHP time functions library in a country using 8-bit characters) the <i>/server</i> and <i>/stats</i> commands could fail silently because the 'strftime' system call returns a bogus timezone &ndash; fixed by changing to 'date' system calls
+
+<LI>using '$g$m' to clear text attributes after track names and player nicknames in various messages could result in inconsistencies with italics &ndash; fixed by replacing '$g$m' with '$z$s' (or occasionally '$z$s$i')
+</UL>
+
+<HR>
+
+<H3>New features and other changes in the v0.84 release of ASECO/RASP:</H3>
+
+<UL>
+<LI>new and sophisticated <b>chat-based voting</b>; by including plugin.rasp_votes.php and setting <b><CODE>$feature_votes</CODE></b> in rasp.settings.php to <CODE>true</CODE>, normal CallVotes are disabled and the following features become available:<br><br>
+
+<UL>
+<LI>new <b>/helpvote</b> command to display usage info and the actual voting ratios for the new voting commands
+<LI>new <b>/endround</b> vote to end a round (only enabled in Rounds/Team modes)
+<LI>new <b>/ladder</b> vote to restart the current track immediately when the ladder is down
+<LI>new <b>/replay</b> vote to replay the current track after it's done (prepends it to jukebox)
+<LI>new <b>/skip</b> vote to skip the current track immediately
+<LI>new <b>/kick</b> vote to kick a player
+<LI>new <b>/cancel</b> command for a player to cancel his/her own vote (also works with TMX <i>/add</i> votes; admins can <i>/cancel</i> any vote)
+<LI>extensive <b>configuration options</b> in the new <b>votes.config.php</b> file:<br><br>
+
+<UL>
+<LI>separate voting ratios per type of vote, so e.g. a kick vote is harder to pass than an endround vote
+<LI>option to enable <i>/kick</i> vote (default: on) and enable kicking of admins (default: off); if disabled, <i>/kick</i> also isn't listed in the <i>/helpvote</i> output
+<LI>option to perform <i>/ladder</i> restart via quick ChallengeRestart or by prepending track to jukebox and doing NextChallenge
+<LI>option to automatically vote for the vote starter, otherwise the old way remains where the starter also has to vote <i>/y</i>
+<LI>vote expiration options:
+<br>in Rounds/Team modes all votes (except <i>/endround</i>) expire within 3 rounds (default);
+<br>in TimeAttack/Laps/Stunts modes all votes expire after approximately 120 seconds / 2 minutes (default);
+<br>expiration is necessary, otherwise unpassed votes will linger on until the end of the track, preventing players from starting another vote
+<LI>vote reminder options:
+<br>in Rounds/Team modes a reminder can be shown after every round until the vote passes or expires;
+<br>in TimeAttack/Laps/Stunts modes a reminder can be shown approximately every 30 seconds (default) until the vote passes or expires;
+<br>reminders help players not forget about ongoing votes after the last vote message has scrolled out of the chat window
+<LI>optional limits to the number of <i>/ladder</i>, <i>/replay</i> &amp; <i>/skip</i> votes per track (default max: 2); if a limit is 0, that particular vote is disabled
+<LI>optional limits to when <i>/ladder</i>, <i>/replay</i> &amp; <i>/skip</i> votes are allowed in Rounds and TimeAttack mode:
+<br>in Rounds the limit is based on the number of points that the first player already has, compared to the server's points limit;
+<br>in TimeAttack the limit is based on the time the track is already running, compared to the server's time limit;
+<br><i>/ladder</i> is disabled <u>after</u> 40%, <i>/replay</i> is disabled <u>before</u> 50%, and <i>/skip</i> is disabled <u>after</u> 50% of those limits (all percentages configurable)
+<LI>the rationale behind these optional limits is that it's: annoying to go through the same type of vote more than twice; annoying to go through a ladder restart vote when the track is already a few minutes under way; too early to decide whether to play a track again if when it's not even halfway done; and annoying to go through a skip vote when a track is close to completion
+<LI>there's no limit to the number of endround and kick votes per track, because you may need more than a few of them <FONT FACE="Wingdings">&#74;</FONT>
+<LI>there are no <i>/ladder</i>, <i>/replay</i> &amp; <i>/skip</i> limits in Team, Laps &amp; Stunts modes
+</UL>
+<br>
+
+<LI>there's no <i>/ban</i> vote command because IMHO only admins should be able to ban
+<LI>in determining the required number of votes, spectators are not included; this now also applies to TMX <i>/add</i> votes
+<LI>if chat-based voting is enabled, the <i>/server</i> output will show a pointer to <i>/helpvote</i> instead of the CallVote timeout and ratio
+<LI>in Rounds/Team modes a running <i>/endround</i> vote is automatically terminated by the EndRound event, i.e. when all players 'Enter' as yet or by an <i>/admin endround/er</i> command
+<LI>the vote expiration and reminder options, and the automatic vote for starter option, also work with TMX <i>/add</i> votes
+<LI>all votes terminate automatically at the start of a new track
+<LI>when a new player connects, an explanatory message that chat-based voting is in effect is shown to that player, or optionally to all players; you can use the latter during an introduction period until most players are familiar with the new voting system
+<LI>integrates properly with TMX <i>/add</i> votes whether or not those are enabled, and whether or not chat-based votes are enabled
+<LI>voting messages use a new <b>pink color</b> (<b><CODE>&lt;vote&gt;</CODE></b> in config.xml) that's sufficiently distinct from the colors of all other message types (but <i>/add</i> related messages retain their normal orange color)
+<LI>for further understanding of the features and configuration options, study the detailed comments in <i>function init_votes()</i> in plugins.rasp_votes.php
+
+</UL>
+<br>
+
+<LI>new <b>/admin pmlog</b> command to display the most recent 30 (default) lines of admin pm's in a pop-up window
+
+<LI>updated <b>/admin cancel</b> to cancel TMX &amp; chat votes too
+
+<LI>added more aliases to <i>/admin nextmap</i> command, for consistency with the <i>/skip</i> vote: <b>/admin skipmap</b> and <b>/admin skip</b>
+
+<LI>long lines in the <i>/chatlog</i> pop-up window are now split up with a continuation symbol (...) at the start of the second and following parts
+
+<LI>if <CODE>&lt;log_all_chat&gt;</CODE> is <CODE>true</CODE>, non-existent chat commands &ndash; lines starting with '/' that cannot be executed &ndash; are also logged (but they're not shown in <i>/chatlog</i>)
+
+<LI>(almost) all function <u>calls</u> were updated to remove the deprecated pass-by-reference '&amp;' from parameters
+
+<LI>tweaked various jukebox related messages
+</UL>
+
+<H3>Bug fixes in the v0.84 release of ASECO/RASP:</H3>
+
+<UL>
+<LI>in the <i>/chatlog</i> output, strip wide font ($w) from nicknames so that the window width isn't stretched out too far by players with long wide nicks and lengthy chat lines
+
+<LI>with a large number of long chat lines in the <i>/chatlog</i> output, it could hang up the TMN client &ndash; fixed
+
+<LI>all player tests w.r.t. jukebox/add actions are done against nickname, potentially causing conflicts between players with identical nicknames &ndash; fixed by changing those tests to logins
+
+<LI>if a player voted <i>/y</i> in one TMX <i>/add</i> vote, he/she wasn't be able to vote for another <i>/add</i> vote during the same track &ndash; fixed
+
+<LI>if a player tries to <i>/add</i> an existing track, the preceding track in the server's track list is jukeboxed instead of that requested one &ndash; fixed
+
+<LI>if a player tries to <i>/add</i> the same track that was just <i>/add</i>-ed (but not yet loaded), another vote is started &ndash; fixed
+
+<LI><i>/add</i> doesn't properly insert the track into the jukebox such that it can be dropped again &ndash; fixed
+
+<LI>if <i>/add</i> finds the requested track is already present on the server, the temporary track file wouldn't be deleted &ndash; fixed
+
+<LI>using '$z' to clear text attributes after track names and player nicknames in various messages would also turn off the default 'shadowed' style for the remainder of those messages &ndash; fixed by replacing '$z' with '$g$m'
+</UL>
+
+<HR>
+
+<H3>New features and other changes in the v0.82 release of ASECO/RASP:</H3>
+
+<UL>
+<LI>new <b>/nextrank</b> command to show the next better ranked player
+
+<LI>new <b>/admin unban</b> and <b>/admin unblack</b> commands to remove players from the ban and black lists; you can use the player IDs from the <i>/admin showbanlist</i> and <i>/admin showblacklist</i> output, respectively, as well as any valid logins
+
+<LI>new <b>/admin addguest</b> and <b>/admin removeguest</b> commands to add players to and remove from the guest list (even offline ones); with addguest you can use player IDs from the <i>/players</i> output, with removeguest from <i>/admin showguestlist</i>, as well as any valid logins
+
+<LI>new <b>/admin cleanbanlist</b>, <b>/admin cleanblacklist</b> and <b>/admin cleanguestlist</b> commands to completely clean the ban, black and guest lists
+
+<LI>added aliases for admin commands: <i>/admin showbanlist</i> or <b>/admin listbans</b>, <i>/admin showblacklist</i> or <b>/admin listblacks</b>, and <i>/admin showguestlist</i> or <b>/admin listguests</b>
+
+<LI>the IP address of a connecting player is now logged along with the rest of the 'join' message
+
+<LI>the <b>updated Matchsave</b> plugin (plugin.matchsave.php, matchsave.xml) by F*ckfish is now part of the standard distribution, although by default not included in plugins.xml
+
+<LI>all function <u>declarations</u> were updated to remove the deprecated pass-by-reference '&amp;' from parameters
+</UL>
+
+<H3>Bug fixes in the v0.82 release of ASECO/RASP:</H3>
+
+<UL>
+<LI>if <CODE>$prune_records_times</CODE> is enabled and there is a syntax error in rasp.xml, there is a possibility for the records/times of all tracks to be deleted &ndash; fixed, a syntax error will no longer invoke pruning
+
+<LI>fields 2 &amp; 3 in <CODE>&lt;record_first&gt;</CODE> in config.xml are out of order &ndash; fixed, although it isn't visible anyway as the same (and correct) message from localdatabase.xml supersedes it
+
+<LI>the <i>/admin showbanlist/showblacklist/showguestlist</i> commands are not properly storing the player IDs &amp; logins for later use &ndash; fixed
+
+<LI>the "Player dropped...track... from jukebox" message is shown in yellow instead of orange, like all other jukebox messages &ndash; fixed
+</UL>
+
+<HR>
+
+<H3>New features and other changes in the v0.81 release of ASECO/RASP:</H3>
+
+<UL>
+<LI>new <b>/chatlog</b> command to display the most recent 30 (default) lines of player chat in a pop-up window
+
+<LI>showing a FAST-like record report <u>after</u> each track is now optional too, via new config.xml setting <b><CODE>&lt;show_recs_after&gt;</CODE></b>; if <CODE>False</CODE>, the old top-5 from v0.7 is shown
+
+<LI>new <b>/admin showguestlist</b> command to display the list of guest player(s)
+
+<LI>new <b>/admin writeguestlist</b> and <b>/admin readguestlist</b> commands to write/read the player guestlist to/from disk
+
+<LI>the <b>player join/leave messages</b> are now available from a separate jfreu.player.php plugin, in case you don't want/need the rest of the Jfreu functionality (rank limiting, unspec voting, badword filtering, admin commands, etc.)
+
+<LI>the <b>Jfreu unspec-fix</b> plugin (jfreu.unspec.php) by F*ckfish is now part of the standard distribution, although by default not included in plugins.xml
+</UL>
+
+<H3>Bug fixes in the v0.81 release of ASECO/RASP:</H3>
+
+<UL>
+<LI>when a player connected, the <u>before</u> record report is shown to all players, instead of just the new one &ndash; fixed
+</UL>
+
+<HR>
+
+<H3>Known problems in the v0.8+ releases of ASECO/RASP:</H3>
+
+<UL>
+<LI>If all (non-spectator) players press DEL during the scoreboard at the end of a track, the track switching process is disturbed and the next track in the jukebox will not be loaded.  No solution known, this appears to be a TMN server quirk.
+</UL>
+
+<HR>
+
+<H2><A HREF="Features_080.html">Initial release notes</A></H2>
+
+<HR>
+<ADDRESS>
+Copyright &copy; 2007-2013 &ndash; Frans P. de Vries <A HREF="mailto:tm&#64;&#103;&#97;&#109;&#101;&#114;&#115;&#46;&#111;&#114;&#103;">&lt;tm&#64;&#103;&#97;&#109;&#101;&#114;&#115;&#46;&#111;&#114;&#103;&gt;</A>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+Last updated 27-Mar-2008
+</ADDRESS>
+</BODY>
+</HTML>

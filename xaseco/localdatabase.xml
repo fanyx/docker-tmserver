@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<settings>
+	<!-- MySQL Server Settings -->
+	<mysql_server>localhost</mysql_server>
+	<mysql_login>YOUR_MYSQL_LOGIN</mysql_login>
+	<mysql_password>YOUR_MYSQL_PASSWORD</mysql_password>
+	<mysql_database>aseco</mysql_database>
+	<!-- Do you want XASECO to display newly driven records? -->
+	<display>true</display>
+	<!-- Limit the highest record that will be displayed to all? -->
+	<!-- If lower than $maxrecs, records above this limit will -->
+	<!-- only be displayed to the pertaining player -->
+	<limit>50</limit>
+
+	<messages>
+		<!-- record messages -->
+		<record_new>{#server}>> {#highlite}{1}{#record} secured his/her {#rank}{2}{#record}. Local Record!  {3}: {#highlite}{4}{#record} $n({#rank}{5}{#highlite}{6}{#record})</record_new>
+		<record_equal>{#server}>> {#highlite}{1}{#record} equaled his/her {#rank}{2}{#record}. Local Record!  {3}: {#highlite}{4}</record_equal>
+		<record_new_rank>{#server}>> {#highlite}{1}{#record} gained the {#rank}{2}{#record}. Local Record!  {3}: {#highlite}{4}{#record} $n({#rank}{5}{#highlite}{6}{#record})</record_new_rank>
+		<record_first>{#server}>> {#highlite}{1}{#record} claimed the {#rank}{2}{#record}. Local Record!  {3}: {#highlite}{4}</record_first>
+	</messages>
+</settings>

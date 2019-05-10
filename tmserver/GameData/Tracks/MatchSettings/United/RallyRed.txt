@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<playlist>
+	<gameinfos>
+		<lan_game_mode>0</lan_game_mode>
+		<internet_game_mode>1</internet_game_mode>
+		<hotseat_game_mode>0</hotseat_game_mode>
+		<chat_time>10000</chat_time>
+		<finishtimeout>1</finishtimeout>
+		<rounds_pointslimit>30</rounds_pointslimit>
+		<rounds_usenewrules>0</rounds_usenewrules>
+		<rounds_forcedlaps>0</rounds_forcedlaps>
+		<timeattack_limit>300000</timeattack_limit>
+		<timeattack_synchstartperiod>0</timeattack_synchstartperiod>
+		<team_pointslimit>5</team_pointslimit>
+		<team_maxpoints>6</team_maxpoints>
+		<team_usenewrules>0</team_usenewrules>
+		<laps_nblaps>5</laps_nblaps>
+		<laps_timelimit>0</laps_timelimit>
+		<hotseat_timeattack_limit>300000</hotseat_timeattack_limit>
+		<hotseat_rounds_count>5</hotseat_rounds_count>
+	</gameinfos>
+
+	<filter>
+		<is_solo>0</is_solo>
+		<is_hotseat>1</is_hotseat>
+		<is_lan>1</is_lan>
+		<is_internet>1</is_internet>
+		<sort_index>33</sort_index>
+		<random_map_order>0</random_map_order>
+	</filter>
+
+	<challenge>
+		<file>Campaigns\United\Race\Rally\Red\RallyD1.Challenge.Gbx</file>
+		<ident>O8hVBuqe_BaccF_1lHx4ppFjwtc</ident>
+	</challenge>
+	<challenge>
+		<file>Campaigns\United\Race\Rally\Red\RallyD2.Challenge.Gbx</file>
+		<ident>xgK3TtJnAIdaJtutIObAtLVO87l</ident>
+	</challenge>
+	<challenge>
+		<file>Campaigns\United\Race\Rally\Red\RallyD3.Challenge.Gbx</file>
+		<ident>F82aQO8FVuDKGxXptO3hO0_eby8</ident>
+	</challenge>
+	<challenge>
+		<file>Campaigns\United\Race\Rally\Red\RallyD4.Challenge.Gbx</file>
+		<ident>Fx99sI7vtJL_xewqzNYVV9Tp6Wd</ident>
+	</challenge>
+	<challenge>
+		<file>Campaigns\United\Race\Rally\Red\RallyD5.Challenge.Gbx</file>
+		<ident>i2cGu9Hw2EZhce2V6ELEPNWAHfd</ident>
+	</challenge>
+</playlist>

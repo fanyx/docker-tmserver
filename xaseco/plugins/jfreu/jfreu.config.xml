@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+	<server>
+		<servername>YOUR SERVER NAME</servername>
+		<servertop> $449TOP</servertop>
+		<autochangename>false</autochangename>
+		<infomessages>1</infomessages>
+		<badwords>false</badwords>
+		<badwordsban>false</badwordsban>
+		<badwordsnum>3</badwordsnum>
+		<badwordstime>10</badwordstime>
+		<unspecvote>true</unspecvote>
+		<novote>false</novote>
+	</server>
+
+	<limits>
+		<ranklimit>false</ranklimit>
+		<limit>500000</limit>
+		<hardlimit>1000000</hardlimit>
+		<autorank>false</autorank>
+		<offset>999</offset>
+		<autolimit>500000</autolimit>
+		<autorankminplayers>10</autorankminplayers>
+		<autorankvip>false</autorankvip>
+		<maxplayers>20</maxplayers>
+		<kickhirank>false</kickhirank>
+		<pf>0</pf>
+	</limits>
+</config>

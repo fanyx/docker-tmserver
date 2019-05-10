@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<settings>
+  <aseco>
+    <masteradmins>
+      <!-- /ip:port in tmlogin only needed when joining server over LAN -->
+      <!-- ipaddress can be specified to guard each login against       -->
+      <!-- unauthorized use of admin commands from other IP addresses   -->
+<!-- format:
+      <tmlogin>YOUR_MASTERADMIN_LOGIN</tmlogin> <ipaddress>YOUR_MASTERADMIN_IP</ipaddress>
+-->
+    </masteradmins>
+
+    <colors>
+      <error>$f00$i</error>
+      <welcome>$f00</welcome>
+      <server>$ff0</server>
+      <highlite>$fff</highlite>
+      <timelite>$bbb</timelite>
+      <record>$0f3</record>
+      <emotic>$fa0</emotic>
+      <music>$d80</music>
+      <message>$39f</message>
+      <rank>$ff3</rank>
+      <vote>$f8f</vote>
+      <karma>$ff0</karma>
+      <donate>$f0f</donate>
+      <admin>$ff0</admin>
+      <black>$000</black>
+      <grey>$888</grey>
+      <login>$00f</login>
+      <logina>$0c0</logina>
+      <nick>$f00</nick>
+      <interact>$ff0$i</interact>
+      <dedimsg>$28b</dedimsg>
+      <dedirec>$0b3</dedirec>
+    </colors>
+
+    <messages>
+      <!-- init messages -->
+      <startup>{#server}*** XASECO {#highlite}v{1}{#server} running on {#highlite}{2}{#server}:{#highlite}{3}{#server} ***</startup>
+      <welcome>{#welcome}Welcome {#highlite}{1}{#welcome} to {#highlite}{2}$z$s{br}{#welcome}This server uses {#highlite}XASECO v{3}{#welcome} to manage your records.</welcome>
+      <warning>$s{#welcome}This is an administrative warning.{br}{br}$gWhatever you wrote is against our server's{br}policy. Not respecting other players, or{br}using offensive language might result in a{br}{#welcome}kick, or ban {#message}the next time.{br}{br}$gThe server administrators.</warning>
+
+      <!-- record messages -->
+      <record_current>{#server}>> {#message}Current record on {#highlite}{1}{#message} is {#highlite}{2}{#message} by {#highlite}{3}</record_current>
+      <record_none>{#server}>> {#message}Currently no record on {#highlite}{1}{#message} ...</record_none>
+      <record_error>{#server}>> {#error}Could not get records from database... No records this round!</record_error>
+
+      <!-- ranking messages -->
+      <ranking>{#server}>> {#message}Local Record rankings on {#highlite}{1}{#message} {2} this round:</ranking>
+      <ranking_range>{#server}>> {#message}Local Record rankings on {#highlite}{1}{#message} {2} this round (range {#highlite}{3}{#message}):</ranking_range>
+      <ranking_new>{#server}>> {#message}Local Record rankings on {#highlite}{1}{#message} {2} this round ({#highlite}{3}{#message} new):</ranking_new>
+      <ranking_nonew>{#server}>> {#message}Local Record rankings on {#highlite}{1}{#message} {2} this round: none new so far</ranking_nonew>
+      <ranking_none>{#server}>> {#message}Local Record rankings on {#highlite}{1}{#message} {2} this round: no records!</ranking_none>
+
+      <!-- record misc. messages -->
+      <ranking_record_new_on>{#rank}{1}{#message}.$i{#highlite}{2}{#message}[{#highlite}{3}{#message}]$i, </ranking_record_new_on>
+      <ranking_record_new>{#rank}{1}{#message}.{#highlite}{2}{#message}[{#highlite}{3}{#message}], </ranking_record_new>
+      <ranking_record_on>{#rank}{1}{#message}.$i{#timelite}{2}{#message}[{#timelite}{3}{#message}]$i, </ranking_record_on>
+      <ranking_record>{#rank}{1}{#message}.{#timelite}{2}{#message}[{#timelite}{3}{#message}], </ranking_record>
+      <ranking_record2>{#rank}{1}{#message}.{#timelite}{2}{#message}, </ranking_record2>
+
+      <!-- record relation messages -->
+      <first_record>{#server}> {#record}The first Local record is: </first_record>
+      <last_record>{#server}> {#record}The last Local record is: </last_record>
+      <diff_record>{#server}> {#record}Difference between {1}{#record} and {2}{#record} is: {#highlite}{3}</diff_record>
+      <summary>{#server}> {#highlite}{1} $z$s{#record}has {#highlite}{2}{#record} Local record{3}, the top {4} being: </summary>
+      <sum_entry>{#highlite}{1} {#record}rec{2} #{#rank}{3}{#record}, </sum_entry>
+
+      <!-- win messages -->
+      <wins>{#server}> {#record}You have already won {#highlite}{1}{#record} race{2}</wins>
+      <win_new>{#server}> {#record}Congratulations, you won your {#highlite}{1}{#record}. race!</win_new>
+      <win_multi>{#server}>> {#record}Congratulations, {#highlite}{1}{#record} won his/her {#highlite}{2}{#record}. race!</win_multi>
+
+      <!-- muting messages -->
+      <mute>{#server}> Player {#highlite}{1}$z$s{#server} is muted!</mute>
+      <unmute>{#server}> Player {#highlite}{1}$z$s{#server} is unmuted!</unmute>
+      <muted>{#server}> {#highlite}{1}{#error} disabled because you are on the global mute list!</muted>
+
+      <!-- donate/pay messages -->
+      <donation>{#donate} Donate {#highlite}{1}{#donate} coppers to {#highlite}{2}$z</donation>
+      <thanks_all>{#server}>> {#highlite}{1}$z$s{#donate} received a donation of {#highlite}{2}{#donate} coppers from {#highlite}{3}$z$s{#donate}.  Thank You!</thanks_all>
+      <thanks_you>{#server}> {#donate}You made a donation of {#highlite}{1}{#donate} coppers.  Thank You!</thanks_you>
+      <donate_minimum>{#server}> {#error}Minimum donation amount is {#highlite}$i {1}{#error} coppers!</donate_minimum>
+      <donate_help>{#server}> {#error}Use {#highlite}$i /donate &lt;number&gt;{#error} to donate coppers to the server</donate_help>
+      <payment>{#donate} Send {#highlite}{1}{#donate} coppers to {#highlite}{2}$z</payment>
+      <pay_insuff>{#server}> {#error}Insufficient server coppers: {#highlite}$i {1}{#error}!</pay_insuff>
+      <pay_server>{#server}> {#error}Cannot pay this server itself!</pay_server>
+      <pay_confirm>{#server}> {#donate}Payment of {#highlite}{1}{#donate} coppers to {#highlite}{2}{#donate} confirmed!  Remaining coppers: {#highlite}{3}</pay_confirm>
+      <pay_cancel>{#server}> {#donate}Payment to {#highlite}{1}{#donate} cancelled!</pay_cancel>
+      <pay_help>{#server}> {#error}Use {#highlite}$i /admin pay &lt;login&gt; $m&lt;number&gt;{#error} to send server coppers to a login</pay_help>
+
+      <!-- playtime/track messages -->
+      <playtime>{#server}> Current track {#highlite}{1}{#server} has been played for {#highlite}{2}</playtime>
+      <playtime_finish>{#server}>> Current track {#highlite}{1}{#server} finished after {#highlite}{2}</playtime_finish>
+      <playtime_replay> {#server}({#highlite}{1}{#server} replay{2}, total {#highlite}{3}{#server})</playtime_replay>
+      <track>{#server}> Current track {#highlite}{1} {#server}by {#highlite}{2}  {#server}Author: {#highlite}{3} {#server}Gold: {#highlite}{4} {#server}Silver: {#highlite}{5} {#server}Bronze: {#highlite}{6} {#server}Cost: {#highlite}{7}</track>
+      <current_track>{#server}>> Current track {#highlite}{1} {#server}by {#highlite}{2}  {#server}Author: {#highlite}{3}</current_track>
+
+      <!-- rounds points messages -->
+      <rpoints_named>{#server}> {1}Custom points system set to {#highlite}{2}{3}: {#highlite}{4},...</rpoints_named>
+      <rpoints_nameless>{#server}> {1}Custom points system set to: {#highlite}{2},...</rpoints_nameless>
+      <no_rpoints>{#server}> {1}No custom Rounds points system defined!</no_rpoints>
+
+      <!-- relay messages -->
+      <no_relays>{#server}> {#error}No relay servers connected</no_relays>
+      <relaymaster>{#server}> This server relays master server: {#highlite}{1}{#server} ({#highlite}{2}{#server})</relaymaster>
+      <notonrelay>{#server}> {#error}Command unavailable on relay server</notonrelay>
+
+      <!-- uptodate messages -->
+      <uptodate_ok>{#server}>> {#message}This XASECO version {#highlite}{1}{#message} is up to date</uptodate_ok>
+      <uptodate_new>{#server}>> {#message}New XASECO version {#highlite}{1}{#message} available from {#highlite}{2}</uptodate_new>
+
+      <!-- connection messages -->
+      <banip_dialog>{#welcome}Your IP was banned from this server.$z</banip_dialog>
+      <banip_error>{#welcome}Could not connect:{br}{br}Your IP was banned from this server!</banip_error>
+      <client_dialog>{#welcome}Obsolete client version, please $l[http://www.tm-forum.com/viewtopic.php?p=139752#p139752]upgrade$l.$z</client_dialog>
+      <client_error>{#welcome}Obsolete client version!{br}Please upgrade to the $l[http://www.tm-forum.com/viewtopic.php?p=139752#p139752]latest version$l.</client_error>
+      <connect_dialog>{#welcome}Connection problem, please retry.$z</connect_dialog>
+      <connect_error>{#welcome}$sThis is an administrative notice.$z{br}{br}XASECO encountered a very rare player connection{br}problem. Please re-join the server to correct it.{br}Apologies for the inconvenience.{br}{br}$sThe server administrators.</connect_error>
+
+      <!-- idlekick messages -->
+      <idlekick_play>{#server}>> IdleKick player {#highlite}{1}$z$s{#server} after {#highlite}{2}{#server} challenge{3}!</idlekick_play>
+      <idlespec_play>{#server}>> IdleSpec player {#highlite}{1}$z$s{#server} after {#highlite}{2}{#server} challenge{3}</idlespec_play>
+      <idlekick_spec>{#server}>> IdleKick spectator {#highlite}{1}$z$s{#server} after {#highlite}{2}{#server} challenge{3}!</idlekick_spec>
+
+      <!-- miscellaneous messages -->
+      <song>{#server}> Track {#highlite}{1} {#server}plays song: {#highlite}{2}</song>
+      <mod>{#server}> Track {#highlite}{1} {#server}uses mod: {#highlite}{2} {#server}({#highlite}{3}{#server})</mod>
+      <coppers>{#server}> Server {#highlite}{1}$z$s {#server}owns {#highlite}{2} {#server}coppers!</coppers>
+      <time>{#server}> {#interact}Current Server Time: {#highlite}$i {1}{#interact} on {#highlite}$i {2}</time>
+      <tmxrec>{#server}>> {#record}TMX World Record: {#highlite}{1}{#record} by {#highlite}{2}</tmxrec>
+      <round>$n{#message}R{#highlite}{1}{#message}> </round>
+      <no_cpsspec>{#server}> {#highlite}/cpsspec{#server} is not currently enabled on this server.</no_cpsspec>
+      <no_admin>{#server}> {#error}You have to be in admin list to do that!</no_admin>
+      <help_explanation>{#server}> Press the {#highlite}C{#server} key to see the whole list, and use {#highlite}/helpall{#server} for details</help_explanation>
+      <united_only>{#server}> {#error}This requires a TM United Forever {1}!</united_only>
+      <forever_only>{#server}> {#error}Command only available on TM Forever!</forever_only>
+    </messages>
+
+    <welcome_msg_window>False</welcome_msg_window>
+    <lock_password></lock_password>
+    <log_all_chat>False</log_all_chat>
+    <chatpmlog_times>True</chatpmlog_times>
+    <cheater_action>0</cheater_action>
+    <script_timeout>60</script_timeout>
+
+    <show_min_recs>8</show_min_recs>
+    <!-- 2 = full report, 1 = only track record, 0 = none -->
+    <!-- add 4 to show the report in the TMF message      -->
+    <!-- window instead of the main chat window           -->
+    <show_recs_before>2</show_recs_before>
+    <!-- 2 = full report, 1 = only top-5, 0 = none        -->
+    <!-- add 4 to show the report in the TMF message      -->
+    <!-- window instead of the main chat window           -->
+    <show_recs_after>2</show_recs_after>
+    <show_recs_range>True</show_recs_range>
+    <!-- 2 = in TMF message window, 1 = in chat, 0 = none -->
+    <show_tmxrec>1</show_tmxrec>
+    <!-- 2 = in TMF message window, 1 = in chat, 0 = none -->
+    <show_playtime>1</show_playtime>
+    <!-- 2 = in TMF message window, 1 = in chat, 0 = none -->
+    <show_curtrack>0</show_curtrack>
+
+    <default_tracklist>tracklist.txt</default_tracklist>
+    <writetracklist_random>True</writetracklist_random>
+    <help_explanation>False</help_explanation>
+    <lists_colornicks>True</lists_colornicks>
+    <lists_colortracks>True</lists_colortracks>
+    <topclans_minplayers>2</topclans_minplayers>
+    <global_win_multiple>50</global_win_multiple>
+    <display_checkpoints>True</display_checkpoints>
+    <enable_cpsspec>False</enable_cpsspec>
+    <auto_enable_cps>True</auto_enable_cps>
+    <auto_enable_dedicps>False</auto_enable_dedicps>
+    <auto_admin_addip>True</auto_admin_addip>
+    <adminops_file>adminops.xml</adminops_file>
+    <bannedips_file>bannedips.xml</bannedips_file>
+    <blacklist_file>blacklist.txt</blacklist_file>
+    <guestlist_file>guestlist.txt</guestlist_file>
+    <trackhist_file>trackhist.txt</trackhist_file>
+
+    <!-- the remaining settings are for TMF only          -->
+    <admin_client_version>2.11.19</admin_client_version>
+    <player_client_version></player_client_version>
+    <default_rpoints></default_rpoints>
+    <afk_force_spec>True</afk_force_spec>
+    <clickable_lists>True</clickable_lists>
+    <show_rec_logins>True</show_rec_logins>
+    <!-- True = in TMF message window, False = in chat    -->
+    <recs_in_window>False</recs_in_window>
+    <!-- True = in TMF message window, False = in chat    -->
+    <rounds_in_window>False</rounds_in_window>
+    <!-- timeout of the TMF message window in seconds     -->
+    <window_timeout>6</window_timeout>
+    <!-- True = display individual stats panels for each  -->
+    <!-- player during the scoreboard & disable the rank  -->
+    <!-- chat messages, False = show only rank messages   -->
+    <sb_stats_panels>False</sb_stats_panels>
+
+    <!-- default windows style: none for old TMN-like, or -->
+    <!-- filename that should be at styles/<filename>.xml -->
+    <window_style>DarkBlur</window_style>
+    <!-- default panels:  empty for no panel, otherwise a -->
+    <!-- filename that should be at panels/<filename>.xml -->
+    <admin_panel>AdminBelowChat</admin_panel>
+    <donate_panel>DonateBelowCPList</donate_panel>
+    <records_panel>RecordsRightBottom</records_panel>
+    <vote_panel>VoteBelowChat</vote_panel>
+  </aseco>
+
+  <tmserver>
+    <login>SuperAdmin</login>
+    <password>YOUR_SUPERADMIN_PASSWORD</password>
+    <ip>127.0.0.1</ip>
+    <port>5000</port>
+    <timeout>180</timeout>
+  </tmserver>
+</settings>

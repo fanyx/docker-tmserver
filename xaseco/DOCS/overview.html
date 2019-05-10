@@ -1,0 +1,331 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>TrackMania Nations - XASECO overview</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<META NAME="author" CONTENT="Frans P. de Vries">
+<META NAME="generator" CONTENT="vi :)">
+<style type="text/css">
+body { width: 960px; margin-left: 30px; font-family: Arial,Helvetica,sans-serif; font-size: 15px; }
+li,div { padding: 3px; }
+code,pre { font-size: 14px; }
+pre { width: 90%; margin: 3px 0px; padding: 3px 0px 3px 12px; background-color: #F0F0F0; }
+</style>
+<META NAME="keywords" CONTENT="TrackMania, Forever, United, Nations, Original, Sunrise, racing, games, XASECO, ASECO, RASP, Jfreu, plugins, records, jukebox, Nadeo">
+<META NAME="description" CONTENT="Information on the XASECO system for TrackMania Forever and Nations (& Original/Sunrise), racing games by Nadeo">
+</HEAD>
+
+<BODY TEXT="#000000" LINK="#ff0000" VLINK="#0000ff" ALINK="#00ff00" BGCOLOR="#ffffff">
+
+<P ALIGN="center">
+<A TARGET="_blank" HREF="http://eswc.trackmanianations.com/"><IMG SRC="banner.jpg" ALT="TrackMania Nations" BORDER="0" WIDTH="590" HEIGHT="149"></A>
+<HR>
+
+<H3>XASECO Overview</H3>
+
+<OL>
+<LI><H4>Introduction:</H4>
+XASECO is a server controller for TMF (both Nations and United) and TMN
+written in PHP using a MySQL database.  It should also still support
+TMO and TMS but I'm unable to test that.  The main XASECO program
+<b>aseco.php</b> is merely a framework to handle communication with
+the dedicated server, handle events, provide logging, and offer support
+functionality.  All user features and commands are provided by plugins.
+
+<LI><H4>Plugins:</H4>
+XASECO runs fine with an empty <b>plugins.xml</b> list, it just
+won't do very much.  To provide user functionality, add files from
+plugins/ directory to the list.  Some plugins are essential, such as
+plugin.localdatabase.php for communication with the database, while
+many others are optional. However, some plugins depend on others being
+present (sometimes in the correct order in plugins.xml), so it's best
+to preserve as much of the default plugins.xml list as needed.
+
+<LI><H4>Configs:</H4>
+Configuration files consist of .XML files in the main directory, as
+well as some of the .PHP files in the includes/ directory.  The most
+important one is <b>config.xml</b>, containing many of the basic
+settings, messages, and server and admin definitions.  Other config
+files are typically related to one specific plugin or set of plugins
+(like RASP with <b>rasp.xml</b> and <b>rasp.settings.php</b>).
+
+<LI><H4>Database:</H4>
+Using the MySQL database requires the <b>plugin.localdatabase.php</b>
+plugin configured via <b>localdatabase.xml</b>.  It stores information
+about tracks, players, local records, all finishes, karma (or old
+style) votes, player ranks, and more.
+
+<LI><H4>Help:</H4>
+The main <i>/help</i> command provided by <b>chat.help.php</b> lists
+all available chat commands in a chat message, while <i>/helpall</i>
+generates a window that includes descriptions.  Other plugins
+sometimes include a help command (<i>/helpdedi</i> for Dedimania,
+<i>/helpvote</i> for chat-based votes) and some commands include a
+help option (e.g. <i>/admin helpall</i>, <i>/list help</i>, etc).
+
+<LI><H4>Players:</H4>
+Player connects and disconnects are handled by the main aseco.php
+program and relayed to plugins via the onPlayerConnect and
+onPlayerDisconnect events.  The <i>/players</i> command is provided
+by the <b>chat.players.php</b> plugin, while <b>chat.players2.php</b>
+provides a couple of related commands.
+
+<LI><H4>Local Records:</H4>
+Local records are determined and stored by the
+<b>plugin.localdatabase.php</b> plugin, and can be displayed
+by the <i>/recs</i> command from the <b>chat.records.php</b>
+plugin.  Additional record rankings and listings are provided by
+the <b>chat.records2.php</b> plugin, while <b>chat.recrels.php</b>
+offers record relation commands.  The maximum number of records
+per track is defined in <b>rasp.settings.php</b>.
+
+<LI><H4>Dedimania Records:</H4>
+Dedimania records are determined and stored on the central <A
+HREF="http://www.dedimania.com/tmstats/?do=stat">Dedimania site</A>
+by the <b>plugin.dedimania.php</b> plugin, and can be displayed by the
+<i>/dedirecs</i> command from the <b>chat.dedimania.php</b> plugin.
+Additional record rankings and listings, as well as record relations,
+are provided by the same plugin.  All related configuration options
+and messages are provided in <b>dedimania.xml</b> (the maximum number
+of records per track should be kept at 30).  Detailed information can
+be found in the <A HREF="Features_095.html">v0.95 release notes</A>.
+
+<LI><H4>Checkpoints:</H4>
+Players can keep track of their relative performance at
+each checkpoint with the <i>/cps</i> command, provided by the
+<b>plugin.checkpoints.php</b> plugin.  Normally it uses the player's
+own (or any other) local record as reference, if checkpoints are
+available for that record, and shows whether each crossing is faster
+or slower in the CPS panel above the main racing time (TMF) or in
+a brief pop-up window (TMN).  If the Dedimania system is enabled,
+the <i>/dedicps</i> command can be used to compare the times with the
+player's own (or any other) Dedimania record instead.  Both settings
+are stored for all players, and reloaded upon every visit. More
+information can be found in the <A HREF="Features_093.html">v0.93</A>,
+<A HREF="Features_098.html">v0.98</A> and <A
+HREF="Features_106.html">v1.06</A> release notes.
+
+<LI><H4>Anti-cheat checks:</H4>
+When the <b>plugin.checkpoints.php</b> plugin is active, it also checks
+checkpoints and finish times in several ways to reduce the chances of
+cheated races resulting in local and Dedimania records.  See the <A
+HREF="Features_105.html">v1.05 release notes</A> for more information.
+
+<LI><H4>Rounds:</H4>
+When the <b>plugin.rounds.php</b> plugin is active in Rounds, Team and
+Cup (TMF) mode, a report with each player's finish time is shown after
+each run.  It serves no purpose in TimeAttack, Laps and Stunts mode.
+
+<LI><H4>Track Lists &amp; Jukebox:</H4>
+The <b>plugin.rasp_jukebox.php</b> plugin provides the <i>/list</i>
+command to list, search for and select from the available tracks
+with a wide variety of options.  Players can pick any track from the
+list that hasn't been played recently, and add it to a jukebox of
+tracks that's given precedence over tracks from the regular server
+rotation.  This is controlled by a number of configuration settings
+in <b>rasp.settings.php</b>.
+
+<LI><H4>TMX</H4>
+Specific tracks can be downloaded and added directly from <A
+TARGET="_blank" HREF="http://www.tm-exchange.com/">TMX</A> with the
+<i>/add</i> command (in <b>plugin.rasp_jukebox.php</b>) and <i>/admin
+add</i> command (in <b>chat.admin.php</b>).  Searching on TMX can be
+done with <i>/xlist</i>, while the <b>plugin.tmxinfo.php</b> plugin
+offers commands to display track information.  More information
+can be found in the <A HREF="Features_093.html">v0.93</A> and <A
+HREF="Features_101.html">v1.01</A> release notes.
+
+<LI><H4>Karma:</H4>
+Karma votes are an easy way for players to indicate via <i>/++</i>
+or <i>/--</i> commands whether they like or don't like a track,
+provided by the <b>plugin.rasp_karma.php</b> plugin and configured
+by settings in <b>rasp.settings.php</b>.  Some details can be found
+in the <A HREF="Features_089.html">v0.89 release notes</A>.
+
+<LI><H4>Ranks:</H4>
+A player obtains a server rank by racing a minimum number (default 3,
+configured in <b>rasp.settings.php</b>) of local ("ranked") records.
+The average of a player's records over all server tracks determines
+the ranking, managed by the <b>plugin.rasp.php</b> plugin with
+<b>plugin.rasp_nextrank.php</b> providing a related command.
+
+<LI><H4>Stats:</H4>
+Player stats are displayed by the <i>/stats</i> command from
+the <b>chat.stats.php</b> plugin, while server information is
+provided by <i>/server</i>, <i>/xaseco</i> and <i>/plugins</i> from
+<b>chat.server.php</b>.  Related plugins <b>chat.laston.php</b>,
+<b>chat.songmod.php</b>, <b>chat.wins.php</b> and
+<b>plugin.track.php</b> offer associated commands.
+
+<LI><H4>Tiered Admins:</H4>
+The tiered admin system defines three ability levels: MasterAdmins
+(specified in <b>config.xml</b>) who can run any admin command, and
+Admins and Operators for whom the logins and abilities are specified
+in <b>adminops.xml</b>.  Typically, Operators are allowed to use
+the fewest admin commands, and the abilities list extends beyond
+the <i>/admin</i> command to special admin features of user commands
+(such as jukeboxing tracks that were played too recently).  Admins and
+operators can be added and removed dynamically, or their abilities
+updated, and <b>adminops.xml</b> will be automatically kept in sync.
+See this table for the <A HREF="admin_abilities.html">default list
+of abilities</A>, and detailed information can be found in the <A
+HREF="Features_088.html">v0.88 release notes</A>.
+
+<LI><H4>Chat-based Votes:</H4>
+Chat-based votes allow players to vote on actions that
+regular CallVotes don't support, such as ending a round or
+replaying a track.  When enabled in <b>rasp.settings.php</b>, the
+<b>plugin.rasp_votes.php</b> plugin disables CallVotes completely and
+offers several voting commands that can be voted on with the <i>/y</i>
+command (there is no <i>/n</i> counterpart), and on TMF also via the
+vote panel provided by <b>plugin.panels.php</b>.  Vote configuration
+is done in <b>votes.config.php</b>, and detailed information can be
+found in the <A HREF="Features_084.html">v0.84 release notes</A>.
+
+<LI><H4>Public/Private Messages:</H4>
+The <b>plugin.rasp_chat.php</b> and <b>chat.me.php</b> plugins
+offer a wide variety of commands to quickly shout out a message to
+other players.  Players' regular chat lines are logged and displayed
+by the <b>plugin.chatlog.php</b> plugin.  Private messages from one
+player to another can be send with the <i>/pm</i> command, from an
+admin to a player (Cc-ing all other admins) with <i>/pma</i>, and
+from one admin to all other admins with <i>/admin pm</i>.
+
+<LI><H4>Muting/Ignoring:</H4>
+Muting (the TMN term) or ignoring (TMF) implies that chat messages
+from a specified player are suppressed and aren't readable for other
+players in the chat window.  Admins can maintain a global list of
+muted/ignored players, which on TMF uses the built-in Ignore features
+and on TMN a simulated suppression system.  The latter system is
+also used when an individual player mutes another player using the
+commands provided in the <b>plugin.muting.php</b> plugin.  See the <A
+HREF="Features_090.html">v0.90 release notes</A> for more information.
+
+<LI><H4>Ban, Black- &amp; Guestlist:</H4>
+A number of <i>/admin</i> commands from <b>chat.admin.php</b> can be
+used to warn (with a pop-up message) or kick players, and to punish
+repeat offenders with a ban or blacklist.  Bans work by IP address and
+are tracked only by the dedicated server, and therefore get purged
+by a server restart.  Blacklists work by login and are stored in
+the <b>blacklist.txt</b> file, and therefore persist across server
+restarts.  Logins on the guestlist can enter the server even when
+the maximum number of players or spectators is reached or when the
+server is passworded, and are preserved in the <b>guestlist.txt</b>
+file.  In addition to these built-in mechanisms, XASECO provides
+a list of banned IP addresses in the <b>bannedips.xml</b> file
+that also transcends server restarts, with more info in the <A
+HREF="Features_103.html">v1.03 release notes</A>.
+
+<LI><H4>Player access</H4>
+Besides the above local server mechanisms, player access can
+also be managed with the <b>global blacklist</b>, and with
+<b>access control</b> by nation (TMN) or zone (TMF).  See the <A
+HREF="Features_109.html">v1.09 release notes</A> for details.  Lastly,
+the full Jfreu plugin (below) allows player limiting by rank.
+
+<LI><H4>Admin Commands:</H4>
+Other <i>/admin</i> commands control the game flow (ending a round,
+skipping to the next or previous track, restarting or replaying
+a track), affect the server settings (player/spectator limits,
+TMF panels, etc), manage tracks and the jukebox, and much more.
+Security of the admin commands and features against unauthorized
+use can be warranted with a lock password and by specifying
+authorized IP addresses for each admin login.  See the <A
+HREF="Features_103.html">v1.03 release notes</A> for more information.
+
+<LI><H4>Idlekick:</H4>
+Inactive players and, optionally, spectators can be kicked
+automatically at the end of each track after a specified number of
+tracks by the <b>mistral.idlekick.php</b> plugin.  Configuration
+settings are included in the plugin itself.  Some details can be
+found in the <A HREF="Features_090.html">v0.90 release notes</A>.
+
+<LI><H4>Auto TimeLimit:</H4>
+With the <b>plugin.autotime.php</b> plugin enabled in TimeAttack mode,
+the timelimit for each track is defined dynamically, based on the
+track's author time and settings in <b>autotime.xml</b>.  See the <A
+HREF="Features_104.html">v1.04 release notes</A> for details.
+
+<LI><H4>Jfreu:</H4>
+The Jfreu plugins <b>jfreu.plugin.php</b> and <b>jfreu.chat.php</b>
+provide a variety of features, including player connect/disconnect
+messages, informational messages, rank limiting (with VIP
+exceptions), bad word filtering, and more.  The first two features
+are also available separately in the <b>jfreu.lite.php</b>
+plugin in case the rest isn't needed.  They are configured via
+<b>jfreu.config.php</b> and changed options are automatically stored in
+the <b>jfreu/jfreu.config.xml</b> file.  More information is available
+in the <A HREF="Features_091.html">v0.91 release notes</A>.
+
+<LI><H4>TMF Music:</H4>
+The <b>plugin.musicserver.php</b> plugin offers support for playing
+server controlled music instead of the default game music and,
+optionally, even overriding a track's own song.  The <i>/music</i>
+command includes a simple jukebox feature as well as admin options,
+and .OGG comments (ID3 tags) can also be displayed.  Configuration
+is done in <b>musicserver.xml</b>, and more information can
+be found in the <A HREF="Features_099.html">v0.99</A>,
+<A HREF="Features_102.html">v1.02</A> and <A
+HREF="Features_104.html">v1.04</A> release notes.
+
+<LI><H4>TMF Custom Rounds Points:</H4>
+With the <b>plugin.rpoints.php</b> plugin enabled, admins can select
+alternative points systems in Rounds mode instead of the standard
+10,6,4,3,2,1.  Various common systems (like Formula 1 GP and MotoGP)
+are included, and completely custom systems can be defined as well.
+See the <A HREF="Features_104.html">v1.04 release notes</A> for
+details.
+
+<LI><H4>TMF Styles &amp; Panels:</H4>
+The main output window can be dynamically customized with a large
+number of style templates from the <b>styles/</b> subdirectory, managed
+by the <b>plugin.style.php</b> plugin.  The <b>plugin.panels.php</b>
+plugin provides four panels:  the admin panel to easily activate a
+handful of the most commonly used admin commands; the donate panel
+to easily initiate a donation with a variety of copper amounts; the
+records panel to display a track's relevant records; and a temporary
+vote panel to easily respond to chat-based votes.  Each panel
+can be dynamically customized with a number of templates from the
+<b>panels/</b> subdirectory.  All players' style and panel preferences
+are stored, and reloaded upon every visit. Detailed information
+can be found in the <A HREF="Features_100.html">v1.00</A>,
+<A HREF="Features_101.html">v1.01</A> and <A
+HREF="Features_106.html">v1.06</A> release notes.
+
+<LI><H4>TMF Stats Panels:</H4>
+Instead of the rank chat messages at the end of each track, on TMF
+a personal stats panel can be displayed for each player during the
+scoreboard.  The stats are: server rank, record average, records total,
+wins total, session play time, and donation total (on TMUF servers).
+Details are included in the <A HREF="Features_106.html">v1.06 release
+notes</A>.
+
+<LI><H4>TMF Message Window:</H4>
+When enabled via <b>plugin.msglog.php</b>, the system message window
+near the top of the screen can be used to temporarily display a wide
+variety of global messages that normally flood the chat window.
+These include new/improved/equalled records, record reports
+before and after each track, rounds reports, Jfreu Info messages
+and several more, all individually configured in their pertaining
+config files.  See the <A HREF="Features_102.html">v1.02</A> and <A
+HREF="Features_103.html">v1.03</A> release notes for more information.
+
+<LI><H4>TMUF Coppers:</H4>
+Copper transactions are managed by the <b>plugin.donate.php</b>
+plugin, allowing players to donate coppers to the server, and
+admins (with the appropriate ability) to pay coppers to any
+other login (including another server).  More information is
+available in the <A HREF="Features_099.html">v0.99</A> and <A
+HREF="Features_101.html">v1.01</A> release notes.
+
+</OL>
+
+<BR>
+<HR>
+<ADDRESS>
+Copyright &copy; 2007-2013 &ndash; Frans P. de Vries <A HREF="mailto:tm&#64;&#103;&#97;&#109;&#101;&#114;&#115;&#46;&#111;&#114;&#103;">&lt;tm&#64;&#103;&#97;&#109;&#101;&#114;&#115;&#46;&#111;&#114;&#103;&gt;</A>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+Last updated 08-Aug-2010
+</ADDRESS>
+</BODY>
+</HTML>

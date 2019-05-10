@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<matchsave_settings>
+
+	<!-- use the following section to force known logins to a specific team -->
+
+	<teamforce_teams>
+
+		<team>
+			<name>XXX</name>
+
+			<logins>
+				<login>xxx-max</login>
+				<login>siteguru</login>
+
+				<!-- ... add as many logins as you like -->
+			</logins>
+		</team>
+
+		<!-- ... add as many teams as you like -->
+
+		<default_team_name>Challengers</default_team_name>	<!-- This is the team where all other players end up when teamforce is enabled -->
+
+	</teamforce_teams>
+
+
+	<!-- now the design stuff, colors and so on -->
+
+	<str_points_this_round>$i$0AFPoints This Round</str_points_this_round>
+	<str_points_this_match>$i$AF0Points This Match</str_points_this_match>
+	<col_chat_plugin>{#emotic}</col_chat_plugin>
+	<col_chat_default>{#message}</col_chat_default>
+	<col_chat_highlite>{#server}</col_chat_highlite>
+	<col_window_default>$000</col_window_default>
+	<col_window_highlite>$f00</col_window_highlite>
+	<col_window_highlite_team>$0af</col_window_highlite_team>
+	<col_window_special>$i$n</col_window_special>
+	<col_window_separator>$fff</col_window_separator>
+	<col_window_hint>$n$888</col_window_hint>
+	<col_round_points>{#highlite}</col_round_points>
+	<col_match_points>{#highlite}</col_match_points>
+	<col_teamname_round>$0af</col_teamname_round>
+	<col_teamname_round_highlite>{#server}</col_teamname_round_highlite>
+	<col_teamname_match>$af0</col_teamname_match>
+	<col_teamname_match_highlite>{#server}</col_teamname_match_highlite>
+
+	<!-- help messages - they show up when the points are displayed, but only if you activate them -->
+
+	<help_enabled>True</help_enabled>
+
+	<!-- you can add more random messages (these will only show up if the player does not belong to a team-->
+	<hlp_no_team>{#server}To join a team type "{#welcome}/team {#message}yourteamname{#server}"</hlp_no_team>
+
+	<hlp_random_msg_no_team>{#server}See all team options by typing "{#welcome}/team {#message}help{#server}"</hlp_random_msg_no_team>
+	<hlp_random_msg_no_team>{#server}Join a team and chat with your teammates via "{#welcome}/tc {#message}Hello Teammates{#server}"</hlp_random_msg_no_team>
+	<hlp_random_msg_no_team>{#server}See the current match standings by typing "{#welcome}/standings{#server}"</hlp_random_msg_no_team>
+
+	<!-- you can add more random messages (these will only show up if the player already belongs to a team-->
+	<hlp_change_team>{#server}Change your teamname with "{#welcome}/team {#message}yourteamname{#server}"</hlp_change_team>
+
+	<hlp_random_msg>{#server}See all team options by typing "{#welcome}/team {#message}help{#server}"</hlp_random_msg>
+	<hlp_random_msg>{#server}See the current match standings by typing "{#welcome}/standings{#server}"</hlp_random_msg>
+	<hlp_random_msg>{#server}Chat with your teammates by typing "{#welcome}/tc {#message}Hello Teammates{#server}"</hlp_random_msg>
+
+
+	<!-- last but not least, edit the startup configuration below -->
+
+	<show_teamname_changes_to_public>true</show_teamname_changes_to_public>				<!-- Determines whether a teamname change will be shown to all players or not (affects only the /teamname or /team command)-->
+	<admin_can_read_teamchat>True</admin_can_read_teamchat>						<!-- If true admins can read the teamchat of other teams -->
+	<teamchat_enabled>true</teamchat_enabled>							<!-- Enable or disable teamchat -->
+	<teamchat_prefix>{#highlite}[Team]</teamchat_prefix>						<!-- Prefix shown in front of each teamchat line -->
+	<team_force_enabled>False</team_force_enabled>							<!-- Determines whether all players are forced to be in a team -->
+	<others_can_score>True</others_can_score>							<!-- Determines whether teamless players' scores are tracked or not -->
+	<teamname_colors_allowed>False</teamname_colors_allowed>					<!-- Determines if the teamnames are allowed to be color coded -->
+	<teamname_max_length>12</teamname_max_length>							<!-- Determines how long a teamname is allowed to be -->
+	<match_results_timeout>5000</match_results_timeout>						<!-- Match Result window timeout in milliseconds -->
+	<save_to_db>True</save_to_db>									<!-- Shall the teamnames be saved to a database -->
+	<save_to_file>True</save_to_file>								<!-- Shall the results be written to files -->
+
+	<!-- some filenames -->
+	<template_name>html.tpl</template_name>
+	<output_name>race_results.html</output_name>
+	<output_name_last>race_results_last.html</output_name_last>
+	<output_name_match>match_results.html</output_name_match>
+
+	<!-- path to your playlist directory, enable one of these two: -->
+	<!-- Windows -->
+	<!-- <playlist_dir>D:/TMDedicated/GameData/Tracks/MatchSettings</playlist_dir> -->
+	<!-- Linux -->
+	<playlist_dir>/home/tmf/TMF/GameData/Tracks/MatchSettings</playlist_dir>
+
+	<!-- basic settings -->
+	<max_player_count>16</max_player_count>
+	<format_date>Y-m-d</format_date>
+	<format_time>H:i</format_time>
+	<points>10, 8, 6, 4, 2, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0</points>
+
+	<!-- enable the whole plugin -->
+	<enabled>True</enabled>
+
+</matchsave_settings>

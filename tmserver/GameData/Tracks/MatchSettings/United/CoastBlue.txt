@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<playlist>
+	<gameinfos>
+		<lan_game_mode>0</lan_game_mode>
+		<internet_game_mode>1</internet_game_mode>
+		<hotseat_game_mode>0</hotseat_game_mode>
+		<chat_time>10000</chat_time>
+		<finishtimeout>1</finishtimeout>
+		<rounds_pointslimit>30</rounds_pointslimit>
+		<rounds_usenewrules>0</rounds_usenewrules>
+		<rounds_forcedlaps>0</rounds_forcedlaps>
+		<timeattack_limit>240000</timeattack_limit>
+		<timeattack_synchstartperiod>0</timeattack_synchstartperiod>
+		<team_pointslimit>5</team_pointslimit>
+		<team_maxpoints>6</team_maxpoints>
+		<team_usenewrules>0</team_usenewrules>
+		<laps_nblaps>5</laps_nblaps>
+		<laps_timelimit>0</laps_timelimit>
+		<hotseat_timeattack_limit>240000</hotseat_timeattack_limit>
+		<hotseat_rounds_count>5</hotseat_rounds_count>
+	</gameinfos>
+
+	<filter>
+		<is_solo>0</is_solo>
+		<is_hotseat>1</is_hotseat>
+		<is_lan>1</is_lan>
+		<is_internet>1</is_internet>
+		<sort_index>25</sort_index>
+		<random_map_order>0</random_map_order>
+	</filter>
+
+	<challenge>
+		<file>Campaigns\United\Race\Coast\Blue\CoastC1.Challenge.Gbx</file>
+		<ident>GeY0_507YZXNhgEQfhYI7i_aCLd</ident>
+	</challenge>
+	<challenge>
+		<file>Campaigns\United\Race\Coast\Blue\CoastC2.Challenge.Gbx</file>
+		<ident>A2NzvnUxz0wb4gmqZtv67lw9SM3</ident>
+	</challenge>
+	<challenge>
+		<file>Campaigns\United\Race\Coast\Blue\CoastC3.Challenge.Gbx</file>
+		<ident>NvVnDYzN6enW1XTeDNObyTw4TWe</ident>
+	</challenge>
+	<challenge>
+		<file>Campaigns\United\Race\Coast\Blue\CoastC4.Challenge.Gbx</file>
+		<ident>3La8ljzEpqE3uTnTaA4VBHn9xP3</ident>
+	</challenge>
+	<challenge>
+		<file>Campaigns\United\Race\Coast\Blue\CoastC5.Challenge.Gbx</file>
+		<ident>oYCwfKgUWfhx0ZiT3H0zp78Csf8</ident>
+	</challenge>
+</playlist>

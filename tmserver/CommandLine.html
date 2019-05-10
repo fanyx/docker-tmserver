@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+  <head>
+    <title>
+      TrackMania CommandLine
+    </title>
+  </head>
+
+  <body>
+   <h1 id="Commandlineoptions">Command line options</h1>
+<p>
+<strong>Dedicated server:</strong>
+</p>
+
+<blockquote>
+<table class="wiki">
+<tr><td> <tt> /dedicated_cfg=xxx  </tt> </td><td> Specify a configuration file "dedicated_cfg.txt" to use. (xxx = name of the file in GameData/Config/)
+</td></tr><tr><td> <tt> /game_settings=xxx  </tt> </td><td> Specify a match settings file to use. (xxx = absolute file name or relative to GameData/Tracks/)
+</td></tr><tr><td> --                          
+</td></tr><tr><td> <tt> /login=xxx          </tt> </td><td> Account login to be used to play online.
+
+</td></tr><tr><td> <tt> /password=xxx       </tt> </td><td> Account password
+</td></tr><tr><td> <tt> /servername=xxx     </tt> </td><td> Name of the server to create.
+</td></tr><tr><td> <tt> /serverpassword=xxx </tt> </td><td> Makes the server private for players, xxx is the password to use.
+
+</td></tr><tr><td> --                          
+</td></tr><tr><td> <tt> /lan                </tt> </td><td> Must be specified to join or create a LAN game (that is, not an internet server)
+</td></tr><tr><td> --                          
+</td></tr><tr><td> <tt> /forceip=xxx(:xx)   </tt> </td><td> Forces the public ip address to this value. optionally with a port as well.
+</td></tr><tr><td> <tt> /bindip=xxx(:xx)    </tt> </td><td> Chooses the ip to bind to, and sets the public ip to this value. (you still can use /forceip to chose a different public ip). This is used when the machine has several network interfaces.
+
+</td></tr><tr><td> --                          
+</td></tr><tr><td> <tt> /join=xxx           </tt> </td><td> Joins a server, to make a relay server. (xxx = the server ip adress with optional port, or the server login.)
+</td></tr><tr><td> <tt> /joinpassword=xxx   </tt> </td><td> Password to use to join the remote server if the server is private.
+</td></tr><tr><td> --                          
+</td></tr><tr><td> <tt> /loadcache          </tt> </td><td> Loads the "checksum.txt" instead of recomputing it, to speed up first launch time if P2P is enabled. *DO NOT USE* if you run several servers in the same directory!
+
+</td></tr><tr><td> <tt> /nologs             </tt> </td><td> Disables the creation of "GameLog.txt" and "ConsoleLog.txt" in Logs/ directory.
+</td></tr><tr><td> <tt> /noautoquit         </tt> </td><td> Keeps the server running "waiting for rpc commands", even if it is not live (with a map loaded and ready to receive players). The default behaviour is to quit, because this situation is mostly caused by configuration errors.
+</td></tr><tr><td> --                          
+</td></tr><tr><td> <tt> /nodaemon           </tt> </td><td> (linux) Doesn't detach the process.
+
+</td></tr><tr><td> <tt> /verbose_rpc_full   </tt> </td><td> (Debug option) Display the whole contents of the xml-rpc requests the dedicated server receives.
+</td></tr><tr><td> <tt> /verbose_rpc        </tt> </td><td> (Debug option) Displays the xml-rpc requests the dedicated server receives, but only the name of the <a class="missing wiki">XmlRpc?</a> command and some parameters.
+</td></tr></table>
+</blockquote>
+
+<p>
+Note: the command line settings when present override the values from the configuration file.
+</p>
+<p>
+example: <tt> TrackManiaServer.exe /dedicated_cfg=dedicated_cfg.txt /game_settings=MatchSettings/Nations/NationsGreen.txt </tt>
+</p>
+<p>
+<br /><br /><br />
+</p>
+<p>
+<strong>Game client:</strong>
+</p>
+<blockquote>
+
+<table class="wiki">
+<tr><td> <tt> /login=xxx          </tt> </td><td> Account login to be used to play online.
+</td></tr><tr><td> <tt> /password=xxx       </tt> </td><td> Account password
+</td></tr><tr><td> <tt> /profile=xxx        </tt> </td><td> Forces using a specific profile on disk. (to avoid the profile choice dialog)
+
+</td></tr><tr><td> <tt> /validation=xxx     </tt> </td><td> Specifies the account validation key (the last three chracters of the player key) to be able to perform copper transactions.
+</td></tr><tr><td> <tt> /nickname=xxx       </tt> </td><td> Sets the player's nickname. (If not specified, the nickname used is the one stored in the online account.)
+</td></tr><tr><td> <tt> /team=xxx           </tt> </td><td> Sets the default player team. ("red" or "0" / "blue" or "1") 
+
+</td></tr><tr><td> --                          
+</td></tr><tr><td> <tt> /join=xxx           </tt> </td><td> Joins a server. (xxx = the server ip adress with optional port, or the server login.)
+</td></tr><tr><td> <tt> /spectate=xxx       </tt> </td><td> Same as /join, but join as spectator.
+</td></tr><tr><td> <tt> /joinasreferee=xxx  </tt> </td><td> Same as /join, but join as referee.   The referee log will be in "My Documents/TmUnited/RefereeLog.txt".
+
+</td></tr><tr><td> <tt> /serverpassword=xxx </tt> </td><td> Password to use to join the server if the server is private.
+</td></tr><tr><td> <tt> /silent             </tt> </td><td> Skips news, etc... to allow joining a server without any user interaction
+</td></tr><tr><td> --                          
+</td></tr><tr><td> <tt> /file=xxx           </tt> </td><td> Opens a Replay.Gbx or a Challenge.Gbx file.  (xxx = full path to the file.)
+
+</td></tr><tr><td> <tt> /url=xxx            </tt> </td><td> Opens a tmtp:// url with the game.
+</td></tr><tr><td> --                          
+</td></tr><tr><td> <tt> /shootvideo=xxx     </tt> </td><td> Shoots a replay to a video file. (xxx = replay file. aboslute file name or relative to Tracks/Replays/).
+</td></tr><tr><td> <tt> /validatepath=xxx   </tt> </td><td> Mass validates all the replays in a directory (xxx = name relative to Tracks/Replays/). The results will be in "My Documents/TmUnited/ValidateLog.txt".
+
+</td></tr><tr><td> <tt> /windowless         </tt> </td><td> Disable creation of the 3D viewport. (useful for batch processing with /validatepath, for instance)
+</td></tr><tr><td> --                          
+</td></tr><tr><td> <tt> /list_benchs=xxx    </tt> </td><td> Benchmarks a list of replays. (xxx = name of a text file containing the replays file names.)
+</td></tr><tr><td> <tt> /bench=xxx          </tt> </td><td> Benchmarks a replay (xxx = replay file name)  (Internal: if no filename is specified, performs a quick technical benchmark for the default launcher settings)
+
+</td></tr><tr><td> <tt> /out=xxx            </tt> </td><td> Output filename for the bench results.
+</td></tr><tr><td> --                          
+</td></tr><tr><td> <tt> /computeallshadows  </tt> </td><td> Computes the lightmaps for all the challenges on disk.
+</td></tr><tr><td> --                          
+</td></tr><tr><td> <tt> /singleinst         </tt> </td><td> Try to send the command to an already running instance of the program instead of creating a new one.
+
+</td></tr><tr><td> <tt> /config=xxx         </tt> </td><td> Use a specific ".SystemConfig.Gbx" config file.
+</td></tr><tr><td> <tt> /ini=xxx            </tt> </td><td> Use a specific ".ini" config file.
+</td></tr><tr><td> <tt> /userdir=xxx        </tt> </td><td> Changes the default "My Documents/TmUnited/" location. (either a full path, or just "exe" to use the exe directory.)
+
+</td></tr><tr><td> <tt> /useexedir          </tt> </td><td> Run in the directory where the executable is, instead of the current directory.
+</td></tr><tr><td> <tt> /noscancache        </tt> </td><td> Disables the use of the launch time scan cache, forces re-reading of directory entries from the disk.
+</td></tr><tr><td> <tt> /title              </tt> </td><td> Changes the window title.
+
+</td></tr></table>
+</blockquote>
+<p>
+If any of <tt>/login</tt>, <tt>/password</tt>, <tt>/serverpassword</tt> is missing, the game will ask them to the player.
+</p>
+<p>
+TMTP options:
+</p>
+<blockquote>
+<table class="wiki">
+
+<tr><td> <a class="ext-link" href="tmtp://#addbuddy=login"><span class="icon"> </span>tmtp://#addbuddy=login</a>           </td><td> Allow you to add a buddy in your game from an external link
+</td></tr><tr><td> <a class="ext-link" href="tmtp://#addfavourite=serverlogin"><span class="icon"> </span>tmtp://#addfavourite=serverlogin</a> </td><td> Alows you to add a server to your favorites list from an external link
+</td></tr><tr><td> <a class="ext-link" href="tmtp://#invitebuddy=login"><span class="icon"> </span>tmtp://#invitebuddy=login</a>        </td><td> allows you to invite a buddy to be added to your buddy list
+
+</td></tr><tr><td> <a class="ext-link" href="tmtp://#join=serverlogin"><span class="icon"> </span>tmtp://#join=serverlogin</a>         </td><td> Join a specific server as player
+</td></tr><tr><td> <a class="ext-link" href="tmtp://#joinasreferee=serverlogin"><span class="icon"> </span>tmtp://#joinasreferee=serverlogin</a> </td><td> Join a specific server as referee
+</td></tr><tr><td> <a class="ext-link" href="tmtp://#spectate=serverlogin"><span class="icon"> </span>tmtp://#spectate=serverlogin</a>     </td><td> logs you into a server as spectator from an external link
+
+</td></tr><tr><td> <a class="ext-link" href="tmtp://#score=scoremeta"><span class="icon"> </span>tmtp://#score=scoremeta</a> (generated by the game) </td><td> Link is generated in game to send scores that one can challange on another computer
+</td></tr><tr><td> <a class="ext-link" href="tmtp://url"><span class="icon"> </span>tmtp://url</a> or <a class="ext-link" href="tmp://:manialink"><span class="icon"> </span>tmp://:manialink</a>   </td><td> Display a page in the manialink browser.
+
+</td></tr></table>
+</blockquote>
+<p>
+examples: 
+</p>
+<ul><li>Quick link to join a server: <tt> TmForever.exe /login=xxx /join=serverlogin /silent</tt>
+</li><li>Show a manialink page: <tt> TmForever.exe /login=xxx /url=tmtp://:webisodeen /singleinst </tt>
+</li><li>Batch validate some replays:  <tt> TmForever.exe /login=xxx /validatepath=Downloaded </tt> 
+
+</li><li>Launch a referee in windowless mode:  <tt> TmForever.exe /login=xxx /joinasreferee=serverlogin /serverpassword=refereepassword /windowless </tt> 
+</li></ul><p>
+<br /><br /><br />
+</p>
+<p>
+<strong>Launcher:</strong>
+</p>
+<blockquote>
+<table class="wiki">
+<tr><td> <tt> /configmode         </tt> </td><td> Don't run the game when exiting the launcher. (can be useful with /silent, to create initialize the system config without running the game afterwards)
+
+</td></tr><tr><td> <tt> /silent             </tt> </td><td> Don't show the dialog boxes.
+</td></tr><tr><td> <tt> /userdir=xxx        </tt> </td><td> Same as the game.
+</td></tr><tr><td> <tt> /ini=xxx            </tt> </td><td> Same as the game. 
+
+</td></tr><tr><td> <tt> /useexedir          </tt> </td><td> Same as the game. 
+</td></tr></table>
+</blockquote>
+<p>
+Note: All the parameters on the launcher command line are also passed through to the game.
+</p>
+
+  </body>
+</html>

@@ -1,0 +1,10 @@
+<manialink id="3"><frame posn="-64.8 37.1 0">
+<quad sizen="14.1 3.5" style="Bgs1InRace" substyle="NavButton"/>
+<quad posn="1.1 -0.8 2" sizen="1.7 1.8" style="Icons64x64_1" substyle="ClipRewind" action="21"/>
+<quad posn="3.0 -0.8 2" sizen="1.7 1.8" style="Icons64x64_1" substyle="ClipPause" action="22"/>
+<quad posn="4.9 -0.8 2" sizen="1.7 1.8" style="Icons64x64_1" substyle="ClipPlay" action="23"/>
+<quad posn="6.7 -0.8 2" sizen="1.7 1.8" style="Icons64x64_1" substyle="Refresh" action="24"/>
+<quad posn="8.5 -0.4 2" sizen="1.9 2.6" style="Icons64x64_1" substyle="ArrowGreen" action="25"/>
+<quad posn="10.1 -0.4 2" sizen="1.9 2.6" style="Icons64x64_1" substyle="ArrowRed" action="26"/>
+<quad posn="11.9 -0.4 2" sizen="1.8 2.4" style="Icons64x64_1" substyle="Buddy" action="27"/>
+</frame></manialink>
