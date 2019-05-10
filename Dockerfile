@@ -1,15 +1,16 @@
 FROM fanyx/php:5.6
 
-ENV TMDIR=/tmserver
-
 RUN apt update \
 	&& useradd -M --uid 1000 trackmania \
-	&& mkdir $TMDIR \
-	&& chown -R trackmania:trackmania $TMDIR
-
-EXPOSE 2351 2351/udp 3451 3451/udp 5001 5001/udp
+	&& mkdir /opt/tmserver /opt/xaseco \
+	&& chown -R trackmania:trackmania /opt/tmserver \
+	&& chown -R trackmania:trackmania /opt/xaseco
 
 USER trackmania
-VOLUME /tmserver:/tmserver
-WORKDIR /tmserver
-ENTRYPOINT
+COPY /tmserver:/opt/tmserver
+COPY /xaseco:/opt/xaseco
+
+WORKDIR /opt/tmserver
+
+ENTRYPOINT ["./tmserver"]
+
