@@ -7,11 +7,11 @@
 //##################################################################
 
 //Set to true if you want the rank system active
-$feature_ranks = true;
+$feature_ranks = false;
 //Set to true if you want /nextrank to show the difference in record positions,
 // i.e. the combined number of positions that your records need to be improved
 // in order to catch up with the next better ranked player
-$nextrank_show_rp = true;
+$nextrank_show_rp = false;
 
 //Set to true if you want all times recorded, and /pb command to be active
 $feature_stats = true;
@@ -22,15 +22,15 @@ $always_show_pb = true;
 
 //Set to true ONLY if you use the karma feature.
 //If you set this to true when you are not, it will produce errors
-$feature_karma = true;
+$feature_karma = false;
 //Set to true if you allow ++ & -- votes as well as /++ & /--
-$allow_public_karma = true;
+$allow_public_karma = false;
 //Set to true if you want to show the karma message at the start of each track
-$karma_show_start = true;
+$karma_show_start = false;
 //Set to true if you want to show vote counts & percentages
-$karma_show_details = true;
+$karma_show_details = false;
 //Set to true if you want to show players their actual votes
-$karma_show_votes = true;
+$karma_show_votes = false;
 //Set to the number of times a player should have finished a track before
 //being allowed to karma vote for it
 //Note: this is the total number of finishes since the first time a player

@@ -39,9 +39,9 @@
 	<!-- For the nation, please use the 3-character abbreviation from -->
 	<!-- http://en.wikipedia.org/wiki/List_of_IOC_country_codes       -->
 	<masterserver_account>
-		<login>YOUR_SERVER_LOGIN</login>
-		<password>YOUR_SERVER_PASSWORD</password>
-		<nation>YOUR_SERVER_NATION</nation>
+		<login>--$SERVER_LOGIN--</login>
+		<password>--$SERVER_LOGIN_PASSWORD--</password>
+		<nation></nation>
 	</masterserver_account>
 
 	<messages>

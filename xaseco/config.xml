@@ -6,7 +6,7 @@
       <!-- ipaddress can be specified to guard each login against       -->
       <!-- unauthorized use of admin commands from other IP addresses   -->
 <!-- format:
-      <tmlogin>YOUR_MASTERADMIN_LOGIN</tmlogin> <ipaddress>YOUR_MASTERADMIN_IP</ipaddress>
+      <tmlogin>--$MASTERADMIN_LOGIN--</tmlogin> <ipaddress></ipaddress>
 -->
     </masteradmins>
 
@@ -128,7 +128,7 @@
       <song>{#server}> Track {#highlite}{1} {#server}plays song: {#highlite}{2}</song>
       <mod>{#server}> Track {#highlite}{1} {#server}uses mod: {#highlite}{2} {#server}({#highlite}{3}{#server})</mod>
       <coppers>{#server}> Server {#highlite}{1}$z$s {#server}owns {#highlite}{2} {#server}coppers!</coppers>
-      <time>{#server}> {#interact}Current Server Time: {#highlite}$i {1}{#interact} on {#highlite}$i {2}</time>
+      <time>{#server}> {#interact}Current Server Time: {#highlite}$i {2}{#interact} on {#highlite}$i {2}</time>
       <tmxrec>{#server}>> {#record}TMX World Record: {#highlite}{1}{#record} by {#highlite}{2}</tmxrec>
       <round>$n{#message}R{#highlite}{1}{#message}> </round>
       <no_cpsspec>{#server}> {#highlite}/cpsspec{#server} is not currently enabled on this server.</no_cpsspec>
@@ -178,7 +178,7 @@
     <bannedips_file>bannedips.xml</bannedips_file>
     <blacklist_file>blacklist.txt</blacklist_file>
     <guestlist_file>guestlist.txt</guestlist_file>
-    <trackhist_file>trackhist.txt</trackhist_file>
+    <trackhist_file>trackhistory.txt</trackhist_file>
 
     <!-- the remaining settings are for TMF only          -->
     <admin_client_version>2.11.19</admin_client_version>
@@ -211,7 +211,7 @@
 
   <tmserver>
     <login>SuperAdmin</login>
-    <password>YOUR_SUPERADMIN_PASSWORD</password>
+    <password>--$SERVER_SA_PASSWORD--</password>
     <ip>127.0.0.1</ip>
     <port>5000</port>
     <timeout>180</timeout>
