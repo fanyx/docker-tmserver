@@ -4,7 +4,7 @@ Docker image for simple or customizable Trackmania Nations Forever server
 ## How to use this image
 ```docker run -e {required environment variables} -p {selected ports} fanyx/tmserver```
 
-There are several required environment variables that you need to set:
+### There are several required environment variables that you need to set:
   - `$SERVER_LOGIN`               | Server account login
   - `$SERVER_LOGIN_PASSWORD`      | Server account password
   - `$DB_HOST`                    | Hostname of the MySQL-Server
@@ -14,7 +14,7 @@ There are several required environment variables that you need to set:
   - `$SERVER_PORT`                | Port for server communications
   - `$SERVER_P2P_PORT`            | Port for peer2peer communications
   
-Optional environment variables are:
+### Optional environment variables are:
   - `$SERVER_SA_PASSWORD`         | Password for SuperAdmin credential
   - `$SERVER_ADM_PASSWORD`        | Password for Admin credential
   - `$SERVER_NAME`                | Server name in ingame browser
