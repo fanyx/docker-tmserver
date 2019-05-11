@@ -21,5 +21,5 @@ Docker image for simple or customizable Trackmania Nations Forever server
   - `$SERVER_COMMENT`             | Server description -> Default : "This is a Trackmania Server"
 
 ## Running this image with `docker-compose`
-I have a default [`docker-compose.yml`](https://github.com/ryluth/docker-tmserver/docker-compose.yml) included in this repository.
+I have a default [`docker-compose.yml`](https://github.com/ryluth/docker-tmserver/blob/master/docker-compose.yml) included in this repository.
 You can adjust this file to your needs but running with docker-compose is more comfortable in general.
