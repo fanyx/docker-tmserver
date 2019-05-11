@@ -1,7 +1,7 @@
 # docker-tmserver
 Docker image for simple or customizable Trackmania Nations Forever server
 
-# How to use this image
+## How to use this image
 ```docker run -e {required environment variables} -p {selected ports} fanyx/tmserver```
 
 There are several required environment variables that you need to set:
@@ -20,6 +20,6 @@ Optional environment variables are:
   - `$SERVER_NAME`                | Server name in ingame browser
   - `$SERVER_COMMENT`             | Server description
 
-# Running this image with `docker-compose`
+## Running this image with `docker-compose`
 I have a default docker-compose.yml included in this repository.
 You can adjust this file to your needs but running with docker-compose is more comfortable in general.
