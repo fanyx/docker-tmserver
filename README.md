@@ -19,6 +19,7 @@ Docker image for simple or customizable Trackmania Nations Forever server
   - `$SERVER_ADM_PASSWORD`        | Password for Admin credential -> when left empty will be randomly generated
   - `$SERVER_NAME`                | Server name in ingame browser -> Default : "Trackmania Server"
   - `$SERVER_COMMENT`             | Server description -> Default : "This is a Trackmania Server"
+  - `$SERVER_PASSWORD`            | If you want to secure your server against unwanted logins, set a server password
 
 ## Running this image with `docker-compose`
 I have a default [`docker-compose.yml`](https://github.com/ryluth/docker-tmserver/blob/master/docker-compose.yml) included in this repository.
