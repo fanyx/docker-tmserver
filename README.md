@@ -24,3 +24,8 @@ Docker image for simple or customizable Trackmania Nations Forever server
 ## Running this image with `docker-compose`
 I have a default [`docker-compose.yml`](https://github.com/ryluth/docker-tmserver/blob/master/docker-compose.yml) included in this repository.
 You can adjust this file to your needs but running with docker-compose is more comfortable in general.
+
+## Further information
+You can open volumes to the Trackmania server files and Xaseco files (`docker-compose` does this per default) and edit configuration files.
+This is needed since the default track playlist just runs the white Nadeo tracks so i advise examining the config volumes to adjust the track playlist.
+Furthermore you can edit the Xaseco plugins to your need and adjust ingame administrator accounts and so on.
