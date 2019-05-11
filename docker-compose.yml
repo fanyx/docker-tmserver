@@ -1,0 +1,51 @@
+version: '3'
+	services:
+		db:
+			image: mysql:5
+			container_name: trackmania_db
+			restart: always
+			environment:
+		 		- MYSQL_ROOT_PASSWORD=
+				- MYSQL_DATABASE=trackmania
+				- MYSQL_USER=trackmania
+				- MYSQL_PASSWORD=
+			volumes:
+				- /db-data:/var/lib/mysql
+		pma:
+			image: phpmyadmin/phpmyadmin
+			container_name: trackmania_phpmyadmin
+			depends_on:
+				- db
+			environment:
+				- PMA_ARBITRARY=1
+			restart: always
+			ports:
+				- "8080:80"
+		tmserver:
+			image: fanyx/tmserver
+			container_name: trackmania_tmserver
+			depends_on:
+				- db
+			restart: always
+			environment:
+				- SERVER_LOGIN=
+				- SERVER_LOGIN_PASSWORD=
+				- DB_HOST=db
+				- DB_NAME=trackmania
+				- DB_LOGIN=trackmania
+				- DB_LOGIN_PASSWORD=
+				- SERVER_PORT=2350
+				- SERVER_P2P_PORT=3450
+				- SERVER_SA_PASSWORD=
+				- SERVER_ADMIN_PASSWORD=
+				- SERVER_NAME=Trackmania Server
+				- SERVER_COMMENT=This is a Trackmania Server
+			volumes:
+				- /xaseco:/opt/xaseco
+				- /tmserver:/opt/tmserver
+			ports:
+				- "2350"
+				- "2350/udp"
+				- "3450"
+				- "3450/udp"
+			
