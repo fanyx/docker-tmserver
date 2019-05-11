@@ -1,7 +1,7 @@
 FROM fanyx/php:5.6
 
-COPY /tmserver /opt/tmserver
-COPY /xaseco /opt/xaseco
+COPY tmserver/ /opt/
+COPY xaseco/ /opt/
 COPY ./entrypoint.sh /
 
 RUN apt update \
