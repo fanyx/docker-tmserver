@@ -11,14 +11,14 @@ Docker image for simple or customizable Trackmania Nations Forever server
   - `$DB_NAME`                    | Name of the MySQL-Database
   - `$DB_LOGIN`                   | Name of the database user
   - `$DB_LOGIN_PASSWORD`          | Password to the database user
-  - `$SERVER_PORT`                | Port for server communications
-  - `$SERVER_P2P_PORT`            | Port for peer2peer communications
   
 ### Optional environment variables are:
-  - `$SERVER_SA_PASSWORD`         | Password for SuperAdmin credential
-  - `$SERVER_ADM_PASSWORD`        | Password for Admin credential
-  - `$SERVER_NAME`                | Server name in ingame browser
-  - `$SERVER_COMMENT`             | Server description
+  - `$SERVER_PORT`                | Port for server communications -> Default : 2350
+  - `$SERVER_P2P_PORT`            | Port for peer2peer communication -> Default : 3450
+  - `$SERVER_SA_PASSWORD`         | Password for SuperAdmin credential -> when left empty will be randomly generated
+  - `$SERVER_ADM_PASSWORD`        | Password for Admin credential -> when left empty will be randomly generated
+  - `$SERVER_NAME`                | Server name in ingame browser -> Default : "Trackmania Server"
+  - `$SERVER_COMMENT`             | Server description -> Default : "This is a Trackmania Server"
 
 ## Running this image with `docker-compose`
 I have a default docker-compose.yml included in this repository.
