@@ -1,7 +1,9 @@
 FROM fanyx/php:5.6
 
-COPY tmserver/ /opt/
-COPY xaseco/ /opt/
+RUN mkdir /opt/tmserver /opt/xaseco
+
+COPY tmserver/ /opt/tmserver/
+COPY xaseco/ /opt/xaseco/
 COPY ./entrypoint.sh /
 
 RUN apt update \
@@ -14,4 +16,4 @@ RUN chown trackmania:trackmania /entrypoint.sh
 
 USER trackmania
 WORKDIR /opt/tmserver
-CMD ["/bin/bash", "/entrypoint.sh", "start", "tmserver"]
+CMD ["bash"]

@@ -62,25 +62,28 @@ fi
 
 #Xaseco files
 cd /opt/xaseco
+pwd
 
-sed -i -e "s/--\$SERVER_SA_PASSWORD--/\${SERVER_SA_PASSWORD}/" /opt/xaseco/config.xml
+sed -i -e "s/--\$SERVER_SA_PASSWORD--/$SERVER_SA_PASSWORD/" /opt/xaseco/config.xml
 
-sed -i -e "s/--\$DB_HOST--/\${DB_HOST}/" \
-	-e "s/--\$DB_LOGIN--/\${DB_LOGIN}/" \
-	-e "s/--\$DB_LOGIN_PASSWORD--/\${DB_LOGIN_PASSWORD}/" \
-	-e "s/--\$DB_NAME--/\${DB_NAME}/" \
+sed -i -e "s/--\$DB_HOST--/$DB_HOST/" \
+	-e "s/--\$DB_LOGIN--/$DB_LOGIN/" \
+	-e "s/--\$DB_LOGIN_PASSWORD--/$DB_LOGIN_PASSWORD/" \
+	-e "s/--\$DB_NAME--/$DB_NAME/" \
 	/opt/xaseco/localdatabase.xml
 
 #Trackmania Files
 cd /opt/tmserver
+pwd
 
-sed -i -e "s/--\$SERVER_SA_PASSWORD--/\${SERVER_SA_PASSWORD}/" \
-	-e "s/--\$SERVER_ADM_PASSWORD--\/${SERVER_ADM_PASSWORD}/" \
-	-e "s/--\$SERVER_LOGIN--/\${SERVER_LOGIN}/" \
-	-e "s/--\$SERVER_LOGIN_PASSWORD--/\${SERVER_LOGIN_PASSWORD}/" \
-	-e "s/--\$SERVER_NAME--/\${SERVER_NAME}/" \
-	-e "s/--\$SERVER_COMMENT--/\${SERVER_COMMENT}/" \
-	-e "s/--\$SERVER_PASSWORD--/\${SERVER_PASSWORD}/" \
-	-e "s/--\$SERVER_PORT--/\${SERVER_PORT}/" \
-	-e "s/--\$SERVER_P2P_PORT--/\${SERVER_P2P_PORT}/" \
+sed -i -e "s/--\$SERVER_SA_PASSWORD--/$SERVER_SA_PASSWORD/" \
+	-e "s/--\$SERVER_ADM_PASSWORD--/$SERVER_ADM_PASSWORD/" \
+	-e "s/--\$SERVER_LOGIN--/$SERVER_LOGIN/" \
+	-e "s/--\$SERVER_LOGIN_PASSWORD--/$SERVER_LOGIN_PASSWORD/" \
+	-e "s/--\$SERVER_NAME--/$SERVER_NAME/" \
+	-e "s/--\$SERVER_COMMENT--/$SERVER_COMMENT/" \
+	-e "s/--\$SERVER_PASSWORD--/$SERVER_PASSWORD/" \
+	-e "s/--\$SERVER_PORT--/$SERVER_PORT/" \
+	-e "s/--\$SERVER_P2P_PORT--/$SERVER_P2P_PORT/" \
 	/opt/tmserver/GameData/Config/default.txt
+
