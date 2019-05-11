@@ -1,16 +1,17 @@
 FROM fanyx/php:5.6
 
-COPY /tmserver:/opt/tmserver
-COPY /xaseco:/opt/xaseco
+COPY /tmserver /opt/tmserver
+COPY /xaseco /opt/xaseco
+COPY ./entrypoint.sh /
 
 RUN apt update \
-	&& groupadd trackmania \
-	&& useradd -M -g trackmania trackmania \
-	&& chown -R trackmania:trackmania /opt/tmserver \
-	&& chown -R trackmania:trackmania /opt/xaseco
+	&& apt install pwgen
+RUN groupadd trackmania
+RUN useradd -M -g trackmania trackmania
+RUN chown -R trackmania:trackmania /opt/tmserver
+RUN chown -R trackmania:trackmania /opt/xaseco
+RUN chown trackmania:trackmania /entrypoint.sh
 
 USER trackmania
 WORKDIR /opt/tmserver
-
-ENTRYPOINT ["./tmserver"]
-CMD ["start", "tmserver"]
+CMD ["/bin/bash", "/entrypoint.sh", "start", "tmserver"]

@@ -40,6 +40,7 @@ version: '3'
 				- SERVER_ADMIN_PASSWORD=
 				- SERVER_NAME=Trackmania Server
 				- SERVER_COMMENT=This is a Trackmania Server
+				- SERVER_PASSWORD=
 			volumes:
 				- /xaseco:/opt/xaseco
 				- /tmserver:/opt/tmserver
