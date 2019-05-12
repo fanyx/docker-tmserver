@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <playlist>
 	<gameinfos>
-		<game_mode>0</game_mode>
+		<game_mode>1</game_mode>
 		<chat_time>10000</chat_time>
 		<finishtimeout>1</finishtimeout>
 		<allwarmupduration>0</allwarmupduration>

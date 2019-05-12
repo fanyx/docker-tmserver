@@ -6,7 +6,7 @@
       <!-- ipaddress can be specified to guard each login against       -->
       <!-- unauthorized use of admin commands from other IP addresses   -->
 <!-- format:
-      <tmlogin>--$MASTERADMIN_LOGIN--</tmlogin> <ipaddress></ipaddress>
+      <tmlogin>_placeholder_</tmlogin> <ipaddress></ipaddress>
 -->
     </masteradmins>
 

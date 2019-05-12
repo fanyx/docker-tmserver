@@ -16,7 +16,7 @@ fi
 if [[ -z "${MASTERADMIN_LOGIN}" ]]
 then
 	echo "No ingame MasterAdmin was specified."
-	MASTERADMIN_LOGIN=""
+	MASTERADMIN_LOGIN="_placeholder_"
 fi
 if [[ -z "${SERVER_SA_PASSWORD}" ]]
 then

@@ -10,7 +10,7 @@ services:
      - MYSQL_USER=trackmania
      - MYSQL_PASSWORD=
     volumes:
-     - /db-data:/var/lib/mysql
+     - ./db-data:/var/lib/mysql
   pma:
     image: phpmyadmin/phpmyadmin
     container_name: trackmania_phpmyadmin
@@ -50,6 +50,7 @@ services:
      - tmserver
     restart: on-failure
     environment:
+     - SERVER_SA_PASSWORD=
      - DB_HOST=db
      - DB_LOGIN=trackmania
      - DB_LOGIN_PASSWORD=
