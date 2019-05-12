@@ -4,7 +4,7 @@
 set -e
 
 # Sleep for 30 seconds to wait for trackmania server
-sleep 30
+sleep 10
 
 
 if [[ -e /etc/xaseco/env ]]
@@ -58,4 +58,5 @@ sed -i -e "s/--\$DB_HOST--/$DB_HOST/" \
 	-e "s/--\$DB_NAME--/$DB_NAME/" \
 	/opt/xaseco/localdatabase.xml
 
-exec "php" "opt/xaseco/aseco.php" "TMNF" "</dev/null" ">aseco.log" "2>&1"
+exec "/usr/bin/php" "/opt/xaseco/aseco.php" "TMNF" "</dev/null" ">aseco.log" "2>&1"
+exec "cat" "/opt/xaseco/aseco.log"
