@@ -2,7 +2,7 @@
 Docker images for simple or customizable Trackmania Nations Forever server.
 
 ## How to use this repo:
-Run the images in this repo with `docker-compose`.
+Run the images in this repo with `docker-compose`.  
 I've included a template [`docker-compose.yml`](https://github.com/ryluth/docker-tmserver/blob/master/docker-compose.yml) in this repo to get you going.
 
 ### Required:
@@ -27,8 +27,8 @@ I've included a template [`docker-compose.yml`](https://github.com/ryluth/docker
     - `$SERVER_PASSWORD`            | If you want to secure your server against unwanted logins, set a server password
   
 ## Configuring the Trackmania server
-Without manual configuration the server launches with Nadeo's default config. 
-To configure the server on your own demands edit the `config.txt` file in `tmserver/GameData/Config`.
-To configure the tracklist edit the `playlist.txt` in `tmserver/GameData/Tracks/MatchSettings/`.
-**IMPORTANT!!**
-After making changes to the server configuration run `docker-compose build` to rebuild the container images, otherwise the changes won't be in effect.
+Without manual configuration the server launches with Nadeo's default config.  
+To configure the server on your own demands edit the `config.txt` file in `tmserver/GameData/Config`.  
+To configure the tracklist edit the `playlist.txt` in `tmserver/GameData/Tracks/MatchSettings/`.  
+**IMPORTANT!!**  
+After making changes to the server configuration run `docker-compose build` to rebuild the container images, otherwise the changes won't be in effect.  
