@@ -3,6 +3,10 @@
 
 set -e
 
+# Sleep for 30 seconds to wait for trackmania server
+sleep 30
+
+
 if [[ -e /etc/xaseco/env ]]
 then
 	. /etc/tmserver/env
