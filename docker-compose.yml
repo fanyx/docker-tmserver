@@ -23,7 +23,6 @@ services:
      - "8080:80"
   tmserver:
     build: .
-    image: fanyx/tmserver
     container_name: trackmania_tmserver
     depends_on:
      - db
