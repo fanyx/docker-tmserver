@@ -70,7 +70,7 @@
 		
 		<p2p_cache_size>600</p2p_cache_size>
 
-		<xmlrpc_port>--$SERVER_XMLRPC_PORT--</xmlrpc_port>
+		<xmlrpc_port>5000</xmlrpc_port>
 		<xmlrpc_allowremote>True</xmlrpc_allowremote>			<!-- If you specify an ip adress here, it'll be the only accepted adress. this will improve security. -->
 		
 		<blacklist_url></blacklist_url>

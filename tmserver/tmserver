@@ -61,7 +61,7 @@ case "$1" in
 						fi
 						
 						cd $TMDIR
-						./TrackmaniaServer /internet /game_settings=${GAME_SETTINGS} /dedicated_cfg=${DEDICATED_CFG} &
+						./TrackmaniaServer /nodaemon /internet /game_settings=${GAME_SETTINGS} /dedicated_cfg=${DEDICATED_CFG} &
 						PID=$!
 						ps -p ${PID} > /dev/null 2>&1
 						if [[ "$?" -ne "0" ]]
