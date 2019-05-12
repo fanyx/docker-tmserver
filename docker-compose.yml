@@ -48,7 +48,7 @@ services:
     depends_on:
      - db
      - tmserver
-    restart: unless_failure
+    restart: on-failure
     environment:
      - DB_HOST=db
      - DB_LOGIN=trackmania
