@@ -42,3 +42,15 @@ services:
      - "2350:2350/udp"
      - "3450:3450"
      - "3450:3450/udp"
+  xaseco:
+    build: ../xaseco
+    container_name: trackmania_xaseco
+    depends_on:
+     - db
+     - tmserver
+    restart: unless_failure
+    environment:
+     - DB_HOST=db
+     - DB_LOGIN=trackmania
+     - DB_LOGIN_PASSWORD=
+     - DB_NAME=trackmania
