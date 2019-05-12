@@ -49,7 +49,7 @@ fi
 #Xaseco Files
 
 sed -i -e "s/--\$MASTERADMIN_LOGIN--/$MASTERADMIN_LOGIN/" \
-	-e "/--\$SERVER_SA_PASSWORD--/$SERVER_SA_PASSWORD/" \
+	-e "s/--\$SERVER_SA_PASSWORD--/$SERVER_SA_PASSWORD/" \
 	/opt/xaseco/config.xml
 sed -i -e "s/--\$DB_HOST--/$DB_HOST/" \
 	-e "s/--\$DB_LOGIN--/$DB_LOGIN/" \
