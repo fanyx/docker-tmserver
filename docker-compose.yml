@@ -34,7 +34,7 @@ services:
      - SERVER_PORT=2350
      - SERVER_P2P_PORT=3450
      - SERVER_SA_PASSWORD=
-     - SERVER_ADMIN_PASSWORD=
+     - SERVER_ADM_PASSWORD=
      - SERVER_NAME=Trackmania Server
      - SERVER_COMMENT=This is a Trackmania Server
      - SERVER_PASSWORD=
