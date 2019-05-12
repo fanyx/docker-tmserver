@@ -13,11 +13,6 @@ then
 fi
 
 # Evaluate the available environment variables
-if [[ -z "${MASTERADMIN_LOGIN}" ]]
-then
-	echo "No ingame MasterAdmin was specified."
-	MASTERADMIN_LOGIN="_placeholder_"
-fi
 if [[ -z "${SERVER_SA_PASSWORD}" ]]
 then
 	echo "No SuperAdmin password was specified. Xaseco cannot build a connection without this information."
@@ -49,8 +44,7 @@ fi
 
 #Xaseco Files
 
-sed -i -e "s/--\$MASTERADMIN_LOGIN--/$MASTERADMIN_LOGIN/" \
-	-e "s/--\$SERVER_SA_PASSWORD--/$SERVER_SA_PASSWORD/" \
+sed -i -e "s/--\$SERVER_SA_PASSWORD--/$SERVER_SA_PASSWORD/" \
 	/opt/xaseco/config.xml
 sed -i -e "s/--\$DB_HOST--/$DB_HOST/" \
 	-e "s/--\$DB_LOGIN--/$DB_LOGIN/" \
