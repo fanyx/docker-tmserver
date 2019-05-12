@@ -14,4 +14,4 @@ RUN chown trackmania:trackmania /entrypoint-xaseco.sh
 
 USER trackmania
 WORKDIR /opt/xaseco
-CMD["/entrypoint-xaseco.sh"]
+CMD ["/entrypoint-xaseco.sh"]
