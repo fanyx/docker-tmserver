@@ -1,4 +1,4 @@
-FROM fanyx/php:5.6
+FROM debian:stretch-slim
 
 RUN mkdir /opt/tmserver 
 
