@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<styles>
+	<!-- background container of window -->
+	<window>
+		<style>Bgs1InRace</style>
+		<substyle>BgWindow1</substyle>
+		<blackcolor>$ffc</blackcolor>
+	</window>
+
+	<!-- background container and text font of header -->
+	<header>
+		<style>Bgs1InRace</style>
+		<substyle>BgTitle3_1</substyle>
+		<textsize>0.07</textsize>
+		<textstyle>TextTitle2</textstyle>
+	</header>
+
+	<!-- background container and text font of body -->
+	<body>
+		<style>Bgs1InRace</style>
+		<substyle>BgList</substyle>
+		<textsize>0.04</textsize>
+		<textstyle>TextTitle3</textstyle>
+	</body>
+
+	<!-- button container in body -->
+	<button>
+		<style>Bgs1InRace</style>
+		<substyle>NavButton</substyle>
+	</button>
+</styles>

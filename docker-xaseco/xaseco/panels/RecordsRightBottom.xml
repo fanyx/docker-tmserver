@@ -1,0 +1,12 @@
+<manialink id="4"><frame posn="53.5 -32.7 0">
+<format textsize="1" textcolor="dddf"/>
+<label posn="4.5 -0.8 2" sizen="4.5 2" halign="right" valign="center" text="PB:"/>
+<label posn="4.5 -2.6 2" sizen="4.5 2" halign="right" valign="center" text="Local:"/>
+<label posn="4.5 -4.4 2" sizen="4.5 2" halign="right" valign="center" text="Dedi:"/>
+<label posn="4.5 -6.2 2" sizen="4.5 2" halign="right" valign="center" text="TMX:"/>
+<format textsize="1" textcolor="ffff"/>
+<label posn="5.0 -0.8 2" sizen="6.5 2" halign="left" valign="center" text="%PB%" action="7"/>
+<label posn="5.0 -2.6 2" sizen="6.5 2" halign="left" valign="center" text="%LCL%" action="8"/>
+<label posn="5.0 -4.4 2" sizen="6.5 2" halign="left" valign="center" text="%DED%" action="9"/>
+<label posn="5.0 -6.2 2" sizen="6.5 2" halign="left" valign="center" text="%TMX%" action="10"/>
+</frame></manialink>

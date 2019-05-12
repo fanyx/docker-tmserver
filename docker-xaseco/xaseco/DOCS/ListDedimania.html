@@ -1,0 +1,189 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>Dedimania Server Help Page</title>
+</head>
+
+<body>
+<h1><center>Dedimania Server Help Page</center></h1>
+
+<h2>Site & Statistics:</h2>
+<ul>
+ <li><a href="http://dedimania.com/">Dedimania Site</a>
+ <li><a href="http://dedimania.net/tmstats/">Statistics</a>
+</ul>
+
+<h2>Usage:</h2>
+
+<dt><u><b>Where to send queries ?</b></u>
+<ul>
+<li>The initial script query should be done on the main url http://dedimania.net/RPC4/server.php, because if the account was not authenticated successfully then on http://dedimania.net:80xx/ ones it could make timeouts, slowing the other scripts/clients requests responses.
+ <br/><br/>
+
+<li>Next script queries (once successfully authenticated!) should be made on the http://dedimania.net:80xx/ urls, because these ones use far less server resources than the main one. You have to contact me at <a href="http://www.tm-forum.com/ucp.php?i=pm&mode=compose&u=487">Slig</a> or on the <a href="http://dedimania.com/SITE/forum/viewforum.php?id=17">Dedimania forum for scripts devs</a>, to both tell me that you are going to use Dedimania for your script, and to know what url you should use.
+</ul>
+Note that later the main url will reply only to dedimania.CheckConnection, dedimania.GetVersion, dedimania.Authenticate and dedimania.ValidateAccount methods !
+ <br/><br/>
+</dl>
+
+<dt><u><b>How to send a query ?</b></u>
+<ul>
+<li>The query is a standard <b>http text/xml call, with the xml message as the http body</b>. This form is the standard xmlrpc calling form, and the reply will have that form too. This method is the right xmlrpc one, and should be preferred !
+ <br/><br/>
+
+<li>The query can also be a standard <b>http text/html call, with the attribute 'xmlrpc'</b>. This was added to permit easy requests using a standard html GET or POST query:
+<ul>
+  <li>The value for the 'xmlrpc' attribute is just a xmlrpc text, urlsafe base64 encoded.
+  <li>The method can be either <u>GET or POST</u>.
+  <li>The reply is just plain xmlrpc.
+</ul>
+<br/>
+A real (GET) call would look like this:
+<pre>http://dedimania.net/RPC4/server.php?xmlrpc=&lt;urlsafe_base64_encoded_xmlrpc_text&gt;</pre>
+	In the case of a GET query, the xmlrpc value has to be base64 encoded, but be cautious: it has to use the url-safe base64  <a href="http://www.faqs.org/rfcs/rfc3548.html">RFC 3548</a> ('+' replaced by '-' and '/' replaced by '_'), and the URI size can be limited.
+ <br/><br/>
+
+<li>In all cases, the query and the reply can be compressed (gzip or deflate), using the standard http headers. After test and debug the compression <u>should</u> be used !
+<li>The client should try to support http keepalive (with long timeout, ie. 4 minutes or more): it will save some Dedimania server resources, and avoid to have connection timeouts on client side for each request !
+<br/><br/>
+</ul>
+</dl>
+
+
+<br/>
+<dt><u><b>The form of xmlrpc queries and replies</b></u>
+<ul>
+<li>The xmlrpc query and result fully respect the <a href="http://www.xmlrpc.com/">xml-rpc specification</a>.
+<li>It is better if client support cookies and keep-alive connections, avoiding to make a new connection for each request, which is better both for server and client. The server support long keep-alive (more than 5min), so the client really should support it too, to help reduce the server load ! In fact your script should support long http keep-alive and http compression !
+</ul>
+</dl>
+
+
+<br/>
+<dt><u><b>What kind of records does Dedimania support ?</b></u>
+<ul>
+<li>General: <b>the low limit for records is now 6s</b> : no records under that limit will be stored. <b>Scripts should not send records for challenges with author time under 8s</b> !
+<li>Rounds: round final time. And for a multilap challenge only if the number of laps is the main number of laps of the map, and not a different number forced using RoundForcedLaps !
+<li>Time attack: attempt final time.
+<li>Laps: lap time (ie best lap time). Is merged with Time Attack records.
+<li>Stunts: attempt final score (actually not supported).
+<li>Cup: round final time. Is merged with Rounds records.
+</ul>
+</dl>
+
+
+<br/>
+<dt><u><b>What kind of records does Dedimania <u>not</u> support ?</b></u>
+<ul>
+<li>General: times under 6s are refused.
+<li>Rounds: multilap challenge with the number of laps different than the main number of laps of the map (mainly using RoundForcedLaps) is not supported ! (eventually the script can send best lap as a Laps record)
+<li>Laps: more than one lap is not supported.
+<li>Stunts: actually not supported.
+</ul>
+</dl>
+
+
+<br/>
+<dt><u><b>Sending xmlrpc request methods</b></u>
+<ul>
+<li><b>It is mandatory to put the <u>dedimania.Authenticate</u> in your query before any other method which is indicated as 'Only if authenticated.'.</b> Because of this, you have to use system.multicall in most cases. Yes, it is needed in each request (well, it can be omitted in next requests if you client support http keepalive correctly and stay connected, but it is easier to send the Authenticate each time).<br/>
+You should probably always use <u>dedimania.WarningsAndTTR</u> as last method in your queries, so you will get warnings and not definitive errors of the previous methods in the query.
+<br/><br/>
+<li>In <u>dedimania.Authenticate</u> you can send the community code of the server login, instead of the password. After the first successful authentication with Nadeo masters, an MD5 of the password is stored, to make further authentications faster. The password and/or community code are not stored in the Dedimania database.
+<br/><br/>
+<li>Mainly, the standard usage of requests methods for a script using Dedimania records is:
+<br/><u>dedimania.CurrentChallenge</u> at beginning of map (to indicate the current map, players, and get current records),
+<br/><u>dedimania.UpdateServerPlayers</u> every 4 minutes after the beginning of the map (to keep up to date server and players infos),
+<br/><u>dedimania.ChallengeRaceTimes</u> at the end of map (sending all players best time -new records or not-, and get the new records list),
+<br/><u>dedimania.PlayerArrive</u> when a player connects (can be skipped),
+<br/><u>dedimania.PlayerLeave</u> when a player disconnects (not really needed, will only speedup to show the player offline on tmstats).
+<br/><br/>
+<li><u>dedimania.CheckConnection</u> and <u>dedimania.GetVersion</u> can be used to verify that your script requests are received correctly and understood by the Dedimania server, and that your script receives and understands the reply (most times only dedimania.Authenticate is used).
+<br/><br/>
+<li><u>dedimania.WarningsAndTTR</u> should be used as last method of the request, to get warnings/errors (and some other infos) about previous methods.
+</ul>
+</dl>
+
+
+<br/>
+<dt><u><b>Raw query/reply examples (without http compression of course)</b></u>
+<ul>
+<a href="http://dedimania.net/RPC4/dedimania_protocol.html">Dedimania protocol raw examples</a>
+</ul>
+</dl>
+
+
+<br/>
+<b><u>Note1:</u></b><br/>
+If you make a client script support, please notify it to <a href="http://www.tm-forum.com/ucp.php?i=pm&mode=compose&u=487">Slig</a>. First because I may open a new url port for your script, because the port 80 url use more resources, also because you should not use url used by other without telling it, and finally because i want to know what scripts are using Dedimania resources and on what port(s).
+<br/><br/>
+<b><u>Note2:</u></b><br/>
+The url http://dedimania.net/RPC4/server.php must <u>never</u> be used, except eventually for testing or rescue (for users who have a server which can't use 80xx ports). To know what url you have to use, see note 1 !
+<br/><br/>
+<b><u>Note3: MaxRank</u></b><br/>
+The MaxRank work at several levels. Except special case where the player MaxRank is 0 because he is banned, a player
+can always make a record on a server and challenge at the max rank determined by the max of ServerMaxRecords, his own MaxRank, and the MaxRank stored for his current record if he has one.
+<br/>- ServerMaxRecords is the server MaxRank, any player connected and not banned can make a record at least up to this value.
+<br/>- dedimania.PlayerArrive/MaxRank is the player MaxRank, the player can make a record up to this value also if ServerMaxRecords is smaller.
+<br/>- records MaxRank is the max of current player record and his general MaxRank, the record remain valid if not above that value (or ServerMaxRecords value if bigger).
+<br/><br/>
+
+<h2>Available methods:</h2>
+<li><b>dedimania.CheckConnection</b></li>boolean
+ <u>dedimania.CheckConnection</u>()<br>
+<i><font color='#001355'>Just reply true.</font></i><br>
+<br><li><b>dedimania.GetVersion</b></li>struct
+ <u>dedimania.GetVersion</u>()<br>
+<i><font color='#001355'>Reply a struct {'Version': int, 'MaxRecords': int}.</font></i><br>
+<br><li><b>dedimania.Authenticate</b></li>boolean
+ <u>dedimania.Authenticate</u>(struct)<br>
+<i><font color='#001355'>Allow user authentication by specifying a struct {'Game': string, 'Login': string, 'Password': string, 'Tool': string, 'Version': string, [Optionals: 'Packmask': string, 'Nation': string, 'ServerIP': string, 'ServerPort': int, 'XmlrpcPort': int, 'PlayersGame': boolean]}. Game can be 'TMF', 'TMUF', 'TMNF', 'TMU', 'TMO', 'TMS' or 'TMN' (for TMUF/TMNF servers, please send TMF or TMUF or TMNF, and the Packmask !). Packmask should be the value returned by GetServerPackMask. Nation can be 3 letters nation or TMF Path. If PlayersGame is set to true then a few methods will return more infos, mainly the game associated to the player login in records, and the player max rank (see general notes). Note: in case of error it returns a string with the error description.</font></i><br>
+<br><li><b>dedimania.ValidateAccount</b></li>struct
+ <u>dedimania.ValidateAccount</u>()<br>
+<i><font color='#001355'>Reply a struct {'Status': boolean, 'Messages': array of struct {'Date': string, 'Text': string} }. Status is always true, else you get a not authenticated error.<br>
+Only if authenticated.</font></i><br>
+<br><li><b>dedimania.PlayerArrive</b></li>struct
+ <u>dedimania.PlayerArrive</u>(string, string, string, string, string, int, boolean, boolean)<br>
+<i><font color='#001355'>Announce that a new player has arrived. Arguments are (Game, Login, Nickname, Nation, TeamName, LadderRanking, IsSpec, IsOff). Game can be 'TMF', 'TMUF', 'TMNF', 'TMU', 'TMO', 'TMS' or 'TMN'.<br>
+Reply a struct {['Game': string,] 'Login': string, 'TeamName': string, 'Nation': string, ['MaxRank': int, 'Status': int,] 'Options': array of struct {'Option': string, 'Value': string, 'Tool': string}, 'Aliases': array of struct {'Alias': string, 'Text': string, 'Tool': string} }. Game, MaxRank and Status are added only if PlayersGame is set in authenticate, Status bit 0 is 1 if banned (is which case MaxRank is 0). Note that MaxRank is the real max rank for the player (see general notes).<br>
+Only if authenticated.</font></i><br>
+<br><li><b>dedimania.PlayerLeave</b></li>struct
+ <u>dedimania.PlayerLeave</u>(string, string)<br>
+<i><font color='#001355'>Announce that a player has left. Arguments are (Game,Login). Game can be 'TMF', 'TMUF', 'TMNF', 'TMU', 'TMO', 'TMS' or 'TMN'.<br>
+Reply a struct {'Login': string}.<br>
+Only if authenticated.</font></i><br>
+<br><li><b>dedimania.CurrentChallenge</b></li>struct
+ <u>dedimania.CurrentChallenge</u>(string, string, string, string, string, int, struct, int, array)<br>
+<i><font color='#001355'>Set current challenge info and get records. Arguments are (Uid, Name, Environment, Author, Game, Mode, SrvInfo, MaxGetTimes, Players). Game is currently 'TMF', 'TMUF', 'TMNF', 'TMU', 'TMO', 'TMS' or 'TMN'. SrvInfo is a struct {'SrvName': string, 'Comment': string, 'Private': boolean, 'SrvIP': string, 'SrvPort': int, 'XmlrpcPort': int, 'NumPlayers': int, 'MaxPlayers': int, 'NumSpecs': int, 'MaxSpecs': int, 'LadderMode': int, 'NextFiveUID': string of next five uid separated with '/'}. Players is an array of struct {'Login': string, 'Nation': string, 'TeamName': string, 'TeamId': int, 'IsSpec': boolean, 'Ranking': int, 'IsOff': boolean}.<br>
+Reply a struct {'Uid': string, 'TotalRaces': int, 'TotalPlayers': int, 'TimeAttackRaces': int, 'TimeAttackPlayers': int, 'NumberOfChecks': int, 'ServerMaxRecords': int, 'Records': array of struct {['Game': string,] 'Login': string, 'NickName': string, 'Best': int, 'Rank': int, ['MaxRank': int,] 'Checks': array of int, 'Vote': int} }, NumberOfChecks per lap is 0 if unknown, Checks are the bestchecks of the associated record, Vote is 0 to 100 value, or -1 if player did not vote for the map. Game and MaxRank are added only if PlayersGame is set in authenticate (see general notes).<br>
+Only if authenticated.</font></i><br>
+<br><li><b>dedimania.ChallengeRaceTimes</b></li>struct
+ <u>dedimania.ChallengeRaceTimes</u>(string, string, string, string, string, int, int, int, array)<br>
+<i><font color='#001355'>Set current challenge info and players' best times, and get the updated records. Arguments are (Uid, Name, Environment, Author, Game, Mode, NumberOfChecks, MaxGetTimes, Times). Game is currently 'TMF', 'TMUF', 'TMNF', 'TMU', 'TMO', 'TMS' or 'TMN'. Times is a sorted (by 'Best') array of struct {'Login': string, 'Best': int, 'Checks': array of int}. Checks are BestCheckpoints array of the best time of player (can also be sent as a comma separated list of int in a string, which is far smaller in xmlrpc). In case of time equality the order in the Times array is used.<br>
+Reply a struct {'Uid': string, 'TotalRaces': int, 'TotalPlayers': int, 'TimeAttackRaces': int, 'TimeAttackPlayers': int, 'NumberOfChecks': int, 'ServerMaxRecords': int, 'Records': array of struct {['Game': string,] 'Login': string, 'NickName': string, 'Best': int, 'Rank': int, ['MaxRank': int,] 'Checks': array of int, 'NewBest': boolean} }, NumberOfChecks per lap is 0 if unknown. Game and MaxRank are added only if PlayersGame is set in authenticate (see general notes).<br>
+Only if authenticated.</font></i><br>
+<br><li><b>dedimania.UpdateServerPlayers</b></li>boolean
+ <u>dedimania.UpdateServerPlayers</u>(string, int, struct, array)<br>
+<i><font color='#001355'>Set current challenge and players info. Arguments are (Game, Mode, SrvInfo, Players). Game is currently 'TMF', 'TMUF', 'TMNF', 'TMU', 'TMO', 'TMS' or 'TMN'. SrvInfo is a struct {'SrvName': string, 'Comment': string, 'Private': boolean, 'SrvIP': string, 'SrvPort': int, 'XmlrpcPort': int, 'NumPlayers': int, 'MaxPlayers': int, 'NumSpecs': int, 'MaxSpecs': int, 'LadderMode': boolean, 'NextFiveUID': string of next five uid separated with '/'}. Players is an array of struct {'Login': string, 'Nation': string, 'TeamName': string, 'TeamId': int, 'IsSpec': boolean, 'Ranking': int, 'IsOff': boolean}.<br>
+Reply true.<br>
+Should be used every 4 minutes if no 'dedimania.CurrentChallenge' or 'dedimania.ChallengeRaceTimes' has been called, to keep the server and players 'On'.<br>
+Only if authenticated.</font></i><br>
+<br><li><b>dedimania.WarningsAndTTR</b></li>struct
+ <u>dedimania.WarningsAndTTR</u>()<br>
+<i><font color='#001355'>Get warnings messages and TimeToRespond for all previous methods.<br>
+Reply a struct {'globalTTR': int, 'methods': array of struct {'methodName': string, 'errors': string, 'TTR': int}}.</font></i><br>
+<br><li><b>system.listMethods</b></li>array
+ <u>system.listMethods</u>()<br>
+<i><font color='#001355'>This method lists all the methods that the XML-RPC server knows how to dispatch.</font></i><br>
+<br><li><b>system.methodHelp</b></li>string
+ <u>system.methodHelp</u>(string)<br>
+<i><font color='#001355'>Returns help text if defined for the method passed, otherwise returns an empty string.</font></i><br>
+<br><li><b>system.methodSignature</b></li>array
+ <u>system.methodSignature</u>(string)<br>
+<i><font color='#001355'>Returns an array of known signatures (an array of arrays) for the method name passed. If no signatures are known, returns a none-array (test for type != array to detect missing signature).</font></i><br>
+<br><li><b>system.multicall</b></li>array
+ <u>system.multicall</u>(array)<br>
+<i><font color='#001355'>Boxcar multiple RPC calls in one request. See http://www.xmlrpc.com/discuss/msgReader$1208 and raw examples for details. Each array entry is a struct {'methodCall':string, 'params':array}.</font></i><br>
+<br>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>TrackMania Nations - ASECO/RASP new features v0.8</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<META NAME="author" CONTENT="Frans P. de Vries">
+<META NAME="generator" CONTENT="vi :)">
+<style type="text/css">
+body { width: 960px; margin-left: 30px; font-family: Arial,Helvetica,sans-serif; font-size: 15px; }
+li,div { padding: 3px; }
+code,pre { font-size: 14px; }
+pre { width: 90%; margin: 3px 0px; padding: 3px 0px 3px 12px; background-color: #F0F0F0; }
+</style>
+<META NAME="keywords" CONTENT="TrackMania, Nations, Original, Sunrise, racing, games, ASECO, RASP, Jfreu, plugins, records, jukebox">
+<META NAME="description" CONTENT="Information on the ASECO/RASP system for TrackMania Nations (and Original/Sunrise), a racing game by Nadeo">
+</HEAD>
+
+<BODY TEXT="#000000" LINK="#ff0000" VLINK="#0000ff" ALINK="#00ff00" BGCOLOR="#ffffff">
+
+<P ALIGN="center">
+<A TARGET="_blank" HREF="http://eswc.trackmanianations.com/"><IMG SRC="banner.jpg" ALT="TrackMania Nations" BORDER="0" WIDTH="590" HEIGHT="149"></A>
+<HR>
+
+<H3>New features and other changes in the v0.8 release of ASECO/RASP:</H3>
+
+<UL>
+<LI><b>FAST-like records handling</b>:<br>
+  with every new/improved record, players see the old place and the time difference compared to their old record
+
+<LI>show <u>secured</u> records (incremental improvements of the same place) and <u>equaled</u> records to all players
+
+<LI><b>FAST-like record reports</b>:<br>
+  <u>before</u> each track (optionally) show the places &amp; times of the first 8 (configurable) players, along with those of all other online players;<br>
+  <u>after</u> each track show the places &amp; times of the first 8 (configurable) players, along with any new/improved records, and the total count of new/improved records;<br>
+  also, all online players are shown in <i>italics</i>
+
+<LI>the record report <u>before</u> a track is also shown to a newly connecting player
+
+<LI>enhanced <b>/recs</b> command to display <u>all</u> records (paginated) on current track, not just the first 5
+
+<LI>new <b>/newrecs</b> command to show newly driven records so far on current track
+
+<LI>new <b>/liverecs</b> command to show the top-6 (configurable) records and records of online players on the current track, whether new or not
+
+<LI>new <b>/firstrec</b> and <b>/lastrec</b> commands to quickly show the best and worst ranked records on a track (without browsing /recs)
+
+<LI>new <b>/diffrec</b> command to quickly show the time difference between your /pb and the /firstrec on a track
+
+<LI>new <b>/nextrec</b> command to quickly show the next better ranked record (compared to your /pb) to beat on a track
+
+<LI>new <b>/recrange</b> command to show the time difference between the first and last ranked records on a track
+
+<LI><b>FAST-like rounds reports</b>:<br>
+  after each run show the places &amp; times of the first 8 (configurable) players, and just the places of the rest;<br>
+  new/improved records are highlighted and always shown with the time
+
+<LI>created an <u>EndRound event</u> in the events handling for the aforementioned rounds reports
+
+<LI>connect <b>new player</b> message (via Jfreu plugin) enhanced to show <b>nation, ladder rank &amp; server rank</b><br>
+  (also, if connecting player is an admin, show 'Admin' instead of 'New Player')
+
+<LI>new <b>/list</b> options to complement /list nofinish:<br>
+  <b>/list norank</b>  displays all tracks the player finished but doesn't have a ranked record on<br>
+  <b>/list nogold</b>  displays all tracks the player finished but didn't beat the Gold time on
+
+<LI>new <b>/jukebox display</b> option to display tracks &amp; requesters in a pop-up
+
+<LI>new <b>/jukebox drop</b> option to allow a player to drop his/her track in order to jukebox a different one
+
+<LI>new <b>/jukebox help</b> option to display all jukebox facilities
+
+<LI>new <b>/best</b> &amp; <b>/worst</b> commands allowing players to display their records sorted in best or worst order
+
+<LI>new <b>/summary</b> command to show the total number of ranked records, and the top 3 of the best ones
+
+<LI>new <b>/toprecs</b> command to display the top-100 of players with the most ranked records
+
+<LI>/top5 command replaced by <b>/top10</b> command, and new <b>/top100</b> command added to display the server ranks of many more players than just the first 5
+
+<LI>enhanced <b>/stats</b> command to display lots more details about the player (supersedes /infos command from Jfreu plugin)
+
+<LI>moved Jfreu's /write_list command functionality to <b>/jfreu writelists</b>
+
+<LI>new <b>/server</b> command to display lots of details about the server, including the admin contact<br>
+  (if you'd like to display more contact details, better use slly's chat.contact.php plugin)
+
+<LI>new <b>/nations</b> command to display the top-10 nations with the most visiting players
+
+<LI>new <b>/ranks</b> command to display the server ranks of all online players
+
+<LI>new <b>/clans</b> command to display which clans all online players belong to
+
+<LI>new <b>/topclans</b> command to display top-10 of all clans (determined by averaging the ranks of all players in each clan)
+
+<LI>new <b>/wins</b> command to quickly show the player's win count
+
+<LI>new <b>/topwins</b> command to display the top-100 of players with the most wins
+
+<LI>new <b>/active</b> command to display the top-100 players that spent the most time on the server
+
+<LI>new <b>/track</b> command to show details about the current track
+
+<LI>new <b>/history</b> command to show the 10 most recently played tracks
+
+<LI>new <b>/playtime</b> command to show the time the current track has been playing
+
+<LI>optional showing of <b>total playtime</b> at the end of the track (only in Rounds &amp; Team modes - playtime is fixed in Time Attack &amp; Laps)
+
+<LI>new <b>/time</b> command to show the current time and date on the server
+
+<LI>new <b>/bootme</b> command so the player can leave (kick himself) without using the Escape menu
+
+<LI>/msg command renamed to <b>/pm</b> (private message) and updated to show who's sending the message to whom
+
+<LI>new <b>/pma</b> command so an admin can send private message to a player and also to all other online admins (ie. like carbon-copy in mails)
+
+<LI>new admin command:  <b>/admin pm</b>  to send private message from one admin to all other online admins
+
+<LI>enhancement of <b>/players</b> command:  now shows column of <b>player IDs</b>, which can subsequently be used with /pm (for all users) and /pma (for admins) instead of logins (which are sometimes hard to type);<br>
+  also shows <b>Nations</b> of all players
+
+<LI>added shortcuts for common admin commands:<br>
+  /admin nextmap or <b>/admin next</b><br>
+  /admin restartmap or <b>/admin res</b><br>
+  /admin cancel or <b>/admin can</b><br>
+  /admin clearjukebox or <b>/admin cjb</b>
+
+<LI>new admin command:  <b>/admin endround</b> (or shortcut <b>/admin er</b>) forces end of a round without restarting the whole track
+
+<LI>new admin command:  <b>/admin replaymap</b> (or shortcut <b>/admin replay</b>) to requeue the current track at the start of the jukebox so it will play again, after it ends and ladder points have been awarded
+
+<LI>new admin command:  <b>/admin dropjukebox #</b> (shortcut <b>/admin djb</b>) to drop any track from the jukebox
+
+<LI>new admin commands:  <b>/admin showbanlist</b> and <b>/admin showblacklist</b> to display the lists of banned and blacklisted player(s)
+
+<LI>new admin commands:  <b>/admin writeblacklist</b> and <b>/admin readblacklist</b> to write/read the player blacklist to/from disk
+
+<LI>enhancement of /admin warn, /admin kick, /admin ban &amp; /admin black to accept <b>player IDs</b> from /players command
+
+<LI>new admin command:  <b>/admin kickghost</b> to kick a partially disconnected player without checking for valid login (doesn't work with player ID)
+
+<LI>enhancement of /admin warn,kick,kickghost,ban,black,er,res,next,can,cjb commands to show <b>nickname of the admin</b> performing them
+
+<LI>more <b>admin powers for the jukebox</b>:  admins can jukebox a track that was recently played (players have to wait until it expires from the track history), and admins can add multiple tracks (players can add only one)
+
+<LI><b>other admin powers</b>:  admin can use <b>player logins or IDs</b> with /stats, /best, /worst, /summary
+
+<LI>new option <b>$allowpublickarma</b> to disable public karma votes (so that only /++ and /-- work)
+
+<LI>new option <b>$feature_jukebox</b> to disable actual jukebox-ing of tracks, while leaving /list enabled (as long as plugin remains included)
+
+<LI>new option <b>$jukebox_skipleft</b> to enable skipping of a jukebox-ed track after its requester left
+
+<LI>new option <b>$prune_records_times</b> to enable pruning at start-up of records/rs_times for deleted tracks (recommended so they don't clutter up the /best &amp; /worst lists)
+
+<LI>new option to <b>log all player chat</b>, not just use of chat commands
+
+<LI>various other logging enhancements
+
+<LI>enhanced <b>Idle-kick plugin by Mistral</b>: kicks AFK players after two tracks, except speccers (configurable)
+
+<LI>tracks downloaded from TMX are saved by track name, not TMX ID
+
+<LI>new general chat commands: <b>/gr</b>, <b>/bgm</b>, <b>/thx</b>, <b>/brb</b>, <b>/afk</b>
+
+<LI>new <b>/helpall</b> command to display complete paginated help overview of all commands, and also pagination of /admin help &amp; /jfreu help
+
+<LI>numerous cosmetic tweaks, e.g. consistent formatting of all messages to players, and improved contrast in all pop-ups
+
+<LI>improved <b>stripColors function</b> based on Bilge/AM's TMU stripFormatting function
+
+<LI><b>many bug fixes</b>, e.g. in /list help, the original records handling, in /nextmap, player connects, and more (see below)
+
+<LI>numerous code optimizations and layout tweaks, including a <b>consistent Tab-based layout</b> that's customizable with vim's modeline settings while preserving correct indentation throughout the entire code base
+
+<LI>Jfreu's up-to-date check at start-up is disabled due to timeouts on the link
+
+<LI>Jfreu's childish /fake command has been disabled ;)  as well as the non-functional /password command
+</UL>
+
+<H3>Bug fixes in the v0.8 release of ASECO/RASP:</H3>
+
+<UL>
+<LI><b>player connect</b>: very rarely a player connects to the server but the player data is not received in ASECO, resulting in a sort of zombie player.  Despite several different approaches, this couldn't be fixed.  So instead, to prevent further problems for such a player (like records not being stored), an explanation is displayed (in chat and pop-up) and the player is kicked in order to re-join.
+
+<LI><b>/players &lt;string&gt;</b>: using a string with the /players command allows you to search for a specific player with that string in the login and/or nickname.  This string didn't match if it occurred at the beginning of the player's login/nickname &ndash; fixed.
+
+<LI><b>/list help</b>: after using /list help, further /list commands would not always work properly &ndash; fixed.
+
+<LI><b>/nextmap</b>: this didn't work if the current track was the last one in the set, and for servers with more than 300 tracks if the current track was beyond that 300th track &ndash; fixed.
+
+<LI><b>minimum records</b>: the minimum number of ranked records required for a server rank was actually $minrecs+1 instead of $minrecs &ndash; fixed
+
+<LI><b>special characters</b>: very rarely a player nickname contains a special character that could prevent it from being stored into the database &ndash; fixed by consistently quoting all strings sent to the database
+
+<LI><b>records</b>: messages about new records were inconsistent ("claimed", "took") &ndash; fixed.
+
+<LI><b>server messages</b>: inconsistent indications whether a server message was broadcast to all players or sent to one &ndash; fixed, all broadcasts start with "&gt;&gt;" and all messages to the player with "&gt;".
+</UL>
+
+<HR>
+<ADDRESS>
+Copyright &copy; 2007-2013 &ndash; Frans P. de Vries <A HREF="mailto:tm&#64;&#103;&#97;&#109;&#101;&#114;&#115;&#46;&#111;&#114;&#103;">&lt;tm&#64;&#103;&#97;&#109;&#101;&#114;&#115;&#46;&#111;&#114;&#103;&gt;</A>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+Last updated 24-Oct-2007
+</ADDRESS>
+</BODY>
+</HTML>

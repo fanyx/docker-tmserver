@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>TrackMania Nations callbacks</title>
+</head>
+<body>
+<h1>Available callbacks:</h1>
+<ul>
+
+	<li>
+		TrackMania.<b>PlayerConnect</b>(string Login, bool IsSpectator);
+	</li>
+
+	<li>
+		TrackMania.<b>PlayerDisconnect</b>(string Login);
+	</li>
+
+	<li>
+		TrackMania.<b>PlayerChat</b>(int PlayerUid, string Login, string Text, bool IsRegistredCmd);
+	</li>
+
+	<li>
+		TrackMania.<b>PlayerServerMessageAnswer</b>(int PlayerUid, string Login,  int Answer);<br/>
+		<i>Answer: 0 -&gt; no answer (timeout...), 1 or 2 -&gt; answer from the player</i>
+	</li>
+
+	<li>
+		TrackMania.<b>ServerStart</b>();
+	</li>
+
+	<li>
+		TrackMania.<b>ServerStop</b>();
+	</li>
+
+	<li>
+		TrackMania.<b>BeginRace</b>(SChallengeInfo Challenge);<br/>
+		<pre>
+	struct SChallengeInfo
+	{
+		string Name;
+		string FileName;
+		string Author;
+		string Environnement;
+		string Mood;
+		int BronzeTime;
+		int SilverTime;
+		int GoldTime;
+		int AuthorTime;
+		int CopperPrice;
+		bool LapRace;
+	}</pre>
+	</li>
+
+	<li>
+		TrackMania.<b>EndRace</b>(SPlayerRanking Rankings[], SChallengeInfo Challenge);
+		<pre>
+	struct SPlayerRanking {
+		string Login;
+		string NickName;
+		int PlayerId;
+		int Rank;
+		int BestTime;
+		int[] BestCheckpoints;
+		int Score;
+		int NbrLapsFinished;
+		double LadderScore;
+	}
+	</pre>
+	</li>
+
+	<li>
+		TrackMania.<b>BeginRound</b>();
+	</li>
+
+	<li>
+		TrackMania.<b>StatusChanged</b>(int StatusCode, string StatusName);
+	</li>
+
+	<li>TrackMania.<b>PlayerCheckpoint</b>(int PlayerUid, string Login, int Time, int Score, int CheckpointIndex);
+	</li>
+
+	<li>TrackMania.<b>PlayerFinish</b>(int PlayerUid, string Login, int TimeOrScore);
+	</li>
+
+</ul>
+</body>
+</html>

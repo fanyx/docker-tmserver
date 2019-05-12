@@ -1,0 +1,895 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>TrackMania Nations - XASECO release notes v1.16</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<META NAME="author" CONTENT="Frans P. de Vries">
+<META NAME="generator" CONTENT="vi :)">
+<style type="text/css">
+body { width: 960px; margin-left: 30px; font-family: Arial,Helvetica,sans-serif; font-size: 15px; }
+li,div { padding: 3px; }
+code,pre { font-size: 14px; }
+pre { width: 90%; margin: 3px 0px; padding: 3px 0px 3px 12px; background-color: #F0F0F0; }
+</style>
+<META NAME="keywords" CONTENT="TrackMania, Forever, United, Nations, Original, Sunrise, racing, games, XASECO, ASECO, RASP, Jfreu, plugins, records, jukebox, Nadeo">
+<META NAME="description" CONTENT="Information on the XASECO system for TrackMania Nations and Forever (& Original/Sunrise), racing games by Nadeo">
+</HEAD>
+
+<BODY TEXT="#000000" LINK="#ff0000" VLINK="#0000ff" ALINK="#00ff00" BGCOLOR="#ffffff">
+
+<P ALIGN="center">
+<A TARGET="_blank" HREF="http://eswc.trackmanianations.com/"><IMG SRC="banner.jpg" ALT="TrackMania Nations" BORDER="0" WIDTH="590" HEIGHT="149"></A>
+<HR>
+
+<H3>New features and other changes in the v1.16 release of XASECO:</H3>
+
+<UL>
+<LI>new <b>/cptms</b> command to display the checkpoint times (if available, as they're only being stored since v1.06) for all local records on the current track, as a complement to <i>/sectms</i>
+<LI>new <b>/dedicptms</b> command to display the checkpoint times for all Dedimania records on the current track, as a complement to <i>/dedisectms</i>
+
+<LI>added the Countable interface to the <i>TMXInfoSearcher</i> class
+
+<LI>removed the &lt;max_recs&gt; setting from dedimania.xml to insure that only the Server and player MaxRank values from the Dedimania master server are used, and to avoid confusion
+
+<LI>resetting the challenges list cache at the start of each challenge is now configurable via new rasp.settings.php setting <b>$reset_cache_start</b> (default: true)
+
+<LI>the PHP memory limit for XASECO2 is no longer set to 50 MB but to 128 MB (the PHP default) unless it is already at least that size (thanks Electron)
+
+<LI>updated the <i>GBXDataFetcher module</i> to the latest version
+</UL>
+
+<H3>Bug fixes in the v1.16 release of XASECO:</H3>
+
+<UL>
+<LI>when a map isn't in the database yet, in some situations its name could be stored with stripped colors/formatting &ndash; fixed
+</UL>
+
+<HR>
+
+<H3>New features and other changes in the v1.15b release of XASECO:</H3>
+
+<UL>
+<LI>rewrote the <i>GBXDataFetcher module</i> completely to correctly process ManiaPlanet maps and replays &ndash; the new <b>GBXChallMapFetcher</b> and <b>GBXReplayFetcher classes</b> are not compatible with the old GBXChallengeFetcher and GBXReplayFetcher ones, but a new <i>GBXChallengeFetcher wrapper class</i> is included for backwards compatibility with third-party plugins
+
+<LI>small update to the <i>TMXInfoFetcher class</i> to support 24-char UIDs
+
+<LI>removed the obsolete <i>ReplayParser class</i>
+</UL>
+
+<H3>Bug fixes in the v1.15b release of XASECO:</H3>
+
+<UL>
+<LI>two tiny fixes in Auto TimeLimit handling and <i>/tmxinfo</i>
+
+<LI>the error checking in the <i>TMXInfoSearcher class</i> is slightly too strict &ndash; fixed
+</UL>
+
+<HR>
+
+<H3>New features and other changes in the v1.15 release of XASECO:</H3>
+
+<UL>
+<LI>implemented several security enhancements to prevent unauthorised use of chat commands
+
+<LI>in multi-page windows all pages are filled up with empty rows to the same number of rows as the first page to ease browsing (except when using the old TMN-style windows)
+
+<LI>on TMF, the <i>/jukebox</i>, <i>/add</i>, <i>/admin add</i> and <i>/admin addlocal</i> commands now check the chosen track against the server settings and ignore it if it doesn't match
+
+<LI>new support for the Dedimania MaxRank system:
+<UL>
+<LI>the default MaxRank is 30, meaning that players normally cannot attain a record outside the top-30
+<LI>when a server MaxRank has been upgraded (still to be fully implemented by Slig) then all players on that server can attain records up to that larger rank
+<LI>when a player's MaxRank has been upgraded (ditto) then that player can attain records up to his/her rank, or the server MaxRank if that is still larger
+<LI><i>/dedirecs</i> and <i>/dedisectms</i> show all known records for a track, including those outside the top-30
+<LI><i>/dedilast</i> and <i>/dedirange</i> also operate on the last known record, even if that is outside the top-30
+<LI>the <i>/dedistats</i> output includes the Server MaxRank and your player MaxRank
+</UL>
+
+<LI>a fatal error is now reported if no masteradmin is configured in config.xml
+
+<LI>added an <b>updatepanels.php</b> script to the DOCS/ directory to allow updating all players' panels of a given type to a new template
+
+<LI>added more logging, including transaction IDs, of copper transactions
+
+<LI>new <b>onDediRecsLoaded event</b> to indicate that the Dedimania records for a new track have been received from the master server (thanks undef.de)
+
+<LI>the checks why Dedimania records are ignored on a track have been improved, and the reasons are now logged always (not just in debug mode)
+
+<LI>improved error checking and handling in the Dedimania system and the local database plugin
+
+<LI>deployed updated web_access.inc.php for Dedimania communication (thanks Slig)
+
+<LI>added a dynamic idle period to the main loop in order to reduce the CPU load if system usage allows it (thanks oliverde8)
+
+<LI>the game mode values are now available as constants Gameinfo::RNDS (0), TA (1), TEAM (2), LAPS (3), STNT (4), CUP (5)
+
+<LI>the game state (racing or scoreboard) is now maintained in $aseco-&gt;server-&gt;gamestate with constants Server::RACE and Server::SCORE (thanks undef.de)
+
+<LI>improved error reporting in the updated <i>TMXInfoFetcher</i> and <i>TMXInfoSearcher classes</i>
+
+<LI>this release requires the latest server <b>build 2011-02-21</b>
+</UL>
+
+<H3>Bug fixes in the v1.15 release of XASECO:</H3>
+
+<UL>
+<LI>in Laps mode, the checkpoints panel isn't updated on the first passage through the finish when a previous best lap time is already known &ndash; fixed
+
+<LI>UTF-8 characters in (master)admin/operator titles in adminops.xml are not processed correctly &ndash; fixed (thanks TheBigG)
+
+<LI>on TMF the <i>/dedisectms</i> header shows the maximum number of local records instead of Dedimania ones &ndash; fixed
+
+<LI><i>/dedipb</i> causes PHP warnings for a player without Dedimania record on a track with fewer than the maximum number of records &ndash; fixed
+
+<LI>tiny code and typo fixes discovered while creating XASECO2
+</UL>
+
+<HR>
+
+<H3>New features and other changes in the v1.14 release of XASECO:</H3>
+
+<UL>
+<LI>new support for <b>TMF relay servers</b>:
+<UL>
+<LI>on the master server, relays are now registered separately rather than considered spectating players
+<LI>on a relay server, the start-up log includes the login and nickname of the master server it relays to
+<LI>new <b>/admin relays</b> command to display (on the master server) the list of connected relay(s), or show (on a relay server) its master server
+<LI>the <i>/admin server</i> output is reorganized to make room for a line about the server's master/relay status on the first page
+<LI>on a relay server, the <i>/server</i> output includes the master server's login/nickname in place of the track count
+<LI>on a relay server are disabled:
+<UL>
+<LI>commands (e.g. <i>/jukebox</i>), events (e.g. checkpoints and finishes) and functionality (e.g. player reranking) that make no sense on a relay
+<LI>commands (e.g. <i>/recs</i>) and functionality (e.g. personal bests) that require information from the master server's database
+<LI>logging of chat messages from the master server (but they are still shown)
+</UL>
+<LI>on relay servers, plugins plugin.autotime.php, plugin.matchsave.php, plugin.rasp_votes.php, chat.dedimania.php and plugin.dedimania.php must be <u>disabled</u>, and third-party plugins may not operate correctly (e.g. Fufi's Menu is fine, but Fufi's Widgets won't work) &ndash; you may want to disable plugins such as chat.records.php, chat.records2.php, plugin.checkpoints.php, etc. too, as all their commands are disabled anyway
+</UL>
+
+<LI>improvements in the Dedimania plugins due to API enhancements (thanks Slig):
+<UL>
+<LI>identical logins from different games (e.g. TMN ESWC vs. TMU/TMF) are now associated correctly with their records in relevant commands, new/improved/secured/equalled chat messages, and the reports before and after each track
+<LI>when a login that is banned from Dedimania joins the server, this is announced with a general chat message, and finishes by that login are ignored (you may also want to activate the Dedimania global blacklist in rasp.settings.php to prevent them from joining in the first place)
+</UL>
+
+<LI>on TMF, the challenge list cache is now also refreshed upon external changes (i.e. by remote controllers) to the server's track list
+
+<LI><i>/admin setgamemode</i> checks whether the game mode is actually being changed, and mode changes are now taken into account when restarting (thanks undef.de)
+
+<LI>the XML parser (parseXml in xmlparser.inc.php) has a new option to preserve UTF-8 encoding on extracted strings (for historical reasons the default is <CODE>false</CODE>), so now any plugin calling the parser can control UTF-8 encoding
+
+<LI>a new aseco.php configuration definition <b>CONFIG_UTF8ENCODE</b> controls whether UTF-8 encoding on strings in config.xml is preserved (default <CODE>false</CODE> as above) &ndash; config.xml setting <CODE>&lt;welcome_utf8encode&gt;</CODE> is now obsolete
+
+<LI>tagged all generic warning/error messages from the dedicated server with the invoking method
+
+<LI>all included HTML documentation now passes the W3C validatator
+</UL>
+
+<H3>Bug fixes in the v1.14 release of XASECO:</H3>
+
+<UL>
+<LI>the challenge list cache isn't always properly refreshed &ndash; fixed (thanks jimos94)
+
+<LI>when XASECO is configured to use the global Dedimania blacklist on a server that didn't use it before, the initial bulk merge doesn't work &ndash; fixed (thanks soehest)
+
+<LI>merging the global blacklist causes a bogus warning &ndash; fixed
+</UL>
+
+<HR>
+
+<H3>New features and other changes in the v1.13 release of XASECO:</H3>
+
+<UL>
+<LI>new <b>/ignore</b> command to start a chat-based vote to ignore/mute a player &ndash; usage and configuration are analogous to <i>/kick</i>, so see the <a href="Features_084.html">v0.84 release notes</a> for more info
+
+<LI>new <b>/lastwin</b> command (via chat.lastwin.php) to re-open the multi-page window that was most recently closed; on TMN it's opened at the first page, on TMF at the current page &ndash; single-page windows are not stored with the player data so those cannot be re-opened
+
+<LI>implemented a challenge list cache mechanism to improve the speed of all <i>/list</i> lists (thanks xai), <i>/best</i>, <i>/worst</i> and <i>/summary</i>, especially on servers with a large number of tracks
+
+<LI>the speed of <i>/toprecs</i>, <i>/topsums</i> and the calculation of all players' server ranks is further improved by optimized MySQL interaction, in addition to the above cache mechanism
+
+<LI>updates for the (TMF-only) music server plugin (thanks undef.de):
+<UL>
+<LI>for http music servers, spaces and other special characters in the server path and/or song filename (and optional subdirectory) are now supported
+<LI>after restarting a track, followed by the scoreboard and ChatTime countdown, the current song is now correctly shown
+<LI>duplicate song removal is handled a litte better
+<LI>upon XASECO shutdown, server music is disabled (thanks Terron)
+</UL>
+
+<LI>rewrote <i>/admin prev</i> and <i>/admin nextenv</i> using the jukebox system so they keep working when tracks are jukeboxed
+
+<LI>new and updated <b>internal events</b>:
+<UL>
+<LI>new <b>onVoteUpdated event</b> for handling the new TMF VoteUpdated callback (requires the latest server build 2011-02-21)
+<LI>new <b>onTracklistChanged event</b> to signal changes to the track list, passing along an action string ('add', 'remove', 'rename', 'juke', 'unjuke', 'read' &amp; 'write') and the pertaining track filename, or <i>null</i> for the 'read' &amp; 'write' actions (thanks undef.de)
+<LI>updated <b>onJukeboxChanged event</b> with action strings 'previous' and 'nextenv'
+</UL>
+
+<LI>implemented a time-out mechanism in the connection of XASECO to the dedicated server (thanks La beuze):
+<UL>
+<LI>the mechanism allows you to (re)start the dedicated server and XASECO at the same time (or right after eachother) from the same script, and XASECO will keep retrying to connect until the server reaches status 4 (Running - Play), or the time-out is exhausted
+<LI>this is especially useful on servers that take a long time to fully start up due to a large number of tracks
+<LI>the time-out (in seconds) is configurable via new config.xml setting <b><CODE>&lt;tmserver&gt;&lt;timeout&gt;</CODE></b> &ndash; a warning is logged when it is missing
+<LI>the GbxRemote modules have been updated to accommodate this connection time-out
+</UL>
+
+<LI>improved detection of warm-up phase
+
+<LI>enhanced the sorting order of equally-finished players in the rounds reports (Rounds/Team/Cup mode) to match that of the game (thanks .anDy)
+
+<LI>the speed of <i>/best</i>, <i>/worst</i>, <i>/summary</i> and <i>/stats</i> is improved through optimization of the underlying get_recs function (thanks undef.de)
+
+<LI>improved initialisation sequence (and its error handling) of the main program
+
+<LI>on TMF, new 'avatar', 'language' and 'teamid' members in the Player object
+</UL>
+
+<H3>Bug fixes in the v1.13 release of XASECO:</H3>
+
+<UL>
+<LI><i>/admin delrec</i> doesn't work since v1.12 &ndash; fixed (thanks Ouwe)
+
+<LI>when using a player ID after <i>/best</i>, <i>/worst</i>, <i>/summary</i> and <i>/stats</i>, that player's records aren't found since v1.12 &ndash; fixed
+
+<LI>the help messages for <i>/donate</i> and <i>/admin pay</i> don't display correctly &ndash; fixed (thanks xai)
+
+<LI>when using NewRules in Rounds or Team modes, <i>/server</i> shows the normal points limit &ndash; fixed, now the NewRules points limit is shown (thanks undef.de)
+
+<LI>when there are no ranked players, <i>/toprecs</i> and <i>/topsums</i> produce gibberish output and PHP warnings &ndash; fixed
+
+<LI><i>/topwins</i> causes PHP warnings for an empty players table &ndash; fixed (thanks relaxedracer)
+
+<LI>mysql_query SELECT results aren't always properly freed up with mysql_free_result &ndash; fixed
+</UL>
+
+<HR>
+
+<H3>New features and other changes in the v1.12 release of XASECO:</H3>
+
+<UL>
+<LI>new <b>database and query optimizations</b>:
+<UL>
+<LI>these database optimizations are automatically applied once the first time this release is run, but will take a while depending on the size of the database and the speed of your MySQL server, so be patient as they could easily take several minutes (especially the 'rs_times' changes) &ndash; interrupting this process could result in a corrupt database, so... don't
+<LI>the Score fields in the 'records' and 'rs_times' tables are converted from MediumInt to Int, increasing the maximum race time from 140 minutes to 596 hours
+<LI>the 'records' Id, 'rs_times' ID and 'players' TimePlayed fields are also increased to Int, and the 'rs_karma' Score field is reduced to TinyInt
+<LI>the keys on the 'records' and 'rs_times' tables are reorganized and expanded to improve the speed of various queries on those tables
+<LI>RASP's clean-up of unused 'records' and 'rs_times' entries at start-up now only happens if <CODE>$prune_records_times</CODE> in rasp.settings.php is true, resulting in faster start-up
+<LI>the speed of this clean-up is improved by different queries and related processing, and it is logged in more detail
+<LI>preparation of the player stats panels at the scoreboard is sped up with an improved query and related processing
+<LI>the speed of the <i>/server</i> and <i>/nations</i> commands is improved by different queries and related processing
+<LI>the speed of the <i>/topdons</i> command is improved by an appropriate key on the 'players_extra' table
+<LI>you can verify the result of all conversions against the MySQL schema in the localdb/*.sql files using SHOW CREATE TABLE queries or the 'mysqldump --no-data' command
+<LI>XASECO's main tables are created automatically the first time this release is run, analogous to RASP's 'rs_*' tables, thus simplifying installation
+<LI>the 'id' member of the Player object (holding the dedicated server's PlayerId value for a player) is renamed to 'pid' and 'id' now contains the database id from the 'players' table, analogous to the Challenge object &ndash; this eliminates most player ID queries
+<LI>thanks to Tyrann for providing dumps of a large database to analyze &amp; test with
+</UL>
+<br>
+
+<LI>new and updated <b>internal events</b> (thanks undef.de):
+<UL>
+<LI>new <b>onDedimaniaRecord event</b> to indicate a new/improved/secured Dedimania record, including its position &ndash; note that a Dedimania record is not official until confirmed after the end of a track
+<LI>the <i>onLocalRecord event</i> also includes a new pos(ition) field
+<LI>new <b>onJukeboxChanged event</b> to signal changes to the jukebox, passing along an action string ('add', 'clear', 'drop', 'play', 'replay', 'replay', 'restart' &amp; 'skip') and the pertaining track data, or <i>null</i> for the 'clear' action
+<LI>new <b>onMusicboxReloaded event</b> to alert that the music server config file (musicserver.xml) was reloaded via <i>/music reload</i>
+<LI>new <b>onDonation event</b> to indicate that a new donation was completed, including login and coppers amount
+<LI>on TMF, restarting when at least one player already has a finish time or a score results in the scoreboard and ChatTime countdown, thus allowing time for the normal <i>onNewChallenge</i> and <i>onEndRace events</i> instead of the <i>onRestartChallenge</i> one &ndash; for instant restarts the latter is issued as before, and the two restart types are logged distinctly
+</UL>
+<br>
+
+<LI>new support for <b>sector times</b> (not to be confused with sector records, as offered by third-party plugins):
+<UL>
+<LI>new <b>/sectms</b> command to display the sector times (if available, as they're only being stored since v1.06) for all local records on the current track
+<LI>new <b>/dedisectms</b> command to display the sector times for all Dedimania records on the current track
+<LI>on TMN there's room for the first 9 sectors, on TMF for the first 12 sectors of each record &ndash; a '+' indicates when there are more sectors than can be displayed
+</UL>
+
+<LI>eliminated checkpoints panel toggling due to temporary spectator status changes at the end and start of tracks, thus significantly reducing outgoing ManiaLink traffic during that period &ndash; this also reduces the problem with stalled panels and widgets
+
+<LI>PlayerFinish callbacks are now ignored when not in status 4 (Running - Play), again reducing processing overhead during the end and start of tracks
+
+<LI>once a track is being replayed (after <i>/replay</i> or <i>/admin replay</i>), then <i>/playtime</i> and the total playtime message at the end of that track will include the number of replays and the overall playtime (thanks Milenco)
+
+<LI>at start-up the dedicated server connection, LocalDB and RASP messages are now logged with timestamps
+
+<LI>updated the stripColors function to (even) better reproduce the way the game strips incomplete tags (thanks Slig)
+
+<LI>all Dedimania communication now occurs via <i>port :8002</i> only, and you should remove the RPC4/server.php link from dedimania.xml
+
+<LI>improved debug logging in the Dedimania plugin
+
+<LI>upon shut down (via the <i>/admin</i> commands) or Fatal Error, all ManiaLinks on all connected clients are cleared (thanks Terron)
+
+<LI>various tweaks and corrections to plugin.matchsave.php
+
+<LI>retired chat.vote.php with its obsolete <i>/vote</i> and <i>/score</i> commands &ndash; you can manual delete the empty 'votes' table via a DROP TABLE query
+</UL>
+
+<H3>Bug fixes in the v1.12 release of XASECO:</H3>
+
+<UL>
+<LI>the <i>onLocalRecord event</i> is also issued for equalled records &ndash; fixed
+
+<LI>the <i>/list & /autojuke nofinish & norank</i> commands cause PHP warnings for players without finished tracks &ndash; fixed
+
+<LI>missing title or artist tags of .OGG songs can cause PHP warnings &ndash; fixed
+
+<LI>the TMXInfoFetcher can cause PHP warnings upon empty results from TMX API calls &ndash; fixed
+</UL>
+
+<HR>
+
+<H3>New features and other changes in the v1.11 release of XASECO:</H3>
+
+<UL>
+<LI>new <b>/xaseco</b> command to display a variety of info about your XASECO installation, including uptime, the welcome message (TMF-only), and the masteradmin(s) &ndash; the XASECO version is no longer in the <i>/server</i> output
+
+<LI>new <b>/mod</b> command (based on an updated <i>GBXChallengeFetcher class</i>) to show the (file)name for the current track's mod
+
+<LI>if followed by the <b>url</b> (alias <b>loc</b>) parameter, <i>/song</i> and <i>/mod</i> will also display the song's or mod's locator URL (if available), hyperlinked for easy download
+
+<LI>an optional search string after <i>/music list</i> will now list only songs with that string in their filenames or, if &lt;cache_tags&gt; in musicserver.xml is enabled, in the title or artist tags of .OGG songs &ndash; the song IDs shown are the original (now possibly non-sequential) ones from the complete list so that jukeboxing still works correctly
+
+<LI>the <i>/chatlog</i>, <i>/pmlog</i> and <i>/admin pmlog</i> output can show the timestamp of each message, configurable via new config.xml setting <b><CODE>&lt;chatpmlog_times&gt;</CODE></b> (default: True)
+
+<LI>new <i>/list</i> option: <b>/list novote</b> to display all tracks the player didn't karma vote for
+
+<LI>new <i>/autojuke</i> option: <b>/autojuke novote</b> to automatically jukebox the first available track from the <i>/list novote</i> selection
+
+<LI><i>/list karma 0</i> now correctly lists all tracks without karma votes as well as those with average karma value 0 &ndash; previously this command would list tracks with negative or zero karma but not those without any votes
+
+<LI>new <b><CODE>$jukebox_adminnoskip</CODE></b> option in rasp.settings.php to <i>not</i> skip tracks (if <CODE>$jukebox_skipleft</CODE> is true) that were jukeboxed by admins (of any tier) which left the server
+
+<LI>when a player whose IP address was banned re-enters after the dedicated server was restarted, [s]he is now re-banned instead of just kicked &ndash; this insures the dedicated rather than XASECO will keep the player out on subsequent connect attempts, at least until another restart
+
+<LI>updated the Dedimania system to use only the <b>new :8002</b> communication port (remember to open this port on your firewall/router as well) &ndash; the load is now internally distributed on the Dedimania master server
+
+<LI>on TMF, the <i>/stats</i> output now includes the player's client build/version
+
+<LI>changed/added common Rounds points systems on TMF, with <i>f1gp</i> replaced by:
+<UL>
+<LI><b>f1old</b>: Formula 1 GP Old &ndash; 10,8,6,5,4,3,2,1,...
+<LI><b>f1new</b>: Formula 1 GP New &ndash; 25,18,15,12,10,8,6,4,2,1,...
+</UL>
+
+<LI>player wins in Stunts mode are now determined and attributed (thanks nouseforname)
+
+<LI>changed the public appreciation message for large donations to prevent a fraud scheme
+
+<LI>optimized MySQL interaction for calculation of players' server ranks (thanks Nanir)
+
+<LI>upon a Fatal Error, an <b>onShutdown event</b> is issued just before shutting down (thanks nocturne)
+
+<LI>the player/spectator and voting values in the $aseco->server object are refreshed at each track switch in case they've been modified (thanks undef.de)
+
+<LI>the Auto TimeLimit and music server plugins now log an initialization message before loading their respective .xml configs
+
+<LI>deployed updated web_access.inc.php for Dedimania communication (thanks Slig)
+
+<LI>removed all ShareMania support as the site was retired
+</UL>
+
+<H3>Bug fixes in the v1.11 release of XASECO:</H3>
+
+<UL>
+<LI>changes in the GameInfo structure aren't detected upon restarts, only upon track switches &ndash; fixed
+
+<LI>players that should have been kicked (e.g. for an obsolete client) but weren't, can cause PHP warnings &ndash; fixed, and their finishes are ignored
+
+<LI>in Laps mode when <i>/dedicps</i> is active, local records are not detected &ndash; fixed (thanks blue)
+
+<LI>there's a global $linelen conflict between plugin.chatlog.php and plugin.msglog.php &ndash; fixed
+
+<LI><i>/list karma</i> is allowed while $feature_karma in rasp.settings.php is false &ndash; fixed
+
+<LI>in rare situations <i>/best</i>, <i>/worst</i> and <i>/list best|worst</i> can produce gibberish output &ndash; fixed
+
+<LI>following <i>/list</i> with <i>/style ##</i> or any <i>/*panel ##</i> command can cause a PHP warning &ndash; fixed
+
+<LI>an XML/RPC communication problem with the Dedimania server can cause a PHP warning &ndash; fixed
+</UL>
+
+<HR>
+
+<H3>New features and other changes in the v1.10 release of XASECO:</H3>
+
+<UL>
+<LI>new support for <b>TMF client version checking</b> upon player connects:
+<UL>
+<LI>when players connect on TMF, it is now possible to check their client version for a minimum number
+<LI>if new config.xml setting <b><CODE>&lt;player_client_version&gt;</CODE></b> is empty, checking is disabled; otherwise it must be a valid TMF version number, 2.11.11 or higher
+<LI>if checking is enabled and the player's client version is less than the required number (where the empty version of the initial TMF releases counts as 2.11.11), then the player is kicked with appropriate log and chat messages, and the kick dialog also contains a suitable message (configurable in config.xml)
+<LI>cheating currently happens only with v2.11.11 clients, so in order to prevent potential cheaters (along with other players that haven't upgraded yet) from joining, you can choose to set <CODE>&lt;player_client_version&gt;</CODE> to 2.11.12 or higher
+<LI>when admins of any tier connect on TMF, it is also possible to check their client version for a separate minimum number
+<LI>if new config.xml setting <b><CODE>&lt;admin_client_version&gt;</CODE></b> is empty, checking is disabled; otherwise it must be a valid TMF version number, 2.11.11 or higher
+<LI>if checking is enabled and the admin's client version is less than the required number (where an empty version again counts as 2.11.11), then the admin is similarly notified and kicked
+<LI>recent client and server versions <a target="_blank" href="http://www.tm-forum.com/viewtopic.php?t=22523">prevent login spoofing</a>, so it's recommended to set <CODE>&lt;admin_client_version&gt;</CODE> to 2.11.19 or higher and have all your server's admins upgrade if necessary
+<LI>note that digitally distributed editions of TMF are not easily upgraded with the <a target="_blank" href="http://www.tm-forum.com/viewtopic.php?p=138727#p138727">manual patches</a> &ndash; e.g. the Steam edition is currently at 2.11.16 &ndash; so be careful about setting the versions too high
+</UL>
+
+<LI>new <b>/settings</b> command to display your personal settings, or those of any player (login or ID) if you're an admin with the new <b>chat_settings</b> ability &ndash; the settings are: the <i>/cps</i> and <i>/dedicps</i> values, and on TMF also the <i>/style</i>, <i>/admin panel</i>, <i>/donpanel</i>, <i>/recpanel</i> and <i>/votepanel</i> values (if the pertaining plugins are enabled)
+
+<LI>new <b>/plugins</b> command to display the list of currently active plugins
+
+<LI>new <b>/admin delrec</b> command to delete the specified record (1 - $maxrecs) for the current track, delete the corresponding 'rs_times' entries and, if necessary, move the next best time in as the new last record
+
+<LI>the number of times a track can be replayed via <i>/replay</i> votes is now configurable via new votes.config.php setting <b><CODE>$replays_limit</CODE></b> (default 0 = unlimited)
+
+<LI>admins with the new <b>chat_jukebox</b> ability can now use the <i>/jukebox</i> command even if <CODE>$feature_jukebox</CODE> in rasp.settings.php is false
+
+<LI>on TMF the <i>/recs</i> output can optionally include the players' logins, configurable via new config.xml setting <b><CODE>&lt;show_rec_logins&gt;</CODE></b> (default: True)
+
+<LI>on TMF the <i>/dedirecs</i> output can optionally include the players' logins, configurable via new dedimania.xml setting <b><CODE>&lt;show_rec_logins&gt;</CODE></b> (default: True)
+
+<LI>new <b>/dedistats</b> command to display a few Dedimania statistics for the current track and, only on TMF, a link to the track's Dedimania page with all its records
+
+<LI>for TMF global blacklists that contain optional &lt;account&gt; fields with values 'United' or 'Nations', the merge feature can now process only the United logins, configurable via new rasp.settings.php setting <b><CODE>$globalbl_united</CODE></b> (default: false)
+
+<LI>a log message now indicates when a Dedimania record is ignored because the pertaining login is banned from Dedimania
+
+<LI>on TMF the Dedimania plugin now verifies that the configured server login is the same as the actual server login
+
+<LI>the <i>/xlist</i> command can now search TMX for track names using multiple words (thanks bmandk)
+
+<LI>added new common Rounds points system on TMF:
+<UL>
+<LI><b>superstars</b>: Superstars &ndash; 20,15,12,10,8,6,4,3,2,1,...
+</UL>
+
+<LI>reduced the MySQL reconnect polling frequency at an empty server to once every second
+
+<LI>optimized the MySQL queries for the <i>/list nofinish</i> and <i>/list norank</i> commands (thanks Pesky)
+
+<LI>the 'GameData/Tracks/Challenges/TMX/' and '.../TMXtmp' directories are now created automatically if they don't exist when starting XASECO for the first time (this also simplifies the installation procedure by one step)
+
+<LI>arguments to <i>/admin clearhist</i> are clipped at $buffersize
+
+<LI>usage of the dedicated server's built-in commands <i>/version</i> and (TMF-only) <i>/serverlogin</i> is now logged as such
+
+<LI>new donate panel BelowCPListRM and record panel RightBottomRM, courtesy of sebik1992 (RoundMania 90k)
+</UL>
+
+<H3>Bug fixes in the v1.10 release of XASECO:</H3>
+
+<UL>
+<LI>restarting XASECO triggers required checkpoints warnings for the ongoing race &ndash; fixed, the warnings now get enabled after the end (or a restart) of the current track
+
+<LI>after merging a global blacklist, the local blacklist is saved without the newly blacklisted logins &ndash; fixed
+
+<LI>blacklisted logins of players that never visited the server (e.g. from a merged global blacklist) can't be unblacklisted &ndash; fixed
+</UL>
+
+<HR>
+
+<H3>New features and other changes in the v1.09 release of XASECO:</H3>
+
+<UL>
+<LI>new support for a <b>global blacklist</b> on TMN and (especially) TMF, because at start-up the TMF server now properly loads the global blacklist specified in dedicated_cfg.txt entry &lt;blacklist_url&gt; and merges it with the local blacklist:
+<UL>
+<LI>new <b>/admin mergegbl</b> command to merge a (possibly updated) global blacklist with the server's blacklist at other times than just start-up
+<LI>the default blacklist is configurable via rasp.settings.php setting <b><CODE>$globalbl_url</CODE></b>, and should be the same as &lt;blacklist_url&gt;
+<LI>the <i>/admin mergegbl</i> command optionally accepts a http[s] URL to load another global blacklist, and access to the command is defined in adminops.xml as usual
+<LI>when a MasterAdmin connects, the default global blacklist can automatically be merged, configurable via rasp.settings.php setting <b><CODE>$globalbl_merge</CODE></b> (default: false)
+<LI>after merging, log and chat messages indicate the number of newly blacklisted logins, and the local blacklist is saved just like after a manual <i>/admin black</i> command
+</UL>
+<br>
+
+<LI>new support for <b>player access control</b> by nation (TMN) or zone (TMF) becomes available when plugin.access.php is enabled (uncommented) in plugins.xml, offering the following features:
+<UL>
+<LI>the control mechanism is inspired by Apache's <A TARGET="_blank" HREF="http://httpd.apache.org/docs/2.0/mod/mod_access.html">mod_access</A> and is configured via access.xml, containing the following directives:
+<UL>
+<LI>the Order section, defining the order in which the other two sections are processed
+<LI>the Allow section, containing one or more From fields to specify nations/zones that are allowed access
+<LI>the Deny section, containing one or more From fields to specify nations/zones that are denied access
+<LI>the From values are case-sensitive, upper- and lowercase characters must match exactly with the players' nations/zones you want to control
+<LI>the catch-all value for either the Allow or Deny section is 'all' (lowercase), and in that case this section cannot contain other From fields
+<LI>for more information and examples on these directives, see the comments in access.xml and the aforementioned mod_access page
+</UL>
+<LI>on TMF, a match on a specified zone will also match its subzones, e.g. a match on "Netherlands" will include all Dutch provinces too
+<LI>denied players are kicked with appropriate log and chat messages, and on TMF the kick dialog also contains a suitable message, which can be configured in access.xml
+<LI>the new <b>/admin access</b> command offers the following options:
+<UL>
+<LI><b>help</b>: Displays help information
+<LI><b>list</b>: Displays current access control settings
+<LI><b>reload</b>: Reloads updated access control settings
+</UL>
+<LI>player access control is disabled upon a configuration error in (re)loading access.xml
+</UL>
+<br>
+
+<LI>new <b>/cpsspec</b> command (TMF-only) to relay the checkpoints panel of the player you're spectating to your own screen:
+<UL>
+<LI>this feature may have some performance impact on busy servers, so it's your choice to enable it via new config.xml setting <b><CODE>&lt;enable_cpsspec&gt;</CODE></b> (default: False)
+<LI>the <i>/cpsspec</i> command toggles tracking the checkpoints of a spectated player
+<LI>if tracking is enabled and you're spectating another player in Follow or Replay camera mode, the checkpoints panel of that player is also shown on your screen, but only if the spectated player has enabled checkpoints tracking him/herself
+<LI>the <i>/cpsspec</i> status is intentionally not saved among a player's personal settings, so it is off upon reconnects
+</UL>
+<br>
+
+<LI>updates for the music server plugin (TMF-only):
+<UL>
+<LI>the song list can now be automatically shuffled at start-up and upon the <i>/music reload</i> command (configurable via new musicserver.xml setting <b><CODE>&lt;auto_shuffle&gt;</CODE></b>)
+<LI>new <b>/music autoshuffle</b> command to change the automatic shuffle setting; the <i>/music settings</i> output also includes the AutoShuffle value
+</UL>
+
+<LI>on TMF, released the player slot when changing a player into spectator in <i>/admin forcespec</i>, <i>/afk</i> and action 1 (Set to Spectator) for a detected cheater
+
+<LI>in Laps mode, each lap time is now stored in the 'rs_times' table (if <CODE>$feature_stats</CODE> in rasp.settings.php is true, of course)
+
+<LI>UTF-8 encoding the welcome message, necessary on some systems to display accented characters correctly, can now be configured via new config.xml setting <b><CODE>&lt;welcome_utf8encode&gt;</CODE></b> (default: True)
+
+<LI>on TMF when rank limiting by the full Jfreu plugin is in effect, the kick dialog echoes the explanatory chat message sent to a connecting player who is kicked due to a bad rank
+
+<LI>on TMF when using the <i>/bootme</i> command, the kick dialog can optionally display a 'goodbye' message if new rasp.xml message <b><CODE>&lt;bootme_dialog&gt;</CODE></b> exists
+
+<LI>in the XASECO start-up sequence the <i>onSync event</i> is now issued before the <i>onPlayerConnect events</i> for all current players so that plugins are initialized in a more logical order
+
+<LI>during XASECO start-up global voting explanations (<CODE>$global_explain = 2</CODE> in votes.config.xml) are temporarily inhibited to prevent a message flood on busy servers
+
+<LI>updated the stripColors function to strip out incomplete color codes before the end of the string, and add an option so that log output doesn't show '$$' for '$'
+
+<LI>in the local database the 'Name' column in table 'challenges' and the 'NickName' column in table 'players' have been increased to 100 characters &ndash; for new XASECO installations the updated columns are defined in the localdb/aseco.sql file as usual, and for existing installs they will be modified automatically the first time this release is run
+
+<LI>minor improvements in the <i>GBXChallengeFetcher</i>, <i>GBXReplayFetcher</i> and <i>ReplayParser classes</i>
+
+<LI>this release <u>requires</u> the latest server <b>build 2009-05-25</b>
+</UL>
+
+<H3>Bug fixes in the v1.09 release of XASECO:</H3>
+
+<UL>
+<LI>some players with numeric logins still confuse the player ID mechanism &ndash; now really fixed
+
+<LI>in Laps mode, improved laps aren't always checked for new Dedimania records &ndash; fixed
+
+<LI>the global voting explanation upon a player join doesn't appear in the TMF message window when <CODE>$vote_in_window = true</CODE> &ndash; fixed
+
+<LI>on some OSes a repetitive but harmless warning about "Invalid CRT parameters" in GbxRemote can occur &ndash; fixed
+</UL>
+
+<HR>
+
+<H3>New features and other changes in the v1.08 release of XASECO:</H3>
+
+<UL>
+<LI>improved checkpoints & finish processing, anti-cheat testing and Dedimania records handling (if plugin.checkpoints.php is enabled in plugins.xml)
+
+<LI>on TMF, local and Dedimania records that, for any reason, don't have the correct number of checkpoints are ignored with a logged warning (if plugin.checkpoints.php is enabled)
+
+<LI>on TMF, used the new TMF BeginChallenge and EndChallenge callbacks (instead of BeginRace and EndRace) to trigger the <i>onNewChallenge</i> and <i>onEndRace events</i>, respectively
+
+<LI>on TMF, the <i>onNewChallenge</i> and <i>onEndRace events</i> are no longer issued when restarting a track; this prevents, for example, losing the next track from the jukebox and the needless repetition of all messages sent at the start and end of a track &ndash; instead a new <b>onRestartChallenge event</b> is issued
+
+<LI>added the <b>onPlayerIncoherence</b>, <b>onTunnelDataReceived</b> and <b>onManualFlowControlTransition events</b> for handling the existing TMF PlayerIncoherence, TunnelDataReceived and ManualFlowControlTransition callbacks, respectively
+
+<LI>checkpoints in Dedimania records are now sent as a comma-separated string to the central Dedimania system in order to reduce data traffic
+
+<LI>on TMF, a new <b><CODE>$specPlayFirst</CODE></b> configuration variable (default: false) in mistral.idlekick.php can be used to first set an idle player into spectator mode (free camera) instead of kicking him/her right away
+
+<LI>removed the 1 second delay to set free camera mode in <i>/admin forcespec</i>, <i>/afk</i> and action 1 (Set to Spectator) for a detected cheater
+
+<LI>challenge names with embedded newlines no longer cause malformed messages and such (due to use of a new <b>stripNewlines function</b>)
+
+<LI>a new <b>stripSizes function</b> that strips only the size-related tags ($n, $w and $o) from strings, is available as alternative to stripColors
+
+<LI>added the new <b>ReplayParser class</b> for future use with the Dedimania system
+
+<LI>updated the GbxRemote modules to the latest versions from Nadeo
+
+<LI>minor code tweaks in many parts of the system
+
+<LI>this release <u>requires</u> the latest server <b>build 2009-05-04</b>
+</UL>
+
+<H3>Bug fixes in the v1.08 release of XASECO:</H3>
+
+<UL>
+<LI>an ampersand character (&amp;) in any .xml file crashes the XML parser &ndash; fixed this long-standing issue (thanks Assembler Maniac)
+
+<LI>non-ASCII characters in the &lt;welcome&gt; message in config.xml cause the entire message not to be displayed &ndash; fixed (thanks dragu)
+
+<LI>using <i>/style #</i> stores the number instead of the style name in the database as the player's preference &ndash; fixed (thanks nouseforname)
+
+<LI>players with numeric logins confuse the player ID mechanism &ndash; fixed (thanks n4p1)
+</UL>
+
+<HR>
+
+<H3>New features and other changes in the v1.06 release of XASECO:</H3>
+
+<UL>
+<LI>new support for <b>local checkpoints storage</b>:
+<UL>
+<LI>a new 'Checkpoints' column has been added to the local database tables 'records' and 'rs_times', and checkpoints data will be stored for all newly driven records and finish times
+<LI>for new XASECO installations the new columns are defined in the localdb/aseco.sql and rasp.sql files as usual, and for existing installs they will be added automatically the first time this release is run
+<LI>the <a href="scripts/repairrecs.zip">Repair records script</a> has been updated to handle the extra columns
+</UL>
+
+<LI>functionality of the <i>/cps</i> command is changed analogous to <i>/dedicps</i>:
+<UL>
+<LI>checkpoint references are stored for all players (according to their individual preferences) <u>only</u> at the start of a track, not when entering the <i>/cps</i> command or when the player (re)connects
+<LI>with no parameter (<i>/cps</i>) the player's own local record on each track is selected or, if none is set, the last record on the pertaining track
+<LI><i>/cps {1-maxrecs}</i> selects local record 1-maxrecs on each track or, if unavailable, again the last record
+<LI><i>/cps off</i> disables checkpoints tracking altogether
+<LI>if the checkpoints for the chosen local record are invalid (empty, or the last checkpoint doesn't match the finish time) then no record is used as initial reference during that track for the pertaining player(s)
+<LI>checkpoint differences to the chosen reference are now shown from the first run through the track, rather than the second
+<LI>if <i>/dedicps</i> is not set to <i>off</i>, local record tracking is superseded by Dedimania record tracking as per that setting
+<LI>the default setting for <CODE>&lt;auto_enable_dedicps&gt;</CODE> in config.xml is now False
+<LI>as usual, once a player gains a better finish time than the chosen reference, the checkpoints panel (TMF) or pop-up (TMN) will use those corresponding checkpoints for further updates during the current track
+<LI>explanations why the TMF checkpoints panel doesn't appear immediately when <i>/cps</i> is activated (Stunts mode, spectating, and warm-up phase) are no longer shown
+</UL>
+<br>
+
+<LI>new support for <b>storing donations and personal settings</b>:
+<UL>
+<LI>a new 'players_extra' table has been added to the local database to store donation totals (on TMUF servers) and setting preferences for each player
+<LI>stored settings are: the <i>/cps</i> and <i>/dedicps</i> values, and on TMF also the <i>/style</i>, <i>/admin panel</i>, <i>/donpanel</i>, <i>/recpanel</i> and <i>/votepanel</i> values
+<LI>for new XASECO installations the new table is defined in the localdb/extra.sql file, and for existing installs it will be added automatically the first time this release is run
+<LI>when a new player first connects, an entry with the server's default values is created in this table, but changed settings are subsequently stored and reloaded each time the player revisits
+<LI>the 'donations' column is updated every time a player donates coppers to the server
+<LI>on TMUF servers, the <i>/stats</i> output now includes the player's donation total
+<LI>new <b>/topdons</b> command to display the top-100 of players that donated the most coppers
+</UL>
+<br>
+
+<LI>new support for <b>player stats panels during the scoreboard</b> on TMF:
+<UL>
+<LI>on TMF, this feature is configured via new config.xml setting <b><CODE>&lt;sb_stats_panels&gt;</CODE></b> (default: False)
+<LI>enabling the player stats panels during the scoreboard automatically disables the rank chat messages shown at the same time
+<LI>the panel is displayed in the lower-left corner of the scoreboard screen, and is defined by the panels/StatsNations.xml (for TMNF servers) and StatsUnited.xml (for TMUF) templates
+<LI>the panel contains each player's server rank, record average, records total, wins total, session play time, and donation total (on TMUF servers)
+<LI>computing the record totals can be a bit time consuming depending on the number of challenges, players and records in the database, so displaying all scoreboard panels may be slightly delayed
+</UL>
+<br>
+
+<LI>when a player leaves, the chat message (if either Jfreu plugin is enabled) and the log message now include the amount of time played in that session
+
+<LI>during XASECO start-up, player join messages are temporarily inhibited to prevent a message flood on busy servers
+
+<LI>on TMF, the <i>/server</i> and <i>/admin server</i> output now include the server's ladder points limits
+
+<LI>on TMUF, donate panels are temporarily disabled during the scoreboard at the end of a track, as they aren't immediately responsive anyway
+
+<LI>on TMF in Rounds mode, Dedimania records on lap tracks are now ignored if RoundForcedLaps is not set to the default value 0
+
+<LI>on TMF in Cup mode, commands that restart the current track or switch to the next or previous one now preserve the current match scores
+
+<LI>new <b>/n1</b> command to send a Nice One message; also, the <i>/gr</i> message no longer includes the word 'All' by default
+
+<LI>added the <b>onEcho event</b> for handling the TMF Echo callback
+</UL>
+
+<H3>Bug fixes in the v1.06 release of XASECO:</H3>
+
+<UL>
+<LI>using <i>/dedicps</i> to track checkpoints of existing Dedimania records results in new/improved/secured records not registering in some situations &ndash; fixed
+
+<LI>when a player joins during a Laps mode race and completes a lap, an invalid record is registered &ndash; fixed (thanks princemichi)
+
+<LI>in Laps mode the finish times of complete races are stored in the 'rs_times' table &ndash; fixed, no times are stored in Laps mode
+
+<LI>if &lt;display&gt; in localdatabase.xml is False, other records related commands and features don't work either &ndash; fixed
+
+<LI>when using a local path for the music server, and with some http servers, the .OGG comments aren't read from the song files &ndash; fixed (thanks HaveDerf_TMu)
+</UL>
+
+<HR>
+
+<H3>New features and other changes in the v1.05b release of XASECO:</H3>
+
+<UL>
+<LI>updated the Dedimania system to randomly choose between the existing :8006, :8007, :8011, :8012 and :8013 and <b>new :8016 through :8021</b> communication ports (remember to open those ports on your firewall/router as well) in order to distribute the load across more Dedimania servers
+
+<LI>the number of lines in the TMF system message window can now be easily modified with the <b>$winlen</b> variable at the start of plugin.msglog.php
+
+<LI>refined UTF-8 string validation function (thanks Slig)
+</UL>
+
+<H3>Bug fixes in the v1.05b release of XASECO:</H3>
+
+<UL>
+<LI>Dedimania records aren't reliably registered due to the new anti-cheat tests &ndash; fixed
+
+<LI>Dedimania records on tracks that don't have the full &lt;max_recs&gt; entries aren't registered unless they're better than the existing last record &ndash; fixed (thanks lille79)
+
+<LI>in case of Dedimania connection problems persisting across track changes, records data from the previous track is still used on the next one &ndash; fixed (thanks schmidi)
+
+<LI>restarting a track causes no further Dedimania records to be registered on that track &ndash; fixed
+
+<LI>restarting XASECO triggers the anti-cheat tests for the ongoing race &ndash; fixed, the tests now get enabled after the end of the current track
+
+<LI>with the music server configured for local files, <i>/music current</i> and <i>/music settings</i> don't show the song's info &ndash; fixed
+
+<LI>on Windows, the <i>/music stripdirs</i> option doesn't work correctly on local files &ndash; fixed
+</UL>
+
+<HR>
+
+<H3>New features and other changes in the v1.05 release of XASECO:</H3>
+
+<UL>
+<LI>new <b>checkpoint sanity checks</b> to prevent cheated records (if plugin.checkpoints.php is enabled in plugins.xml):
+<UL>
+<LI>all checkpoint times must be larger than zero
+<LI>each checkpoint time within a player's run must be larger than the preceding one
+<LI>all checkpoint indexes must be zero or larger
+<LI>each checkpoint index within a player's run must be 1 larger than the preceding one
+<LI>the last checkpoint time must be equal to the finish time
+<LI>when any of these requirements isn't met, one of the following actions is taken on the pertaining player, configurable via new config.xml setting <b><CODE>&lt;cheater_action&gt;</CODE></b> (default: 0):<br>
+0: Ignore; 1: Set to Spectator (only on TMF, falls back to 0 on TMN); 2: Kick; 3: Ban (implies Kick); 4: BlackList & Kick; 5: Blacklist & Ban
+<LI>new/updated local and Dedimania records that fail one or more of the aforementioned checks are not stored (even if the above action is 0)
+</UL>
+
+<LI>new <b>Dedimania sanity checks</b>:
+<UL>
+<LI>keeping any of the three &lt;masterserver_account&gt; fields in dedimania.xml at a default or empty value results in a fatal error
+<LI>records are no longer processed if they are less than 6 seconds
+<LI>records are no longer processed for tracks with an author time of less than 8 seconds
+</UL>
+
+<LI>updates for the music server plugin (TMF-only):
+<UL>
+<LI>song files can now be stored locally on the TM server in a path under its GameData/ directory, e.g. Music/, without the need for a remote http server
+<LI>if &lt;auto_nextsong&gt; is disabled a jukeboxed song will no longer be repeated on all subsequent tracks until another song is jukeboxed
+</UL>
+
+<LI>a new config.xml setting <b><CODE>&lt;display_checkpoints&gt;</CODE></b> (default: True) can be set to False to permanently disable checkpoint pop-ups (TMN) or panels (TMF) for all players while still tracking the checkpoints data internally &ndash; this allows you to keep plugin.checkpoints.php enabled for anti-cheat checks and the Dedimania system when high player counts cause performance/crash problems
+
+<LI>a global congratulations message can be displayed instead of the regular personal one at a player's win of a track, if that win count reaches a multiple configured via new config.xml setting <b><CODE>&lt;global_win_multiple&gt;</CODE></b> (default: 50)
+
+<LI>if plugin.rpoints.php is enabled on TMF, it's now possible to initialize the TM server with a default Rounds points system at start-up via new config.xml setting <b><CODE>&lt;default_rpoints&gt;</CODE></b> &ndash; the value can be a custom system with specified values (X,Y,...,Z) or a common system by name (f1gp, motogp, etc), just like the parameters to the <i>/admin rpoints</i> command; if empty, the standard points system is initialized
+
+<LI>on TMF, automatically setting a player that uses the <i>/afk</i> command into free spectator mode can now be configured via new config.xml setting <b><CODE>&lt;afk_force_spec&gt;</CODE></b> (default: True)
+
+<LI>automatically adding the current IP address for newly added admins and operators can now be configured via new config.xml setting <b><CODE>&lt;auto_admin_addip&gt;</CODE></b> (default: True)
+
+<LI>new <b>/admin autotime</b> command to enable or disable the Auto TimeLimit feature dynamically (assuming plugin.autotime.php is enabled in plugins.xml)
+
+<LI>when restarting a track via a <i>/ladder</i> vote (with votes.config.php setting <CODE>$ladder_fast_restart = true</CODE>) or <i>/admin restartmap</i>, the Auto TimeLimit is no longer set to next track's value
+
+<LI>successful <i>/donate</i> and <i>/admin pay</i> copper transfers are now logged
+
+<LI>when adminops.xml is written out without any admin or operator entries, bannedips.xml without IPs, jfreu.bans.xml without temporary bans, or jfreu.vips.xml without VIP logins or teams, then a comment block to show the entry syntax is included instead
+
+<LI>if the GD/JPEG libraries are installed in PHP, the <i>GBXChallengeFetcher class</i> now flips the upside-down thumbnail image in a challenge into its upright format
+
+<LI>a message is logged when plugins.xml is being loaded at start-up
+
+<LI>this release requires the latest server <b>build 2008-12-05</b>
+</UL>
+
+<H3>Bug fixes in the v1.05 release of XASECO:</H3>
+
+<UL>
+<LI><i>/players &lt;string&gt;</i> displays an erroneous window if the search string matches no players &ndash; fixed, a warning message is shown
+
+<LI>on TMF if plugin.panels.php is not enabled, TMX <i>/add</i> and chat-based votes result in crashes &ndash; fixed
+
+<LI>on TMN, running <i>/admin helpall</i> as an Admin (not MasterAdmin or Operator) locks up the client after the second page &ndash; fixed (thanks B.A.S.S.)
+
+<LI>a time-out on the version server at the up-to-date check gives an incorrect message &ndash; fixed
+
+<LI>some PHP constructs still cause silent notices during strict run-time checks &ndash; fixed more of them
+
+<LI>debug logging in the Dedimania system doesn't consistently use CRLF on Windows &ndash; fixed
+</UL>
+
+<HR>
+
+<H3>New features and other changes in the v1.04 release of XASECO:</H3>
+
+<UL>
+<LI>new support for <b>custom Rounds points</b> on TMF with the following features:
+<UL>
+<LI>custom points in Rounds mode become available when plugin.rpoints.php is enabled (uncommented) in plugins.xml
+<LI>new <b>/admin rpoints</b> command to list and set common points systems, as well as custom distributions, with the following options:
+<UL>
+<LI><b>help</b>: Displays help information
+<LI><b>list</b>: Displays available points systems
+<LI><b>show</b>: Shows current points system
+<LI><b>&lt;xxx&gt;</b>: Sets points system labelled &lt;xxx&gt;
+<LI><b>X,Y,...,Z</b>: Sets custom points system with specified values; X,Y,...,Z must be decreasing integers and there must be at least two values with no spaces
+<LI><b>off</b>: Disables custom points system
+</UL>
+<LI>the following common points systems are included:
+<UL>
+<LI><b>f1gp</b>: Formula 1 GP &ndash; 10,8,6,5,4,3,2,1,...
+<LI><b>motogp</b>: MotoGP &ndash; 25,20,16,13,11,10,9,8,7,6,5,4,3,2,1,...
+<LI><b>motogp5</b>: MotoGP + 5 points &ndash; 30,25,21,18,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,...
+<LI><b>fet1</b>: Formula ET Season 1 &ndash; 12,10,9,8,7,6,5,4,4,3,3,3,2,2,2,1,...
+<LI><b>fet2</b>: Formula ET Season 2 &ndash; 15,12,11,10,9,8,7,6,6,5,5,4,4,3,3,3,2,2,2,1,...
+<LI><b>fet3</b>: Formula ET Season 3 &ndash; 15,12,11,10,9,8,7,6,6,5,5,4,4,3,3,3,2,2,2,2,1,...
+<LI><b>champcar</b>: Champ Car World Series &ndash; 31,27,25,23,21,19,17,15,13,11,10,9,8,7,6,5,4,3,2,1,...
+<LI><b>simple5</b>: Simple 5 &ndash; 5,4,3,2,1,...
+<LI><b>simple10</b>: Simple 10 &ndash; 10,9,8,7,6,5,4,3,2,1,...
+</UL>
+<LI>note that any players finishing beyond the last points entry get the same number of points (typically 1) as that last entry
+<LI>new <b>/rpoints</b> command to show the current points system
+<LI>additional points systems can be added to <CODE>$rounds_points</CODE> at the start of the plugin
+</UL>
+<br>
+
+<LI>an updated and optimized <b>Auto TimeLimit</b> plugin (plugin.autotime.php) by cyrus is now part of the standard distribution:
+<UL>
+<LI>this plugin works only in TimeAttack mode, and defines the timelimit for each track dynamically based on the track's author time
+<LI>the new <b>autotime.xml</b> file contains the plugin's settings to determine the new timelimit (multiplication factor, minimum, maximum and default); this file is loaded only once at start-up, rather than at every track switch
+<LI>as before, a <b>multiplicator</b> of zero will disable the plugin
+<LI>the new <b>display</b> setting controls whether to show a timelimit message in the TMF system message window, the chat window, or not at all; a similar message is always logged
+<LI>the type of timelimit (new, min, max, default) is included in these messages
+<LI>the timelimit is rounded down to seconds in the chat and log messages
+<LI>when there are no active players, the default timelimit is applied because of the way the TM server instantly switches tracks with no opportunity to set a custom limit
+</UL>
+
+<LI>updates for the music server plugin (TMF-only):
+<UL>
+<LI>the song filename extensions can now be excluded in any command that shows songs (configurable via new musicserver.xml setting <b><CODE>&lt;strip_exts&gt;</CODE></b>)
+<LI>new <b>/music stripexts</b> command to change the strip extensions setting; the <i>/music settings</i> output also includes the StripExts value
+<LI>new <b>/music sort</b> command to sort the song list alphabetically by song paths
+<LI>the cache file for .OGG comments can be defined as read-only (configurable via new musicserver.xml setting <b><CODE>&lt;cache_readonly&gt;</CODE></b>)
+</UL>
+
+<LI>in the &lt;ipaddress&gt; fields in config.xml and adminops.xml, it is now possible: to specify class B (e.g. 12.34.*.*) and class C (e.g. 12.34.56.*) wildcards to allow for partial IP checks on admins with dynamics IPs; and to specify multiple comma-separated IPs and/or wildcards (e.g. 12.34.56.78,98.76.54.*)
+
+<LI>note to plugin authors: while the isMasterAdmin, isAdmin, isOperator and isAnyAdmin functions require a player object and check the IP address, new isMasterAdminL, isAdminL, isOperatorL and isAnyAdminL functions are now available that accept a login string (like before v1.03) and don't check the IP address
+
+<LI>significantly optimized calculation of all players' server ranks after each track
+
+<LI>if the Nation field in the player join/leave messages is 15 or more characters, it's abbreviated to the 3-letter country code
+
+<LI>changed the ManiaLink processing to (hopefully) reduce the risk of crashing at high player counts
+
+<LI>a new <b><CODE>&lt;logina&gt;</CODE></b> color is defined in config.xml and used for the admin titles in player join and other relevant messages, as well as admin logins in the <i>/players</i>, <i>/admin players</i> and <i>/jfreu players</i> output
+
+<LI>setting empty player, spectator and referee passwords produces the appropriate log and chat messages about disabling them
+
+<LI>the <i>/admin setrefmode</i> command without parameter now shows the current Referee mode
+
+<LI>the <i>/admin forceshowall</i> command has been renamed to <b>/admin forceshowopp</b> and its 'on' option to 'all'; further, the command now accepts a number (>= 2) to force showing that minimum number of opponents
+
+<LI>the <i>/admin shutdown</i> command will now shut down only XASECO (in order to permit restarts via the external start-up script), while the new <b>/admin shutdownall</b> command terminates both XASECO <u>and</u> the TM server
+
+<LI>the output of <i>/admin players</i> is limited to at most 5000 entries, and the memory limit for the XASECO PHP process is increased to 50 MB, in order to further reduce the chances of memory overruns
+
+<LI>if the <A TARGET="_blank" HREF="http://www.xdebug.org/">Xdebug extension</A> for PHP is installed, a fatal error will automatically log a stack trace
+
+<LI>the <i>/music</i>, <i>/admin</i> and <i>/jfreu</i> commands are now able to handle multiple spaces between their parameters
+</UL>
+
+<H3>Bug fixes in the v1.04 release of XASECO:</H3>
+
+<UL>
+<LI>players that instantly reconnect can have their win counts cleared &ndash; fixed
+
+<LI><i>/admin removeadmin</i> and <i>/admin removeop</i> don't work when the &lt;ipaddress&gt; field for the pertaining login is set &ndash; fixed
+
+<LI>the <i>/jfreu infomessages</i> command is still boolean &ndash; updated the command to recognize the 2/1/0 values of the underlying <CODE>$infomessages</CODE> variable
+
+<LI>the Auto TimeLimit plugin doesn't work correctly when all connected players are spectating &ndash; fixed
+
+<LI>the Auto TimeLimit plugin doesn't work properly on servers with more than 500 tracks &ndash; fixed
+
+<LI>when a player doesn't have a Dedimania record but his/her local personal best is better than the last Dedimania record, <i>/dedinext</i> computes the wrong difference &ndash; fixed
+
+<LI><i>/admin setrefmode {0/1}</i> doesn't work correctly &ndash; fixed
+
+<LI><i>/admin forceteam</i>, <i>/admin forcespec</i> and <i>/admin specfree</i> are allowed on offline logins &ndash; fixed
+
+<LI><i>/admin forcespec</i> doesn't always set the spectator into free camera &ndash; fixed
+
+<LI>in the music server plugin, messages referring to songs without .OGG comments are not formatted correctly &ndash; fixed
+
+<LI>on TMF, a newly connected player's ladder rank in the internal players list can be temporarily erased until he/she becomes official &ndash; fixed
+
+<LI>numerous PHP constructs cause silent notices during strict run-time checks &ndash; fixed most of them
+</UL>
+
+<HR>
+
+<H2><A HREF="Features_103.html">Older release notes</A></H2>
+
+<HR>
+<ADDRESS>
+Copyright &copy; 2007-2013 &ndash; Frans P. de Vries <A HREF="mailto:tm&#64;&#103;&#97;&#109;&#101;&#114;&#115;&#46;&#111;&#114;&#103;">&lt;tm&#64;&#103;&#97;&#109;&#101;&#114;&#115;&#46;&#111;&#114;&#103;&gt;</A>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+Last updated 26-Jul-2013
+</ADDRESS>
+</BODY>
+</HTML>

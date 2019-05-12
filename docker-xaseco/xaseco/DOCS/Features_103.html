@@ -1,0 +1,913 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>TrackMania Nations - XASECO release notes v1.03</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<META NAME="author" CONTENT="Frans P. de Vries">
+<META NAME="generator" CONTENT="vi :)">
+<style type="text/css">
+body { width: 960px; margin-left: 30px; font-family: Arial,Helvetica,sans-serif; font-size: 15px; }
+li,div { padding: 3px; }
+code,pre { font-size: 14px; }
+pre { width: 90%; margin: 3px 0px; padding: 3px 0px 3px 12px; background-color: #F0F0F0; }
+</style>
+<META NAME="keywords" CONTENT="TrackMania, Forever, United, Nations, Original, Sunrise, racing, games, XASECO, ASECO, RASP, Jfreu, plugins, records, jukebox, Nadeo">
+<META NAME="description" CONTENT="Information on the XASECO system for TrackMania Nations and Forever (& Original/Sunrise), racing games by Nadeo">
+</HEAD>
+
+<BODY TEXT="#000000" LINK="#ff0000" VLINK="#0000ff" ALINK="#00ff00" BGCOLOR="#ffffff">
+
+<P ALIGN="center">
+<A TARGET="_blank" HREF="http://eswc.trackmanianations.com/"><IMG SRC="banner.jpg" ALT="TrackMania Nations" BORDER="0" WIDTH="590" HEIGHT="149"></A>
+<HR>
+
+<H3>New features and other changes in the v1.03 release of XASECO:</H3>
+
+<UL>
+<LI>new support for an <b>admin lock password</b>:
+<UL>
+<LI>a lock password for <i>/admin</i> and <i>/jfreu</i> commands, as well as other admin abilities and the admin panel, can be configured via new config.xml setting <b><CODE>&lt;lock_password&gt;</CODE></b>
+<LI>if the password setting is non-empty, admins of any tier have to enter a password before being able to use admin commands and features
+<LI>the new <b>/admin unlock</b> command compares the supplied password with the above setting, and unlocks the admin commands and features if valid
+<LI>the unlock status is remembered for the duration of the player session, so after every reconnect admins will have to enter the password again before they are fully authorized
+<LI>when an <i>/admin</i> or <i>/jfreu</i> command is not permitted, the error message does not distinguish between a login without admin abilities and the absence of its unlock status, so a player with a spoofed login is left guessing whether the login indeed belongs to an admin or whether an unlock password is required
+</UL>
+
+<LI>new support for <b>admin IP addresses</b>:
+<UL>
+<LI>after each <CODE>&lt;tmlogin&gt;</CODE> field in the <CODE>&lt;masteradmins&gt;</CODE> section in config.xml there is now an <CODE>&lt;ipaddress&gt;</CODE> field which, if not empty, should contain the IP address that this MasterAdmin login is authorized from
+<LI>similarly, after each <CODE>&lt;tmlogin&gt;</CODE> field in the <CODE>&lt;admins&gt;</CODE> and <CODE>&lt;operators&gt;</CODE> sections in adminops.xml there are now <CODE>&lt;ipaddress&gt;</CODE> fields which, if not empty, should contain the IP addresses that these Admin and Operator logins are authorized from
+<LI>if the specified IP address for a given login does not match, a player with a spoofed MasterAdmin, Admin or Operator login will only have normal player abilities, and any unauthorized attempts to use admin commands are logged
+<LI>when starting v1.03 for the first time it is not necessary to add <CODE>&lt;ipaddress&gt;</CODE> fields to your adminops.xml file, as empty fields will be created and saved automatically the next time that this file is written (e.g. with <i>/admin writeabilities</i>) &ndash; IP addresses for existing logins can then be added manually, and the file reloaded with <i>/admin readabilities</i>
+<LI>when using this security feature for the <CODE>&lt;masteradmins&gt;</CODE> section in config.xml, you <u>do</u> have to manually add the <CODE>&lt;ipaddress&gt;</CODE> fields to the file, whether empty or with actual IP addresses
+<LI>newly added admins and operators will always be saved to adminops.xml with their IP address, so if you are not using this security feature you can manually delete the address from the file, and then reload it
+<LI>note to plugin authors: because of these two security features the parameter type for the allowAbility, isMasterAdmin, isAdmin, isOperator and isAnyAdmin functions changed from a login string to a player object
+</UL>
+
+<LI>new support for <b>IP address bans</b>, in co-operation with regular server bans (which are not preserved across TM server restarts):
+<UL>
+<LI>the new <b>bannedips.xml</b> file can contain a list of banned IP addresses, which is automatically loaded at XASECO start-up
+<LI>the IP addresses of players are checked against the list upon connecting, and banned players are kicked with a banned IP message
+<LI>the existing <i>/admin ban</i> and <i>/admin unban</i> commands also add/remove the IP address of the pertaining player to/from the banned IPs list
+<LI>the new <b>/admin banip</b> command adds a manually specified IP address to the list, and <b>/admin unbanip</b> removes an IP address from the list &ndash; <i>/admin banip</i> does not require the pertaining player to be online like <i>/admin ban</i> does
+<LI>the new <b>/admin showiplist</b> command (alias <b>/admin listips</b>) displays the current list of banned IP addresses &ndash; on TMF if config.xml setting <CODE>&lt;clickable_lists&gt;</CODE> is True, the addresses in the output are buttons to invoke <i>/admin unbanip</i> on the selected IP
+<LI>the new <b>/admin cleaniplist</b> command deletes the entire list of banned IP addresses
+<LI>all commands automatically write the updated bannedips.xml file, but the new <b>/admin writeiplist</b> and <b>/admin readiplist</b> commands can also be used to write/read the list whenever you want
+</UL>
+<br>
+
+<LI>on TMF when plugin.msglog.php is enabled:
+<UL>
+<LI>a small arrow button is displayed in the lower-left corner above the chat window button that will invoke <i>/msglog</i>, allowing to quickly review the system message history
+<LI>the system message window now always displays the last 5 message lines, and the <i>/msglog</i> output has been reduced to a single-page window of 21 lines to avoid having to page in order to read the latest messages
+<LI>global jukebox messages can now be diverted to the window, configurable via rasp.settings.php setting <b><CODE>$jukebox_in_window</CODE></b> (true/false)
+<LI>global chat-based vote messages can also be diverted to the window, configurable via votes.config.php setting <b><CODE>$vote_in_window</CODE></b> (true/false)
+</UL>
+
+<LI>new <b>/admin writeabilities</b> and <b>/admin readabilities</b> commands to write and read the admins/operators/abilities list to and from disk
+
+<LI>the player join/leave messages (for both the full and lite Jfreu plugins) are defined via new jfreu.config.php settings <b><CODE>$player_join</CODE></b>, <b><CODE>$player_joins</CODE></b>, and <b><CODE>$player_left</CODE></b>
+
+<LI>an optional divider message at the start of each track shows the name, author and author time, configurable via new config.xml setting <b><CODE>&lt;show_curtrack&gt;</CODE></b> (2 = TMF message window, 1 = chat, 0 = off)
+
+<LI>it's now possible to specify multiple track IDs to <i>/admin add</i> (but not to <i>/add</i> due to the voting process) in order to quickly download more than one track from TMX or ShareMania &ndash; the optional TMX section or SM parameter should be last
+
+<LI>when the target player of a <i>/kick</i> vote leaves before the vote completes, the vote is now cancelled
+
+<LI>the karma message at the start of each track can now be disabled via new rasp.settings.php setting <b><CODE>$karma_show_start</CODE></b> (true/false)
+
+<LI>the Dedimania welcome message for a newly connecting player can also be disabled via new dedimania.xml setting <b><CODE>&lt;show_welcome&gt;</CODE></b> (True/False)
+
+<LI>the default name for the blacklist file used by <i>/admin readblacklist</i> and <i>/admin writeblacklist</i> is now configurable via new config.xml setting <b><CODE>&lt;blacklist_file&gt;</CODE></b> (default: blacklist.txt) &ndash; note that the TM server will continue to load the blacklist file with its default name at start-up, unless you adjust <CODE>&lt;blacklist_filename&gt;</CODE> in dedicated_cfg.txt as well
+
+<LI>the default name for the guestlist file used by <i>/admin readguestlist</i> and <i>/admin writeguestlist</i> is also configurable via new config.xml setting <b><CODE>&lt;guestlist_file&gt;</CODE></b> (default: guestlist.txt) &ndash; note that the TM server will continue to load the guestlist file with its default name at start-up, unless you adjust <CODE>&lt;guestlist_filename&gt;</CODE> in dedicated_cfg.txt as well
+
+<LI>the default name for the track history file is now configurable via new config.xml setting <b><CODE>&lt;trackhist_file&gt;</CODE></b> (default: trackhist.txt)
+
+<LI>the output of <i>/admin players</i> is limited to at most 10000 entries to prevent possible memory overruns
+
+<LI>the background of the TMF system message window is changed from transparent into blurry to enhance readability of the messages
+
+<LI>a high-level outline of all of XASECO's features and plugins can be found on the new <A HREF="overview.html">Overview page</A>
+
+<LI>the Upgrade notes for earlier versions are now archived on a <A HREF="upgrades.html">separate page</A>
+
+<LI>this release requires the latest server <b>build 2008-08-05</b>
+</UL>
+
+<H3>Bug fixes in the v1.03 release of XASECO:</H3>
+
+<UL>
+<LI>on TMF with the Jfreu info messages diverted to the system message window, the <i>/message</i> command makes the window pop up much longer than the <CODE>&lt;window_timeout&gt;</CODE> value &ndash; fixed
+
+<LI>if <CODE>&lt;cache_tags&gt;</CODE> in musicserver.xml is disabled, the <i>/music list</i> output isn't formatted correctly &ndash; fixed
+
+<LI>attempts to <i>/admin ban</i> offline players are allowed (and naturally always fail) &ndash; fixed
+
+<LI>the Z-value of the TMF <i>/admin pay</i> dialog puts it behind the full chat window &ndash; fixed
+</UL>
+
+<HR>
+
+<H3>New features and other changes in the v1.02 release of XASECO:</H3>
+
+<UL>
+<LI>new support for a <b>system message window</b> on TMF with the following features:
+<UL>
+<LI>the message window becomes available when plugin.msglog.php is enabled (uncommented) in plugins.xml
+<LI>various system messages that are sent to all players in the chat window can now be diverted into the message window in order to reduce chat clutter
+<LI>the window normally pops up with the last 4 message lines whenever a new message is received, using a timeout that is configurable via new config.xml setting <b><CODE>&lt;window_timeout&gt;</CODE></b> (default: 6 seconds)
+<LI>during the scoreboard at the end of each track, the window pops up with the last 6 lines if there are any new messages, for the same duration as the server's ChatTime setting (default: 10 seconds) plus an extra 5 seconds for the podium animation before the scoreboard comes up
+<LI>the window size is restricted to 4 and 6 lines respectively due to the available screen space between the notice area and drop-down menu above it, and the main command window or scoreboard (at its largest size) below it
+<LI>the new <b>/msglog</b> command displays the last 30 message lines so players can check back the system message history
+<LI>messages to be diverted into this window can be any or all from:
+<UL>
+<LI>new/improved/secured/equalled local records, configurable via new config.xml setting <b><CODE>&lt;recs_in_window&gt;</CODE></b> (True/False)
+<LI>new/improved/secured/equalled Dedimania records, configurable via new dedimania.xml setting <b><CODE>&lt;recs_in_window&gt;</CODE></b> (True/False)
+<LI>the local records report before a track, configurable via config.xml setting <CODE>&lt;show_recs_before&gt;</CODE> (add 4 to original value: 6 = full report in window, 5 = track record in window, 2 = full report in chat, 1 = track record in chat, 0 = off)
+<LI>the local records report after a track, configurable via config.xml setting <CODE>&lt;show_recs_after&gt;</CODE> (add 4 to original value: 6 = full report in window, 5 = top-5 in window, 2 = full report in chat, 1 = top-5 in chat, 0 = off)
+<LI>the Dedimania records report before a track, configurable via dedimania.xml setting <CODE>&lt;show_recs_before&gt;</CODE> (2 = message window, 1 = chat, 0 = off)
+<LI>the Dedimania records report after a track, configurable via dedimania.xml setting <CODE>&lt;show_recs_after&gt;</CODE> (2 = message window, 1 = chat, 0 = off)
+<LI>the round finish reports in Rounds mode, configurable via new config.xml setting <b><CODE>&lt;rounds_in_window&gt;</CODE></b> (True/False)
+<LI>the TMX World Record message at the start of a track, configurable via config.xml setting <CODE>&lt;show_tmxrec&gt;</CODE> (2 = message window, 1 = chat, 0 = off)
+<LI>the total playtime message at the end of a track, configurable via config.xml setting <CODE>&lt;show_playtime&gt;</CODE> (2 = message window, 1 = chat, 0 = off)
+<LI>the Jfreu Info message at the end of a track, configurable via jfreu.config.php setting <CODE>$infomessages</CODE> (2 = message window, 1 = chat, 0 = off)
+</UL>
+</UL>
+<br>
+
+<LI>new <b>/admin call</b> command for MasterAdmins to directly execute a server call, essentially incorporating most of the <A HREF="/tmn/#scripts">RPC Utilities</A>, with the following options:
+<UL>
+<LI><b>help</b>: Displays help information
+<LI><b>help Method</b>: Displays help for method
+<LI><b>list</b>: Lists all available methods
+<LI><b>Method {params}</b>: Executes method with any necessary parameter(s) and displays any result(s)
+<LI>boolean parameters should be entered as 'true' and 'false' (without the single quotes); string parameters consisting of multiple words need to be entered between double quotes (")
+<LI>methods that require an array or struct as parameter are not supported
+<LI>Admins and Operators cannot use this command regardless of the &lt;call&gt; setting in adminops.xml, as it would permit them to bypass all the normal ability checks
+</UL>
+<br>
+
+<LI>new support for <b>.OGG comments</b> (ID3 tags) in the TMF music server plugin:
+<UL>
+<LI>the new <b><CODE>&lt;cache_tags&gt;</CODE></b> setting in musicserver.xml defines whether to cache and display comments (typically ID3 tags) for all .OGG files in the song list
+<LI>the new <b><CODE>&lt;cache_file&gt;</CODE></b> setting defines the filename where the cached comments are stored (default: musictagscache.xml)
+<LI>when the cache file doesn't exist upon restarting XASECO, it is created, and all .OGG files are read and their comments extracted
+<LI>upon further XASECO restarts, and when using <i>/music reload</i>, the cache file is used to load the comments for all known songs, and only the .OGG files for new songs are read
+<LI>only the first block (512 bytes) of each .OGG file is read to minimize server traffic and start-up time, but obviously this can still take some time when building the initial cache for a large song collection
+<LI>the cache file is then immediately written out with the title and artist for all songs, ready for future restarts and reloads
+<LI>if comments are enabled, the <i>/music current</i> and <i>/music settings</i> commands include the title and artist in their output, and the <i>/music list</i> command displays a secondary line with the title and artist for every song
+<LI>the cache file can be edited manually to make adjustments or corrections to the title and artist information
+<LI>.MUX files are ignored because they are encrypted and cannot be parsed for their comments
+</UL>
+<br>
+
+<LI>on TMF (except when <i>/style</i> is <i>off</i>) all windows now show an icon in the left corner of the header that's appropriate for that window's content
+
+<LI>on TMF if config.xml setting <CODE>&lt;clickable_lists&gt;</CODE> is True, the karma values in the <i>/list karma</i> output are buttons to invoke <i>/karma</i> on the selected track
+
+<LI>on TMF in the <i>/jukebox display</i> output, admins with the <i>clearjukebox</i> ability get buttons at the end of every page to invoke <i>/admin clearjukebox</i>
+
+<LI>the <i>/recs</i> and <i>/dedirecs</i> commands now accept the following options:
+<UL>
+<LI><b>help</b>: Displays help information
+<LI><b>pb</b>: Runs the <i>/pb</i> or <i>/dedipb</i> command, respectively
+<LI><b>new</b>: Runs the <i>/newrecs</i> or <i>/dedinew</i> command
+<LI><b>live</b>: Runs the <i>/liverecs</i> or <i>/dedilive</i> command
+<LI><b>first</b>: Runs the <i>/firstrec</i> or <i>/dedifirst</i> command
+<LI><b>last</b>: Runs the <i>/lastrec</i> or <i>/dedilast</i> command
+<LI><b>next</b>: Runs the <i>/nextrec</i> or <i>/dedinext</i> command
+<LI><b>diff</b>: Runs the <i>/diffrec</i> or <i>/dedidiff</i> command
+<LI><b>range</b>: Runs the <i>/recrange</i> or <i>/dedirange</i> command
+<LI>without an option, they display the local or Dedimania records for the current track as before
+</UL>
+
+<LI>the main aseco.php program now contains a few configuration definitions that cannot be stored in a .php or .xml file:
+<UL>
+<LI><b>ABBREV_COMMANDS</b> controls whether to define abbreviations for some chat commands: <i>/ad</i> for <i>/admin</i>, <i>/jb</i> for <i>/jukebox</i>, and <i>/aj</i> for <i>/autojuke</i> &ndash; this was previously controlled by uncommenting a few lines in the pertaining source files
+<LI><b>INHIBIT_RECCMDS</b> controls whether all local and Dedimania record relations commands are disabled from the <i>/help</i> and <i>/helpall</i> lists; these are: <i>/pb</i>, <i>/newrecs</i>, <i>/liverecs</i>, <i>/firstrec</i>, <i>/lastrec</i>, <i>/nextrec</i>, <i>/diffrec</i>, <i>/recrange</i> as well as <i>/dedipb</i>, <i>/dedinew</i>, <i>/dedilive</i>, <i>/dedifirst</i>, <i>/dedilast</i>, <i>/dedinext</i>, <i>/dedidiff</i>, <i>/dedirange</i> &ndash; note that the commands can still be used (and on TMN will be echoed to the chat window when doing so)
+<LI><b>MONTHLY_LOGSDIR</b> defines whether to write the log in monthly chunks in a "logs/" subdirectory &ndash; this was previously controlled by the <CODE>$log_monthly_logsdir</CODE> variable in function doLog() in includes/basic.inc.php
+</UL>
+
+<LI>on TMF, tweaked the Z-values of the single- and multi-page windows so that they clearly stay "on top of" the full chat window (except when <i>/style</i> is <i>off</i>, as those windows were already displayed correctly)
+
+<LI>if <CODE>$always_show_pb = false</CODE> in rasp.settings.php, the Personal Best message at the start of each track is also skipped if the player uses the records panel on TMF
+
+<LI>the default name for the matchsettings file used by <i>/admin readtracklist</i> and <i>/admin writetracklist</i> is now configurable via new config.xml setting <b><CODE>&lt;default_tracklist&gt;</CODE></b> (default: tracklist.txt)
+
+<LI>it's now possible to add an extra explanation to the <i>/help</i> output to help new players, configurable via new config.xml setting <b><CODE>&lt;help_explanation&gt;</CODE></b> (default: False)
+
+<LI>chat-based voting commands can be temporarily disabled during the scoreboard at the end of a track, configurable via new votes.config.php setting <b><CODE>$disable_while_sb</CODE></b> (default: true)
+
+<LI>the default number of tracks displayed by <i>/list newest</i> and <i>/list oldest</i> is now 50
+
+<LI>the dedimania.xml settings &lt;log_news&gt;, &lt;show_recs_range&gt; and &lt;display_recs&gt; should now be specified as True/False instead of 1/0
+
+<LI>the Dedimania system "refresh" is reduced from once every 3 minutes to once every 4 minutes
+
+<LI>the <i>/donpanel</i> command is now disabled if plugin.donate.php is disabled in plugins.xml
+
+<LI>optimized URL parsing in the get_file functions of the SMInfoFetcher, TMNDataFetcher, TMXInfoFetcher and TMXInfoSearcher modules
+
+<LI>new window style ProgressBar, admin panel AboveSpeed2, donate panels LeftSmall and RightSmall, and vote panel BottomCenterTransp, courtesy of nouseforname
+
+<LI>this release requires the latest server <b>build 2008-07-22</b>
+</UL>
+
+<H3>Bug fixes in the v1.02 release of XASECO:</H3>
+
+<UL>
+<LI>on some PHP systems all ManiaLink windows are broken &ndash; fixed by setting locale LC_NUMERIC = "C"
+
+<LI>on some servers players that leave have their win counts cleared &ndash; fixed this long-standing issue
+
+<LI><i>/ladder</i> and <i>/replay</i> are unable to reload the current track (temporarily added via <i>/add</i>) if that has just been added permanently via <i>/admin addthis</i> &ndash; fixed
+
+<LI>disabling the default donate panel in config.xml also disables the admin panel &ndash; fixed
+</UL>
+
+<HR>
+
+<H3>New features and other changes in the v1.01 release of XASECO:</H3>
+
+<UL>
+<LI>new <b>TMX search support</b>:
+<UL>
+<LI>there is a new <b>TMXInfoSearcher class</b> to search TMX with the following features:
+<UL>
+<LI>find tracks matching name, author and/or environment, returning up to 500 results from the TMNF/TMU sections and up to 20 from the TMO/TMS/TMN sections (due to an API limitation)
+<LI>list the 10 most recent tracks (max. one per author) on any section
+<LI>the TMXInfoSearcher object is an iterator that allows you to 'foreach' over it to obtain <b>TMXInfo objects</b> with all the info on each track
+</UL>
+<LI>new <b>/xlist</b> command to list tracks on TMX with the following options and features:
+<UL>
+<LI><b>help</b>: Displays help information
+<LI><b>recent</b>: Lists the 10 most recent tracks (max. one per author)
+<LI><b>&lt;xxx&gt;</b>: Lists tracks the matching (partial) name
+<LI><b>auth:&lt;yyy&gt;</b>: Lists tracks the matching (partial) author
+<LI><b>env:&lt;zzz&gt;</b>: Where &lt;zzz&gt; is an environment from: Stadium, Bay, Coast, Island, Snow/Alpine, Desert/Speed, Rally (case-insensitive)
+<LI><b>&lt;xxx&gt; auth:&lt;yyy&gt; env:&lt;zzz&gt;</b>: Combines any of the name, author and/or environment searches
+<LI><b>&lt;tmx&gt;</b>: Where &lt;tmx&gt; is a TMX section from: TMO, TMS, TMN, TMNF, TMU (case-insensitive)
+<LI>the section option must be the last one but can be combined with any of the above searches; on a TMNF server the default section is TMNF, on a TMUF server it's TMU, and of course the TMN section on a TMN server
+<LI>on TMF if config.xml setting <CODE>&lt;clickable_lists&gt;</CODE> is True, the TMX ids are buttons to invoke <i>/tmxinfo</i> on the selected track; the track names invoke <i>/add</i> on the selected track; admins with the <i>add</i> ability also get Add buttons to invoke <i>/admin add</i> on the selected track; and the author names invoke <i>/xlist auth:</i> on the selected author
+<LI>on TMN you can list tracks in other TMX sections, but obviously only add them from the TMN section
+</UL>
+</UL>
+
+<LI>new <b>ShareMania support</b>:
+<UL>
+<LI>with <i>/add &lt;ID&gt; SM</i> and <i>/admin add &lt;ID&gt; SM</i> you can now use the <A TARGET="_blank" HREF="http://www.sharemania.eu/">ShareMania site</A> to download tracks ('SM' is case-insensitive)
+<LI>new <b>/sminfo</b> command (based on the new <b>SMInfoFetcher class</b>) to display the ShareMania information on the current track or, when given a track ID (from <i>/list</i>) or an SM ID, any other track
+</UL>
+<br>
+
+<LI>new <b>TMUF donate panel</b> support with the following features:
+<UL>
+<LI>the donate panel shows buttons for seven different donation values, by default: 20, 50, 100, 200, 500, 1000, 2000 (configurable in plugin.donate.php)
+<LI>the buttons invoke the <i>/donate</i> command with the specified coppers value
+<LI>the distribution's <b>panels/</b> subdirectory can contain up to 20 donate panel templates; their filenames must start with 'Donate'
+<LI>there are 6 standard templates in various positions and sizes all around the HUD
+<LI>templates define the complete ManiaLink panel with position, size and fonts, so you have full control to develop custom panels
+<LI>the default donate panel is configurable via new config.xml setting <b><CODE>&lt;donate_panel&gt;</CODE></b> (default: BelowCPList)
+<LI>new <b>/admin donpanel &lt;xxx&gt;</b> command to select another default donate panel for newly connecting players (requires panel name, 'off' disables the default)
+<LI>the new <b>/donpanel</b> command allows players to select an individual donate panel with the following options:
+<UL>
+<LI><b>help</b>: Displays help information
+<LI><b>list</b>: Displays available panels
+<LI><b>default</b>: Resets panel to server default
+<LI><b>off</b>: Disables donate panel
+<LI><b>&lt;xxx&gt;</b>: Selects donate panel &lt;xxx&gt;, which can be a panel name or the sequence number from <i>/donpanel list</i>
+<LI>in the <i>/donpanel list</i> overview a player can also click a panel name to dynamically select a new panel (or refresh the current one if its .xml file was updated)
+</UL>
+<LI>on TMNF servers, players using the <i>/donpanel</i> command (and admins using <i>/admin donpanel</i>) receive a message that a TMUF server is needed; on TMUF servers, a TMNF player receives a message that a TMUF account is needed
+</UL>
+<br>
+
+<LI>automatically enabling <i>/cps</i> and <i>/dedicps</i> for newly connecting players is now configurable via new config.xml settings <b><CODE>&lt;auto_enable_cps&gt;</CODE></b> and <b><CODE>&lt;auto_enable_dedicps&gt;</CODE></b>
+
+<LI>new <b>/admin pay</b> command (TMUF-only) to pay server coppers to a login, including another server login, with the following features:
+<UL>
+<LI>the required parameters are the login, which can be any valid player or server login, and the coppers amount to pay
+<LI>the command provides a dialog box, similar to the donation dialog, allowing the admin to confirm or cancel the payment
+<LI>after confirmation, the payment happens immediately but the Nadeo tax (2 coppers plus 5 % of the transaction) isn't deducted from the server account until any player joins or leaves the server
+<LI>on TMNF servers, admins using this command receive a message that a TMUF server is needed
+</UL>
+
+<LI>new <b>/admin cleanmutes</b> command (alias <b>/admin cleanignores</b>) to completely clean the global mute/ignore list
+
+<LI>the <i>/admin server</i> command now also works on TMN (albeit with the column alignment difficulties inherent to those windows)
+
+<LI>on TMF, <i>/server</i> and <i>/admin server</i> now show the server's rights (United or Nations) and <i>/stats</i> shows the pertaining player's rights
+
+<LI>on TMNF servers, players using the <i>/donate</i> command now receive a message that a TMUF server is needed; on TMUF servers, a TMNF player receives a message that a TMUF account is needed
+
+<LI>on TMNF servers, admins using the <i>/admin coppers</i> command now receive a message that a TMUF server is needed
+
+<LI>updated the Dedimania system to randomly choose between the existing :8006 and :8007 and <b>new :8011, :8012 and :8013</b> communication ports (remember to open those ports on your firewall/router as well) in order to distribute the load across more Dedimania servers
+
+<LI>attempts to <i>/add</i>, <i>/admin add</i> or <i>/admin addlocal</i> a track that's larger than 256 KB (the maximum online track size) are aborted with an error message
+
+<LI>when using the full Jfreu plugin, the banning period by the badword filter is now configurable via <b><CODE>$badwordstime</CODE></b> in jfreu.config.php (default: 10 minutes)
+
+<LI>new <b>/jfreu badwordstime</b> command to set the banning period (in minutes)
+
+<LI>on TMF, unusual characters (such as in challenge names and player nicknames) no longer cause ManiaLink windows not to be displayed
+
+<LI>on TMF, all standard admin panel templates now use the animated Buddy icon instead of the static Buddies one
+
+<LI>on TMF, added the server's login, rights and packmask to the start-up header in the log
+
+<LI>on TMN the default style and panel templates are no longer loaded
+
+<LI>optimized the multi-page ManiaLink windows code on TMF
+</UL>
+
+<H3>Bug fixes in the v1.01 release of XASECO:</H3>
+
+<UL>
+<LI>on TMF, using <i>/style &lt;##&gt;</i>, <i>/admin panel &lt;##&gt;</i>, <i>/recpanel &lt;##&gt;</i> and <i>/votepanel &lt;##&gt;</i> to select the default style/panel doesn't work &ndash; fixed
+
+<LI>on TMF, unofficial players (ladder rank -1) can bypass the rank limit checks &ndash; fixed
+
+<LI>if a player reconnects within the same second after disconnecting, a MySQL warning is logged &ndash; fixed this long-standing bug
+
+<LI>using <i>/add</i> on a track that's already in the server's list does not properly jukebox it anymore &ndash; fixed
+
+<LI>on Windows, downloading the same track from TMX again with <i>/add</i> or <i>/admin add</i> can result in a PHP warning &ndash; fixed
+
+<LI>if a newly connected player uses <i>/refresh</i>, a PHP warning can result &ndash; fixed
+
+<LI>bogus PlayerFinish callbacks (with no valid login) occasionally result in PHP/XASECO warnings &ndash; fixed, such callbacks are now ignored
+
+<LI>there are some layout glitches in the <i>/jfreu players</i> output when <i>/style</i> is <i>off</i> &ndash; fixed
+
+<LI>the <i>/jfreu badwordsnum</i> command actually shows the <i>/jfreu maxplayers</i> value &ndash; fixed
+
+<LI>on TMN, <i>/admin players</i> results in a 'GetIgnoreList' warning &ndash; fixed
+
+<LI>a non-responding music server can cause XASECO to time out or crash when loading a song &ndash; fixed
+
+<LI>log messages with a "Fatal Error" don't include the source file where the error occurs &ndash; fixed
+</UL>
+
+<HR>
+
+<H3>New features and other changes in the v1.00 release of XASECO:</H3>
+
+<UL>
+<LI>new <b>TMF window styles</b> support with the following features:
+<UL>
+<LI>the distribution includes a new <b>styles/</b> subdirectory that can contain up to 50 style templates for the ManiaLink windows
+<LI>there are no fewer than 20 standard templates in light and dark, and in transparent, blurred and opaque variants
+<LI>templates define the window, header and body background containers, as well as the header and body text fonts, and the clickable button style
+<LI>the default window style is configurable via new config.xml setting <b><CODE>&lt;window_style&gt;</CODE></b> (default: DarkBlur)
+<LI>new <b>/admin style &lt;xxx&gt;</b> command to select another default window style for newly connecting players (requires style name, 'off' disables the default)
+<LI>the new <b>/style</b> command allows players to select an individual window style with the following options:
+<UL>
+<LI><b>help</b>: Displays help information
+<LI><b>list</b>: Displays available styles
+<LI><b>default</b>: Resets style to server default
+<LI><b>off</b>: Disables TMF window style
+<LI><b>&lt;xxx&gt;</b>: Selects window style &lt;xxx&gt;, which can be a style name or the sequence number from <i>/style list</i>
+<LI>in the <i>/style list</i> overview a player can also click a style name to dynamically select a new style (or refresh the current one if its .xml file was updated)
+</UL>
+<LI>multi-page windows get ArrowFirst and ArrowLast buttons to jump directly to the first and last pages &ndash; as with the plain TMN-like style, windows of more than 5 pages also get ArrowFastPrev (Prev5) and ArrowFastNext (Next5) buttons to jump back and forth by 5 pages
+<LI>note that on TMNF the Black, Blue, Cyan and Orange styles revert to Green, so you might as well remove those files to prevent player confusion
+</UL>
+<br>
+
+<LI>new <b>TMF admin panel</b> support with the following features:
+<UL>
+<LI>the admin panel contains 7 icons to perform common admin tasks, from left to right (or top to bottom):<br>
+    the ClipRewind icon for <i>/admin restartmap</i>, ClipPause for <i>/admin endround</i>, ClipPlay for <i>/admin nextmap</i>, Refresh for <i>/admin replaymap</i>, ArrowGreen for <i>/admin pass</i>, ArrowRed for <i>/admin cancel</i> and Buddies for <i>/admin players live</i>
+<LI>the distribution includes a new <b>panels/</b> subdirectory that can contain up to 40 admin panel templates; their filenames must start with 'Admin'
+<LI>there are 14 standard templates in various positions and sizes all around the HUD
+<LI>templates define the complete ManiaLink panel with position, size and fonts, so you have full control to develop custom panels
+<LI>the default admin panel is configurable via new config.xml setting <b><CODE>&lt;admin_panel&gt;</CODE></b> (default: BelowChat)
+<LI>new <b>/admin admpanel &lt;xxx&gt;</b> command to select another default admin panel for newly connecting admins (requires panel name, 'off' disables the default)
+<LI>the new <b>/admin panel</b> command allows admins to select an individual admin panel with the following options:
+<UL>
+<LI><b>help</b>: Displays help information
+<LI><b>list</b>: Displays available panels
+<LI><b>default</b>: Resets panel to server default
+<LI><b>off</b>: Disables admin panel
+<LI><b>&lt;xxx&gt;</b>: Selects admin panel &lt;xxx&gt;, which can be a panel name or the sequence number from <i>/admin panel list</i>
+<LI>in the <i>/admin panel list</i> overview an admin can also click a panel name to dynamically select a new panel (or refresh the current one if its .xml file was updated)
+</UL>
+<LI>as with chat commands, use of the buttons in the admin panel remains governed by the tiered admin system and the ability lists
+</UL>
+<br>
+
+<LI>new <b>TMF records panel</b> support with the following features:
+<UL>
+<LI>the records panel lists the Personal Best, Local #1 record, Dedimania #1 record and TMX world record
+<LI>the times (or scores in TMUF Stunts mode) for these four fields act as buttons to invoke the <i>/topsums</i>, <i>/recs</i>, <i>/dedirecs</i> and <i>/tmxrecs</i> commands, respectively
+<LI>the distribution's <b>panels/</b> subdirectory can contain up to 50 records panel templates; their filenames must start with 'Records'
+<LI>there are 15 standard templates in left- and right-edge variants
+<LI>templates define the complete ManiaLink panel with position, size and fonts, so you have full control to develop custom panels
+<LI>the default records panel is configurable via new config.xml setting <b><CODE>&lt;records_panel&gt;</CODE></b> (default: RightBottom)
+<LI>new <b>/admin recpanel &lt;xxx&gt;</b> command to select another default records panel for newly connecting players (requires panel name, 'off' disables the default)
+<LI>the new <b>/recpanel</b> command allows players to select an individual records panel with the following options:
+<UL>
+<LI><b>help</b>: Displays help information
+<LI><b>list</b>: Displays available panels
+<LI><b>default</b>: Resets panel to server default
+<LI><b>off</b>: Disables records panel
+<LI><b>&lt;xxx&gt;</b>: Selects records panel &lt;xxx&gt;, which can be a panel name or the sequence number from <i>/recpanel list</i>
+<LI>in the <i>/recpanel list</i> overview a player can also click a panel name to dynamically select a new panel (or refresh the current one if its .xml file was updated)
+</UL>
+<LI>all players' records panels are updated when a new #1 Local or Dedimania record is driven, a player's own panel when a new Personal Best is driven
+<LI>when the scoreboard comes up at the end of a track, records panels are temporarily disabled
+<LI>note that on TMNF some of the Blue fonts revert to Green, so you could rename those files to prevent player confusion
+</UL>
+<br>
+
+<LI>new <b>TMF vote panel</b> support with the following features:
+<UL>
+<LI>the vote panel provides Yes and No buttons for TMX <i>/add</i> and all chat-based votes
+<LI>players can also operate the buttons with the F5 and F6 keys respectively (the keys don't work for spectators)
+<LI>the Yes button and F5 key invoke the <i>/y</i> command, the No button and F6 key are dummy operations to close the vote panel, which is necessary for a consistent user interface experience
+<LI>the vote panel is displayed for all players upon entering an <i>/add</i> or chat-based voting command, except for spectators when <CODE>$allow_spec_voting</CODE> in votes.config.php is off (but admins always get the vote panel) and for the vote initiator when <CODE>$auto_vote_starter</CODE> is on (because that already invokes <i>/y</i> automatically)
+<LI>a player's vote panel disappears once clicked (or when entering <i>/y</i>), and any remaining panels disappear automatically when a vote passes, expires, or is cancelled
+<LI>the color of the Yes button matches the type of vote: pink ({#vote} in config.xml) for chat-based votes and orange ({#emotic}) for <i>/add</i> votes; the No button is always dark gray
+<LI>the distribution's <b>panels/</b> subdirectory can contain up to 10 vote panel templates; their filenames must start with 'Vote'
+<LI>there are 4 standard templates in various positions and sizes around the HUD
+<LI>templates define the complete ManiaLink panel with position, size and fonts, so you have full control to develop custom panels
+<LI>the default vote panel is configurable via new config.xml setting <b><CODE>&lt;vote_panel&gt;</CODE></b> (default: BelowChat)
+<LI>new <b>/admin votepanel &lt;xxx&gt;</b> command to select another default vote panel for newly connecting players (requires panel name, 'off' disables the default)
+<LI>the new <b>/votepanel</b> command allows players to select an individual vote panel with the following options:
+<UL>
+<LI><b>help</b>: Displays help information
+<LI><b>list</b>: Displays available panels
+<LI><b>default</b>: Resets panel to server default
+<LI><b>off</b>: Disables vote panel
+<LI><b>&lt;xxx&gt;</b>: Selects vote panel &lt;xxx&gt;, which can be a panel name or the sequence number from <i>/votepanel list</i>
+<LI>in the <i>/votepanel list</i> overview a player can also click a panel name to dynamically select a new panel (or refresh the current one if its .xml file was updated) &ndash; while doing this the panel is briefly displayed to show its new location
+</UL>
+<LI>when the scoreboard comes up at the end of a track, vote panels are disabled (because the ongoing vote expires at that point)
+</UL>
+<br>
+
+<LI>the <i>/admin players</i> command now accepts a special option <b>live</b> to display a list of just the online players, rather than any players in the database that match the search string
+<LI>on TMF the <i>/admin players</i> command now provides a comprehensive player management window:
+<UL>
+<LI>the nick/login buttons will invoke <i>/stats</i> on the selected player
+<LI>the operation buttons invoke, from left to right, on the selected player: <i>/admin warn</i>, <i>/admin ignore</i> or <i>/admin unignore</i>, <i>/admin kick</i>, <i>/admin ban</i> or <i>/admin unban</i>, <i>/admin ban</i> or <i>/admin unblack</i>, <i>/admin addguest</i> or <i>/admin removeguest</i>, and <i>/admin forcespec</i>
+<LI>the toggle operations show the operation that is meaningful with respect to the player's status, e.g. UnIgnore for an ignored player, Add Guest for a non-guest one, and no Force Spec button for a spectator
+<LI>operations can be performed on both online and offline players, but buttons are only provided when that operation is feasible, e.g. offline players cannot be warned, ignored, kicked or banned but they can still be unbanned and unblacked
+<LI>the window is refreshed (albeit to the first page) to show the new status when any toggle operation is performed, i.e. (Un)Ignore, Kick, (Un)Ban, (Un)Black, Add/Remove Guest and Force Spec
+<LI>buttons are only provided for the first 200 players, which should be sufficient for the <i>live</i> list &ndash; if the desired player in an offline list is beyond the 200 mark, refine your search string
+</UL>
+<br>
+
+<LI>new <b>/jfreu players</b> command to display the list of all known players since the last XASECO restart, and search for offline players via a (part of a) login or nickname with <i>/jfreu players &lt;string&gt;</i>
+<LI>the special option <b>live</b> displays a list of just the online players, rather than any players tracked since the last XASECO restart that match the search string
+<LI>on TMN this command also includes the current Badword count for each player if <CODE>$badwords</CODE> in jfreu.config.php is 1 (true)
+<LI>on TMF this command provides the second player management window:
+<UL>
+<LI>as before, the nick/login buttons will invoke <i>/stats</i> on the selected player
+<LI>the operation buttons invoke, from left to right, on the selected player: <i>/jfreu badword</i> (if <CODE>$badwords</CODE> is 1), <i>/jfreu banfor 1H</i>, <i>/jfreu banfor 24H</i>, <i>/jfreu unban</i>, <i>/jfreu addvip</i> or <i>/jfreu removevip</i>, and <i>/jfreu unspec</i>
+<LI>also shown are the player's current badword count (if <CODE>$badwords</CODE> is 1) and the time left in a temporary ban, if any
+<LI>the single toggle operation in this window shows the operation that is meaningful with respect to the player's status, i.e. Add or Remove a player as VIP
+<LI>the Spec column provides an UnSpec button for SpecOnly players, and otherwise shows the player's current status (Player, Spec or Offln)
+<LI>operations can be performed on both online and offline players, but buttons are only provided when that operation is feasible, e.g. offline players cannot have their badword count incremented or be unspec-ed but they can still be temporarily banned
+<LI>the window is refreshed (albeit to the first page) to show the new status after all of the operations
+<LI>buttons are only provided for the first 200 players, which should be sufficient for the <i>live</i> list &ndash; if the desired player in an offline list is beyond the 200 mark, refine your search string
+</UL>
+<br>
+
+<LI>on TMF in the output of the various <i>/list</i> lists, <i>/best</i> and <i>/worst</i>, an author column has been added
+
+<LI>on TMF it's now possible to add clickable buttons to relevant lists, configurable via new config.xml setting <b><CODE>&lt;clickable_lists&gt;</CODE></b> (default: True):
+<UL>
+<LI>in the various <i>/list</i> lists, <i>/best</i> and <i>/worst</i> the track buttons will jukebox the selected track; no button is displayed for tracks in the track history &ndash; supports up to 1900 tracks
+<LI>in the various <i>/list</i> lists, <i>/best</i> and <i>/worst</i> the author buttons will invoke <i>/list &lt;author&gt;</i>
+<LI>on TMUF, in the various <i>/list</i> lists, <i>/best</i> and <i>/worst</i> the environment buttons will invoke <i>/list env:</i> for the selected environment
+<LI>in <i>/music list</i> the song buttons will jukebox the selected song &ndash; supports up to 1900 songs
+<LI>in <i>/jukebox display</i> a player will get a button only for the name of his/her own jukebox track, which can be used to drop it; admins of any tier with the <i>dropjukebox</i> ability get buttons for all track names to drop any of them &ndash; supports up to 100 tracks
+<LI>in <i>/players</i> the nick/login buttons will invoke <i>/stats</i> on the selected player &ndash; supports up to 200 players
+<LI>in <i>/stats</i> the Time Played field is a button to invoke <i>/active</i>, Server Rank invokes <i>/top100</i>, Records invokes <i>/toprecs</i> and Races Won invokes <i>/topwins</i>
+<LI>in <i>/admin listignores</i>, <i>/admin listbans</i>, <i>/admin listblacks</i> and <i>/admin listguests</i> the nick/login buttons will invoke <i>/admin unignore</i>, <i>/admin unban</i>, <i>/admin unblacks</i> and <i>/admin removeguest</i> (respectively) on the selected player &ndash; supports up to 200 players
+<LI>in <i>/jfreu listbans</i>, <i>/jfreu listvips</i> and <i>/jfreu listvipteams</i> the nick/login/team buttons will invoke <i>/jfreu unban</i>, <i>/jfreu removevip</i> and <i>/jfreu removevipteam</i> (respectively) on the selected player/team &ndash; supports up to 200 players/teams
+<LI>this works with any window style, including the plain TMN-like style
+</UL>
+<br>
+
+<LI>all clicked commands in the aforementioned windows and panels are logged analogous to chat commands
+
+<LI>when you've added more style or panel templates than the maximum, a warning is logged and the excess templates are ignored
+
+<LI>new <b>/autojuke</b> command to automatically jukebox the first available track from the chosen <i>/list</i> selection (e.g. <i>/autojuke nofinish</i>, <i>/autojuke norank</i>... see <i>/autojuke help</i>) &ndash; optional alias <b>/aj</b> becomes available by uncommenting the appropriate two lines at the start of plugin.rasp_jukebox.php
+
+<LI>new <b>/admin forcespec</b> command to force a player into spectator mode (free camera)
+
+<LI>the <i>/stats</i> command now accepts an optional login or player ID by all players, not just admins with the <i>chat_stats</i> ability &ndash; that ability was renamed to <b>chat_statsip</b> and defines which admin tiers can see the player's IP address (for privacy reasons this isn't shown to all players)
+
+<LI>on TMF, players' team names are no longer updated (cleared) in the local database upon reconnection, so that a plugin/command (e.g. <i>/teamname</i> in plugin.matchsave.php) can store meaningful team names in the database
+
+<LI>on TMF if a track contains no custom song, <i>/song</i> will advise to try <i>/music current</i> if the music server plugin is enabled
+
+<LI>when the scoreboard comes up at the end of a track, any pop-up windows are now automatically closed
+
+<LI>optimized the checkpoints panel display code
+
+<LI>HTTP GET requests to TMX and for the up-to-date check now include a User-Agent header to allow minimal statistics tracking
+
+<LI>updated the GBXDataFetcher module to rename the GBXDataFetcher class to <i>GBXChallengeFetcher</i>, and add the new <b>GBXReplayFetcher class</b> (not used in XASECO though)
+</UL>
+
+<H3>Bug fixes in the v1.00 release of XASECO:</H3>
+
+<UL>
+<LI>the search order is missing from the <i>/list karma</i> header &ndash; fixed
+
+<LI>on TMF, the <i>/admin listignores</i> (aka. <i>ignorelist</i>) listing could get mixed up with previous window output &ndash; fixed
+
+<LI>reminder, expiration and cancellation messages for <i>/add</i> votes show the unstripped track name &ndash; fixed
+</UL>
+
+<HR>
+
+<H3>New features and other changes in the v0.99b release of XASECO:</H3>
+
+<UL>
+<LI>new <b>/admin clearhist</b> command to clear part of, or the entire, track history: with no option, it shows the total number of tracks in the history; with the 'all' option, the entire history is cleared; with a positive number, that many of the most recent tracks are cleared, and with a negative number that many of the oldest tracks
+
+<LI>the music server plugin supports song files in subdirectories at the server URL, but now those subdirectories can be excluded in any command that shows songs (configurable via new musicserver.xml setting <b><CODE>&lt;strip_subdirs&gt;</CODE></b>)
+
+<LI>new <b>/music stripdirs</b> command to change the strip subdirs setting; the <i>/music settings</i> output also includes the StripDirs value
+
+<LI>a flexible way to control the contents of the ManiaLinks <b>&lt;custom_ui&gt; block</b> now allows other plugins and widgets to co-operate with the main XASECO system
+
+<LI>the config.xml settings &lt;show_recs_before&gt; and &lt;show_recs_before&gt; are now integers instead of booleans: 2 = show the full records report, 1 = show just the track record before or the top-5 records after the track, 0 = show no records at all (reduces chat message volume when a records ManiaLink panel is displayed)
+
+<LI>when XASECO is out of date and a master admin connects, he/she will automatically receive an <i>/admin uptodate</i> reminder message &ndash; hopefully this will motivate more master admins to keep their XASECO version in sync with the latest release
+</UL>
+
+<H3>Bug fixes in the v0.99b release of XASECO:</H3>
+
+<UL>
+<LI>new local records aren't properly marked anymore in <i>/liverecs</i>, <i>/newrecs</i>, rounds reports and the records report after a track &ndash; fixed
+
+<LI>too stringent input checking for <i>/admin setpwd</i>, <i>/admin setspecpwd</i> and <i>/admin setrefpwd</i> prevents clearing those passwords &ndash; fixed
+</UL>
+
+<HR>
+
+<H3>New features and other changes in the v0.99 release of XASECO:</H3>
+
+<UL>
+<LI>new <b>music server</b> support (TMF-only) becomes available when plugin.musicserver.php is enabled (uncommented) in plugins.xml, offering the following features:
+<UL>
+<LI>the music plugin is configured via musicserver.xml, containing the following entries:
+<UL>
+<LI>the server URL, an http server that must allow direct download of the song files from the specified directory
+<LI>a list of song files (case-sensitive) in .OGG or .MUX format that must exist at the server URL &ndash; duplicates are removed when loading the XML file
+<LI>configuration options to control whether to override a track's own music, whether to automatically load the next song upon the next track, and whether to allow jukeboxing songs by players
+<LI>a list of plugin messages
+</UL>
+<LI>the new <b>/music</b> command offers the following options:
+<UL>
+<LI><b>help</b>: Displays help information &ndash; admins see all options, other players only the options they can use
+<LI><b>settings</b>: Displays current music settings &ndash; for security, only admins see the server URL
+<LI><b>list</b>: Displays available songs
+<LI><b>current</b>: Shows current song
+<LI><b>reload</b>: Reloads musicserver.xml config file &ndash; admin-only
+<LI><b>next</b>: Skips to next song (upon next track) &ndash; admin-only
+<LI><b>shuffle</b>: Randomizes song list &ndash; admin-only
+<LI><b>override</b>: Changes track override setting &ndash; admin-only
+<LI><b>autonext</b>: Changes automatic next song setting &ndash; admin-only
+<LI><b>allowjb</b>: Changes allow jukebox setting &ndash; admin-only
+<LI><b>off</b>: Disables music, auto next & jukebox &ndash; admin-only
+<LI><b>jukebox</b> (alias <b>jb</b>): Displays upcoming songs in jukebox
+<LI><b>drop</b>: Drops your currently added song
+<LI><b>&lt;##&gt;</b>: Adds a song to jukebox where &lt;##&gt; is the number from <i>/music list</i>
+</UL>
+<LI>a new <b><CODE>&lt;music&gt;</CODE></b> color is defined in config.xml and used in all relevant music messages so that they can easily be customized
+<LI>a new <b>chat_musicadmin</b> ability controls which tiered admin levels can use the <i>/music</i> admin commands
+<LI>if <i>autonext</i> is enabled, the next song from the list will be loaded upon the next track, unless an admin manually skipped to the next song or the jukebox specifies another song
+<LI>if <i>allowjb</i> is enabled, any player can add one song at a time to the jukebox &ndash; to jukebox another, first use the <i>drop</i> option
+<LI>the same song cannot by added to the jukebox more than once
+<LI>if a track itself contains a song and <i>override</i> is disabled, a possible jukeboxed song is skipped as it's not possible to detect the track song
+<LI>the <i>off</i> option disables server music upon the next track (so the in-game music returns), clears the jukebox, and disables the <i>autonext</i> and <i>allowjb</i> options so no new songs get loaded &ndash; to enable server music again, simply turn either or both options back on
+<LI>the <i>reload</i> and <i>shuffle</i> options also clear the jukebox
+<LI>a warning message is logged when a song file cannot be loaded, and no song change takes place until the next track
+<LI>reminder: to see the filename of a track's own song, use the <i>/song</i> command
+</UL>
+<br>
+
+<LI>new <b>donation</b> support (TMUF-only) becomes available when plugin.donate.php is enabled (uncommented) in plugins.xml, providing the following features:
+<UL>
+<LI>new <b>/donate</b> command to give coppers to the server
+<LI>the minimum donation is 10 coppers (because of Nadeo tax)
+<LI>donations of 100 and more coppers are awarded with a public appreciation message (below 100 it remains private)
+<LI>both thresholds are configurable in plugin.donate.php
+<LI>a new <b><CODE>&lt;donate&gt;</CODE></b> color is defined in config.xml and used in all relevant donation messages so that they can easily be customized
+<LI>remember that the server's coppers amount (seen with <i>/admin coppers</i>) isn't updated until any player joins or leaves the server
+<LI><b>important</b>: you must make an initial donation from a TMUF player login to your server login via the in-game message system, so that there are sufficient coppers in the account to pay the Nadeo tax on the first <i>/donate</i> transaction
+<LI>an account rights error is shown when attempting to donate from a TMNF player account or to a TMNF server account
+</UL>
+
+<LI>new <b>/list env:zzz</b> option (TMUF-only) to search for tracks by environment, where <i>zzz</i> can be: Stadium, Bay, Coast, Island, Alpine/Snow, Desert/Speed, Rally (case-insensitive) &ndash; can also be combined with a search for track/author name in either order: <i>/list xxx env:zzz</i> or <i>/list env:zzz xxx</i> (remember that <i>xxx</i> itself is allowed to contain spaces too)
+
+<LI>on TMF, the <i>/stats</i> output now includes the time (in days and hours) since the player inscribed in the zone, as well as the last match score, number of wins/draws/losses and win/loss ratio (which are included in the <i>/statsall</i> output on TMN)
+
+<LI>on TMF, the <i>/server</i> output now includes the server comment &ndash; note however that special formatting in long comments is not continued after column line breaks
+
+<LI>new <b>/admin server</b> command (TMF-only) to display the server's detailed settings
+
+<LI>new <b>/admin setcomment</b> command to change the server comment
+
+<LI>new <b>/admin setmaxspecs</b> command to change the maximum number of spectators
+
+<LI>new <b>/admin setpwd</b>, <b>/admin setspecpwd</b> and <b>/admin setrefpwd</b> commands to change the player, spectator and referee passwords (referee only on TMF)
+
+<LI>new <b>/admin setrefmode</b> command (TMF-only) to change the Referee mode (0 = top3, 1 = all)
+
+<LI>new <b>/admin forceteam</b> command (TMF-only) to force a player into the 'Blue' or 'Red' team (the names can be abbreviated to 'B' and 'R') &ndash; if no team is specified, the player's current team is shown
+
+<LI>new <b>/admin nextenv</b> command (TMUF-only) to skip to the next track within the same environment
+
+<LI>on TMF, the track name is now hyperlinked to the corresponding TMX page (if available) in the <i>/track</i>, <i>/playtime</i>, <i>/newrecs</i> and <i>/liverecs</i> messages as well as the local record reports before and after each track, and the total playtime message at the end of each track in Rounds/Team/Cup mode
+
+<LI>on TMF, the track name is now hyperlinked to the corresponding Dedimania page in the <i>/dedinew</i> and <i>/dedilive</i> messages as well as the Dedimania record reports before and after each track
+
+<LI>in TMUF Stunts mode, updated the TMX World Record message and <i>/tmxrecs</i> output to show scores
+
+<LI>in TMUF Stunts mode, the total playtime message at the end of each track isn't shown anymore (always 5 minutes)
+
+<LI>the <i>/tmxinfo</i> output now includes the TMX section for the track, as well as the download link to the TMX World Record replay (if available)
+
+<LI>when the current track is not found on TMX, <i>/tmxinfo</i> and <i>/tmxrecs</i> now show the track name instead of the UID in the error message
+
+<LI>added new internal <b>onStatusChangeToX (X = 1-5) event</b> for the corresponding TM server status changes, and new internal <b>onKarmaChange event</b> for karma vote changes
+
+<LI>enforced strict and complete error checking on all local database operations
+
+<LI>added a warning if the SuperAdmin password is still set to the default (and insecure) 'SuperAdmin'
+
+<LI>added the operating system to the first log message during start-up
+
+<LI>set a 20 MB memory limit for the XASECO PHP process
+
+<LI>this release requires the latest server <b>build 2008-05-19</b>
+</UL>
+
+<H3>Bug fixes in the v0.99 release of XASECO:</H3>
+
+<UL>
+<LI>when the TM server goes away (e.g. crashes), XASECO loops forever at high load &ndash; fixed, XASECO also shuts down with an appropriate error message
+
+<LI>tracks downloaded via <i>/add</i> and <i>/admin add</i> are corrupted since v0.98 and won't load in-game &ndash; fixed
+
+<LI>in TMUF Stunts mode, the new/improved/secured/equalled record messages (both local and Dedimania) specify that the finish value is a Time &ndash; fixed into Score
+
+<LI>on TMF, players added to the global mute list are still able to send global messages via the <i>/me</i>, <i>/hi</i>, <i>/bye</i>, etc. chat commands &ndash; fixed
+
+<LI>on TMF, the muting system handles only 18 lines of the full chat window &ndash; increased to all 28 lines
+
+<LI>on TMF, there is a tiny layout glitch in the <i>/server</i> output &ndash; fixed
+
+<LI>there is no log message for <i>/admin setgamemode</i> &ndash; fixed
+</UL>
+
+<HR>
+
+<H3>New features and other changes in the v0.98 release of XASECO:</H3>
+
+<UL>
+<LI>new <b>/dedicps</b> command to select which Dedimania record is used as reference for checkpoints tracking, with the following features:
+<UL>
+<LI>checkpoint references are stored for all players (according to their preferences) <u>only</u> at the start of a track, not when entering the <i>/dedicps</i> command or when the player (re)connects
+<LI>with no parameter (<i>/dedicps</i>) the player's own record on each track is selected or, if none is set, the last record on the pertaining track
+<LI><i>/dedicps {1-30}</i> selects Dedimania record 1-30 on each track or, if unavailable, again the last record
+<LI><i>/dedicps off</i> disables the Dedimania references for checkpoints tracking
+<LI>as usual, once a player gains a better finish time than the chosen Dedimania reference, the checkpoints panel (TMF) or pop-up (TMN) will use those corresponding checkpoints for further updates during the current track
+<LI>if the checkpoints for the chosen Dedimania record are invalid (empty, or the last checkpoint doesn't match the finish time) then no record is used as reference during that track for the pertaining player(s)
+<LI>the chosen <i>/dedicps</i> setting is remembered between a player's reconnects as long as <i>/cps</i> remains enabled, until the next XASECO restart
+</UL>
+
+<LI>new <b>/admin shuffle</b> (alias <b>/admin shufflemaps</b>) command to shuffle (randomize) the current track list; this requires having set &lt;writetracklist_random&gt; to True in config.xml, and defining an <CODE>$autosave_matchsettings filename</CODE> in rasp.settings.php &ndash; note that autosaving only happens during a track switch, so if you shuffle immediately after adding a track, the addition will be lost
+
+<LI>new <b>/admin addlocal</b> command to add a track to the server's track list from the local 'Challenges/Downloaded/' directory; the track filename cannot contain spaces or non-typable characters, but can be entered case-insensitively and the '.Challenge.gbx' extension is optional &ndash; also, the <CODE>$jukebox_adminadd</CODE> setting is respected
+
+<LI>new <b>/admin specfree</b> command (TMF-only) to set the camera mode of a spectator (login or ID) to Free &ndash; requires build '2008-05-07' or later
+
+<LI>added support for <b>TMF Laps</b> mode:
+<UL>
+<LI>the checkpoints tracking system (if activated via <i>/cps</i>) will show the difference to the best lap at each checkpoint and at the lap finish, and update the best lap data after each improved lap
+<LI>if <i>/dedicps</i> is activated, the lap data for the chosen Dedimania record is used as initial best lap according to the rules above
+<LI>local records are now maintained and compared on lap basis, meaning that those records will usually be unbeatable once the server is switched back to another game mode than TimeAttack, so keep that in mind when picking tracks for TimeAttack and Laps versus other modes
+<LI>Dedimania records are also maintained and compared on lap basis like the central Dedimania system does (where they're mixed with TimeAttack mode records only), so they are now properly supported
+</UL>
+
+<LI>added support for <b>TMUF Stunts</b> mode:
+<UL>
+<LI>updated <i>/track</i>, <i>/recs</i> and <i>/dedirecs</i>, <i>/pb</i> and <i>/dedipb</i>, and all record relation commands to show scores
+<LI>updated the 'before' and 'after' track record messages (both local and Dedimania) to show scores
+<LI>updated the new/improved/secured/equalled record messages (both local and Dedimania) to show scores
+<LI>updated all record sorting into descending order
+<LI>updated <i>/list nogold</i> and <i>/list noauthor</i> to check for player scores worse than the tracks' gold and author scores
+<LI>adjusted the <i>/list help</i> information
+<LI>disabled the <i>/list longest/shortest</i> command
+<LI>disabled all <i>/cps</i> functionality (checkpoints are inactive)
+<LI>disabled Dedimania records handling until the central Dedimania system supports them
+</UL>
+
+<LI>added explanations why the checkpoints panel doesn't appear immediately when <i>/cps</i> is activated (Stunts mode, spectating, and warm-up phase all disable the panel temporarily)
+
+<LI>on TMF, multi-page ManiaLink windows now show the current and total page numbers in the header
+
+<LI>on TMF, multi-page ManiaLink windows of more than 5 pages now include Prev5 and Next5 buttons to speed up navigation through long lists
+
+<LI>updated the Dedimania system to randomly choose between the :8003 and <b>new :8006 and :8007</b> communication ports (remember to open those ports on your firewall/router as well) in order to distribute the load across more Dedimania servers
+
+<LI>new records in the <i>/recs</i> and <i>/dedirecs</i> lists are now highlighted with a black time
+
+<LI>on TMF, the <i>/stats</i> output now displays the full location path (sans "World|") instead of just the nation (thanks w1lla)
+
+<LI>on TMF, the <i>/server</i> output now includes the server's location path (again without "World|") &ndash; requires build '2008-05-07' or later
+
+<LI>added the capability to write the log in monthly chunks named "logfile-YYYYMM.txt" in an (automatically created) "logs/" subdirectory, instead of the single big "logfile.txt" &ndash; this is activated by setting "<CODE><b>$log_monthly_logsdir</b> = true</CODE>" in function doLog() in includes/basic.inc.php, as it cannot be a configuration option because configs aren't read until later during start-up
+
+<LI>various welcome messages and in-game URLs are now hyperlinked to the external browser
+
+<LI>updated the <i>/add</i> and <i>/admin add</i> commands to time out when the TMX site is down
+
+<LI>minor optimizations of all multi-page window code
+
+<LI>an example <b>plugin.ml_howto.php</b> module is included to demonstrate how to create single- and multi-page ManiaLink windows
+</UL>
+
+<H3>Bug fixes in the v0.98 release of XASECO:</H3>
+
+<UL>
+<LI>when <CODE>&lt;lists_colortracks&gt;</CODE> is True, recently played tracks are no longer greyed out to visually distinguish them from tracks that can be jukeboxed &ndash; fixed
+
+<LI>jukeboxing a track via <i>/admin add</i> and <i>/admin replay</i> leaves out the Environment value &ndash; fixed
+
+<LI>even when a player ID cannot be obtained from the local database, there's still an attempt to insert a finish time for the pertaining player login &ndash; fixed
+
+<LI>on TMF, the <i>/admin shutdown</i> command produced a PHP warning because /autoquit is now the default &ndash; fixed, a QuitGame call is only done if /noautoquit was active
+</UL>
+
+<HR>
+
+<H3>New features and other changes in the v0.97 release of XASECO:</H3>
+
+<UL>
+<LI>on TMF, the brief <i>/cps</i> pop-up is now a permanent, small transparant panel, mid-center of the screen just above the race time; it is temporarily disabled when a player switches to spectator mode though
+
+<LI>on TMF, the checkpoints panel now also shows the difference against the best run at the finish ('CPF')
+
+<LI>in TMF Cup mode, the end of the warm-up phase no longer generates an <i>onEndRace event</i>, preventing several chat messages that only belong at the end of the track; also, during warm-up the checkpoints panel is temporarily disabled
+
+<LI>on TMF, the <i>/tmxinfo</i> window now displays the track screenshot from TMX
+
+<LI>on TMF, <i>/tmxinfo {ID}</i> and <i>/tmxrecs {ID}</i> accept an optional TMX section parameter (TMN, TMU, TMNF, and even TMO, TMS &ndash all case-insensitive) after the TMX track ID to enable displaying track info from another section than the default (as outlined in the v0.96 release notes)
+
+<LI>new <b>/admin scorepanel</b> command (TMF-only) to show the current Automatic Scorepanel setting &ndash; displaying the scoreboard after each run/round, or only at the end of the track &ndash; and to toggle it with an ON" or "OFF" (case-insensitive) parameter
+
+<LI>new <b>/admin roundsfinish</b> command (TMF-only) to show the current Rounds Finishpanel setting &ndash; displaying the rounds panel for all players when the first player finishes, or not until each player finishes him/herself &ndash; and to toggle it with an ON" or "OFF" (case-insensitive) parameter
+
+<LI>displaying colored or stripped player nicknames in <i>/top10</i>, <i>/top100</i>, <i>/toprecs</i>, <i>/topsums</i>, <i>/topwins</i>, <i>/recs</i>, <i>/dedirecs</i> and <i>/active</i> is now configurable via new config.xml setting <b><CODE>&lt;lists_colornicks&gt;</CODE></b> &ndash; because of column formatting caveats, it's recommended to keep nicknames stripped on TMN, as they were before
+
+<LI>displaying colored or stripped tracknames in all <i>/list</i> commands, <i>/best</i>, <i>/worst</i>, <i>/jukebox display</i> and <i>/admin listdupes</i> is now configurable via new config.xml setting <b><CODE>&lt;lists_colortracks&gt;</CODE></b> &ndash; again, it's recommended to keep tracknames stripped on TMN as they were before
+
+<LI>the teamnames in the <i>/topclans</i> output are not color-stripped anymore
+
+<LI>Dedimania system timeouts are handled better to prevent record message flooding; also, improved logging and debugging of the low-level Dedimania layers
+
+<LI>on TMF, any admin with the new <b>server_coppers</b> ability can see the server's coppers amount in the <i>/server</i> output
+
+<LI>new <b>/admin coppers</b> command (TMF-only) to similarly check the server's coppers amount
+
+<LI>on TMUF, the output of all <i>/list</i> commands (including <i>/best</i>, <i>/worst</i>) and of <i>/jukebox display</i> and <i>/admin listdupes</i> now includes an Env(ironment) column
+
+<LI>on TMUF, the chat and log messages for the next jukebox track now specify that track's environment
+
+<LI>added new internal <b>onBillUpdated</b>, <b>onChallengeListModified</b> and <b>onPlayerInfoChanged events</b> for the corresponding new TMF callbacks; also, the <i>onEndRound event</i> is now triggered by the real TMF EndRound callback
+
+<LI>the new <i>onPlayerInfoChanged event</i> is now used to keep track of players' spectator status to avoid an extra GetPlayerInfo call whenever that status is needed (thanks Dagobert)
+
+<LI>updated the stripColors function to strip out the '$h', '$l' and '$p' links for TMF as well
+
+<LI>clarified all error messages related to XML config files not being read or parsed correctly
+
+<LI>fine-tuned column widths of many ManiaLink windows
+
+<LI>when restarting XASECO, all ManiaLinks on all connected clients are cleared
+</UL>
+
+<H3>Bug fixes in the v0.97 release of XASECO:</H3>
+
+<UL>
+<LI>when Dedimania is slow to respond to a track switch, the updated records message for the finished track may not appear until the next track is loaded, and use that new track's name &ndash; fixed
+
+<LI>on TMF, very long country names cause layout glitches in the <i>/players</i> output &ndash; fixed, country names longer than 14 characters are mapped to their nation abbreviations
+
+<LI>on TMF in Rounds/Team/Cup mode, the last 'Rx>' rounds report isn't shown due to a different callback sequence &ndash; fixed by using the real EndRound callback above
+
+<LI>if a player connects without a team name, the TMNDataFetcher is used to try and obtain it from the TMN master server, even on TMF &ndash; fixed
+
+<LI>the file_exists_nocase function (used by <i>/add</i> and <i>/admin add</i>) doesn't work correctly on Windows &ndash; fixed (hopefully)
+
+<LI>adjusted two function declarations and related calls to avoid pass-by-reference warnings on some PHP setups
+
+<LI>the <i>/summary</i> chat message was largely lacking the shadow attribute &ndash; fixed
+</UL>
+
+<HR>
+
+<H3>New features and other changes in the v0.96b release of XASECO:</H3>
+
+<UL>
+<LI>on TMF, the global mute list now uses the built-in Ignore features instead of the muting plugin, so the actual muting works much better; the plugin is still needed for the individual player muting features though
+
+<LI>accordingly, there are new aliases for the related admins commands: <b>/admin ignore</b> (for <i>/admin mute</i>), <b>/admin unignore</b> (for <i>/admin unmute</i>), <b>/admin ignorelist</b> and <b>/admin listignores</b> (for <i>/admin mutelist</i> and <i>/admin listmutes</i>)
+
+<LI>on TMF, the ManiaZones country names are mapped back to three-letter nation abbreviations for storage in the local database and for Dedimania; to repair the Nation field in the local 'players' table, you can use <A HREF="scripts/repairnations.zip">this script</A>
+
+<LI>new <b><CODE>$autosave_matchsettings</CODE></b> option in rasp.settings.php to enable autosaving the matchsettings file (with a configurable name) upon every track switch
+
+<LI>on TMF, <i>/add</i> and <i>/admin add</i> accept an optional TMX section parameter (TMN, TMU, TMNF, and even TMO, TMS &ndash all case-insensitive) after the TMX track ID to enable downloading a track from another section than the default (as outlined in the v0.96 release notes)
+
+<LI>when a track is jukeboxed that doesn't match the server packmask, it is skipped with warning, and the next track from the tracklist is loaded (the next jukeboxed track will follow after that)
+
+<LI>on TMF, added another method in votes.config.php to really disable all CallVotes if chat-based votes are enabled
+
+<LI>the pop-up windows in plugin.matchsave.php are now converted to TMF ManiaLink windows too, along with minor touch-ups of the TMN pop-ups
+</UL>
+
+<H3>Bug fixes in the v0.96b release of XASECO:</H3>
+
+<UL>
+<LI>on TMF, the <i>/nextmap</i> command always shows the first track after the current one is removed from the server's track list (via <i>/admin removethis</i> or <i>/admin erasethis</i>) &ndash; fixed
+
+<LI>a missing or invalid connection to the TM server (due to configuration errors) can cause a flood of PHP warnings in the log &ndash; fixed
+
+<LI>a track ending with no records set can cause a PHP warning in the Dedimania plugin &ndash; fixed
+</UL>
+
+<HR>
+
+<H3>New features and other changes in the v0.96 release of XASECO:</H3>
+
+<UL>
+<LI>the system has been renamed to <b>XASECO</b> to avoid confusion with other ASECO/RASP systems, and to signify it's a complete and integrated solution for server control
+
+<LI>added ManiaLinks windows (via new include <b>manialinks.inc.php</b>) to allow the system to display TMN-style pop-ups on TMF
+
+<LI>added a Prev button to all multi-page ManiaLinks windows when viewing the second and subsequent pages
+
+<LI>added recognition of server type TMF and game mode Cup, including with the <i>/admin setgamemode</i> command
+
+<LI>updated the <i>/server</i> command to handle Cup mode and show the RoundsPerChallenge value (in addition to the points limit) if the server is in Cup mode
+
+<LI>new <b>/admin disablerespawn</b> command (TMF-only) to show the current DisableRespawn setting &ndash; allowing players to respawn at checkpoints &ndash; and to toggle it with an ON" or "OFF" (case-insensitive) parameter
+
+<LI>new <b>/admin forceshowall</b> command (TMF-only) to show the current ForceShowAllOpponents setting &ndash; forcing players to see all opponents &ndash; and to toggle it with an ON" or "OFF" (case-insensitive) parameter
+
+<LI>updated the <i>TMXInfoFetcher class</i> to handle the new TMNF section
+
+<LI>on a TMNF server (packmask Stadium) the <i>/tmxinfo</i> and <i>/tmxrecs</i> commands as well as the TMX World Record message at the start of a new track will consult the TMNF section of TMX, on a TMUF server the TMU section, and (as before) on a TMN server the TMN section
+
+<LI>the <i>/add</i> and <i>/admin add</i> commands will consult the TMNF, TMUF and TMN sections of TMX according to the same rules
+
+<LI>new <b><CODE>$jukebox_permadd</CODE></b> option in rasp.settings.php to allow tracks voted into the jukebox via <i>/add</i> to remain permanently in the server's track list (normally they're removed after they're finished)
+
+<LI>added extra check for non-empty TM server build during start-up
+
+<LI>several minor tweaks to web_access.inc.php to make it more robust and prevent stream_select() warnings (thanks Slig)
+</UL>
+
+<H3>Bug fixes in the v0.96 release of XASECO:</H3>
+
+<UL>
+<LI>when a player equals his/her local or Dedimania record, it would be logged again with the next higher position (but not stored anywhere) &ndash; fixed
+
+<LI>new Dedimania record messages would be displayed for LAN logins making records, even though the records aren't actually submitted to the central Dedimania server &ndash; fixed
+
+<LI>plugin.matchsave.php used the CRLF constant in a TMN pop-up &ndash; fixed into LF
+</UL>
+
+<HR>
+
+<H3>Known issues in the v0.96+ release of XASECO:</H3>
+
+<UL>
+<LI>the <i>/statsall</i> command doesn't work in TMF because there's no way to obtain a player's world stats (yet?)
+</UL>
+
+<HR>
+
+<H2><A HREF="Features_095.html">Older release notes</A></H2>
+
+<HR>
+<ADDRESS>
+Copyright &copy; 2007-2013 &ndash; Frans P. de Vries <A HREF="mailto:tm&#64;&#103;&#97;&#109;&#101;&#114;&#115;&#46;&#111;&#114;&#103;">&lt;tm&#64;&#103;&#97;&#109;&#101;&#114;&#115;&#46;&#111;&#114;&#103;&gt;</A>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+Last updated 19-Aug-2008
+</ADDRESS>
+</BODY>
+</HTML>

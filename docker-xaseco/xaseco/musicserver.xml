@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<settings>
+	<!-- override a track's custom music? -->
+	<override_track>False</override_track>
+	<!-- automatically load next song upon next track? -->
+	<auto_nextsong>True</auto_nextsong>
+	<!-- automatically shuffle songs at start-up & reload? -->
+	<auto_shuffle>False</auto_shuffle>
+	<!-- allow jukeboxing songs by players? -->
+	<allow_jukebox>True</allow_jukebox>
+	<!-- strip subdirs when showing song files? -->
+	<strip_subdirs>False</strip_subdirs>
+	<!-- strip extensions when showing song files? -->
+	<strip_exts>False</strip_exts>
+
+	<!-- read tags from all .ogg songs? -->
+	<cache_tags>True</cache_tags>
+	<!-- use read-only cache file? -->
+	<cache_readonly>False</cache_readonly>
+	<!-- filename in main directory to store tags -->
+	<cache_file>musictagscache.xml</cache_file>
+
+	<!-- full http link to directory holding the song files     -->
+	<!-- http server must allow direct download of those files  -->
+	<!-- OR a path below the server's GameData directory (e.g.  -->
+	<!-- "Music/") which allows serving songs without webserver -->
+	<music_server>YOUR_SERVER_URL</music_server>
+
+	<!-- list of song files at your music server in .ogg or .mux   -->
+	<!-- avoid spaces and special characters in the filenames and  -->
+	<!-- http link, and observe correct upper/lowercase characters -->
+	<song_files>
+		<song>YOUR_FIRST_SONG.ogg</song>
+		<song>YOUR_SECOND_SONG.mux</song>
+		<song>YOUR_THIRD_SONG.ogg</song>
+		<!-- and so on -->
+	</song_files>
+
+	<messages>
+		<current>{#server}> {#music}The current song is: {#highlite}{1}</current>
+		<next>{#server}>> {#music}{1}$z$s {#highlite}{2}$z$s{#music} loaded the next song: {#highlite}{3}</next>
+		<reloaded>{#server}>> {#music}{1}$z$s {#highlite}{2}$z$s{#music} reloaded music config and cleared jukebox!</reloaded>
+		<sorted>{#server}>> {#music}{1}$z$s {#highlite}{2}$z$s{#music} sorted song list and cleared jukebox!</sorted>
+		<shuffled>{#server}>> {#music}{1}$z$s {#highlite}{2}$z$s{#music} shuffled song list and cleared jukebox!</shuffled>
+		<jukebox>{#server}>> {#highlite}{1}{#music} jukeboxed song: {#highlite}{2}</jukebox>
+		<jukebox_already>{#server}> {#music}You already have a song in the jukebox! Wait till it's been played before adding another.</jukebox_already>
+		<jukebox_dupl>{#server}> {#music}This song has already been added to the jukebox, pick another one.</jukebox_dupl>
+		<jukebox_notfound>{#server}> {#music}Song_ID not found - Type {#highlite}/music list{#music} to see all songs.</jukebox_notfound>
+		<jukebox_drop>{#server}>> {#music}Player {#highlite}{1}{#music} dropped his/her song {#highlite}{2}{#music} from jukebox!</jukebox_drop>
+		<jukebox_nodrop>{#server}> {#music}You don't have a song in the jukebox, use {#highlite}/music Song_ID{#music} to add one...</jukebox_nodrop>
+		<jukebox_empty>{#server}> {#music}No songs in the jukebox, use {#highlite}/music Song_ID{#music} to add one...</jukebox_empty>
+		<no_jukebox>{#server}> {#highlite}/music #{#music} is not currently enabled on this server.</no_jukebox>
+		<shutdown>{#server}>> {#music}{1}$z$s {#highlite}{2}$z$s{#music} disabled server music!</shutdown>
+	</messages>
+</settings>

@@ -1,0 +1,13 @@
+<manialink id="6"><frame posn="11.7 -45.6 0">
+<quad sizen="40.8 2.5" style="Bgs1InRace" substyle="NavButton"/>
+<quad posn="1.5 -0.3 2" sizen="2 2" style="Icons128x128_1" substyle="Coppers"/>
+<label posn="4.4 -0.6 2" textsize="1" textcolor="dddf" text="$ccc$s$oDonate:$fff"/>
+<format textsize="1" textcolor="ffff"/>
+<label posn="11 -0.6 2" sizen="2.4 1.5" style="TextRaceChrono" scale="1.25" text="$s$abc%COP1%C" action="30"/>
+<label posn="14.5 -0.6 2" sizen="2.4 1.5" style="TextRaceChrono" scale="1.25" text="$s$aaa%COP2%C" action="31"/>
+<label posn="18 -0.6 2" sizen="3 1.5" style="TextRaceChrono" scale="1.25" text="$s$a98%COP3%C" action="32"/>
+<label posn="22 -0.6 2" sizen="3 1.5" style="TextRaceChrono" scale="1.25" text="$s$a86%COP4%C" action="33"/>
+<label posn="26 -0.6 2" sizen="3 1.5" style="TextRaceChrono" scale="1.25" text="$s$a74%COP5%C" action="34"/>
+<label posn="30 -0.6 2" sizen="4 1.5" style="TextRaceChrono" scale="1.25" text="$s$a62%COP6%C" action="35"/>
+<label posn="35 -0.6 2" sizen="4 1.5" style="TextRaceChrono" scale="1.25" text="$s$a50%COP7%C" action="36"/>
+</frame></manialink>

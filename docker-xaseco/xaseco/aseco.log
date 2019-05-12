@@ -1,0 +1,5 @@
+# initialize XASECO ###########################################################
+[XAseco] PHP Version is 5.6.40-7+0~20190503101815.14+stretch~1.gbp1a44f9 on Linux
+[XAseco] Load settings [config.xml]
+[XASECO Warning] [XML Error 80] Comment must not contain '--' (double-hyphen) on line 10
+[XASECO Fatal Error] Could not read/parse config file config.xml ! on line 459 in file /home/admin/docker/build/xaseco/xaseco/aseco.php

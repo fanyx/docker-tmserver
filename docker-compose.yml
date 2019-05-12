@@ -22,7 +22,7 @@ services:
     ports:
      - "8080:80"
   tmserver:
-    build: .
+    build: ./docker-tmserver
     container_name: trackmania_tmserver
     depends_on:
      - db
@@ -43,7 +43,7 @@ services:
      - "3450:3450"
      - "3450:3450/udp"
   xaseco:
-    build: ../xaseco
+    build: ./docker-xaseco
     container_name: trackmania_xaseco
     depends_on:
      - db

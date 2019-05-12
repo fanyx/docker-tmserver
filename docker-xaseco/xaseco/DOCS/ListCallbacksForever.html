@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>TrackMania Forever callbacks</title>
+</head>
+<body>
+<h1>Available callbacks:</h1>
+<ul>
+
+	<li>
+		TrackMania.<b>PlayerConnect</b>(string Login, bool IsSpectator);
+	</li>
+
+	<li>
+		TrackMania.<b>PlayerDisconnect</b>(string Login);
+	</li>
+
+	<li>
+		TrackMania.<b>PlayerChat</b>(int PlayerUid, string Login, string Text, bool IsRegistredCmd);
+	</li>
+
+	<li>
+		TrackMania.<b>PlayerManialinkPageAnswer</b>(int PlayerUid, string Login, int Answer);<br/>
+		<i>difference with previous TM: this is not called if the player doesn't answer, and thus '0' is also a valid answer.</i>
+	</li>
+
+	<li>
+		TrackMania.<b>Echo</b>(string Internal, string Public);
+	</li>
+
+	<li>
+		TrackMania.<b>ServerStart</b>();
+	</li>
+
+	<li>
+		TrackMania.<b>ServerStop</b>();
+	</li>
+
+	<li>
+		TrackMania.<b>BeginRace</b>(SChallengeInfo Challenge);
+		<pre>
+	struct SChallengeInfo
+	{
+		string Uid;
+		string Name;
+		string FileName;
+		string Author;
+		string Environnement;
+		string Mood;
+		int BronzeTime;
+		int SilverTime;
+		int GoldTime;
+		int AuthorTime;
+		int CopperPrice;
+		bool LapRace;
+		int NbLaps;
+		int NbCheckpoints;
+	}</pre>
+	</li>
+
+	<li>
+		TrackMania.<b>EndRace</b>(SPlayerRanking Rankings[], SChallengeInfo Challenge);
+		<pre>
+	struct SPlayerRanking {
+		string Login;
+		string NickName;
+		int PlayerId;
+		int Rank;
+		int BestTime;
+		int[] BestCheckpoints;
+		int Score;
+		int NbrLapsFinished;
+		double LadderScore;
+	}
+	</pre>
+	</li>
+
+	<li>
+		TrackMania.<b>BeginChallenge</b>(SChallengeInfo Challenge, bool WarmUp, bool MatchContinuation);
+	</li>
+
+	<li>
+		TrackMania.<b>EndChallenge</b>(SPlayerRanking Rankings[], SChallengeInfo Challenge, bool WasWarmUp, bool MatchContinuesOnNextChallenge, bool RestartChallenge);
+	</li>
+
+	<li>
+		TrackMania.<b>BeginRound</b>();
+	</li>
+
+	<li>
+		TrackMania.<b>EndRound</b>();
+	</li>
+
+	<li>
+		TrackMania.<b>StatusChanged</b>(int StatusCode, string StatusName);
+	</li>
+
+	<li>
+		TrackMania.<b>PlayerCheckpoint</b>(int PlayerUid, string Login, int TimeOrScore, int CurLap, int CheckpointIndex);
+	</li>
+
+	<li>
+		TrackMania.<b>PlayerFinish</b>(int PlayerUid, string Login, int TimeOrScore);
+	</li>
+
+	<li>
+		TrackMania.<b>PlayerIncoherence</b>(int PlayerUid, string Login);
+	</li>
+
+	<li>
+		TrackMania.<b>BillUpdated</b>(int BillId, int State, string StateName, int TransactionId);
+	</li>
+
+	<li>
+		TrackMania.<b>TunnelDataReceived</b>(int PlayerUid, string Login, base64 Data);
+	</li>
+
+	<li>
+		TrackMania.<b>ChallengeListModified</b>(int CurChallengeIndex, int NextChallengeIndex, bool IsListModified);
+	</li>
+
+	<li>
+		TrackMania.<b>PlayerInfoChanged</b>(SPlayerInfo PlayerInfo);
+		<pre>
+	struct SPlayerInfo {
+		string Login;
+		string NickName;
+		int PlayerId;
+		int TeamId;
+		int SpectatorStatus;
+		int LadderRanking;
+		int Flags;
+	}
+	</pre>
+	</li>
+
+	<li>
+		TrackMania.<b>ManualFlowControlTransition</b>(string Transition);
+	</li>
+
+	<li>
+		TrackMania.<b>VoteUpdated</b>(string StateName, string Login, string CmdName, string CmdParam);<br/>
+		<i>StateName values: NewVote, VoteCancelled, VotePassed or VoteFailed</i>
+	</li>
+
+</ul>
+</body>
+</html>

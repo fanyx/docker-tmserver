@@ -1,0 +1,24 @@
+0/ Save "aseco/plugins.xml" somewhere
+
+1/ Copy "jfreu.config.php", "jfreu.plugin.php" , "chat.jfreu.php"
+   the "jfreu" directory in your aseco plugins directory (aseco/plugins/)
+
+2/ Add "<plugin>jfreu.plugin.php</plugin>" before "</aseco_plugins>"
+   in "plugins.xml" in your aseco directory (aseco/plugins.xml)
+
+3/ Edit "jfreu.config.php" in your aseco plugins directory (aseco/plugins/)
+   change the server name, ranklimit,...(customise the plugin ^^)
+
+4/ Edit "jfreu/jfreu.lists.xml" and add VIP, team_vip & admins
+
+5/ Run Aseco and enjoy. ("/help" & "/jfreu help" for new commands avilable)
+   New admin commands are : "/jfreu [command]" (ex: "/jfreu novote ON")
+
+
+Any problem or suggestion -> http://jfreu.servegame.com (forum)
+
+
+?/ To uninstall the plugin delete "jfreu.config.php", "jfreu.plugin.php",
+   "chat.jfreu.php" and the "jfreu" directory in your aseco plugins directory
+   (aseco/plugins/) and overwrite modified file with your saved one
+   ("aseco/plugins.xml") or remove the "<plugin>jfreu.plugin.php</plugin>" line.
