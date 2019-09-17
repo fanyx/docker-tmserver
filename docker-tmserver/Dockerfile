@@ -1,4 +1,4 @@
-FROM debian:stretch-slim
+FROM debian:buster-slim
 
 RUN mkdir /opt/tmserver 
 
@@ -18,6 +18,4 @@ RUN chown trackmania:trackmania /entrypoint-tmserver.sh
 USER trackmania
 WORKDIR /opt/tmserver
 
-ENTRYPOINT ["entrypoint-tmserver.sh"]
-
-CMD ["TrackmaniaServer","/nodaemon"]
+ENTRYPOINT ["./entrypoint-tmserver.sh"]
