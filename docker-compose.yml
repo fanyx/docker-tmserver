@@ -5,10 +5,10 @@ services:
     container_name: trackmania_db
     restart: always
     environment:
-     - MYSQL_ROOT_PASSWORD=consortiumRootDb
+     - MYSQL_ROOT_PASSWORD=
      - MYSQL_DATABASE=trackmania
      - MYSQL_USER=trackmania
-     - MYSQL_PASSWORD=consortiumTrackmania
+     - MYSQL_PASSWORD=
     volumes:
      - ./db-data:/var/lib/mysql
   pma:
@@ -28,15 +28,15 @@ services:
      - db
     restart: always
     environment:
-     - SERVER_LOGIN=pott_trupp
-     - SERVER_LOGIN_PASSWORD=pott_trupp
+     - SERVER_LOGIN=
+     - SERVER_LOGIN_PASSWORD=
      - SERVER_PORT=2350
      - SERVER_P2P_PORT=3450
-     - SERVER_SA_PASSWORD=SuperAdminTrackmania
-     - SERVER_ADM_PASSWORD=AdminTrackmania
+     - SERVER_SA_PASSWORD=
+     - SERVER_ADM_PASSWORD=
      - SERVER_NAME=Trackmania Server
      - SERVER_COMMENT=This is a Trackmania Server
-     - SERVER_PASSWORD=gtfo
+     - SERVER_PASSWORD=
     ports:
      - "2350:2350"
      - "2350:2350/udp"
@@ -50,8 +50,8 @@ services:
      - tmserver
     restart: on-failure
     environment:
-     - SERVER_SA_PASSWORD=SuperAdminTrackmania
+     - SERVER_SA_PASSWORD=
      - DB_HOST=db
      - DB_LOGIN=trackmania
-     - DB_LOGIN_PASSWORD=consortiumTrackmania
+     - DB_LOGIN_PASSWORD=
      - DB_NAME=trackmania
