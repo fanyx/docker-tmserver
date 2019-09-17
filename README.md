@@ -11,8 +11,8 @@ Docker image for simple or customizable Trackmania Nations Forever server
 ```
 
 
-```
 ### Optional environment variables are:
+```
   - $SERVER_PORT                | Port for server communications -> Default : 2350
   - $SERVER_P2P_PORT            | Port for peer2peer communication -> Default : 3450
   - $SERVER_SA_PASSWORD         | Password for SuperAdmin credential -> when left empty will be randomly generated
