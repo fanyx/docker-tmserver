@@ -30,3 +30,37 @@ You can adjust this file to your needs but running with docker-compose is more c
 ## Configuring the Trackmania server
 Without manual configuration the server launches with Nadeo's default config. 
 This means round based driving.
+
+Other configuration options are listed below:
+```
+  - $GAMEMODE | 0 (Rounds), 1 (TimeAttack), 2 (Team), 3 (Laps), 4 (Stunts) -> Default : 1
+  - $CHATTIME | chat time value in milliseconds -> Default : 10000
+  - $FINISHTIMEOUT | finish timeout value in milliseconds. 0 means classic, 1 means adaptive -> Default : 1
+  - $DISABLERESPAWN | 0 (respawns enabled), 1 (respawns disabled) -> Default : 0
+```
+
+
+#### Gamemode : Rounds
+```
+  - $ROUNDS_POINTSLIMIT | points limit for rounds mode -> Default : 30
+```
+
+
+#### Gamemode : TimeAttack
+```
+  - $TIMEATTACK_LIMIT | time limit in milliseconds for time attack mode -> Default : 180000
+```
+
+
+#### Gamemode : Team
+```
+  - $TEAM_POINTSLIMIT | points limit for team mode -> Default : 50
+  - $TEAM_MAXPOINTS | number of maximum points per round for team mode -> Default : 6
+```
+
+
+#### Gamemode : Laps
+```
+  - $LAPS_NBLAPS | number of laps for laps mode -> Default : 5
+  - $LAPS_TIMELIMIT | time limit in milliseconds for laps mode -> Default : 0
+```
