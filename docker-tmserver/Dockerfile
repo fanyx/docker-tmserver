@@ -2,11 +2,14 @@ FROM debian:stretch-slim
 
 RUN mkdir /opt/tmserver 
 
-COPY tmserver/ /opt/tmserver/
-COPY ./entrypoint-tmserver.sh /
+COPY tmserver/ /opt/tmserver
+COPY entrypoint-tmserver.sh /opt/tmserver
+
+ENV PATH
 
 RUN apt update \
 	&& apt install pwgen
+
 RUN groupadd trackmania
 RUN useradd -M -g trackmania trackmania
 RUN chown -R trackmania:trackmania /opt/tmserver
@@ -14,4 +17,7 @@ RUN chown trackmania:trackmania /entrypoint-tmserver.sh
 
 USER trackmania
 WORKDIR /opt/tmserver
-CMD ["/entrypoint-tmserver.sh"]
+
+ENTRYPOINT ["entrypoint-tmserver.sh"]
+
+CMD ["TrackmaniaServer","/nodaemon"]

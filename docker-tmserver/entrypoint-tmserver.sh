@@ -3,11 +3,6 @@
 
 set -e
 
-if [[ -e /etc/tmserver/env ]]
-then
-	. /etc/tmserver/env
-fi
-
 # Evaluate all the available environment variables
 if [[ -z "${SERVER_LOGIN}" ]]; then
 	echo "Server account login is missing. Server cannot start."
@@ -51,15 +46,6 @@ fi
 
 #Trackmania Files
 
-sed -i -e "s/--\$SERVER_SA_PASSWORD--/$SERVER_SA_PASSWORD/" \
-	-e "s/--\$SERVER_ADM_PASSWORD--/$SERVER_ADM_PASSWORD/" \
-	-e "s/--\$SERVER_LOGIN--/$SERVER_LOGIN/" \
-	-e "s/--\$SERVER_LOGIN_PASSWORD--/$SERVER_LOGIN_PASSWORD/" \
-	-e "s/--\$SERVER_NAME--/$SERVER_NAME/" \
-	-e "s/--\$SERVER_COMMENT--/$SERVER_COMMENT/" \
-	-e "s/--\$SERVER_PASSWORD--/$SERVER_PASSWORD/" \
-	-e "s/--\$SERVER_PORT--/$SERVER_PORT/" \
-	-e "s/--\$SERVER_P2P_PORT--/$SERVER_P2P_PORT/" \
-	/opt/tmserver/GameData/Config/config.txt
+envsubst > GameData/Config/config.txt < GameData/Config/_config.txt
 
-exec "/opt/tmserver/TrackmaniaServer" "/nodaemon" "/internet" "/game_settings=MatchSettings/playlist.txt" "/dedicated_cfg=config.txt"
+exec "./TrackmaniaServer" "/nodaemon" "/internet" "/game_settings=MatchSettings/playlist.txt" "/dedicated_cfg=config.txt"

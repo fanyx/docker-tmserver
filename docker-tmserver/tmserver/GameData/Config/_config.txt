@@ -4,11 +4,11 @@
 	<authorization_levels>
 		<level>
 			<name>SuperAdmin</name>
-			<password>--$SERVER_SA_PASSWORD--</password>
+			<password>$SERVER_SA_PASSWORD</password>
 		</level>
 		<level>
 			<name>Admin</name>
-			<password>--$SERVER_ADM_PASSWORD--</password>
+			<password>$SERVER_ADM_PASSWORD</password>
 		</level>
 		<level>
 			<name>User</name>
@@ -17,18 +17,18 @@
 	</authorization_levels>
 	
  	<masterserver_account>
-		<login>--$SERVER_LOGIN--</login>
-		<password>--$SERVER_LOGIN_PASSWORD--</password>
+		<login>$SERVER_LOGIN</login>
+		<password>$SERVER_LOGIN_PASSWORD</password>
 		<validation_key></validation_key>
 	</masterserver_account>
 	
 	<server_options>
-		<name>--$SERVER_NAME--</name>
-		<comment>--$SERVER_COMMENT--</comment>
+		<name>$SERVER_NAME</name>
+		<comment>$SERVER_COMMENT</comment>
 		<hide_server>0</hide_server>					<!-- value is 0 (always shown), 1 (always hidden), 2 (hidden from nations) -->
 
 		<max_players>32</max_players>
-		<password>--$SERVER_PASSWORD--</password>
+		<password>$SERVER_PASSWORD</password>
 		
 		<max_spectators>32</max_spectators>
 		<password_spectator></password_spectator>
@@ -62,8 +62,8 @@
 		<connection_downloadrate>8192</connection_downloadrate>		<!-- Kbps -->
 
 		<force_ip_address></force_ip_address>
-		<server_port>--$SERVER_PORT--</server_port>
-		<server_p2p_port>--$SERVER_P2P_PORT--</server_p2p_port>
+		<server_port>$SERVER_PORT</server_port>
+		<server_p2p_port>$SERVER_P2P_PORT</server_p2p_port>
 		<client_port>0</client_port>
 		<bind_ip_address></bind_ip_address>
 		<use_nat_upnp></use_nat_upnp>
