@@ -2,7 +2,7 @@
 Docker image for simple or customizable Trackmania Nations Forever server
 
 ## How to use this image
-```docker run -e {required environment variables} -p {selected ports} fanyx/tmserver```
+`docker run -e {required environment variables} -p {selected ports} fanyx/tmserver`
 
 ### There are several required environment variables that you need to set:
 ```
