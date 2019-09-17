@@ -5,8 +5,6 @@ RUN mkdir /opt/tmserver
 COPY tmserver/ /opt/tmserver
 COPY entrypoint-tmserver.sh /opt/tmserver
 
-ENV PATH
-
 RUN apt update \
 	&& apt install pwgen gettext-base
 
