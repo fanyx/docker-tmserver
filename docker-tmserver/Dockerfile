@@ -11,7 +11,7 @@ RUN apt update \
 RUN groupadd trackmania
 RUN useradd -M -g trackmania trackmania
 RUN chown -R trackmania:trackmania /opt/tmserver
-RUN chown trackmania:trackmania /entrypoint-tmserver.sh
+RUN chown trackmania:trackmania /opt/tmserver/entrypoint-tmserver.sh
 
 USER trackmania
 WORKDIR /opt/tmserver
