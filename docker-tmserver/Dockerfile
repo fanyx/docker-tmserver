@@ -4,7 +4,7 @@ COPY tmserver/ /opt/
 COPY entrypoint-tmserver.sh /opt/tmserver/
 
 RUN apt update \
-	&& apt install pwgen gettext-base
+	&& apt install -y pwgen gettext-base
 
 RUN groupadd trackmania
 RUN useradd -M -g trackmania trackmania
