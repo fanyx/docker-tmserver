@@ -3,7 +3,7 @@
 
 set -e
 
-if [[ "$(id -u)" = "0"]]; then
+if [[ "$(id -u)" = "0" ]]; then
     chown -R trackmania /opt/tmserver
     exec su-exec trackmania "$0"
 fi
@@ -46,52 +46,52 @@ if [[ -z "${SERVER_COMMENT}" ]]; then
 	SERVER_COMMENT="This is a Trackmania Server"
 fi
 
-if [[ -z "${GAMEMODE}"]]; then
+if [[ -z "${GAMEMODE}" ]]; then
     echo "No gamemode was specified. Defaulting to TimeAttack."
     GAMEMODE=1
 fi
 
-if [[ -z "${CHATTIME}"]]; then
+if [[ -z "${CHATTIME}" ]]; then
     echo "No chat timeout was specified. Defaulting to 10000 ms."
     CHATTIME=10000
 fi
 
-if [[ -z "${FINISHTIMEOUT}"]]; then
+if [[ -z "${FINISHTIMEOUT}" ]]; then
     echo "No finish timeout was specified. Defaulting to adaptive mode."
     FINISHTIMEOUT=1
 fi
 
-if [[ -z "${DISABLERESPAWN}"]]; then
+if [[ -z "${DISABLERESPAWN}" ]]; then
     echo "Respawns were not specified. Defaulting to enabled."
     DISABLERESPAWN=0
 fi
 
-if [[ -z "${ROUNDS_POINTSLIMIT}"]]; then
+if [[ -z "${ROUNDS_POINTSLIMIT}" ]]; then
     echo "No points limit was specified for rounds mode. Defaulting to 30."
     ROUNDS_POINTSLIMIT=30
 fi
 
-if [[ -z "${TIMEATTACK_LIMIT}"]]; then
+if [[ -z "${TIMEATTACK_LIMIT}" ]]; then
     echo "No time limit was specified for time attack mode. Defaulting to 180000 ms."
     TIMEATTACK_LIMIT=180000
 fi
 
-if [[ -z "${TEAM_POINTSLIMIT}"]]; then
+if [[ -z "${TEAM_POINTSLIMIT}" ]]; then
     echo "No points limit was specified for team mode. Defaulting to 50."
     TEAM_POINTSLIMIT=50
 fi
 
-if [[ -z "${TEAM_MAXPOINTS}"]]; then
+if [[ -z "${TEAM_MAXPOINTS}" ]]; then
     echo "No number of maximum points per round was specified for team mode. Defaulting to 6."
     TEAM_MAXPOINTS=6
 fi
 
-if [[ -z "${LAPS_NBLAPS}"]]; then
+if [[ -z "${LAPS_NBLAPS}" ]]; then
     echo "No number of laps was specified for laps mode. Defaulting to 5."
     LAPS_NBLAPS=5
 fi
 
-if [[ -z "${LAPS_TIMELIMIT}"]]; then
+if [[ -z "${LAPS_TIMELIMIT}" ]]; then
     echo "No time limit was specified for laps mode. Defaulting to no limit."
     LAPS_TIMELIMIT=0
 fi
@@ -102,10 +102,7 @@ echo "Substition in config files"
 
 #Trackmania Files
 
-$configcmd="envsubst > GameData/Config/config.txt < GameData/Config/_config.txt"
-$playlistcmd="envsubst > GameData/Config/playlist.txt < GameData/Config/_playlist.txt"
-
-eval $configcmd
-eval $playlistcmd
+envsubst > GameData/Config/config.txt < GameData/Config/_config.txt
+envsubst > GameData/Config/playlist.txt < GameData/Config/_playlist.txt
 
 exec "/opt/tmserver/TrackmaniaServer" "/nodaemon" "/internet" "/game_settings=MatchSettings/playlist.txt" "/dedicated_cfg=config.txt"
