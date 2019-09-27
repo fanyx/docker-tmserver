@@ -8,6 +8,9 @@ if [[ "$(id -u)" = "0" ]]; then
     exec su-exec trackmania "$0"
 fi
 
+# Change dir to /opt/tmserver
+cd /opt/tmserver
+
 # Evaluate all the available environment variables
 if [[ -z "${SERVER_LOGIN}" ]]; then
 	echo "Server account login is missing. Server cannot start."
@@ -102,7 +105,7 @@ echo "Substition in config files"
 
 #Trackmania Files
 
-envsubst > GameData/Config/config.txt < GameData/Config/_config.txt
-envsubst > GameData/Config/playlist.txt < GameData/Config/_playlist.txt
+envsubst < GameData/Config/_config.txt > GameData/Config/config.txt 
+envsubst < GameData/Config/_playlist.txt > GameData/Config/playlist.txt 
 
-exec "/opt/tmserver/TrackmaniaServer" "/nodaemon" "/internet" "/game_settings=MatchSettings/playlist.txt" "/dedicated_cfg=config.txt"
+exec "./TrackmaniaServer" "/nodaemon" "/internet" "/game_settings=MatchSettings/playlist.txt" "/dedicated_cfg=config.txt"
