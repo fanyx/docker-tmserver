@@ -14,10 +14,12 @@ cd /opt/tmserver
 # Evaluate all the available environment variables
 if [[ -z "${SERVER_LOGIN}" ]]; then
 	echo "Server account login is missing. Server cannot start."
+	echo "Please set environment variable SERVER_LOGIN."
 	exit 9
 fi
 if [[ -z "${SERVER_LOGIN_PASSWORD}" ]]; then
 	echo "Server account password is missing. Server cannot start."
+	echo "Please set environment variable SERVER_LOGIN_PASSWORD."
 	exit 9
 fi
 if [[ -z "${SERVER_PORT}" ]]; then
@@ -33,12 +35,14 @@ if [[ -z "${SERVER_SA_PASSWORD}" ]]; then
 	echo "Might aswell leave it as randomly generated"
 	SERVER_SA_PASSWORD=$(pwgen -s 12)
 	echo "SuperAdmin password: ${SERVER_SA_PASSWORD}"
+	echo "Please write this down or pipe the docker logs to a file."
 fi
 if [[ -z "${SERVER_ADM_PASSWORD}" ]]; then
 	echo "No Admin password was set. Generating a random one. You can change it afterwards but it's also not that important"
 	echo "Might aswell leave it as randomly generated"
 	SERVER_ADM_PASSWORD=$(pwgen -s 12)
 	echo "Admin password: ${SERVER_ADM_PASSWORD}"
+	echo "Please write this down or pipe the docker logs to a file."
 fi
 if [[ -z "${SERVER_NAME}" ]]; then
 	echo "No server name was set. Defaulting to 'Trackmania Server'"
