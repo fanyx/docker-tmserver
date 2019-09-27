@@ -12,4 +12,6 @@ RUN chown -R trackmania:trackmania /opt/tmserver
 
 USER trackmania
 
+EXPOSE 5000
+
 CMD ["/opt/tmserver/entrypoint-tmserver.sh"]
