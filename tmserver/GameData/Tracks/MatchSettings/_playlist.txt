@@ -36,7 +36,4 @@
 	</filter>
 
 	<startindex>0</startindex>
-	<challenge>
-		<file>Campaigns\Nations\White\A01-Race.Challenge.Gbx</file>
-	</challenge>
 </playlist>
