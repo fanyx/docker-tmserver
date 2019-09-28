@@ -108,18 +108,20 @@ echo "Evaluation over"
 echo "Checking for custom playlist"
 
     CUSTOM_PLAYLIST='playlist/playlist.txt'
-    TEMPLATE_PLAYLIST='GameData/Tracks/MatchSettings/_playlist.txt'
-    TMP_FILE='GameData/Tracks/MatchSettings/_playlist.txt.tmp'
+    TEMPLATE_FILE='GameData/Tracks/MatchSettings/_playlist.txt'
+    TEMPLATE_FILE_TEMP='GameData/Tracks/MatchSettings/_playlist.txt.tmp'
+    PLAYLIST_FILE_TEMP='GameData/Tracks/MatchSettings/playlist.txt.tmp'
+    cp $TEMPLATE_FILE $PLAYLIST_FILE_TEMP
 if [[ -f 'playlist/playlist.txt' ]]; then
     count=1
     while read l; do
-        xmlstarlet ed -s /playlist -t elem -n challenge $TEMPLATE_PLAYLIST > $TMP_FILE
-        xmlstarlet ed -s "/playlist/challenge[${count}]" -t elem -n file -v "${l}" $TMP_FILE > $TEMPLATE_PLAYLIST
+        xmlstarlet ed -s /playlist -t elem -n challenge $PLAYLIST_FILE_TEMP > $TEMPLATE_FILE_TEMP
+        xmlstarlet ed -s "/playlist/challenge[${count}]" -t elem -n file -v "${l}" $TEMPLATE_FILE_TEMP > $PLAYLIST_FILE_TEMP
         count=$((count+1))
     done < $CUSTOM_PLAYLIST
 else
-   xmlstarlet ed -s /playlist -t elem -n challenge $TEMPLATE_PLAYLIST > $TMP_FILE
-   xmlstarlet ed -s "playlist/challenge[1]" -t elem -n file -v "Challenges/Nadeo/A01-Race.Challenge.Gbx" $TMP_FILE > $TEMPLATE_PLAYLIST
+   xmlstarlet ed -s /playlist -t elem -n challenge $PLAYLIST_FILE_TEMP > $TEMPLATE_FILE_TEMP
+   xmlstarlet ed -s "playlist/challenge[1]" -t elem -n file -v "Challenges/Nadeo/A01-Race.Challenge.Gbx" $TEMPLATE_FILE_TEMP > $PLAYLIST_FILE_TEMP
 fi
 
 echo "Evaluating custom playlist over"
@@ -128,6 +130,6 @@ echo "Substition in config files"
 #Trackmania Files
 
 envsubst < GameData/Config/_config.txt > GameData/Config/config.txt 
-envsubst < GameData/Tracks/MatchSettings/_playlist.txt > GameData/Tracks/MatchSettings/playlist.txt 
+envsubst < $PLAYLIST_FILE_TEMP > GameData/Tracks/MatchSettings/playlist.txt 
 
 exec "./TrackmaniaServer" "/nodaemon" "/internet" "/game_settings=MatchSettings/playlist.txt" "/dedicated_cfg=config.txt"
