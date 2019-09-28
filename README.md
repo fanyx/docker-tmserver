@@ -65,8 +65,31 @@ Other configuration options are listed below:
   - $LAPS_TIMELIMIT | time limit in milliseconds for laps mode -> Default : 0
 ```
 
+### Running a custom playlists
+
+You can add tracks to a playlist in a simple way. Just provide a `playlist.txt` that contains every track in a certain format. Create a folder next to your `docker-compose.yml`, mount it as a volume to `/opt/tmserver/playlist` and put the `playlist.txt` in there.
+
+The tracks for the server are stored relative to `/opt/tmserver/GameData/Tracks`. Creating your own playlist is as easy as specifying each track on a separate line in the `playlist.txt` adressed by its relative path to the `Tracks` folder.
+
+#### Example:
+Folder structure:
+```
+|--> docker-compose.yml
+|--> ./tracks
+|--> ./db-data
+`--> ./playlist
+   `--> playlist.txt
+```
+
+playlist.txt :
+```
+Challenges/Nadeo/C01-Race.Challenge.Gbx
+Custom/mini01.Challenge.Gbx
+Custom/SpeedxZxZ.Challenge.Gbx
+```
+
 ### Running custom tracks
-You can run custom tracks by mounting a volume from where your tracks are stored to `/opt/tmserver/GameData/Tracks/Challenges/Custom`.
+You can run custom tracks by mounting a volume from where your tracks are stored to `/opt/tmserver/GameData/Tracks/Custom`.
 
 In this example i am storing my tracks in `./tracks` relative to the docker-compose file.
 
@@ -76,6 +99,6 @@ In this example i am storing my tracks in `./tracks` relative to the docker-comp
     image: fanyx/tmserver:latest
     [...]
     volumes:
-     - ./tracks:/opt/tmserver/GameData/Tracks/Challenges/Custom
+     - ./tracks:/opt/tmserver/GameData/Tracks/Custom
 [...]
 ```
