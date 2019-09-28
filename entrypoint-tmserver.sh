@@ -105,6 +105,24 @@ fi
 
 
 echo "Evaluation over"
+echo "Checking for custom playlist"
+
+    CUSTOM_PLAYLIST='playlist/playlist.txt'
+    TEMPLATE_PLAYLIST='GameData/Tracks/MatchSettings/_playlist.txt'
+    TMP_FILE='GameData/Tracks/MatchSettings/_playlist.txt.tmp'
+if [[ -f 'playlist/playlist.txt' ]]; then
+    count=1
+    while read l; do
+        xmlstarlet ed -s /playlist -t elem -n challenge $TEMPLATE_PLAYLIST > $TMP_FILE
+        xmlstarlet ed -s "/playlist/challenge[${count}]" -t elem -n file -v "${l}" $TMP_FILE > $TEMPLATE_PLAYLIST
+        count=$((count+1))
+    done < $CUSTOM_PLAYLIST
+else
+   xmlstarlet ed -s /playlist -t elem -n challenge $TEMPLATE_PLAYLIST > $TMP_FILE
+   xmlstarlet ed -s "playlist/challenge[1]" -t elem -n file -v "Challenges/Nadeo/A01-Race.Challenge.Gbx" $TMP_FILE > $TEMPLATE_PLAYLIST
+fi
+
+echo "Evaluating custom playlist over"
 echo "Substition in config files"
 
 #Trackmania Files
