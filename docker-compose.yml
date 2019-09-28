@@ -22,7 +22,7 @@ services:
     ports:
      - "8080:80"
   tmserver:
-    build: ./docker-tmserver
+    image: fanyx/tmserver:latest
     container_name: trackmania_tmserver
     depends_on:
      - db
@@ -37,13 +37,15 @@ services:
      - SERVER_NAME=Trackmania Server
      - SERVER_COMMENT=This is a Trackmania Server
      - SERVER_PASSWORD=
+    volumes:
+     - ./tracks:/opt/tmserver/GameData/Tracks/Challenges/Custom
     ports:
      - "2350:2350"
      - "2350:2350/udp"
      - "3450:3450"
      - "3450:3450/udp"
   xaseco:
-    build: ./docker-xaseco
+    image: fanyx/xaseco:latest
     container_name: trackmania_xaseco
     depends_on:
      - db
@@ -51,7 +53,7 @@ services:
     restart: on-failure
     environment:
      - SERVER_SA_PASSWORD=
-     - DB_HOST=db
      - DB_LOGIN=trackmania
      - DB_LOGIN_PASSWORD=
      - DB_NAME=trackmania
+     - MASTER_ADMIN=
