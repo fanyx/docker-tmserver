@@ -64,3 +64,18 @@ Other configuration options are listed below:
   - $LAPS_NBLAPS | number of laps for laps mode -> Default : 5
   - $LAPS_TIMELIMIT | time limit in milliseconds for laps mode -> Default : 0
 ```
+
+### Running custom tracks
+You can run custom tracks by mounting a volume from where your tracks are stored to `/opt/tmserver/GameData/Tracks/Challenges/Custom`.
+
+In this example i am storing my tracks in `./tracks` relative to the docker-compose file.
+
+```
+[...]
+  tmserver:
+    image: fanyx/tmserver:latest
+    [...]
+    volumes:
+     - ./tracks:/opt/tmserver/GameData/Tracks/Challenges/Custom
+[...]
+```
