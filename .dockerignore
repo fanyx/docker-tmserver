@@ -1,5 +1,6 @@
-.git
 /docker-compose.yml
+/.git/
+/.gitignore
 /LICENSE
 /README.md
 /TODO.md
