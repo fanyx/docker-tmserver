@@ -26,7 +26,7 @@
 	</gameinfos>
 
 	<filter>
-		<is_lan>0</is_lan>
+		<is_lan>1</is_lan>
 		<is_internet>1</is_internet>
 		<is_solo>0</is_solo>
 		<is_hotseat>0</is_hotseat>
