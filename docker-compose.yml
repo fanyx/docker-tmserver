@@ -45,7 +45,7 @@ services:
      - "3450:3450"
      - "3450:3450/udp"
   xaseco:
-    image: fanyx/xaseco:latest
+    image: fanyx/docker-xaseco:latest
     container_name: trackmania_xaseco
     depends_on:
      - db
