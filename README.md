@@ -41,6 +41,8 @@ then run
                                   unwanted logins, set a server password
   - HIDE_SERVER                 | Whether you want your server public or not -> Default : 0 (public)
   - MAX_PLAYERS                 | Max player count -> Default : 32
+  - PACKMASK                    | Leave empty to change server mode to United -> Default : stadium
+                                  (Nations)
 ```
 
 ### Gamemodes
@@ -90,8 +92,8 @@ then run
 
 ## Configuration - XAseco
 
-I've taken the freedom to ease the MySQL configuration a bit.
-Other plugins still need to be configured fully.
+I've taken the freedom to ease the MySQL configuration a bit.  
+Other plugins still need to be configured fully.  
 Acquire the necessary files and follow the guide to custom configurations below.
 
 ### Mandatory
@@ -115,7 +117,9 @@ Apart from the configuration possibilities, I've included some scripts to add cu
 
 ### Custom Tracks
 
-While the Nadeo tracks are available in this repository and accessible under `GameData/Tracks/Challenges/Nadeo/`, adding custom tracks from e.g. [Trackmania Exchange](https://tmuf.exchange/) is as simple as placing the files in the `tracks/` folder and mounting it to `/var/lib/tmserver/GameData/Tracks/Custom/`.
+While the Nadeo tracks are available in this repository and accessible under `GameData/Tracks/Challenges/Nadeo/`,
+adding custom tracks from e.g. [Trackmania Exchange](https://tmuf.exchange/) is as simple as placing the files
+in the `tracks/` folder and mounting it to `/var/lib/tmserver/GameData/Tracks/Custom/`.
 
 ```
 [...]
@@ -129,10 +133,10 @@ While the Nadeo tracks are available in this repository and accessible under `Ga
 
 ### Custom Playlist
 
-You can add tracks to a playlist in a simple way. Create a plaintext file like in the example below and
-mount it to `/var/lib/tmserver/playlist.txt`.
+You can add tracks to a playlist in a simple way.  
+Create a plaintext file like in the example below and mount it to `/var/lib/tmserver/playlist.txt`.
 
-The tracks for the server are stored relative to `/var/lib/tmserver/GameData/Tracks`.
+The tracks for the server are stored relative to `/var/lib/tmserver/GameData/Tracks`.  
 Creating your own playlist is as easy as specifying each track on a separate line in the `playlist.txt`
 by its relative path to the `Tracks` folder.
 
@@ -156,22 +160,22 @@ Custom/SpeedxZxZ.Challenge.Gbx
 
 ### Custom configuration files
 
-Most plugins need you to provide valid configuration files to function in the first place.
-Place these in a folder e.g. `config/` and mount it to `/var/lib/xaseco/config/`.
+Most plugins need you to provide valid configuration files to function in the first place.  
+Place these in a folder e.g. `config/` and mount it to `/var/lib/xaseco/config/`.  
 All files will be linked to XAseco's root folder.
 
 Careful, this will overwrite exisiting default files and `localdatabase.xml` as well.
 
 ### Custom plugins
 
-Custom plugins work similar to configuration files.
-Create a folder like `plugins/` and mount it to `/var/lib/xaseco/plugins/custom/`.
+Custom plugins work similar to configuration files.  
+Create a folder like `plugins/` and mount it to `/var/lib/xaseco/plugins/custom/`.  
 They will be linked down to the plugins folder.
 
 ### Plugin blacklist
 
 Create a file called `blacklist` and list plugins by filename that you want ignored on
-XAseco's boot.
+XAseco's boot.  
 Mount this file at `/var/lib/xaseco/blacklist`.
 
 blacklist:

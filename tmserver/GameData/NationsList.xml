@@ -1,0 +1,277 @@
+<nationslist>
+	<nation path="World|Algeria" hymn=""
+		avatar_name="Skins\Avatars\Flags\ALG.dds" avatar_checksum="0xF5D2C03E623AEFE73E66E8E9D3E460D8"
+		skin_name="Skins\Vehicles\StadiumCar\ALG.zip" skin_checksum="0x0CCA1B5087311727D86F2B3FF819FAC2" />
+	<nation path="World|Angola" hymn=""
+		avatar_name="Skins\Avatars\Flags\ANG.dds" avatar_checksum="0x5EE2D003C6AFE2C8A3FBBAFF09142912"
+		skin_name="Skins\Vehicles\StadiumCar\ANG.zip" skin_checksum="0x6B5F0018F294BE33B855427A762205F3" />
+	<nation path="World|Argentina" hymn=""
+		avatar_name="Skins\Avatars\Flags\ARG.dds" avatar_checksum="0x9B0746803B31789C853DA4BD760E0BCC"
+		skin_name="Skins\Vehicles\StadiumCar\ARG.zip" skin_checksum="0xE6D5F1FF403B50259FE84579EB7B5834" />
+	<nation path="World|Australia" hymn=""
+		avatar_name="Skins\Avatars\Flags\AUS.dds" avatar_checksum="0x1DD603CF527380562E6796D347C5A136"
+		skin_name="Skins\Vehicles\StadiumCar\AUS.zip" skin_checksum="0x4F2793C93C3F52616AEC3A1B90690F77" />
+	<nation path="World|Austria" hymn=""
+		avatar_name="Skins\Avatars\Flags\AUT.dds" avatar_checksum="0x3DC18448C82C1C369104C3848DDB7F39"
+		skin_name="Skins\Vehicles\StadiumCar\AUT.zip" skin_checksum="0xBD6AAD3DF0B165B5BE0742D90584D7DA" />
+	<nation path="World|Belgium" hymn=""
+		avatar_name="Skins\Avatars\Flags\BEL.dds" avatar_checksum="0x5C0B9B1310601CBD4671D7EEB9941EF6"
+		skin_name="Skins\Vehicles\StadiumCar\BEL.zip" skin_checksum="0xFCAD77A6D7932CD6E826D208397DC131" />
+	<nation path="World|Bosnia&amp;Herzegovina" hymn=""
+		avatar_name="Skins\Avatars\Flags\BIH.dds" avatar_checksum="0x4EEF55C3DDE5C2835738565E6093FACA"
+		skin_name="Skins\Vehicles\StadiumCar\BIH.zip" skin_checksum="0xE45A893E78C8F23AFE75C3491A4326C6" />
+	<nation path="World|Belarus" hymn=""
+		avatar_name="Skins\Avatars\Flags\BLR.dds" avatar_checksum="0x339B9A1F694F9A371EB8F360C1AD34A4"
+		skin_name="Skins\Vehicles\StadiumCar\BLR.zip" skin_checksum="0x171F719CD36FE44D3E0CE5F839A48BF6" />
+	<nation path="World|Bolivia" hymn=""
+		avatar_name="Skins\Avatars\Flags\BOL.dds" avatar_checksum="0x449A01168AF25B19468FE534B028EB4A"
+		skin_name="Skins\Vehicles\StadiumCar\BOL.zip" skin_checksum="0xBA82430071E3ED1FEA08DF0C26ABCC23" />
+	<nation path="World|Brazil" hymn=""
+		avatar_name="Skins\Avatars\Flags\BRA.dds" avatar_checksum="0x8F98D41EFEFDE2E41DBF800FDAFEB4A1"
+		skin_name="Skins\Vehicles\StadiumCar\BRA.zip" skin_checksum="0xC559DBB7571F46CB30B6B90C0003EB60" />
+	<nation path="World|Bahrain" hymn=""
+		avatar_name="Skins\Avatars\Flags\BRN.dds" avatar_checksum="0xF41DF64CC767931BA221C19F5B570B61"
+		skin_name="Skins\Vehicles\StadiumCar\BRN.zip" skin_checksum="0x95C7E2E76DAE55E9AA3C62E8BF15255A" />
+	<nation path="World|Bulgaria" hymn=""
+		avatar_name="Skins\Avatars\Flags\BUL.dds" avatar_checksum="0xAAD66463E850F3A59B751A57C0802382"
+		skin_name="Skins\Vehicles\StadiumCar\BUL.zip" skin_checksum="0x571709B8080725BBB17D9B8561DD17FB" />
+	<nation path="World|Canada" hymn=""
+		avatar_name="Skins\Avatars\Flags\CAN.dds" avatar_checksum="0x850AD0B8F79A5612CA1C295DBDA7BB53"
+		skin_name="Skins\Vehicles\StadiumCar\CAN.zip" skin_checksum="0x37319FF9407BBFB01CE252F7510378D7" />
+	<nation path="World|Congo" hymn=""
+		avatar_name="Skins\Avatars\Flags\CGO.dds" avatar_checksum="0x5DD2F8CFFF06B9EADE6FCBF1347F186D"
+		skin_name="Skins\Vehicles\StadiumCar\CGO.zip" skin_checksum="0x632B26C89979DE174BABA2F18F190298" />
+	<nation path="World|Chile" hymn=""
+		avatar_name="Skins\Avatars\Flags\CHI.dds" avatar_checksum="0xF78327F9D271FC134049144ABDD03AE6"
+		skin_name="Skins\Vehicles\StadiumCar\CHI.zip" skin_checksum="0xC1BB20E81329A306C8BECB1F57F911B8" />
+	<nation path="World|China" hymn=""
+		avatar_name="Skins\Avatars\Flags\CHN.dds" avatar_checksum="0x3646EDA5FB24E827C56F6A3584AD6CA8"
+		skin_name="Skins\Vehicles\StadiumCar\CHN.zip" skin_checksum="0xFE4AFE1F0C4D18DFF67B82A6A4CA9CFC" />
+	<nation path="World|Ivory Coast" hymn=""
+		avatar_name="Skins\Avatars\Flags\CIV.dds" avatar_checksum="0xBDA700C6E9DE3458BDC8F8A90D291834"
+		skin_name="Skins\Vehicles\StadiumCar\CIV.zip" skin_checksum="0x6FC9D38B4B6DE9F93D676ED3A5787CE9" />
+	<nation path="World|Cameroon" hymn=""
+		avatar_name="Skins\Avatars\Flags\CMR.dds" avatar_checksum="0x87F04599D54786F22A9BB84B69D01CDD"
+		skin_name="Skins\Vehicles\StadiumCar\CMR.zip" skin_checksum="0x3254296AA08135E5A8D3BDC642D56F02" />
+	<nation path="World|Colombia" hymn=""
+		avatar_name="Skins\Avatars\Flags\COL.dds" avatar_checksum="0xC8CD040B7E2CD2C4B1F5F7A295E354D3"
+		skin_name="Skins\Vehicles\StadiumCar\COL.zip" skin_checksum="0x9E77E4C0896835389B8C694D55760C23" />
+	<nation path="World|Croatia" hymn=""
+		avatar_name="Skins\Avatars\Flags\CRO.dds" avatar_checksum="0x17E04371E0CDFED5C6F3B502F4E9AF20"
+		skin_name="Skins\Vehicles\StadiumCar\CRO.zip" skin_checksum="0x8B747BE584997A3B73677B58BE7E2512" />
+	<nation path="World|Cyprus" hymn=""
+		avatar_name="Skins\Avatars\Flags\CYP.dds" avatar_checksum="0x980AD53E64E8C5BCF6FAE3A90A15FA23"
+		skin_name="Skins\Vehicles\StadiumCar\CYP.zip" skin_checksum="0x9D4C1A19AA3BD769F30CCE07F89D3937" />
+	<nation path="World|Czech republic" hymn=""
+		avatar_name="Skins\Avatars\Flags\CZE.dds" avatar_checksum="0x51457FA2FEAA211705988F44F22CAEED"
+		skin_name="Skins\Vehicles\StadiumCar\CZE.zip" skin_checksum="0x3E0ACEE11A17A5AE057E33218276A45A" />
+	<nation path="World|Denmark" hymn=""
+		avatar_name="Skins\Avatars\Flags\DEN.dds" avatar_checksum="0x25CE7B620E92254B3137614A856E43C9"
+		skin_name="Skins\Vehicles\StadiumCar\DEN.zip" skin_checksum="0x7EFB5D268F9BCE3A6A16F5616075BE99" />
+	<nation path="World|Ecuador" hymn=""
+		avatar_name="Skins\Avatars\Flags\ECU.dds" avatar_checksum="0x663E2A2411D9137B6DBAF8F1849F878A"
+		skin_name="Skins\Vehicles\StadiumCar\ECU.zip" skin_checksum="0x40BF949CDEAC15C5E2C75047691ED8C4" />
+	<nation path="World|Egypt" hymn=""
+		avatar_name="Skins\Avatars\Flags\EGY.dds" avatar_checksum="0x7AA7E7B887AE53F337DB5FF129BAA9FE"
+		skin_name="Skins\Vehicles\StadiumCar\EGY.zip" skin_checksum="0xB72C673A70FFD2956470E4B440583B93" />
+	<nation path="World|Spain" hymn=""
+		avatar_name="Skins\Avatars\Flags\ESP.dds" avatar_checksum="0xCA9BD79F7175AE5428C7E7C5C0574270"
+		skin_name="Skins\Vehicles\StadiumCar\ESP.zip" skin_checksum="0x843406D296AF4EE2318CF4CB3B1D1909" />
+	<nation path="World|Estonia" hymn=""
+		avatar_name="Skins\Avatars\Flags\EST.dds" avatar_checksum="0xFCD858EFCFF5012D864106A15712C629"
+		skin_name="Skins\Vehicles\StadiumCar\EST.zip" skin_checksum="0x55DD99F7F344E591B0D3CBEF4953FB11" />
+	<nation path="World|Finland" hymn=""
+		avatar_name="Skins\Avatars\Flags\FIN.dds" avatar_checksum="0x3CA3F287638161EDF29C1A8412A1A6F3"
+		skin_name="Skins\Vehicles\StadiumCar\FIN.zip" skin_checksum="0xEE9E8EC6726B485507D1612D1E591F30" />
+	<nation path="World|France" hymn=""
+		avatar_name="Skins\Avatars\Flags\FRA.dds" avatar_checksum="0x034EA0BCB83EB039EF62129720F1A95F"
+		skin_name="Skins\Vehicles\StadiumCar\FRA.zip" skin_checksum="0xEC9EEB0403659BBB26924D880F745974" />
+	<nation path="World|United Kingdom" hymn=""
+		avatar_name="Skins\Avatars\Flags\GBR.dds" avatar_checksum="0x5F5CC0C46B89205B1C33AB22F4ECACC8"
+		skin_name="Skins\Vehicles\StadiumCar\GBR.zip" skin_checksum="0x6FB6B2E4F793F751764C606CEC68EFA5" />
+	<nation path="World|Germany" hymn=""
+		avatar_name="Skins\Avatars\Flags\GER.dds" avatar_checksum="0xEE81D813678B995AC031EFDC63EF717B"
+		skin_name="Skins\Vehicles\StadiumCar\GER.zip" skin_checksum="0xD1BCB117C9936883D8B9290DD343F945" />
+	<nation path="World|Greece" hymn=""
+		avatar_name="Skins\Avatars\Flags\GRE.dds" avatar_checksum="0x76915B31EE5B5F8BD07C6CEDF60284EF"
+		skin_name="Skins\Vehicles\StadiumCar\GRE.zip" skin_checksum="0x381AF6245FD95F06378EFB4EC3460732" />
+	<nation path="World|Guatemala" hymn=""
+		avatar_name="Skins\Avatars\Flags\GUA.dds" avatar_checksum="0xF41F56CBCAAB039DAD29DCFA74901A85"
+		skin_name="Skins\Vehicles\StadiumCar\GUA.zip" skin_checksum="0xE6BCE1BC25F82FD6A86E80453752C386" />
+	<nation path="World|Hungary" hymn=""
+		avatar_name="Skins\Avatars\Flags\HUN.dds" avatar_checksum="0xB668DA0DF5BAC50535EAC06282EFEA08"
+		skin_name="Skins\Vehicles\StadiumCar\HUN.zip" skin_checksum="0xB5887699D543E4C4654C63F4DCD571FF" />
+	<nation path="World|Indonesia" hymn=""
+		avatar_name="Skins\Avatars\Flags\INA.dds" avatar_checksum="0xDDF90BB8E529E2C40AE64D06D5C6B84E"
+		skin_name="Skins\Vehicles\StadiumCar\INA.zip" skin_checksum="0x099654646E1813DF40C6097554A3DDB9" />
+	<nation path="World|India" hymn=""
+		avatar_name="Skins\Avatars\Flags\IND.dds" avatar_checksum="0x1897B7298DB583D15E5DC641A7B6E5A3"
+		skin_name="Skins\Vehicles\StadiumCar\IND.zip" skin_checksum="0xB9106C26B8F33F7CFEF10AD863D2A034" />
+	<nation path="World|Iran" hymn=""
+		avatar_name="Skins\Avatars\Flags\IRI.dds" avatar_checksum="0x5E35EDB32819BA8811D7826E8E5D4AE5"
+		skin_name="Skins\Vehicles\StadiumCar\IRI.zip" skin_checksum="0x2015E5FE7B592593033D2C6957CDFD22" />
+	<nation path="World|Ireland" hymn=""
+		avatar_name="Skins\Avatars\Flags\IRL.dds" avatar_checksum="0x32647A9D633ADB57FDDD31303F486C74"
+		skin_name="Skins\Vehicles\StadiumCar\IRL.zip" skin_checksum="0x87EC5EB08A1AD210FE6A82EFAE1B0211" />
+	<nation path="World|Israel" hymn=""
+		avatar_name="Skins\Avatars\Flags\ISR.dds" avatar_checksum="0xB23C5E946C40458A30F82308293D9515"
+		skin_name="Skins\Vehicles\StadiumCar\ISR.zip" skin_checksum="0x19C2FF0338B6EE92ADE1BF7B09BAFE6E" />
+	<nation path="World|Italy" hymn=""
+		avatar_name="Skins\Avatars\Flags\ITA.dds" avatar_checksum="0x978C17DD9C98BAFBBEB3D87AC8D4E410"
+		skin_name="Skins\Vehicles\StadiumCar\ITA.zip" skin_checksum="0x604D9005F1C57C0DB097A61EF5637699" />
+	<nation path="World|Japan" hymn=""
+		avatar_name="Skins\Avatars\Flags\JPN.dds" avatar_checksum="0xE1C6039935CFEF27EA8B0A9A2709B233"
+		skin_name="Skins\Vehicles\StadiumCar\JPN.zip" skin_checksum="0xB8E0687C983D1265647F2773B95809AD" />
+	<nation path="World|Kazakhstan" hymn=""
+		avatar_name="Skins\Avatars\Flags\KAZ.dds" avatar_checksum="0x10715A7571F859BC672CF977B70E17B6"
+		skin_name="Skins\Vehicles\StadiumCar\KAZ.zip" skin_checksum="0x654C4337681DD873FD110EAE89A2FB53" />
+	<nation path="World|Korea" hymn=""
+		avatar_name="Skins\Avatars\Flags\KOR.dds" avatar_checksum="0xEEEEAFB4302F1B0BF8E3E567E5B1F2CD"
+		skin_name="Skins\Vehicles\StadiumCar\KOR.zip" skin_checksum="0x7E1F93A0EAD7E36B6AEE013032FB8594" />
+	<nation path="World|Saudi Arabia" hymn=""
+		avatar_name="Skins\Avatars\Flags\KSA.dds" avatar_checksum="0xD0533F56E108C77B8800DC445E887CE3"
+		skin_name="Skins\Vehicles\StadiumCar\KSA.zip" skin_checksum="0x1F2A82EB0F5AFCED69BFF55F40FCA2A3" />
+	<nation path="World|Kuwait" hymn=""
+		avatar_name="Skins\Avatars\Flags\KUW.dds" avatar_checksum="0xE19A1C3FBBEC2162284C8312557232E5"
+		skin_name="Skins\Vehicles\StadiumCar\KUW.zip" skin_checksum="0x328AEBD9DEF6F1206666A1872903842A" />
+	<nation path="World|Laos" hymn=""
+		avatar_name="Skins\Avatars\Flags\LAO.dds" avatar_checksum="0xDA4094ADCD84230B27C90B0C38792D4A"
+		skin_name="Skins\Vehicles\StadiumCar\LAO.zip" skin_checksum="0xC350E0C4687DBDDD04C1CE27D99D6018" />
+	<nation path="World|Libya" hymn=""
+		avatar_name="Skins\Avatars\Flags\LBA.dds" avatar_checksum="0x74249F57E88D8D2EB38825762F156D5B"
+		skin_name="Skins\Vehicles\StadiumCar\LBA.zip" skin_checksum="0x5F4A7B989A644A4F377B970C4161CC16" />
+	<nation path="World|Lebanon" hymn=""
+		avatar_name="Skins\Avatars\Flags\LIB.dds" avatar_checksum="0xA70565534A928F27447DFD367E9491B2"
+		skin_name="Skins\Vehicles\StadiumCar\LIB.zip" skin_checksum="0x98739559491BF7DC45F6E586B23A9335" />
+	<nation path="World|Luxembourg" hymn=""
+		avatar_name="Skins\Avatars\Flags\LUX.dds" avatar_checksum="0xD948E15ADA3ED4E3CEE7486A7A021AC9"
+		skin_name="Skins\Vehicles\StadiumCar\LUX.zip" skin_checksum="0xE16633B95F59F40C1B9C2FDAE5666316" />
+	<nation path="World|Morocco" hymn=""
+		avatar_name="Skins\Avatars\Flags\MAR.dds" avatar_checksum="0xA8CC09D02D7768F62B818F9076B1904A"
+		skin_name="Skins\Vehicles\StadiumCar\MAR.zip" skin_checksum="0x7B3B71FEC9425583469DA5B1066FC2BB" />
+	<nation path="World|Malaysia" hymn=""
+		avatar_name="Skins\Avatars\Flags\MAS.dds" avatar_checksum="0x2CE771E0E430AE5A526831B50D499227"
+		skin_name="Skins\Vehicles\StadiumCar\MAS.zip" skin_checksum="0xD6C89E68FC89B20FD2A045EE85EFF365" />
+	<nation path="World|Mexico" hymn=""
+		avatar_name="Skins\Avatars\Flags\MEX.dds" avatar_checksum="0x3177CA063283BB4B64963B7CEF9AF155"
+		skin_name="Skins\Vehicles\StadiumCar\MEX.zip" skin_checksum="0x249ADE7D76C9954DE5ED826E9B84B3F6" />
+	<nation path="World|Mongolia" hymn=""
+		avatar_name="Skins\Avatars\Flags\MGL.dds" avatar_checksum="0x7F0F5B420EC229D07552C71B89CC8628"
+		skin_name="Skins\Vehicles\StadiumCar\MGL.zip" skin_checksum="0x1724FA84749E4C7576A5890F0E454FB4" />
+	<nation path="World|Netherlands" hymn=""
+		avatar_name="Skins\Avatars\Flags\NED.dds" avatar_checksum="0xD83676E5675E238EBEB90628EF6A22E0"
+		skin_name="Skins\Vehicles\StadiumCar\NED.zip" skin_checksum="0xA70C0450845C11A994B5B1B0EE2914E7" />
+	<nation path="World|Nigeria" hymn=""
+		avatar_name="Skins\Avatars\Flags\NGR.dds" avatar_checksum="0x8AD714886C584FEEC1B82A7350D2528A"
+		skin_name="Skins\Vehicles\StadiumCar\NGR.zip" skin_checksum="0xA0F055919419647721162274B65B7B98" />
+	<nation path="World|Norway" hymn=""
+		avatar_name="Skins\Avatars\Flags\NOR.dds" avatar_checksum="0x5B384CF8D32553D9C9E7F6E1BA04B03D"
+		skin_name="Skins\Vehicles\StadiumCar\NOR.zip" skin_checksum="0xA765A477F60671D4D829F5755C016EBE" />
+	<nation path="World|New Zealand" hymn=""
+		avatar_name="Skins\Avatars\Flags\NZL.dds" avatar_checksum="0xCF5038A142780E2B3880CA6C0D396E40"
+		skin_name="Skins\Vehicles\StadiumCar\NZL.zip" skin_checksum="0x690A664F3E4CC437B627D779B34C09C5" />
+	<nation path="World|Oman" hymn=""
+		avatar_name="Skins\Avatars\Flags\OMA.dds" avatar_checksum="0x2BAEB1ED062CE6FD1D46EDE097A07D51"
+		skin_name="Skins\Vehicles\StadiumCar\OMA.zip" skin_checksum="0xE1DBA98DBC2A031B115B0C6B71D8579B" />
+	<nation path="World|Pakistan" hymn=""
+		avatar_name="Skins\Avatars\Flags\PAK.dds" avatar_checksum="0x71EC396106703FE169F8248DC23BCFA3"
+		skin_name="Skins\Vehicles\StadiumCar\PAK.zip" skin_checksum="0xD70CEA14921994F7ED2FC3175788A1E5" />
+	<nation path="World|Panama" hymn=""
+		avatar_name="Skins\Avatars\Flags\PAN.dds" avatar_checksum="0x440EAC189FF3DCAA10AE23CE1F75E1A6"
+		skin_name="Skins\Vehicles\StadiumCar\PAN.zip" skin_checksum="0xDDB319DF0E34D0DB568A566DA2C0B5E8" />
+	<nation path="World|Peru" hymn=""
+		avatar_name="Skins\Avatars\Flags\PER.dds" avatar_checksum="0x0E3562A3B32BBBED0988066F2304F499"
+		skin_name="Skins\Vehicles\StadiumCar\PER.zip" skin_checksum="0xAA5D80C8B0AE2036DB4C1EE2D527AB7E" />
+	<nation path="World|Philippines" hymn=""
+		avatar_name="Skins\Avatars\Flags\PHI.dds" avatar_checksum="0x75078CF84D45038A12B376C7B5F2C990"
+		skin_name="Skins\Vehicles\StadiumCar\PHI.zip" skin_checksum="0xF3A210FBD7033ADF6F28230FBA57F6E3" />
+	<nation path="World|Poland" hymn=""
+		avatar_name="Skins\Avatars\Flags\POL.dds" avatar_checksum="0x66AE3156CA0605554D67F6FC0BAF8F25"
+		skin_name="Skins\Vehicles\StadiumCar\POL.zip" skin_checksum="0xF259E24E61174CC5B78CD948525F18E9" />
+	<nation path="World|Portugal" hymn=""
+		avatar_name="Skins\Avatars\Flags\POR.dds" avatar_checksum="0xA78486169955529C56C03DA82E07D180"
+		skin_name="Skins\Vehicles\StadiumCar\POR.zip" skin_checksum="0xE766259E99E04E9508846D4157C10527" />
+	<nation path="World|Qatar" hymn=""
+		avatar_name="Skins\Avatars\Flags\QAT.dds" avatar_checksum="0x78BDBBA365DFAA1DB2F9A11841534ECE"
+		skin_name="Skins\Vehicles\StadiumCar\QAT.zip" skin_checksum="0xBF3F38878C49338361D3466CA58B3B3B" />
+	<nation path="World|Romania" hymn=""
+		avatar_name="Skins\Avatars\Flags\ROM.dds" avatar_checksum="0x78F644C1F8FF66F174B12E83AD85C118"
+		skin_name="Skins\Vehicles\StadiumCar\ROM.zip" skin_checksum="0x7ED72E42D45133BCC83DBE8D1E555B1D" />
+	<nation path="World|South Africa" hymn=""
+		avatar_name="Skins\Avatars\Flags\RSA.dds" avatar_checksum="0x11504ACAFFA56E8F25F55ECDFF94F6BC"
+		skin_name="Skins\Vehicles\StadiumCar\RSA.zip" skin_checksum="0x77FD8C42A1CC01F72A4197FA13326FBE" />
+	<nation path="World|Russia" hymn=""
+		avatar_name="Skins\Avatars\Flags\RUS.dds" avatar_checksum="0x678460EB90CFEFE5D6E43B6AB34CE2EF"
+		skin_name="Skins\Vehicles\StadiumCar\RUS.zip" skin_checksum="0x2DAC858854046CA8F6D69BAF62A996AD" />
+	<nation path="World|Senegal" hymn=""
+		avatar_name="Skins\Avatars\Flags\SEN.dds" avatar_checksum="0x74458358C7DD62BB9F7C35E864886FDD"
+		skin_name="Skins\Vehicles\StadiumCar\SEN.zip" skin_checksum="0x0A715C4C118180CB5DF06860EF1570A1" />
+	<nation path="World|Serbia" hymn=""
+		avatar_name="Skins\Avatars\Flags\SRB.dds" avatar_checksum="0xCE5EBAF5939319A18D3E043FF66F2811"
+		skin_name="Skins\Vehicles\StadiumCar\SRB.zip" skin_checksum="0x05C93E01A431AE9647BA70B7E86ADB49" />
+	<nation path="World|Singapore" hymn=""
+		avatar_name="Skins\Avatars\Flags\SIN.dds" avatar_checksum="0xC934980AA75A50A860CCC8236CD7C56A"
+		skin_name="Skins\Vehicles\StadiumCar\Other.zip" skin_checksum="0xE07408286C2BA0440F83B010F30B0C3F" />
+	<nation path="World|Switzerland" hymn=""
+		avatar_name="Skins\Avatars\Flags\SUI.dds" avatar_checksum="0xC8C20EF7E327F91506235F23DCDD194E"
+		skin_name="Skins\Vehicles\StadiumCar\SUI.zip" skin_checksum="0x40776681BFFAB8B25C77C8A7375B54F0" />
+	<nation path="World|Slovakia" hymn=""
+		avatar_name="Skins\Avatars\Flags\SVK.dds" avatar_checksum="0xC0E84B65CFE304EB90E71CAC5D877D6D"
+		skin_name="Skins\Vehicles\StadiumCar\SVK.zip" skin_checksum="0xCBDBBAB2DAE437258444870408DD971A" />
+	<nation path="World|Sweden" hymn=""
+		avatar_name="Skins\Avatars\Flags\SWE.dds" avatar_checksum="0x32C9D109B754C30FBEBF84452BD96A9B"
+		skin_name="Skins\Vehicles\StadiumCar\SWE.zip" skin_checksum="0xB908CA6ECE2939A7C75AB1E023685F47" />
+	<nation path="World|Thailand" hymn=""
+		avatar_name="Skins\Avatars\Flags\THA.dds" avatar_checksum="0xF8AA51E8415AB0307A54C9603D188DD6"
+		skin_name="Skins\Vehicles\StadiumCar\THA.zip" skin_checksum="0x53307B6D52DBB74950759EAFDE4EF267" />
+	<nation path="World|Tunisia" hymn=""
+		avatar_name="Skins\Avatars\Flags\TUN.dds" avatar_checksum="0xE02B8D58D350E3E63818C16B51FE56E2"
+		skin_name="Skins\Vehicles\StadiumCar\TUN.zip" skin_checksum="0x1202A7874BB7C3D7FCDED20CA0E72360" />
+	<nation path="World|Turkey" hymn=""
+		avatar_name="Skins\Avatars\Flags\TUR.dds" avatar_checksum="0x12D51EE793BFCF35DC9F699511E29100"
+		skin_name="Skins\Vehicles\StadiumCar\TUR.zip" skin_checksum="0x00756942AB41A66FF1B18EC6CAFFD90D" />
+	<nation path="World|Ukraine" hymn=""
+		avatar_name="Skins\Avatars\Flags\UKR.dds" avatar_checksum="0xB4385ECA3E6CA7CB500AF5ADFF72801A"
+		skin_name="Skins\Vehicles\StadiumCar\UKR.zip" skin_checksum="0x9C0623660BCA5739ED81731171A20DC9" />
+	<nation path="World|United States of America" hymn=""
+		avatar_name="Skins\Avatars\Flags\USA.dds" avatar_checksum="0x106B8A29934C7DE4D5E04623198A0B6E"
+		skin_name="Skins\Vehicles\StadiumCar\USA.zip" skin_checksum="0xF16A769834115F4A7F60141D1FCF10E8" />
+	<nation path="World|Uzbekistan" hymn=""
+		avatar_name="Skins\Avatars\Flags\UZB.dds" avatar_checksum="0xCF243F6A2A628DD0A7FFF797824AB758"
+		skin_name="Skins\Vehicles\StadiumCar\UZB.zip" skin_checksum="0xF70CD06BB2D27E1B7DC58BF2BCA095FE" />
+	<nation path="World|Vietnam" hymn=""
+		avatar_name="Skins\Avatars\Flags\VIE.dds" avatar_checksum="0x43D25103542826885512540ABD93587B"
+		skin_name="Skins\Vehicles\StadiumCar\VIE.zip" skin_checksum="0x96E52EDA0D7A36DB48CFFCD9EA2A606F" />
+	<nation path="World|Bangladesh" hymn=""
+		avatar_name="Skins\Avatars\Flags\BAN.dds" avatar_checksum="0xBE71F5208C7EFD26498661E4EF6E1F47"
+		skin_name="Skins\Vehicles\StadiumCar\BAN.zip" skin_checksum="0xD187414408F7428BC08CAF8FB932A2C7" />
+	<nation path="World|Venezuela" hymn=""
+		avatar_name="Skins\Avatars\Flags\VEN.dds" avatar_checksum="0x36D2035D5D24E8ACB7627F6AF2274369"
+		skin_name="Skins\Vehicles\StadiumCar\VEN.zip" skin_checksum="0x4713536F71D9994E0EE7417B73052750" />
+	<nation path="World|Slovenia" hymn=""
+		avatar_name="Skins\Avatars\Flags\SLO.dds" avatar_checksum="0x8F628C28143D13E5DD27E1BE5C62E114"
+		skin_name="Skins\Vehicles\StadiumCar\SLO.zip" skin_checksum="0x4B005F97F9B32AA048FEFD3214A3CD2B" />
+	<nation path="World|Iraq" hymn=""
+		avatar_name="Skins\Avatars\Flags\IRQ.dds" avatar_checksum="0xF731624DC3851A8323FEE68FC6688364"
+		skin_name="Skins\Vehicles\StadiumCar\IRQ.zip" skin_checksum="0x115497A3C8AB17084080EB96381E8E65" />
+	<nation path="World|Syria" hymn=""
+		avatar_name="Skins\Avatars\Flags\SYR.dds" avatar_checksum="0xEFDD4645581A3317FE1BD8DF2AEB055C"
+		skin_name="Skins\Vehicles\StadiumCar\SYR.zip" skin_checksum="0x9707466BCC2D77289D330480FFDFEB4A" />
+	<nation path="World|Uruguay" hymn=""
+		avatar_name="Skins\Avatars\Flags\URU.dds" avatar_checksum="0x6999A06BBD41314A2B3BDF41C547E79B"
+		skin_name="Skins\Vehicles\StadiumCar\URU.zip" skin_checksum="0xA8CB5AE6346AA3C74DF5469EF130BC08" />
+	<nation path="World|Latvia" hymn=""
+		avatar_name="Skins\Avatars\Flags\LAT.dds" avatar_checksum="0xB00FF29354DAFC4DCDDA9D8513E4DB5A"
+		skin_name="Skins\Vehicles\StadiumCar\LAT.zip" skin_checksum="0xF3202E0D44C682EABC6EFEE40857F000" />
+	<nation path="World|Lithuania" hymn=""
+		avatar_name="Skins\Avatars\Flags\LTU.dds" avatar_checksum="0xDD96B40B93735EF045B84F6FB93A1037"
+		skin_name="Skins\Vehicles\StadiumCar\LTU.zip" skin_checksum="0xF8AA7FE83D6051828711365AB5D51006" />
+	<nation path="World|Macedonia" hymn=""
+		avatar_name="Skins\Avatars\Flags\MKD.dds" avatar_checksum="0x73F34CE2DB58BB1FA0D36AD7DA08C361"
+		skin_name="Skins\Vehicles\StadiumCar\MKD.zip" skin_checksum="0x71595097B16A82195E89830EB80A105B" />
+
+<!-- default: -->
+	<nation path="" hymn=""
+		avatar_name="Skins\Avatars\Flags\other.dds" avatar_checksum="0x90BDC77EAC714F27A0153D56545CA424" 
+		skin_name="Skins\Vehicles\StadiumCar\Other.zip" skin_checksum="0xE07408286C2BA0440F83B010F30B0C3F" />
+</nationslist>

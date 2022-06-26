@@ -21,7 +21,7 @@ echo "INFO | TMSERVER_PORT: ${TMSERVER_PORT}"
 MYSQL_HOST=${MYSQL_HOST:-db} && \
     database+=( "MYSQL_HOST" )
 echo "INFO | MYSQL_HOST: ${MYSQL_HOST}"
-MYSQL_LOGIN=${MYSQL_LOGIN:?ERROR | MySQL username was not given...} && \
+MYSQL_LOGIN=${MYSQL_LOGIN:?-trackmani} && \
     database+=( "MYSQL_LOGIN" )
 echo "INFO | MYSQL_LOGIN: ${MYSQL_LOGIN}"
 MYSQL_PASSWORD=${MYSQL_PASSWORD:?ERROR | MySQL password was not given...} && \

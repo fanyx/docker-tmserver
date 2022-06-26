@@ -4,16 +4,16 @@ config=( )
 playlist=( )
 
 # Mandatory
-SERVER_SA_PASSWORD=${SERVER_SA_PASSWORD:?ERROR | SuperAdminPassword needs to be set. Generate with pwgen if needed.} && \
-    config+=( "SERVER_SA_PASSWORD" )
-SERVER_ADM_PASSWORD=${SERVER_ADM_PASSWORD:?ERROR | AdminPassword needs to be set. Generate with pwgen if needed.} && \
-    config+=( "SERVER_ADM_PASSWORD" )
 SERVER_LOGIN=${SERVER_LOGIN?:ERROR | ServerLogin is missing. Server cannot start.} && \
     config+=( "SERVER_LOGIN" )
 SERVER_LOGIN_PASSWORD=${SERVER_LOGIN_PASSWORD?:ERROR | ServerLoginPassword is missing. Server cannot start.} && \
     config+=( "SERVER_LOGIN_PASSWORD" )
 
 # Optional
+SERVER_SA_PASSWORD=${SERVER_SA_PASSWORD:-$(pwgen -s 24 1)} && config+=( "SERVER_SA_PASSWORD" )
+echo "INFO | SERVER_SA_PASSWORD: ${SERVER_SA_PASSWORD}"
+SERVER_ADM_PASSWORD=${SERVER_ADM_PASSWORD:-$(pwgen -s 24 1)} && config+=( "SERVER_ADM_PASSWORD" )
+echo "INFO | SERVER_ADM_PASSWORD: ${SERVER_ADM_PASSWORD}"
 SERVER_PORT=${SERVER_PORT:-2350} && config+=( "SERVER_PORT" )
 echo "INFO | SERVER_PORT: ${SERVER_PORT}"
 SERVER_P2P_PORT=${SERVER_P2P_PORT:-3450} && config+=( "SERVER_P2P_PORT" )
@@ -28,6 +28,8 @@ HIDE_SERVER=${HIDE_SERVER:-0} && config+=( "HIDE_SERVER" )
 echo "INFO | HIDE_SERVER: ${HIDE_SERVER}"
 MAX_PLAYERS=${MAX_PLAYERS:-32} && config+=( "MAX_PLAYERS" )
 echo "INFO | MAX_PLAYERS: ${MAX_PLAYERS}"
+PACKMASK=${PACKMASK:-stadium} && config+=( "PACKMASK" )
+echo "INFO | PACKMASK: ${PACKMASK}"
 
 # Game Config
 GAMEMODE=${GAMEMODE:-1} && playlist+=( "GAMEMODE" )
