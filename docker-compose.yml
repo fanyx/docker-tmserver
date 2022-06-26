@@ -9,6 +9,7 @@ services:
     env_file: .env
     volumes:
      - ./tracks:/var/lib/tmserver/GameData/Tracks/Challenges/Custom # => Custom tracks
+     - ./playlist.txt:/var/lib/tmserver/playlist.txt # => Custom playlist
      - ./blacklist:/var/lib/xaseco/blacklist # => Plugin blacklist
      - ./plugins:/var/lib/xaseco/plugins/custom # => Custom plugins
      - ./config:/var/lib/xaseco/config # => Custom configuration files
