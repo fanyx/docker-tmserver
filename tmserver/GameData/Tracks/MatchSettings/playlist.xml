@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<playlist>
+	<gameinfos>
+		<game_mode>@GAMEMODE@</game_mode>
+		<chat_time>@CHATTIME@</chat_time>
+		<finishtimeout>@FINISHTIMEOUT@</finishtimeout>
+		<allwarmupduration>0</allwarmupduration>
+		<disablerespawn>@DISABLERESPAWN@</disablerespawn>
+		<forceshowallopponents>0</forceshowallopponents>
+		<rounds_pointslimit>@ROUNDS_POINTSLIMIT@</rounds_pointslimit>
+		<rounds_usenewrules>0</rounds_usenewrules>
+		<rounds_forcedlaps>0</rounds_forcedlaps>
+		<rounds_pointslimitnewrules>5</rounds_pointslimitnewrules>
+		<team_pointslimit>@TEAM_POINTSLIMIT@</team_pointslimit>
+		<team_maxpoints>@TEAM_MAXPOINTS@</team_maxpoints>
+		<team_usenewrules>0</team_usenewrules>
+		<team_pointslimitnewrules>5</team_pointslimitnewrules>
+		<timeattack_limit>@TIMEATTACK_LIMIT@</timeattack_limit>
+		<timeattack_synchstartperiod>0</timeattack_synchstartperiod>
+		<laps_nblaps>@LAPS_NBLAPS@</laps_nblaps>
+		<laps_timelimit>@LAPS_TIMELIMIT@</laps_timelimit>
+		<cup_pointslimit>@CUP_POINTSLIMIT@</cup_pointslimit>
+		<cup_roundsperchallenge>@CUP_ROUNDSPERCHALLENGE@</cup_roundsperchallenge>
+		<cup_nbwinners>@CUP_NBWINNERS@</cup_nbwinners>
+		<cup_warmupduration>@CUP_WARMUPDURATION@</cup_warmupduration>
+	</gameinfos>
+
+	<filter>
+		<is_lan>1</is_lan>
+		<is_internet>1</is_internet>
+		<is_solo>0</is_solo>
+		<is_hotseat>0</is_hotseat>
+		<sort_index>7</sort_index>
+		<random_map_order>0</random_map_order>
+		<force_default_gamemode>0</force_default_gamemode>
+	</filter>
+
+	<startindex>0</startindex>
+</playlist>
