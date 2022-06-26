@@ -1,0 +1,4 @@
+.gitignore
+/.tmp
+.env
+.env-mysql
