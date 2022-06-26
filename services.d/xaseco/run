@@ -1,0 +1,18 @@
+#!/command/with-contenv bash
+
+set -e
+
+[[ "$(id -u)" == 0 ]] && s6-setuidgid trackmania "$0"
+
+cd /var/lib/xaseco
+
+# Parse environment to configuration files
+./bin/eval_env.sh
+
+# Link custom configuration files
+./bin/config.sh
+
+# Parse plugin list
+./bin/plugins.sh
+
+exec "php" "aseco.php"
