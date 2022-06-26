@@ -1,0 +1,18 @@
+<manialink id="9">
+<frame posn="-63.9 -33.1 0">
+<format textsize="1" textcolor="ddd"/>
+<quad sizen="10 2.2" posn="2 0 0" style="Bgs1InRace" substyle="NavButton"/>
+<label posn="7 -0.3" sizen="8 2" halign="center" textcolor="fff" text="Your Stats"/>
+<quad sizen="14 11.2" posn="0 -1.9 0" style="Bgs1InRace" substyle="NavButton"/>
+<label posn="6.8 -2.7" halign="right" text="Rank:"/>
+<label posn="7.2 -2.7" sizen="6 2" textcolor="fff" text="%RANK%"/>
+<label posn="6.8 -4.7" halign="right" text="Avg:"/>
+<label posn="7.2 -4.7" textcolor="fff" text="%AVG%"/>
+<label posn="6.8 -6.7" halign="right" text="Records:"/>
+<label posn="7.2 -6.7" textcolor="fff" text="%RECS%"/>
+<label posn="6.8 -8.7" halign="right" text="Wins:"/>
+<label posn="7.2 -8.7" textcolor="fff" text="%WINS%"/>
+<label posn="6.8 -10.7" halign="right" text="Played:"/>
+<label posn="7.2 -10.7" textcolor="fff" text="%PLAY%"/>
+</frame>
+</manialink>

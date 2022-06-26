@@ -1,0 +1,13 @@
+<manialink id="4"><frame posn="-64.8 23.3 0">
+<quad sizen="10.5 9" style="Bgs1InRace" substyle="NavButton"/>
+<format textsize="1" textcolor="dddf"/>
+<label posn="4.5 -1.5 2" sizen="3.5 2" halign="right" valign="center" text="PB:"/>
+<label posn="4.5 -3.5 2" sizen="3.5 2" halign="right" valign="center" text="Local:"/>
+<label posn="4.5 -5.5 2" sizen="3.5 2" halign="right" valign="center" text="Dedi:"/>
+<label posn="4.5 -7.5 2" sizen="3.5 2" halign="right" valign="center" text="TMX:"/>
+<format textsize="1" textcolor="ffff"/>
+<label posn="5.0 -1.5 2" sizen="4.9 2" halign="left" valign="center" text="%PB%" action="7"/>
+<label posn="5.0 -3.5 2" sizen="4.9 2" halign="left" valign="center" text="%LCL%" action="8"/>
+<label posn="5.0 -5.5 2" sizen="4.9 2" halign="left" valign="center" text="%DED%" action="9"/>
+<label posn="5.0 -7.5 2" sizen="4.9 2" halign="left" valign="center" text="%TMX%" action="10"/>
+</frame></manialink>

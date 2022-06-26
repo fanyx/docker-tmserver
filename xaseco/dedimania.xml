@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dedimania>
+	<database>
+		<welcome>{#welcome}Welcome to the Dedimania world record system at www.dedimania.com - see {#highlite}/helpdedi</welcome>
+		<timeout>{#dedimsg}Dedimania system timed out - retrying in {#highlite}{1}{#dedimsg} minutes</timeout>
+		<name>Dedimania</name>
+		<!-- Dedimania communication link, do not modify this! -->
+		<url>http://dedimania.net:8002/Dedimania</url>
+		<!-- Log Dedimania news in logfile? -->
+		<log_news>True</log_news>
+		<!-- Show welcome message in chat?  -->
+		<show_welcome>True</show_welcome>
+		<!-- Minimum number of records you'd always like to see at -->
+		<!-- the start and end of tracks, and with /dedilive (-2)  -->
+		<show_min_recs>8</show_min_recs>
+		<!-- Display existing records at start of a new track?     -->
+		<!-- 2 = in message window, 1 = in chat, 0 = none          -->
+		<show_recs_before>1</show_recs_before>
+		<!-- Display (possibly) updated records at end of a track? -->
+		<!-- 2 = in message window, 1 = in chat, 0 = none          -->
+		<show_recs_after>1</show_recs_after>
+		<!-- Display records range if there are no new records?  -->
+		<show_recs_range>True</show_recs_range>
+		<!-- Do you want XASECO to display newly driven records? -->
+		<display_recs>True</display_recs>
+		<!-- Show logins on TMF for players in /dedirecs ?       -->
+		<show_rec_logins>True</show_rec_logins>
+		<!-- Display records in TMF message window or in chat?   -->
+		<recs_in_window>False</recs_in_window>
+		<!-- Limit the highest record that will be displayed to   -->
+		<!-- all? Only the pertaining player sees higher records, -->
+		<!-- so typically this is the same as your Server MaxRank -->
+		<limit_recs>30</limit_recs>
+	</database>
+
+	<!-- Dedimania server registration, copy these from dedicated.cfg -->
+	<!-- Instead of password you can also use the community code for  -->
+	<!-- your server by using the login/password on the official site -->
+	<!-- For the nation, please use the 3-character abbreviation from -->
+	<!-- http://en.wikipedia.org/wiki/List_of_IOC_country_codes       -->
+	<masterserver_account>
+		<login>YOUR_SERVER_LOGIN</login>
+		<password>YOUR_SERVER_PASSWORD</password>
+		<nation>YOUR_SERVER_NATION</nation>
+	</masterserver_account>
+
+	<messages>
+		<!-- ranking messages -->
+		<ranking>{#server}>> {#dedimsg}Dedimania Record rankings on {#highlite}{1}{#dedimsg} {2} this round:</ranking>
+		<ranking_range>{#server}>> {#dedimsg}Dedimania Record rankings on {#highlite}{1}{#dedimsg} {2} this round (range {#highlite}{3}{#dedimsg}):</ranking_range>
+		<ranking_new>{#server}>> {#dedimsg}Dedimania Record rankings on {#highlite}{1}{#dedimsg} {2} this round ({#highlite}{3}{#dedimsg} new):</ranking_new>
+		<ranking_nonew>{#server}>> {#dedimsg}Dedimania Record rankings on {#highlite}{1}{#dedimsg} {2} this round: none new so far</ranking_nonew>
+		<ranking_none>{#server}>> {#dedimsg}Dedimania Record rankings on {#highlite}{1}{#dedimsg} {2} this round: no records!</ranking_none>
+
+		<!-- record messages -->
+		<record_new>{#server}>> {#highlite}{1}{#dedirec} secured his/her {#rank}{2}{#dedirec}. Dedimania Record!  {3}: {#highlite}{4}{#dedirec} $n({#rank}{5}{#highlite}{6}{#dedirec})</record_new>
+		<record_equal>{#server}>> {#highlite}{1}{#dedirec} equaled his/her {#rank}{2}{#dedirec}. Dedimania Record!  {3}: {#highlite}{4}</record_equal>
+		<record_new_rank>{#server}>> {#highlite}{1}{#dedirec} gained the {#rank}{2}{#dedirec}. Dedimania Record!  {3}: {#highlite}{4}{#dedirec} $n({#rank}{5}{#highlite}{6}{#dedirec})</record_new_rank>
+		<record_first>{#server}>> {#highlite}{1}{#dedirec} claimed the {#rank}{2}{#dedirec}. Dedimania Record!  {3}: {#highlite}{4}</record_first>
+
+		<!-- record relation messages -->
+		<first_record>{#server}> {#dedirec}The first Dedimania record is: </first_record>
+		<last_record>{#server}> {#dedirec}The last Dedimania record is: </last_record>
+		<diff_record>{#server}> {#dedirec}Difference between {1}{#dedirec} and {2}{#dedirec} is: {#highlite}{3}</diff_record>
+
+		<!-- pb messages -->
+		<pb>{#server}> {#dedirec}Dedimania Personal Best: {#highlite}{1}{#dedirec}({#rank}{2}{#dedirec})</pb>
+		<pb_none>{#server}> {#error}You don't have a Dedimania record on this track yet...</pb_none>
+
+		<!-- ban messages -->
+		<banned_login>{#server}>> {#highlite}{1} {#server}({#highlite}{2}{#server}) {#error}is banned from Dedimania!</banned_login>
+		<banned_finish>{#server}> {#error}Finish ignored by Dedimania as you are banned!</banned_finish>
+	</messages>
+</dedimania>

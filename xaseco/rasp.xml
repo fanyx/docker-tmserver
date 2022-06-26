@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rasp>
+  <messages>
+    <!-- rank/pb messages -->
+    <rank>{#server}> {#record}Your server rank is {#rank}{1}{#record}/{#highlite}{2}{#record} Average: {#highlite}{3}</rank>
+    <rank_none>{#server}> {#record}You must have {#highlite}{1}{#record} Local Records on this server before recieving a rank...</rank_none>
+    <nextrank>{#server}> {#record}The next better ranked player is {#highlite}{1}{#record}: {#highlite}{2}</nextrank>
+    <nextrank_rp> $n{#record}[{#highlite}-{1}{#record} RP]</nextrank_rp>
+    <toprank>{#server}> {#record}No better ranked player :-)</toprank>
+    <pb>{#server}> {#record}Personal Best: {#highlite}{1}{#record}({#rank}{2}{#record}) Average: {#highlite}{3}</pb>
+    <pb_none>{#server}> {#error}You don't have a Local Record on this track yet...</pb_none>
+
+    <!-- jukebox messages -->
+    <jukebox>{#server}>> {#highlite}{1}{#emotic} was added to the jukebox by {#highlite}{2}</jukebox>
+    <jukebox_already>{#server}> {#emotic}You already have a track in the jukebox! Wait till it's been played before adding another.</jukebox_already>
+    <jukebox_dupl>{#server}> {#emotic}This track has already been added to the jukebox, pick another one.</jukebox_dupl>
+    <jukebox_repeat>{#server}> {#emotic}This track has been played recently. Wait a while before adding it again.</jukebox_repeat>
+    <jukebox_next>{#server}>> {#emotic}The next track will be {#highlite}{1}{#emotic} as requested by {#highlite}{2}</jukebox_next>
+    <jukebox_nextenv>{#server}>> {#emotic}The next track will be {#timelite}[{1}] {#highlite}{2}{#emotic} as requested by {#highlite}{3}</jukebox_nextenv>
+    <jukebox_skipleft>{#server}>> {#emotic}Track {#highlite}{1}{#emotic} skipped because {#highlite}{2}{#emotic} left...</jukebox_skipleft>
+    <jukebox_ignored>{#server}> {#emotic}Track {#highlite}{1}{#emotic} ignored: {#error}{2}</jukebox_ignored>
+    <jukebox_drop>{#server}>> {#emotic}Player {#highlite}{1}{#emotic} dropped his/her track {#highlite}{2}{#emotic} from jukebox!</jukebox_drop>
+    <jukebox_nodrop>{#server}> {#emotic}You don't have a track in the jukebox, use {#highlite}/jukebox Track_ID{#emotic} to add one...</jukebox_nodrop>
+    <jukebox_add>{#server}>> {#highlite}{1}{#emotic} is requesting {#highlite}{2}{#emotic} from {3}.{br}{#emotic}This will require {#highlite}{4}{#emotic} votes to pass. Type {#highlite}/y{#emotic} to vote yes.</jukebox_add>
+    <jukebox_y>{#server}>> {#highlite}{1}{#emotic} more vote{2} needed to add {#highlite}{3}{#emotic}. Type {#highlite}/y{#emotic} to vote yes.</jukebox_y>
+    <jukebox_pass>{#server}>> {#emotic}Vote Passed! {#highlite}{1}{#emotic} has been added to the jukebox.</jukebox_pass>
+    <jukebox_end>{#server}>> {#emotic}Vote to add {#highlite}{1}{#emotic} {2} by {#highlite}{3}{#emotic}!</jukebox_end>
+    <jukebox_cancel>{#server}>> {#emotic}Current /add vote cancelled!</jukebox_cancel>
+    <jukebox_notfound>{#server}> {#emotic}Track_ID not found - Type {#highlite}/list{#emotic} to see all tracks.</jukebox_notfound>
+    <jukebox_empty>{#server}> {#emotic}No tracks in the jukebox, use {#highlite}/jukebox Track_ID{#emotic} to add one...</jukebox_empty>
+
+    <!-- jukebox misc. messages -->
+    <jukebox_help>{#server}> {#emotic}You have to include a Track_ID, e.g {#highlite}/jukebox 12{#emotic} - Type {#highlite}/jukebox help{#emotic} for more info.</jukebox_help>
+    <jukebox_list>{#server}> {#emotic}Upcoming tracks in the jukebox: </jukebox_list>
+    <list_help>{#server}> {#emotic}Use {#highlite}/list{#emotic} first - Type {#highlite}/list help{#emotic} for more info.</list_help>
+    <no_jukebox>{#server}> {#highlite}/jukebox{#emotic} is not currently enabled on this server.</no_jukebox>
+    <history>{#server}> {#emotic}Recently played tracks: </history>
+    <add_present>{#server}> {#highlite}Track already in server list, not added.</add_present>
+    <add_presentjb>{#server}> {#highlite}Track already in server list, adding via jukebox.</add_presentjb>
+    <add_dupl>{#server}> {#emotic}Track is already /add-ed to jukebox.</add_dupl>
+    <no_add>{#server}> {#highlite}/add{#emotic} is not currently enabled on this server.</no_add>
+    <track_too_large>{#server}> {#error}Track is too large ({#highlite}{1}$i{#error} > 256 KB) - not added!</track_too_large>
+
+    <!-- chat-based vote messages -->
+    <vote_explain>{#server}>> {#vote}CallVotes disabled - see {#highlite}/helpvote{#vote} for info on chat-based voting</vote_explain>
+    <vote_already>{#server}> {#error}A vote is already in progress. Wait for this to complete.</vote_already>
+    <vote_limit>{#server}> {#error}Already ran {#highlite}$i {1}{#error} {2} vote{3} for this track - that's enough!</vote_limit>
+    <vote_start>{#server}>> {#highlite}{1}{#vote} is requesting to {#highlite}{2}{#vote}.{br}{#vote}This will require {#highlite}{3}{#vote} votes to pass. Type {#highlite}/y{#vote} to vote yes.</vote_start>
+    <vote_y>{#server}>> {#highlite}{1}{#vote} more vote{2} needed to {#highlite}{3}{#vote}. Type {#highlite}/y{#vote} to vote yes.</vote_y>
+    <vote_pass>{#server}>> {#vote}Vote Passed! Server to {#highlite}{1}{#vote}.</vote_pass>
+    <vote_end>{#server}>> {#vote}Vote to {#highlite}{1}{#vote} {2} by {#highlite}{3}{#vote}!</vote_end>
+    <vote_cancel>{#server}>> {#vote}Current vote cancelled!</vote_cancel>
+    <no_more_replay>{#server}> {#vote}No more than {#highlite}{1}{#vote} replay{2} per track allowed!</no_more_replay>
+    <no_admin_kick>{#server}>> {#vote}Player {#highlite}{1}{#vote} fruitlessly tried to kick-vote {#logina}admin {#highlite}{2}{#vote}!</no_admin_kick>
+    <no_admin_ignore>{#server}>> {#vote}Player {#highlite}{1}{#vote} fruitlessly tried to ignore-vote {#logina}admin {#highlite}{2}{#vote}!</no_admin_ignore>
+    <ask_admin>{#server}> {#error}Chat-based votes disabled - ask the currently available admin to</ask_admin>
+    <no_spectators>{#server}> {#error}Spectators not allowed to start votes!</no_spectators>
+    <no_sb_vote>{#server}> {#error}Chat-based votes disabled during scoreboard!</no_sb_vote>
+    <no_vote>{#server}> {#error}Chat-based votes disabled - use normal CallVotes.</no_vote>
+
+    <!-- karma messages -->
+    <karma>{#server}>> {#karma}Current Track Karma: {#highlite}{1}</karma>
+    <karma_track>{#server}>> {#karma}Track {#highlite}{1}{#karma} Karma: {#highlite}{2}</karma_track>
+    <karma_details>{1} $n{#karma}[++: {#highlite}{2}{#karma} ({#highlite}{3}%{#karma}), --: {#highlite}{4}{#karma} ({#highlite}{5}%{#karma})]</karma_details>
+    <karma_vote> $n{#karma}$i{Your vote:  {#highlite}$i{1}{#karma}$i}</karma_vote>
+    <karma_done>{#server}> {#highlite}Vote Successful!</karma_done>
+    <karma_change>{#server}> {#highlite}Vote Changed!</karma_change>
+    <karma_fail>{#server}> {#highlite}Vote Failed!</karma_fail>
+    <karma_voted>{#server}> {#highlite}You have already voted for this track</karma_voted>
+    <karma_remind>{#server}> {#karma}Remember to vote karma ({#highlite}/++{#karma} or {#highlite}/--{#karma}) for this track</karma_remind>
+    <karma_require>{#server}> {#error}You need to finish this track at least {#highlite}$i {1}{#error} time{2} before voting!</karma_require>
+    <karma_nopublic>{#server}>> {#error}Public karma votes disabled, use $i{#highlite}/++{#error} or $i{#highlite}/--{#error} instead!</karma_nopublic>
+
+    <!-- misc. messages -->
+    <nextmap>{#server}> The next Challenge will be: {#highlite}{1}</nextmap>
+    <nextenvmap>{#server}> The next Challenge will be: {#timelite}[{1}] {#highlite}{2}</nextenvmap>
+    <official>{#server}> {#highlite}That is not a valid command on ANY server - just wait until the next track to become official.</official>
+    <bootme>{#server}>> {#highlite}{1}$z$s{#message} chooses to boot back to the real world.</bootme>
+    <bootme_dialog>{#message}Thanks for playing, please come back soon!</bootme_dialog>
+  </messages>
+</rasp>

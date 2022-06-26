@@ -1,0 +1,13 @@
+<manialink id="6"><frame posn="-64.8 5.5 0">
+<quad sizen="7.5 29.6" style="Bgs1InRace" substyle="NavButton"/>
+<quad posn="2 -0.5 2" sizen="4 4" style="Icons128x128_1" substyle="Coppers"/>
+<label posn="1 -5 2" textsize="2" textcolor="dddf" text="$f6fDonate:"/>
+<format textsize="2" textcolor="ffff"/>
+<label posn="6.5 -8 2" sizen="3.8 2" halign="right" text="%COP1% C" action="30"/>
+<label posn="6.5 -11 2" sizen="3.8 2" halign="right" text="%COP2% C" action="31"/>
+<label posn="6.5 -14 2" sizen="4.8 2" halign="right" text="%COP3% C" action="32"/>
+<label posn="6.5 -17 2" sizen="4.8 2" halign="right" text="%COP4% C" action="33"/>
+<label posn="6.5 -20 2" sizen="4.8 2" halign="right" text="%COP5% C" action="34"/>
+<label posn="6.5 -23 2" sizen="5.8 2" halign="right" text="%COP6% C" action="35"/>
+<label posn="6.5 -26 2" sizen="5.8 2" halign="right" text="%COP7% C" action="36"/>
+</frame></manialink>

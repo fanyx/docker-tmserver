@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<access>
+<!--	For a detailed explanation of this three-pass access control system,
+	see:  http://httpd.apache.org/docs/2.0/mod/mod_access.html
+
+	The first pass checks all Allow or Deny entries, as specified by the
+	Order directive.  The second pass checks all Deny or Allow entries.
+	The third pass applies to nations/zones which didn't match before.
+	The last value in Order thus controls the default behavior when no
+	match is found among Allow and Deny, and when both sections match.
+
+	From values are case-sensitive, upper- and lowercase characters must
+	match exactly with the players' nations/zones you want to control.
+
+	Special From value 'all' matches all nations/zones, and can be used
+	only once in either the Allow or Deny section, with no other From
+	fields in that section.
+
+	Examples of some common situations:
+
+	1. On TMN allow only players from the Benelux:
+
+		<order>Deny,Allow</order>
+		<allow>
+			<from>BEL</from>
+			<from>NED</from>
+			<from>LUX</from>
+		</allow>
+		<deny>
+			<from>all</from>
+		</deny>
+
+	2. The same policy can also be configured like this (note that
+	   because Deny is last, it cannot contain 'all' or the allowed
+	   nations would be denied as yet):
+
+		<order>Allow,Deny</order>
+		<allow>
+			<from>BEL</from>
+			<from>NED</from>
+			<from>LUX</from>
+		</allow>
+		<deny>
+			<from></from>
+		</deny>
+
+	3. On TMF allow all players except from France and Great Britain:
+
+		<order>Deny,Allow</order>
+		<allow>
+			<from></from>
+		</allow>
+		<deny>
+			<from>France</from>
+			<from>United Kingdom</from>
+		</deny>
+
+	And a more complex one:
+
+	On TMF allow only players from Germany and Austria, except Berlin,
+	Vienna, and the entire Bavaria region:
+
+		<order>Allow,Deny</order>
+		<allow>
+			<from>Germany</from>
+			<from>Austria</from>
+		</allow>
+		<deny>
+			<from>Germany|Berlin</from>
+			<from>Germany|Bavaria</from>
+			<from>Austria|Vienna</from>
+		</deny>
+
+	Configure your server's access policies below:
+-->
+	<order>Deny,Allow</order>
+
+	<allow>
+		<from>all</from>
+	</allow>
+
+	<deny>
+		<from></from>
+	</deny>
+
+	<messages>
+		<denied>{#server}>> {#message}Player {#highlite}{1}$z$s{#message} denied access from {2} {#highlite}{3}{#message} [{#error}Kicked $z$s{#message}]</denied>
+		<dialog>{#message}Access from zone {#highlite}{1} {#message}denied$z</dialog>
+		<reload>{#server}> Player access control reloaded from {#highlite}access.xml</reload>
+		<xmlerr>{#server}> {#highlite}access.xml {#error}config error, player access control disabled!</xmlerr>
+		<missing>{#server}> {#error}Missing parameter, use {#highlite}$i /admin access help {#error}!</missing>
+	</messages>
+</access>
