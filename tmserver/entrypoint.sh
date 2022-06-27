@@ -2,7 +2,9 @@
 
 set -e
 
-[[ "$(id -u)" == 0 ]] && s6-setuidgid trackmania "$0"
+[[ "$(id -u)" == 0 ]] && \
+    chown -R trackmania:trackmania /var/lib/tmserver && \
+    s6-setuidgid trackmania "$0"
 
 cd /var/lib/tmserver
 
