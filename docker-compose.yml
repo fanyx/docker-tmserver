@@ -14,6 +14,7 @@ services:
      - ./plugins:/var/lib/xaseco/plugins/custom # => Custom plugins
      - ./config:/var/lib/xaseco/config # => Custom configuration files
     ports:
+     - "2350:2350"
      - "2350:2350/udp"
      - "3450:3450/udp"
   db:
