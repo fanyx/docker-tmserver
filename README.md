@@ -135,6 +135,7 @@ in the `tracks/` folder and mounting it to `/var/lib/tmserver/GameData/Tracks/Cu
 
 You can add tracks to a playlist in a simple way.  
 Create a plaintext file like in the example below and mount it to `/var/lib/tmserver/playlist.txt`.
+To enable parsing of this file set `CUSTOM_PLAYLIST` in your env-file to anything but an empty string.
 
 The tracks for the server are stored relative to `/var/lib/tmserver/GameData/Tracks`.  
 Creating your own playlist is as easy as specifying each track on a separate line in the `playlist.txt`
@@ -157,6 +158,39 @@ Challenges/Nadeo/C01-Race.Challenge.Gbx
 Custom/mini01.Challenge.Gbx
 Custom/SpeedxZxZ.Challenge.Gbx
 ```
+
+---
+**NOTE**
+
+When mounting your own `playlist.xml` file to the container you overwrite a lot of
+customization options that usually would be parsed from environment variables.
+
+```xml
+	<gameinfos>
+		<game_mode>@GAMEMODE@</game_mode>
+		<chat_time>@CHATTIME@</chat_time>
+		<finishtimeout>@FINISHTIMEOUT@</finishtimeout>
+		<disablerespawn>@DISABLERESPAWN@</disablerespawn>
+		<rounds_pointslimit>@ROUNDS_POINTSLIMIT@</rounds_pointslimit>
+		<team_pointslimit>@TEAM_POINTSLIMIT@</team_pointslimit>
+		<team_maxpoints>@TEAM_MAXPOINTS@</team_maxpoints>
+		<timeattack_limit>@TIMEATTACK_LIMIT@</timeattack_limit>
+		<timeattack_synchstartperiod>0</timeattack_synchstartperiod>
+		<laps_nblaps>@LAPS_NBLAPS@</laps_nblaps>
+		<laps_timelimit>@LAPS_TIMELIMIT@</laps_timelimit>
+		<cup_pointslimit>@CUP_POINTSLIMIT@</cup_pointslimit>
+		<cup_roundsperchallenge>@CUP_ROUNDSPERCHALLENGE@</cup_roundsperchallenge>
+		<cup_nbwinners>@CUP_NBWINNERS@</cup_nbwinners>
+		<cup_warmupduration>@CUP_WARMUPDURATION@</cup_warmupduration>
+  </gameinfos>
+```
+
+If you're familiar with these options anyway, you can mount `playlist.xml` to
+`/var/lib/tmserver/GameData/MatchSettings/playlist.xml` and use it as a complete
+and persistent configuration file that can be written to by plugins or external tools
+like RemoteCP.
+
+---
 
 ### Custom configuration files
 
