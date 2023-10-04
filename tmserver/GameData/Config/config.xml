@@ -61,7 +61,7 @@
 		<connection_uploadrate>512</connection_uploadrate>		<!-- Kbps (kilo bits per second) -->
 		<connection_downloadrate>8192</connection_downloadrate>		<!-- Kbps -->
 
-		<force_ip_address></force_ip_address>
+		<force_ip_address>@FORCE_IP_ADDRESS@</force_ip_address>
 		<server_port>@SERVER_PORT@</server_port>
 		<server_p2p_port>@SERVER_P2P_PORT@</server_p2p_port>
 		<client_port>0</client_port>
