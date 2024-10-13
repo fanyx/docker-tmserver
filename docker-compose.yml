@@ -1,6 +1,6 @@
 services:
   tmserver:
-    image: fanyx/tmserver:2.2.0
+    image: fanyx/tmserver:2.2.1
     container_name: trackmania_tmserver
     depends_on:
      - db
@@ -9,7 +9,7 @@ services:
     volumes:
      - ./tracks:/var/lib/tmserver/GameData/Tracks/Challenges/Custom # => Custom tracks
      - ./playlist.txt:/var/lib/tmserver/playlist.txt # => Custom playlist
-     - ./blacklist:/var/lib/xaseco/blacklist # => Plugin blacklist
+     - ./blacklist.txt:/var/lib/xaseco/blacklist.txt # => Plugin blacklis1
      - ./plugins:/var/lib/xaseco/plugins/custom # => Custom plugins
      - ./config:/var/lib/xaseco/config # => Custom configuration files
     ports:

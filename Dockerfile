@@ -1,7 +1,7 @@
 FROM php:5.6-alpine
-ARG S6_OVERLAY_VERSION=3.1.1.1
+ARG S6_OVERLAY_VERSION=3.2.0.2
 
-RUN apk add --no-cache pwgen gettext xmlstarlet bash xz
+RUN apk add --no-cache pwgen gettext xmlstarlet bash xz dos2unix
 RUN docker-php-ext-install mysql
 
 COPY tmserver/ /var/lib/tmserver

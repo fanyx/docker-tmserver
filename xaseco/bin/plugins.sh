@@ -14,8 +14,11 @@ fi
 
 PLUGINS_LIST=($(ls -d plugins/*.php | sed -e 's/plugins\///g'))
 
-[[ -r ./blacklist ]] && \
-    PLUGINS_LIST=($(echo ${PLUGINS_LIST[@]} | tr ' ' '\n' | grep -vFf blacklist))
+[[ -r ./blacklist.txt ]] && {
+	BLACKLIST=($(cat ./blacklist.txt | tr '\r' ' ' | tr '\n' ' '))
+	PLUGINS_LIST=($(echo "${PLUGINS_LIST[@]}" | tr ' ' '\n' |\
+		grep -vf <(echo "${BLACKLIST[@]}" | tr ' ' '\n')))
+}
 
 {
     # open with header -- \n interpreted
@@ -30,7 +33,7 @@ PLUGINS_LIST=($(ls -d plugins/*.php | sed -e 's/plugins\///g'))
                 "plugin.localdatabase.php")
                     ;;
                 "plugin.records_eyepiece.php")
-                    ;;    
+                    ;;
                 *)
                     printf "  <plugin>%s</plugin>\n" "${plugin}"
                     ;;
