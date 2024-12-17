@@ -19,7 +19,7 @@ SERVER_PORT=${SERVER_PORT:-2350} && config+=( "SERVER_PORT" )
 echo "INFO | SERVER_PORT: ${SERVER_PORT}"
 SERVER_P2P_PORT=${SERVER_P2P_PORT:-3450} && config+=( "SERVER_P2P_PORT" )
 echo "INFO | SERVER_P2P_PORT: ${SERVER_P2P_PORT}"
-FORCE_IP_ADDRESS=${FORCE_IP_ADDRESS:-${curl https://api.ipify.org}} && config += ( "FORCE_IP_ADDRESS" )
+FORCE_IP_ADDRESS=${FORCE_IP_ADDRESS:-$(curl https://api.ipify.org)} && config += ( "FORCE_IP_ADDRESS" )
 echo "INFO | FORCE_IP_ADDRESS: ${FORCE_IP_ADDRESS}"
 SERVER_NAME=${SERVER_NAME:-Trackmania Server} && config+=( "SERVER_NAME" )
 echo "INFO | SERVER_NAME: ${SERVER_NAME}"
