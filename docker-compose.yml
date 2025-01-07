@@ -1,6 +1,6 @@
 services:
   tmserver:
-    image: fanyx/tmserver:2.2.1
+    image: fanyx/tmserver:2.2.2
     container_name: trackmania_tmserver
     depends_on:
      - db
