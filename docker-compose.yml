@@ -3,36 +3,37 @@ services:
     image: fanyx/tmserver:2.2.3
     container_name: trackmania_tmserver
     depends_on:
-     - db
+      - db
     restart: always
     env_file: .env
     volumes:
-     - ./tracks:/var/lib/tmserver/GameData/Tracks/Challenges/Custom # => Custom tracks
-     - ./playlist.txt:/var/lib/tmserver/playlist.txt # => Custom playlist
-     - ./blacklist.txt:/var/lib/xaseco/blacklist.txt # => Plugin blacklis1
-     - ./plugins:/var/lib/xaseco/plugins/custom # => Custom plugins
-     - ./config:/var/lib/xaseco/config # => Custom configuration files
+      - ./tracks:/var/lib/tmserver/GameData/Tracks/Challenges/Custom # => Custom tracks
+      - ./plugins:/var/lib/xaseco/plugins/custom # => Custom plugins
+      - ./config:/var/lib/xaseco/config # => Custom configuration files
+      # - ./playlist.txt:/var/lib/tmserver/playlist.txt # => Custom playlist
+      # - ./blacklist.txt:/var/lib/xaseco/blacklist.txt # => Plugin blacklist
     ports:
-     - "2350:2350"
-     - "2350:2350/udp"
-     - "3450:3450/udp"
+      - "2350:2350"
+      - "2350:2350/udp"
+      - "3450:3450/udp"
   db:
     image: mysql:5
     container_name: trackmania_db
     restart: always
     env_file: .env-mysql
     volumes:
-     - trackmania-db:/var/lib/mysql
+      - trackmania-db:/var/lib/mysql
   pma:
     image: phpmyadmin/phpmyadmin
     container_name: trackmania_phpmyadmin
     depends_on:
-     - db
+      - db
     environment:
-     - PMA_HOST=db
+      - PMA_HOST=db
     restart: always
     ports:
-     - "8080:80"
+      - "8080:80"
 
 volumes:
   trackmania-db:
+
